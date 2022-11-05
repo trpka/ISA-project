@@ -38,6 +38,21 @@ public class User implements UserDetails {
 	private String lastName;
 	@Column
 	private String mobile;
+	
+	@Column
+	private String adress;
+	@Column
+	private String city;
+	@Column
+	private String state;
+	@Column
+	private String jmbg;
+	@Column
+	private String sex;
+	@Column
+	private String profession;
+	@Column
+	private String organizationInformation;
 	@Column
 	private boolean enabled;
 	@Column(name = "last_password_reset_date")
@@ -93,7 +108,15 @@ public class User implements UserDetails {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+	
+	
 
+	public String getJmbg() {
+		return jmbg;
+	}
+	public void setJmbg(String jmbg) {
+		this.jmbg = jmbg;
+	}
 	public String getMobile() {
 		return mobile;
 	}
@@ -107,7 +130,7 @@ public class User implements UserDetails {
 	public void setRole(String role) {
 		this.role = role;
 	}
-	 @JsonIgnore
+	@JsonIgnore
 	    @Override
 	    public Collection<? extends GrantedAuthority> getAuthorities() {
 	        return this.authorities;
@@ -133,13 +156,52 @@ public class User implements UserDetails {
     public void setLastPasswordResetDate(Timestamp lastPasswordResetDate) {
         this.lastPasswordResetDate = lastPasswordResetDate;
     }
+    
+    public String getAdress() {
+		return adress;
+	}
+	public void setAdress(String adress) {
+		this.adress = adress;
+	}
+	public String getCity() {
+		return city;
+	}
+	public void setCity(String city) {
+		this.city = city;
+	}
+	public String getState() {
+		return state;
+	}
+	public void setState(String state) {
+		this.state = state;
+	}
+	
+	public String getSex() {
+		return sex;
+	}
+	public void setSex(String sex) {
+		this.sex = sex;
+	}
+	public String getProfession() {
+		return profession;
+	}
+	public void setProfession(String profession) {
+		this.profession = profession;
+	}
+	public String getOrganizationInformation() {
+		return organizationInformation;
+	}
+	public void setOrganizationInformation(String organizationInformation) {
+		this.organizationInformation = organizationInformation;
+	}
 	
 	public User() {}
 	
 	
-	
 	 public User(Long id, String username, String password, String email, String firstName, String lastName,
-			String mobile, boolean enabled, String role, List<Authority> authorities) {
+			String mobile, String adress, String city, String state, String jmbg, String sex, String profession,
+			String organizationInformation, boolean enabled, Timestamp lastPasswordResetDate, String role,
+			List<Authority> authorities) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -148,23 +210,45 @@ public class User implements UserDetails {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.mobile = mobile;
+		this.adress = adress;
+		this.city = city;
+		this.state = state;
+		this.jmbg = jmbg;
+		this.sex = sex;
+		this.profession = profession;
+		this.organizationInformation = organizationInformation;
 		this.enabled = enabled;
+		this.lastPasswordResetDate = lastPasswordResetDate;
 		this.role = role;
 		this.authorities = authorities;
 	}
-	 public User(String username, String password, String email, String firstName, String lastName,
-				String mobile, boolean enabled, String role, List<Authority> authorities) {
-			super();
-			this.username = username;
-			this.password = password;
-			this.email = email;
-			this.firstName = firstName;
-			this.lastName = lastName;
-			this.mobile = mobile;
-			this.enabled = enabled;
-			this.role = role;
-			this.authorities = authorities;
-		}
+	
+	 
+	 
+	public User(String username, String password, String email, String firstName, String lastName, String mobile,
+			String adress, String city, String state, String jmbg, String sex, String profession,
+			String organizationInformation, boolean enabled, Timestamp lastPasswordResetDate, String role,
+			List<Authority> authorities) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.email = email;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.mobile = mobile;
+		this.adress = adress;
+		this.city = city;
+		this.state = state;
+		this.jmbg = jmbg;
+		this.sex = sex;
+		this.profession = profession;
+		this.organizationInformation = organizationInformation;
+		this.enabled = enabled;
+		this.lastPasswordResetDate = lastPasswordResetDate;
+		this.role = role;
+		this.authorities = authorities;
+	}
+	
 	@JsonIgnore
 	@Override
 	public boolean isAccountNonExpired() {

@@ -13,7 +13,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon'; 
 import {MatButtonModule} from '@angular/material/button';
 import { HomeComponent } from './home/home.component';
-import { NavbarHomeComponent } from './navbar-home/navbar-home.component'; 
+import { NavbarHomeComponent } from './navbar-home/navbar-home.component';
+import { QuestionnaireComponent } from './questionnaire/questionnaire.component'; 
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { NavbarHomeComponent } from './navbar-home/navbar-home.component';
     RegistrationComponent,
     NavbarComponent,
     HomeComponent,
-    NavbarHomeComponent
+    NavbarHomeComponent,
+    QuestionnaireComponent
   ],
   imports: [
     BrowserModule,
