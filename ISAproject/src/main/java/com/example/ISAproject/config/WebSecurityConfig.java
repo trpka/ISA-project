@@ -83,23 +83,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				// svim korisnicima dopusti da pristupe sledecim putanjama:
 				.authorizeRequests().antMatchers("/auth/**").permitAll()		// /auth/**
 										// /api/foo
-									.antMatchers("/api/adventures/**").permitAll()
-									.antMatchers("/api/boats/**").permitAll()
-									.antMatchers("/api/upload").permitAll()
 									.antMatchers("/api/registration").permitAll()
 									.antMatchers("/api/login").permitAll()
-									.antMatchers("/api/get/**").permitAll()
-									.antMatchers("/files/**").permitAll()
-									.antMatchers("/api/cottages/**").permitAll()
-									.antMatchers("/api/signup/async").permitAll()
-									.antMatchers("/api/register").permitAll()
-									.antMatchers("/auth/signup").permitAll()
-									.antMatchers("/confirm-registration-client/**").permitAll()
-									.antMatchers("/api/additional-items/**").permitAll()
-									.antMatchers("/api/instructors").permitAll()
-									.antMatchers("/api/one/adventureReservation/**").permitAll()
-									.antMatchers("/api/revision/**").permitAll()
-									.antMatchers("/api/boatOwner/boat/additionalItems/**").permitAll()
+								
 									//.antMatchers("api/client/makeNewAdventureRevision").permitAll()
 									//.antMatchers("/api/client/makeNewBoatComplaint").permitAll()
 									
