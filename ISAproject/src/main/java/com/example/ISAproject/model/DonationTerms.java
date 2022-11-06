@@ -29,7 +29,6 @@ public class DonationTerms {
 	@ManyToOne
     private RegisteredUser registeredUser;
 	
-	
 	public boolean isFree() {
 		return isFree;
 	}
