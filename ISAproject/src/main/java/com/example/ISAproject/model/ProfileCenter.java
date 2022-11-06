@@ -11,9 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
-import org.springframework.beans.factory.annotation.Value;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -32,9 +30,8 @@ public class ProfileCenter {
 	private String description;
 	@Column
 	private Long averageGradeCentre;
-	//Ovo sam dodavao, krvne grupe i kolicine krvi po grupama
-	@Column
-	private String bloodGroup;
+	
+	//krvne grupe i kolicine krvi po grupama
 	@Column
 	private double bloodA;
 	@Column
