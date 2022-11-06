@@ -33,6 +33,7 @@ public class DonationTerms {
 	@ManyToOne
     private RegisteredUser registeredUser;
 	
+
 	@ManyToOne
 	@JoinColumn(name = "profile_center_id")
 	private ProfileCenter profileCenter;
@@ -87,6 +88,7 @@ public class DonationTerms {
 	public void setProfileCenter(ProfileCenter profileCenter) {
 		this.profileCenter = profileCenter;
 	}
+
 	public boolean isFree() {
 		return isFree;
 	}
