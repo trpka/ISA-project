@@ -8,13 +8,16 @@ import javax.persistence.Id;
 
 @Entity
 public class ProfileStuff {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@Column
 	private Stuff stuff;
 	//@Column
-	//private ProfileCenter center;
+	//private ProfileCenter profileCenter;
+	//@Column
+	//private DonationTerms donationTerms;
 	
 	
 }
