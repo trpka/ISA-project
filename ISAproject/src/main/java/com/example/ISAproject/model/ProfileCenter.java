@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import org.springframework.beans.factory.annotation.Value;
 
@@ -31,13 +32,27 @@ public class ProfileCenter {
 	private String description;
 	@Column
 	private Long averageGradeCentre;
+	//Ovo sam dodavao, krvne grupe i kolicine krvi po grupama
+	@Column
+	private String bloodGroup;
+	@Column
+	private double bloodA;
+	@Column
+	private double bloodB;
+	@Column
+	private double bloodAB;
+	@Column
+	private double bloodO;
 	
 	@OneToMany (cascade = CascadeType.ALL,orphanRemoval = true)
 	@JsonIgnore
 	private List<DonationTerms> freeAppointments;
 	
+	//Centar sa administratorima i osobljem
 	@OneToMany (cascade = CascadeType.ALL,orphanRemoval = true)
 	@JsonIgnore
 	private List<Stuff> listOfStuffs;
+	
+	
 	
 }
