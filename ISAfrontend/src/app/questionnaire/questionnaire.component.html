@@ -1,1 +1,125 @@
 <div> <img src="assets/img/logo-transfuzija.png"><p style="text-align:center"><font size="7"   style="color:red;">УПИТНИК ЗА ДАВАОЦА КРВИ ИЛИ КОМПОНЕНАТА КРВИ</font></p></div>
+<p style="text-align:center"><font size="4"   style="color:black;">ПОПУЊАВА ДАВАЛАЦ</font></p>
+
+<div >
+    <div class="row">
+      <div class="col-sm">
+        <p style="text-align:center"><label for="numberOfDonator">Broj davaoca</label></p>
+        <p style="text-align:center"> <input id="numberOfDonator"  name="numberOfDonator" type="text"  class="form-control" [(ngModel)]="numberOfDonator" /></p>
+
+        <p style="text-align:center"><label for="date">Datum</label></p>
+        <p style="text-align:center"> <input id="date"  name="date" type="text"  class="form-control" [(ngModel)]="date" /></p>
+        
+        <p style="text-align:center"><label for="firstName">Ime</label></p>
+        <p style="text-align:center"> <input id="firstName"  name="firstName" type="text"  class="form-control" [(ngModel)]="firstName" /></p>
+
+        <p style="text-align:center"><label for="lastName">Prezime</label></p>
+        <p style="text-align:center"> <input id="lastName"  name="lastName" type="text"  class="form-control" [(ngModel)]="lastName" /></p>
+
+        <p style="text-align:center"><label for="jmbg">JMBG</label></p>
+        <p style="text-align:center"> <input id="jmbg"  name="jmbg" type="text"  class="form-control" [(ngModel)]="jmbg" /></p>
+      </div>
+      <div class="col-sm">
+        One of three columns
+      </div>
+    </div>
+  </div>
+
+<div>
+    
+ 
+
+</div>
+
+<p style="text-align:center"><font size="4"   style="color:black;">ПОПУЊАВА ДАВАЛАЦ</font></p>
+  <div class="row">
+    <div class="col-sm">
+        <p> Da li ste do sada dobrovoljno davali krv ili komponente krvi?</p>
+    </div>
+    <div class="col-sm">
+        <mat-radio-group aria-label="Select an option" style="margin-right: 450px;" [(ngModel)]="p1">
+            <mat-radio-button value="DA">DA</mat-radio-button>
+            <mat-radio-button value="NE">NE</mat-radio-button>
+          </mat-radio-group>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm">
+        <p> Da li ste ikada bili odbijeni kao davalac krvi ili komponente krvi?</p>
+    </div>
+    <div class="col-sm">
+        <mat-radio-group aria-label="Select an option" style="margin-right: 450px;" [(ngModel)]="p2">
+            <mat-radio-button value="DA">DA</mat-radio-button>
+            <mat-radio-button value="NE">NE</mat-radio-button>
+          </mat-radio-group>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm">
+        <p> Da li se trenutno osećate zdravim, sposobnim i odmornim da date krv ili komponente krvi?</p>
+    </div>
+    <div class="col-sm">
+        <mat-radio-group aria-label="Select an option" style="margin-right: 450px;" [(ngModel)]="p3">
+            <mat-radio-button value="DA">DA</mat-radio-button>
+            <mat-radio-button value="NE">NE</mat-radio-button>
+          </mat-radio-group>
+    </div>
+  </div>
+
+ <!-- <div class="row">
+    <div class="col-sm">
+        <p>Da li ste nešto jeli pre dolaska na davanje krvi ili komponente krvi?</p>
+    </div>
+    <div class="col-sm">
+        <mat-radio-group aria-label="Select an option" style="margin-right: 450px;" [(ngModel)]="answers">
+            <mat-radio-button value="DA">DA</mat-radio-button>
+            <mat-radio-button value="NE">NE</mat-radio-button>
+          </mat-radio-group>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm">
+        <p>Da li se bavite opasnim zanimanjem ili hobijem?</p>
+    </div>
+    <div class="col-sm">
+        <mat-radio-group aria-label="Select an option" style="margin-right: 450px;" [(ngModel)]="answers">
+            <mat-radio-button value="DA">DA</mat-radio-button>
+            <mat-radio-button value="NE">NE</mat-radio-button>
+          </mat-radio-group>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm">
+        <p>Da li redovno (svakodnevno) uzimate bilo kakve lekove?</p>
+    </div>
+    <div class="col-sm">
+        <mat-radio-group aria-label="Select an option" style="margin-right: 450px;" [(ngModel)]="answers">
+            <mat-radio-button value="DA">DA</mat-radio-button>
+            <mat-radio-button value="NE">NE</mat-radio-button>
+          </mat-radio-group>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm">
+        <p>Da li redovno (svakodnevno) uzimate bilo kakve lekove?</p>
+    </div>
+    <div class="col-sm">
+        <mat-radio-group aria-label="Select an option" style="margin-right: 450px;" [(ngModel)]="answers">
+            <mat-radio-button value="DA">DA</mat-radio-button>
+            <mat-radio-button value="NE">NE</mat-radio-button>
+          </mat-radio-group>
+    </div>
+  </div>-->
+
+
+
+ 
+
+<button class="btn btn-primary btn-block mb-4" (click)="save()">
+    Save
+  </button>
