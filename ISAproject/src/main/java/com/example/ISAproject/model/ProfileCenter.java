@@ -49,7 +49,26 @@ public class ProfileCenter {
 	@OneToMany (cascade = CascadeType.ALL,orphanRemoval = true)
 	@JsonIgnore
 	private List<Stuff> listOfStuffs;
-	
-	
-	
+
+	public ProfileCenter()
+	{
+
+	}
+
+	public ProfileCenter(Long id, String centerName, String adress, String description, Long averageGradeCentre,
+						 double bloodA, double bloodB, double bloodAB, double bloodO,
+						 List<DonationTerms> freeAppointments, List<Stuff> listOfStuffs)
+	{
+		this.id = id;
+		this.centerName = centerName;
+		this.adress = adress;
+		this.description = description;
+		this.averageGradeCentre = averageGradeCentre;
+		this.bloodA = bloodA;
+		this.bloodB = bloodB;
+		this.bloodAB = bloodAB;
+		this.bloodO = bloodO;
+		this.freeAppointments = freeAppointments;
+		this.listOfStuffs = listOfStuffs;
+	}
 }
