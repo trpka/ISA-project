@@ -76,6 +76,7 @@ public class BloodCenter {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
 	public BloodCenter(Long id, String name, String adress, String city, String startWork, String endWork, Long grade,
 			String description) {
 		super();
