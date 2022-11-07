@@ -15,6 +15,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { HomeComponent } from './home/home.component';
 import { NavbarHomeComponent } from './navbar-home/navbar-home.component';
 import { QuestionnaireComponent } from './questionnaire/questionnaire.component'; 
+import {MatRadioModule} from '@angular/material/radio';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { QuestionnaireComponent } from './questionnaire/questionnaire.component'
     BrowserAnimationsModule,
     MatToolbarModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    MatRadioModule
   ],
   providers: [],
   bootstrap: [AppComponent]
