@@ -12,6 +12,10 @@ insert into complaint (id, title, content) values (2,  'Adventures of Milo and O
 insert into complaint (id,  title, content) values (3,  'Loaded', 'Our Paradise (Notre paradis)');
 insert into complaint (id,  title, content) values (4,'Robe, The', 'Men in Black II (a.k.a. MIIB) (a.k.a. MIB 2)');
 
+
+insert into registered_user (id, points, category, benefits) values (1, 7,'Redovan', 'Redovan');
+insert into registered_user (id, points, category, benefits) values (2, 3,'Redovan', 'Redovan');
+
 insert into blood_center (id, center_name, address, city,  average_grade_centre, description, blooda,bloodb,bloodab,bloodo)
 values (1, 'Mellie', '3041 Dottie Junction', 'Wan’an', 8, 'unavailable',1222,2,14,433);
 
@@ -28,6 +32,7 @@ values (2, '2018-02-20 06:30:00', 61, false, '2021-11-10 08:00:00','2021-11-12 1
 
 insert into donation_terms (id, date, duration, is_free, reservation_start, reservation_end, profile_center_id)
 values (3, '2016-02-20 06:30:00', 61, true, '2021-11-10 09:00:00','2021-11-12 15:00:00', 2);
+
 
 
 
