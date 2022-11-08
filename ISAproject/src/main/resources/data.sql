@@ -12,3 +12,5 @@ insert into complaint (id, title, content) values (2,  'Adventures of Milo and O
 insert into complaint (id,  title, content) values (3,  'Loaded', 'Our Paradise (Notre paradis)');
 insert into complaint (id,  title, content) values (4,'Robe, The', 'Men in Black II (a.k.a. MIIB) (a.k.a. MIB 2)');
 
+insert into registered_user (id, points, category, benefits) values (1, 7,'Redovan', 'Redovan');
+insert into registered_user (id, points, category, benefits) values (2, 3,'Redovan', 'Redovan');
