@@ -81,7 +81,7 @@ public class DonationTerms {
 	public void setRegisteredUser(RegisteredUser registeredUser) {
 		this.registeredUser = registeredUser;
 	}
-	
+
 
 	public BloodCenter getBloodCenter() {
 		return bloodCenter;
