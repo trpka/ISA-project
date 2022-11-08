@@ -21,13 +21,6 @@ insert into blood_center (id, center_name, address, city,  average_grade_centre,
 insert into registered_user (id, points, category, benefits) values (1, 7,'Redovan', 'Redovan');
 insert into registered_user (id, points, category, benefits) values (2, 3,'Redovan', 'Redovan');
 
-insert into blood_center (id, center_name, address, city,  average_grade_centre, description, blooda,bloodb,bloodab,bloodo)
-values (1, 'Mellie', '3041 Dottie Junction', 'Wan’an', 8, 'unavailable',1222,2,14,433);
-
-insert into blood_center (id, center_name, address, city,  average_grade_centre, description,blooda,bloodb,bloodab,bloodo)
-values (2, 'Nert', '2 Westridge Pass', 'Okotoks', 4, 'Cacatua tenuirostris',1222,2,14,433);
-insert into blood_center (id, center_name, address, city,  average_grade_centre, description,blooda,bloodb,bloodab,bloodo)
-values (3, 'Leanna', '57 Havey Center', 'Pará de Minas', 7, 'Alouatta seniculus',1876,245,14,3);
 
 insert into donation_terms (id, date, duration, is_free, reservation_start, reservation_end, profile_center_id)
 values (1, '2016-02-20 06:30:00', 61, true, '2021-11-10 07:00:00','2021-11-12 13:00:00', 2);

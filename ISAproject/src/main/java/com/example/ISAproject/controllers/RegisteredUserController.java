@@ -29,6 +29,7 @@ import java.util.List;
 public class RegisteredUserController {
 
 
+
 	@Autowired
 	private RegisteredUserService registeredUserService;
 	
@@ -45,14 +46,13 @@ public class RegisteredUserController {
 		return new ResponseEntity<>(itemDto,HttpStatus.OK);
 	}
 
-    private RegisteredUserService registeredUserService;
 
-    @RequestMapping(value="api/registeredUsers",method = RequestMethod.GET,produces = {
-            MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-    public ResponseEntity<List<RegisteredUser>> findAll()
-    {
-        List<RegisteredUser> registeredUsers= this.registeredUserService.findAll();
-        return new ResponseEntity<>(registeredUsers, HttpStatus.OK);
-    }
+	  @RequestMapping(value="api/registeredUsers",method = RequestMethod.GET,produces = {
+	            MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+	    public ResponseEntity<List<RegisteredUser>> findAll()
+	    {
+	        List<RegisteredUser> registeredUsers= this.registeredUserService.findAll();
+	        return new ResponseEntity<>(registeredUsers, HttpStatus.OK);
+	    }
 
 }
