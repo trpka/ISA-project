@@ -13,6 +13,11 @@ insert into complaint (id,  title, content) values (3,  'Loaded', 'Our Paradise 
 insert into complaint (id,  title, content) values (4,'Robe, The', 'Men in Black II (a.k.a. MIIB) (a.k.a. MIB 2)');
 
 
+insert into blood_center (id, center_name, address, city,  average_grade_centre, description, blooda,bloodb,bloodab,bloodo) values (1, 'Mellie', '3041 Dottie Junction', 'Wan’an', 8, 'unavailable',1222,2,14,433);
+insert into blood_center (id, center_name, address, city,  average_grade_centre, description,blooda,bloodb,bloodab,bloodo) values (2, 'Nert', '2 Westridge Pass', 'Okotoks', 4, 'Cacatua tenuirostris',1222,2,14,433);
+insert into blood_center (id, center_name, address, city,  average_grade_centre, description,blooda,bloodb,bloodab,bloodo) values (3, 'Leanna', '57 Havey Center', 'Pará de Minas', 7, 'Alouatta seniculus',1876,245,14,3);
+
+
 insert into registered_user (id, points, category, benefits) values (1, 7,'Redovan', 'Redovan');
 insert into registered_user (id, points, category, benefits) values (2, 3,'Redovan', 'Redovan');
 

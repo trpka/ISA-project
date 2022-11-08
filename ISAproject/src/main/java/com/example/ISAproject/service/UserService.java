@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.ISAproject.dto.UserDTO;
 import com.example.ISAproject.model.Authority;
+import com.example.ISAproject.model.RegisteredUser;
 import com.example.ISAproject.model.User;
 import com.example.ISAproject.repository.UserRepository;
 
@@ -68,6 +69,7 @@ public class UserService {
 		// u primeru se registruju samo obicni korisnici i u skladu sa tim im se i dodeljuje samo rola USER
 		List<Authority> authorities=new ArrayList<>();
 		//User newUser=new User();
+		
 		System.out.println("id iz userService"+ u.getId());
 		return u;
 	}
