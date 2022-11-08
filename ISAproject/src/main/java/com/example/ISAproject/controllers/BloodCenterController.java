@@ -48,5 +48,27 @@ public class BloodCenterController
     }
 
 
+    @RequestMapping(value="api/centerName", method = RequestMethod.GET,
+			params = "name",
+			produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+	public ResponseEntity<List<BloodCenter>> findByName(@RequestParam String name){
+		List<BloodCenter> bloodCenters=this.bloodCenterService.findByCenterName(name);
+		return new ResponseEntity<>(bloodCenters,HttpStatus.OK);
+	}
+  
+    @RequestMapping(value="api/centerName", method = RequestMethod.GET,
+			params = "address",
+			produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+	public ResponseEntity<List<BloodCenter>> findByAddress(@RequestParam String address){
+		List<BloodCenter> bloodCenters=this.bloodCenterService.findByAddress(address);
+		return new ResponseEntity<>(bloodCenters,HttpStatus.OK);
+	}
 
+//    @RequestMapping(value="api/centers/sort-by-grade", method = RequestMethod.GET,
+//			produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+//	public ResponseEntity<List<BloodCenter>> sortByAverageGrade(){
+//		List<BloodCenter> centers=this.bloodCenterService.sortByAverageGrade();
+//		return new ResponseEntity<>(centers,HttpStatus.OK);
+//	}
+    
 }
