@@ -19,11 +19,19 @@ public class BloodCenterService
        return this.bloodCenterRepository.findAll();
     }
 
-    public BloodCenter findCenterByName(String name)
-    {
-        return this.bloodCenterRepository.findByCenterName(name);
-    }
 
+    public List<BloodCenter> findByAddress(String address){
+		return this.bloodCenterRepository.findByAddress(address);
+	}
+    
+    public List<BloodCenter> findByCenterName(String name){
+		return this.bloodCenterRepository.findByCenterName(name);
+	}
+    
+//    public List<BloodCenter> sortByAverageGrade(){
+//		return this.bloodCenterRepository.sortByGrade();
+//	}
+//    
     public BloodCenter findById(Long id)
     {
         Optional<BloodCenter> opt=this.bloodCenterRepository.findById(id);

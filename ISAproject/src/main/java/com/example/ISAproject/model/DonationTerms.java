@@ -81,12 +81,17 @@ public class DonationTerms {
 	public void setRegisteredUser(RegisteredUser registeredUser) {
 		this.registeredUser = registeredUser;
 	}
-	public BloodCenter getProfileCenter() {
+	
+
+	public BloodCenter getBloodCenter() {
 		return bloodCenter;
 	}
-	public void setProfileCenter(BloodCenter bloodCenter) {
+
+
+	public void setBloodCenter(BloodCenter bloodCenter) {
 		this.bloodCenter = bloodCenter;
 	}
+
 
 	public boolean isFree() {
 		return isFree;
