@@ -55,6 +55,16 @@ public class DonationTerms {
 		this.registeredUser = registeredUser;
 		this.bloodCenter = bloodCenter;
 	}
+
+	public DonationTerms(Long id, int duration, boolean isFree, RegisteredUser registeredUser, BloodCenter bloodCenter)
+	{
+		super();
+		this.Id = id;
+		this.duration = duration;
+		this.isFree = isFree;
+		this.registeredUser = registeredUser;
+		this.bloodCenter = bloodCenter;
+	}
 	
 	
 	public LocalDateTime getDate() {
@@ -82,13 +92,16 @@ public class DonationTerms {
 		this.registeredUser = registeredUser;
 	}
 
+
 	public BloodCenter getBloodCenter() {
 		return bloodCenter;
 	}
 
+
 	public void setBloodCenter(BloodCenter bloodCenter) {
 		this.bloodCenter = bloodCenter;
 	}
+
 
 	public boolean isFree() {
 		return isFree;

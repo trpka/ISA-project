@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -47,6 +48,57 @@ public class BloodCenterController
         //return new ResponseEntity("Succesfully created a new Blood Center!", HttpStatus.CREATED);
     }
 
+    //Izmena centra
+    @PutMapping("api/edit/center")
+    public ResponseEntity<BloodCenter> UpdateCenter(@RequestBody BloodCenter bc)
+    {
+        BloodCenter bloodCenter = this.bloodCenterService.UpdateCenter(bc);
+        return  new ResponseEntity<>(bloodCenter,HttpStatus.OK);
+    }
 
 
+
+    @RequestMapping(value="api/centerName", method = RequestMethod.GET,
+			params = "name",
+			produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+	public ResponseEntity<List<BloodCenter>> findByName(@RequestParam String name){
+		List<BloodCenter> bloodCenters=this.bloodCenterService.findByCenterName(name);
+		return new ResponseEntity<>(bloodCenters,HttpStatus.OK);
+	}
+  
+    @RequestMapping(value="api/centerName", method = RequestMethod.GET,
+			params = "address",
+			produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+	public ResponseEntity<List<BloodCenter>> findByAddress(@RequestParam String address){
+		List<BloodCenter> bloodCenters=this.bloodCenterService.findByAddress(address);
+		return new ResponseEntity<>(bloodCenters,HttpStatus.OK);
+	}
+
+    @RequestMapping(value="api/centers/sort-by-name", method = RequestMethod.GET,
+            produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    public ResponseEntity<List<BloodCenter>> sortByName(){
+        List<BloodCenter> bloodCenters=this.bloodCenterService.sortByName();
+        return new ResponseEntity<>(bloodCenters,HttpStatus.OK);
+    }
+
+    @RequestMapping(value="api/centers/sort-by-average-grade", method = RequestMethod.GET,
+            produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    public ResponseEntity<List<BloodCenter>> sortByGrade(){
+        List<BloodCenter> bloodCenters=this.bloodCenterService.sortByGrade();
+        return new ResponseEntity<>(bloodCenters,HttpStatus.OK);
+    }
+    @RequestMapping(value="api/centers/sort-by-city", method = RequestMethod.GET,
+            produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    public ResponseEntity<List<BloodCenter>> sortByCity(){
+        List<BloodCenter> bloodCenters=this.bloodCenterService.sortByCity();
+        return new ResponseEntity<>(bloodCenters,HttpStatus.OK);
+    }
+
+//    @RequestMapping(value="api/centers/sort-by-grade", method = RequestMethod.GET,
+//			produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+//	public ResponseEntity<List<BloodCenter>> sortByAverageGrade(){
+//		List<BloodCenter> centers=this.bloodCenterService.sortByAverageGrade();
+//		return new ResponseEntity<>(centers,HttpStatus.OK);
+//	}
+    
 }
