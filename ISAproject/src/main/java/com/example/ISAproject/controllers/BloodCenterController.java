@@ -64,11 +64,14 @@ public class BloodCenterController
 		return new ResponseEntity<>(bloodCenters,HttpStatus.OK);
 	}
 
-//    @RequestMapping(value="api/centers/sort-by-grade", method = RequestMethod.GET,
-//			produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-//	public ResponseEntity<List<BloodCenter>> sortByAverageGrade(){
-//		List<BloodCenter> centers=this.bloodCenterService.sortByAverageGrade();
-//		return new ResponseEntity<>(centers,HttpStatus.OK);
-//	}
+
+    @GetMapping(path = "/search/{centerName}",
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> searchForUsername(@PathVariable("centerName") String centerName){
+        List<BloodCenter> bloodCenters = bloodCenterService.findByUsernameContaining(centerName);
+        if(bloodCenters.isEmpty())
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        return new ResponseEntity<List<BloodCenter>>(bloodCenters, HttpStatus.OK);
+    }
     
 }

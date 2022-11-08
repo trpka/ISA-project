@@ -27,11 +27,7 @@ public class BloodCenterService
     public List<BloodCenter> findByCenterName(String name){
 		return this.bloodCenterRepository.findByCenterName(name);
 	}
-    
-//    public List<BloodCenter> sortByAverageGrade(){
-//		return this.bloodCenterRepository.sortByGrade();
-//	}
-//    
+     
     public BloodCenter findById(Long id)
     {
         Optional<BloodCenter> opt=this.bloodCenterRepository.findById(id);
@@ -52,6 +48,9 @@ public class BloodCenterService
         this.bloodCenterRepository.delete(bloodCenter);
     }
 
+    public List<BloodCenter> findByUsernameContaining(String namePart) {
+        return bloodCenterRepository.findByCenterNameContaining(namePart);
+    }
 
 
 }
