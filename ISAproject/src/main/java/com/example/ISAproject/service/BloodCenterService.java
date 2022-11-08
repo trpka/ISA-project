@@ -52,6 +52,23 @@ public class BloodCenterService
         return opt.get();
     }
 
+    public BloodCenter UpdateCenter(BloodCenter bc)
+    {
+        BloodCenter bloodCenter = bloodCenterRepository.getById(bc.getId());
+
+        bloodCenter.setCenterName(bc.getCenterName());
+        bloodCenter.setAddress(bc.getAddress());
+        bloodCenter.setCity(bc.getCity());
+        bloodCenter.setAverageGradeCentre(bc.getAverageGradeCentre());
+        bloodCenter.setDescription(bc.getDescription());
+        bloodCenter.setBloodA(bc.getBloodA());
+        bloodCenter.setBloodB(bc.getBloodB());
+        bloodCenter.setBloodAB(bc.getBloodAB());
+        bloodCenter.setBloodO(bc.getBloodO());
+
+        return  this.bloodCenterRepository.save(bloodCenter);
+    }
+
     public BloodCenter save(BloodCenter bloodCenter)
     {
         return  this.bloodCenterRepository.save(bloodCenter);

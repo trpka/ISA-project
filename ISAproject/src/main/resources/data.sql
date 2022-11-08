@@ -12,6 +12,26 @@ insert into complaint (id, title, content) values (2,  'Adventures of Milo and O
 insert into complaint (id,  title, content) values (3,  'Loaded', 'Our Paradise (Notre paradis)');
 insert into complaint (id,  title, content) values (4,'Robe, The', 'Men in Black II (a.k.a. MIIB) (a.k.a. MIB 2)');
 
-insert into blood_center (id, center_name, address, city,  average_grade_centre, description, blooda,bloodb,bloodab,bloodo) values (1, 'Mellie', '3041 Dottie Junction', 'Wan’an', 8, 'unavailable',1222,2,14,433);
-insert into blood_center (id, center_name, address, city,  average_grade_centre, description,blooda,bloodb,bloodab,bloodo) values (2, 'Nert', '2 Westridge Pass', 'Okotoks', 4, 'Cacatua tenuirostris',1222,2,14,433);
-insert into blood_center (id, center_name, address, city,  average_grade_centre, description,blooda,bloodb,bloodab,bloodo) values (3, 'Leanna', '57 Havey Center', 'Pará de Minas', 7, 'Alouatta seniculus',1876,245,14,3);
+insert into blood_center (id, center_name, address, city,  average_grade_centre, description, blooda,bloodb,bloodab,bloodo)
+values (1, 'Mellie', '3041 Dottie Junction', 'Wan’an', 8, 'unavailable',1222,2,14,433);
+
+insert into blood_center (id, center_name, address, city,  average_grade_centre, description,blooda,bloodb,bloodab,bloodo)
+values (2, 'Nert', '2 Westridge Pass', 'Okotoks', 4, 'Cacatua tenuirostris',1222,2,14,433);
+insert into blood_center (id, center_name, address, city,  average_grade_centre, description,blooda,bloodb,bloodab,bloodo)
+values (3, 'Leanna', '57 Havey Center', 'Pará de Minas', 7, 'Alouatta seniculus',1876,245,14,3);
+
+insert into donation_terms (id, date, duration, is_free, reservation_start, reservation_end, profile_center_id)
+values (1, '2016-02-20 06:30:00', 61, true, '2021-11-10 07:00:00','2021-11-12 13:00:00', 2);
+
+insert into donation_terms (id, date, duration, is_free, reservation_start, reservation_end, profile_center_id)
+values (2, '2018-02-20 06:30:00', 61, false, '2021-11-10 08:00:00','2021-11-12 14:00:00', 2);
+
+insert into donation_terms (id, date, duration, is_free, reservation_start, reservation_end, profile_center_id)
+values (3, '2016-02-20 06:30:00', 61, true, '2021-11-10 09:00:00','2021-11-12 15:00:00', 2);
+
+
+
+
+
+
+

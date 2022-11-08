@@ -172,7 +172,10 @@ public class BloodCenter {
 		this.listOfStuffs = listOfStuffs;
 	}
 
-	public BloodCenter(Long id, String centerName, String address, String city, String startWork, String endWork, String description, Long averageGradeCentre, double bloodA, double bloodB, double bloodAB, double bloodO, List<DonationTerms> freeAppointments, List<Stuff> listOfStuffs) {
+	public BloodCenter(Long id, String centerName, String address, String city, String startWork, String endWork,
+					   String description, Long averageGradeCentre, double bloodA, double bloodB, double bloodAB,
+					   double bloodO, List<DonationTerms> freeAppointments, List<Stuff> listOfStuffs)
+	{
 		this.id = id;
 		this.centerName = centerName;
 		this.address = address;

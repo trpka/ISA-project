@@ -48,6 +48,15 @@ public class BloodCenterController
         //return new ResponseEntity("Succesfully created a new Blood Center!", HttpStatus.CREATED);
     }
 
+    //Izmena centra
+    @PutMapping("api/edit/center")
+    public ResponseEntity<BloodCenter> UpdateCenter(@RequestBody BloodCenter bc)
+    {
+        BloodCenter bloodCenter = this.bloodCenterService.UpdateCenter(bc);
+        return  new ResponseEntity<>(bloodCenter,HttpStatus.OK);
+    }
+
+
 
     @RequestMapping(value="api/centerName", method = RequestMethod.GET,
 			params = "name",
