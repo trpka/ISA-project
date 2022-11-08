@@ -87,12 +87,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 									.antMatchers("/api/login").permitAll()
 									.antMatchers("/api/bloodCenter").permitAll()
 									.antMatchers("/api/centerName").permitAll()
-					                .antMatchers("/api/edit/center").permitAll()
+
+		                      .antMatchers("/api/edit/center").permitAll()
 					                .antMatchers("/api/centers").permitAll()
 					                .antMatchers("/api/center/{id}").permitAll()
 
 
 
+
+
+									.antMatchers("/api/centers/sort-by-name").permitAll()
+									.antMatchers("/api/centers/sort-by-average-grade").permitAll()
+									.antMatchers("/api/centers/sort-by-city").permitAll()
 
 									//.antMatchers("api/centers/sort-by-grade").permitAll()
 								
