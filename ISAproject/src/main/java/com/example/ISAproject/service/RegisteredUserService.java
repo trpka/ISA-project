@@ -1,5 +1,6 @@
 package com.example.ISAproject.service;
 
+
 import java.util.Optional;
 
 import org.apache.catalina.User;
@@ -24,4 +25,5 @@ public class RegisteredUserService {
 			return this.registeredUserRepository.save(newRegUser);
 		}
      
+
 }
