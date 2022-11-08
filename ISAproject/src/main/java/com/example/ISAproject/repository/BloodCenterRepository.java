@@ -10,6 +10,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface BloodCenterRepository extends JpaRepository<BloodCenter, Long>
 {
+	List<BloodCenter> findByOrderByCenterName();
+	List<BloodCenter> findByOrderByAverageGradeCentreDesc();
+	List<BloodCenter> findByOrderByCity();
    // List<ProfileCenter> findCentersByName(String name);
 
     //BloodCenter findByCenterName(String centerName);
