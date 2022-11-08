@@ -21,6 +21,9 @@ insert into blood_center (id, center_name, address, city,  average_grade_centre,
 insert into registered_user (id, points, category, benefits) values (1, 7,'Redovan', 'Redovan');
 insert into registered_user (id, points, category, benefits) values (2, 3,'Redovan', 'Redovan');
 
+--Administratori centra i medicinsko osoblje
+
+
 
 insert into donation_terms (id, date, duration, is_free, reservation_start, reservation_end, profile_center_id)
 values (1, '2016-02-20 06:30:00', 61, true, '2021-11-10 07:00:00','2021-11-12 13:00:00', 2);
