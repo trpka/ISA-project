@@ -1,4 +1,4 @@
-interface UserInterface{
+interface StuffInterface{
     id:number;
     username: string ;
     password: string ;
@@ -7,12 +7,10 @@ interface UserInterface{
     lastName: string;
     mobile:string;
     enabled:boolean;
-    //lastPasswordResetDate:string;
-    role:string;
-    authorities: [] ;
+    //fali
     
 }
-export class User implements UserInterface{
+export class Stuff implements StuffInterface{
     id:number;
     firstName: string;
     lastName: string;
@@ -21,10 +19,8 @@ export class User implements UserInterface{
     password: string ;
     mobile:string;
     enabled:boolean;
-    //lastPasswordResetDate:string;
-    role:string;
-    authorities: [] ;
-    constructor(obj:UserInterface){
+
+    constructor(obj:StuffInterface){
         this.id=obj.id;
         this.firstName=obj.firstName;
         this.lastName=obj.lastName;
@@ -33,8 +29,6 @@ export class User implements UserInterface{
         this.password=obj.password;
         this.mobile = obj.mobile;
         this.enabled = obj.enabled;
-        //this.lastPasswordResetDate = obj.lastPasswordResetDate;
-        this.role = obj.role;
-        this.authorities=obj.authorities;
+  
     } 
 }
