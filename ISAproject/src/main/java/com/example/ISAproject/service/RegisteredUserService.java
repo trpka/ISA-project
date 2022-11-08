@@ -1,6 +1,7 @@
 package com.example.ISAproject.service;
 
 
+import java.util.List;
 import java.util.Optional;
 
 import org.apache.catalina.User;
@@ -24,6 +25,10 @@ public class RegisteredUserService {
      public RegisteredUser save(RegisteredUser newRegUser) {
 			return this.registeredUserRepository.save(newRegUser);
 		}
+    
+
+     public List<RegisteredUser> findAll() { return this.registeredUserRepository.findAll();}
+
      
 
 }
