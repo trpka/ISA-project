@@ -6,25 +6,47 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin("*")
 @RestController
-public class BloodCenterController {
-
+@CrossOrigin
+public class BloodCenterController
+{
     @Autowired
     private BloodCenterService bloodCenterService;
 
-    @RequestMapping(value="api/bloodCenter",method = RequestMethod.GET,produces = {
+    //Prikaz Svih Centara
+    @RequestMapping(value="api/centers",method = RequestMethod.GET,produces = {
             MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-    public ResponseEntity<List<BloodCenter>> findAll(){
-        List<BloodCenter> bloodCenters =this.bloodCenterService.findAll();
-        return new ResponseEntity<>(bloodCenters, HttpStatus.OK);
+    public ResponseEntity<List<BloodCenter>> findAll()
+    {
+        List<BloodCenter> centers= this.bloodCenterService.findAll();
+        return new ResponseEntity<>(centers,HttpStatus.OK);
     }
+    //Pretraga Centra Po ID-ju
+    @RequestMapping(value="api/center/{id}",method = RequestMethod.GET,produces= {
+            MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    public ResponseEntity<BloodCenter> getById(@PathVariable Long id)
+    {
+
+        BloodCenter bloodCenter =this.bloodCenterService.findById(id);
+
+        return new ResponseEntity<>(bloodCenter,HttpStatus.OK);
+    }
+
+    //Dodavanje Novog Centra
+    @RequestMapping(value="api/center",method = RequestMethod.POST,
+            consumes= MediaType.APPLICATION_JSON_VALUE)
+
+    public ResponseEntity<BloodCenter> save(@RequestBody BloodCenter bloodCenter)
+    {
+        BloodCenter savedProfile = this.bloodCenterService.save(bloodCenter);
+        return new ResponseEntity<>(savedProfile, HttpStatus.CREATED);
+        //return new ResponseEntity("Succesfully created a new Blood Center!", HttpStatus.CREATED);
+    }
+
+
 
 }

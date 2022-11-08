@@ -1,12 +1,21 @@
 package com.example.ISAproject.model;
 
+import java.util.ArrayList;
+import java.util.List;
 
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+
 
 @Entity
 public class BloodCenter {
@@ -14,9 +23,9 @@ public class BloodCenter {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@Column
-	private String name;
+	private String centerName;
 	@Column
-	private String adress;
+	private String address;
 	@Column
 	private String city;
 	@Column
@@ -24,72 +33,176 @@ public class BloodCenter {
 	@Column
 	private String endWork;
 	@Column
-	private Long grade;
-	@Column
 	private String description;
+	@Column
+	private Long averageGradeCentre;
+	//krvne grupe i kolicine krvi po grupama
+	@Column
+	private double bloodA;
+	@Column
+	private double bloodB;
+	@Column
+	private double bloodAB;
+	@Column
+	private double bloodO;
 	
+	@OneToMany (cascade = CascadeType.ALL,orphanRemoval = true)
+	@JsonIgnore
+	private List<DonationTerms> freeAppointments;
+	
+	//Centar sa administratorima i osobljem
+	@OneToMany (cascade = CascadeType.ALL,orphanRemoval = true)
+	@JsonIgnore
+	private List<Stuff> listOfStuffs;
+
+	public BloodCenter()
+	{
+
+	}
+
 	public Long getId() {
 		return id;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getName() {
-		return name;
+
+	public String getCenterName() {
+		return centerName;
 	}
-	public void setName(String name) {
-		this.name = name;
+
+	public void setCenterName(String centerName) {
+		this.centerName = centerName;
 	}
-	public String getAdress() {
-		return adress;
+
+	public String getAddress() {
+		return address;
 	}
-	public void setAdress(String adress) {
-		this.adress = adress;
+
+	public void setAddress(String address) {
+		this.address = address;
 	}
+
 	public String getCity() {
 		return city;
 	}
+
 	public void setCity(String city) {
 		this.city = city;
 	}
+
 	public String getStartWork() {
 		return startWork;
 	}
+
 	public void setStartWork(String startWork) {
 		this.startWork = startWork;
 	}
+
 	public String getEndWork() {
 		return endWork;
 	}
+
 	public void setEndWork(String endWork) {
 		this.endWork = endWork;
 	}
-	public Long getGrade() {
-		return grade;
-	}
-	public void setGrade(Long grade) {
-		this.grade = grade;
-	}
+
 	public String getDescription() {
 		return description;
 	}
+
 	public void setDescription(String description) {
 		this.description = description;
 	}
 
-	public BloodCenter(Long id, String name, String adress, String city, String startWork, String endWork, Long grade,
-			String description) {
-		super();
+	public Long getAverageGradeCentre() {
+		return averageGradeCentre;
+	}
+
+	public void setAverageGradeCentre(Long averageGradeCentre) {
+		this.averageGradeCentre = averageGradeCentre;
+	}
+
+	public double getBloodA() {
+		return bloodA;
+	}
+
+	public void setBloodA(double bloodA) {
+		this.bloodA = bloodA;
+	}
+
+	public double getBloodB() {
+		return bloodB;
+	}
+
+	public void setBloodB(double bloodB) {
+		this.bloodB = bloodB;
+	}
+
+	public double getBloodAB() {
+		return bloodAB;
+	}
+
+	public void setBloodAB(double bloodAB) {
+		this.bloodAB = bloodAB;
+	}
+
+	public double getBloodO() {
+		return bloodO;
+	}
+
+	public void setBloodO(double bloodO) {
+		this.bloodO = bloodO;
+	}
+
+	public List<DonationTerms> getFreeAppointments() {
+		return freeAppointments;
+	}
+
+	public void setFreeAppointments(List<DonationTerms> freeAppointments) {
+		this.freeAppointments = freeAppointments;
+	}
+
+	public List<Stuff> getListOfStuffs() {
+		return listOfStuffs;
+	}
+
+	public void setListOfStuffs(List<Stuff> listOfStuffs) {
+		this.listOfStuffs = listOfStuffs;
+	}
+
+	public BloodCenter(Long id, String centerName, String address, String city, String startWork, String endWork, String description, Long averageGradeCentre, double bloodA, double bloodB, double bloodAB, double bloodO, List<DonationTerms> freeAppointments, List<Stuff> listOfStuffs) {
 		this.id = id;
-		this.name = name;
-		this.adress = adress;
+		this.centerName = centerName;
+		this.address = address;
 		this.city = city;
 		this.startWork = startWork;
 		this.endWork = endWork;
-		this.grade = grade;
 		this.description = description;
+		this.averageGradeCentre = averageGradeCentre;
+		this.bloodA = bloodA;
+		this.bloodB = bloodB;
+		this.bloodAB = bloodAB;
+		this.bloodO = bloodO;
+		this.freeAppointments = freeAppointments;
+		this.listOfStuffs = listOfStuffs;
 	}
-	public BloodCenter() {}
-	
-	
+
+	public BloodCenter(Long id, String centerName, String address, String description, Long averageGradeCentre,
+					   double bloodA, double bloodB, double bloodAB, double bloodO,
+					   List<DonationTerms> freeAppointments, List<Stuff> listOfStuffs)
+	{
+		this.id = id;
+		this.centerName = centerName;
+		this.address = address;
+		this.description = description;
+		this.averageGradeCentre = averageGradeCentre;
+		this.bloodA = bloodA;
+		this.bloodB = bloodB;
+		this.bloodAB = bloodAB;
+		this.bloodO = bloodO;
+		this.freeAppointments = freeAppointments;
+		this.listOfStuffs = listOfStuffs;
+	}
 }

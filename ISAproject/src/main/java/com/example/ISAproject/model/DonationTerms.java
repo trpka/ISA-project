@@ -1,6 +1,5 @@
 package com.example.ISAproject.model;
 
-import java.sql.Date;
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
@@ -36,7 +35,7 @@ public class DonationTerms {
 
 	@ManyToOne
 	@JoinColumn(name = "profile_center_id")
-	private ProfileCenter profileCenter;
+	private BloodCenter bloodCenter;
 	
 	public DonationTerms()
 	{
@@ -45,7 +44,7 @@ public class DonationTerms {
 	
 	
 	public DonationTerms(Long id, LocalDateTime reservationStart, LocalDateTime reservationEnd, int duration,
-			boolean isFree, RegisteredUser registeredUser, ProfileCenter profileCenter)
+			boolean isFree, RegisteredUser registeredUser, BloodCenter bloodCenter)
 	{
 		super();
 		this.Id = id;
@@ -54,7 +53,7 @@ public class DonationTerms {
 		this.duration = duration;
 		this.isFree = isFree;
 		this.registeredUser = registeredUser;
-		this.profileCenter = profileCenter;
+		this.bloodCenter = bloodCenter;
 	}
 	
 	
@@ -82,11 +81,11 @@ public class DonationTerms {
 	public void setRegisteredUser(RegisteredUser registeredUser) {
 		this.registeredUser = registeredUser;
 	}
-	public ProfileCenter getProfileCenter() {
-		return profileCenter;
+	public BloodCenter getProfileCenter() {
+		return bloodCenter;
 	}
-	public void setProfileCenter(ProfileCenter profileCenter) {
-		this.profileCenter = profileCenter;
+	public void setProfileCenter(BloodCenter bloodCenter) {
+		this.bloodCenter = bloodCenter;
 	}
 
 	public boolean isFree() {

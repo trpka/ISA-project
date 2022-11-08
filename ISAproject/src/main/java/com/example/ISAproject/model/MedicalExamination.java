@@ -11,10 +11,10 @@ public class MedicalExamination {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@Column
-	private Stuff stuff;
-	@Column
-	private RegisteredUser registeredUser;
+	//@Column
+	//private Stuff stuff;
+	//@Column
+	//private RegisteredUser registeredUser;
 	
 	public Long getId() {
 		return id;
@@ -24,7 +24,7 @@ public class MedicalExamination {
 		this.id = id;
 	}
 
-	public Stuff getStuff() {
+	/*public Stuff getStuff() {
 		return stuff;
 	}
 
@@ -45,7 +45,7 @@ public class MedicalExamination {
 		this.id = id;
 		this.stuff = stuff;
 		this.registeredUser = registeredUser;
-	}
+	}*/
 	
 	
 }

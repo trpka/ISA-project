@@ -17,9 +17,8 @@ public class Calendar {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	@Column
-	private Stuff stuff;
+	//@Column
+	//private Stuff stuff;
 	
 	//termini koji su unapred definisani
 	/*

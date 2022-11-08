@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -17,7 +16,7 @@ public class Stuff extends User
 	
 	//Jedan clan osoblja vezan je za jedan centar
 	@OneToOne
-    private ProfileCenter profileCenter;
+    private BloodCenter bloodCenter;
 	
 	public boolean isFirstLogin()
 	{
