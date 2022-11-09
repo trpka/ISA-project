@@ -28,6 +28,12 @@ public class BloodCenterService
 		return this.bloodCenterRepository.findByCenterName(name);
 	}
 
+    public List<BloodCenter> findCenterByCity(String city){
+		return this.bloodCenterRepository.findByCity(city);
+	}
+
+ 
+    
     public List<BloodCenter> sortByName(){
         return this.bloodCenterRepository.findByOrderByCenterName();
     }
@@ -38,10 +44,7 @@ public class BloodCenterService
         return this.bloodCenterRepository.findByOrderByCity();
     }
     
-//    public List<BloodCenter> sortByAverageGrade(){
-//		return this.bloodCenterRepository.sortByGrade();
-//	}
-//    
+
     public BloodCenter findById(Long id)
     {
         Optional<BloodCenter> opt=this.bloodCenterRepository.findById(id);
@@ -50,6 +53,23 @@ public class BloodCenterService
             return null;
         }
         return opt.get();
+    }
+
+    public BloodCenter UpdateCenter(BloodCenter bc)
+    {
+        BloodCenter bloodCenter = bloodCenterRepository.getById(bc.getId());
+
+        bloodCenter.setCenterName(bc.getCenterName());
+        bloodCenter.setAddress(bc.getAddress());
+        bloodCenter.setCity(bc.getCity());
+        bloodCenter.setAverageGradeCentre(bc.getAverageGradeCentre());
+        bloodCenter.setDescription(bc.getDescription());
+        bloodCenter.setBloodA(bc.getBloodA());
+        bloodCenter.setBloodB(bc.getBloodB());
+        bloodCenter.setBloodAB(bc.getBloodAB());
+        bloodCenter.setBloodO(bc.getBloodO());
+
+        return  this.bloodCenterRepository.save(bloodCenter);
     }
 
     public BloodCenter save(BloodCenter bloodCenter)
@@ -62,6 +82,9 @@ public class BloodCenterService
         this.bloodCenterRepository.delete(bloodCenter);
     }
 
+    public List<BloodCenter> findByUsernameContaining(String namePart) {
+        return bloodCenterRepository.findByCenterNameContaining(namePart);
+    }
 
 
 }

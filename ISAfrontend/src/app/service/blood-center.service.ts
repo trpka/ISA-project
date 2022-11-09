@@ -10,6 +10,7 @@ import { BloodCenter } from '../model/bloodCenter';
 export class BloodCenterService {
 
   url="http://localhost:8081/api/centers";
+  url1 = "http://localhost:8081/api/center"
   constructor(private http:HttpClient) { }
 
   getAllBloodCenters():Observable<BloodCenter[]>{
@@ -27,5 +28,15 @@ getAllBloodCentersSortedByCity():Observable<BloodCenter[]>{
 getAllBloodCentersSortedByAverageGrade():Observable<BloodCenter[]>{
   return this.http.get<BloodCenter[]>(this.url+"/sort-by-average-grade");
 }
+
+getBloodCenterById(id:number):Observable<BloodCenter>
+{
+  return this.http.get<BloodCenter> (`${this.url1}/${id}`)
+}
+
+/*searchByPartUsername(username:string):Observable<User>
+  {
+    return this.http.get<User>(`${this.url}/${username}`)
+  }*/
 
 }

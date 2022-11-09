@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.ISAproject.dto.UserDTO;
 import com.example.ISAproject.model.Authority;
+import com.example.ISAproject.model.RegisteredUser;
 import com.example.ISAproject.model.User;
 import com.example.ISAproject.repository.UserRepository;
 
@@ -21,8 +22,15 @@ public class UserService {
 	@Autowired
 	private UserRepository userRepository;
 
+
+	@Autowired
+	private AuthorityService authorityService;
+	
 	@Autowired
 	private PasswordEncoder passwordEncoder;
+	
+	@Autowired
+	private RegisteredUserService registeredUserService;
 	
 	
 	public User findByUsername(String username) throws UsernameNotFoundException {
@@ -68,6 +76,16 @@ public class UserService {
 		// u primeru se registruju samo obicni korisnici i u skladu sa tim im se i dodeljuje samo rola USER
 		List<Authority> authorities=new ArrayList<>();
 		//User newUser=new User();
+		
+		RegisteredUser newRegUser=new RegisteredUser();
+		if(u.getRole().equalsIgnoreCase("RegisteredUser")) {
+			authorities = authorityService.findByName("ROLE_REGUSER");
+			u.setAuthorities(authorities);
+			RegisteredUser regUser=new RegisteredUser(u.getUsername(),u.getPassword(),u.getEmail(),u.getFirstName(),u.getLastName(),u.getMobile(),u.getAdress(),u.getCity(),u.getState(),u.getJmbg(),u.getSex(),u.getProfession(),u.getOrganizationInformation(),u.isEnabled(),u.getRole(),authorities);
+			newRegUser=this.registeredUserService.save(regUser);
+			u.setId(newRegUser.getId());
+		}
+		
 		System.out.println("id iz userService"+ u.getId());
 		return u;
 	}

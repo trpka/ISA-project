@@ -87,12 +87,43 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 									.antMatchers("/api/login").permitAll()
 									.antMatchers("/api/bloodCenter").permitAll()
 									.antMatchers("/api/centerName").permitAll()
-									.antMatchers("/api/centers").permitAll()
+
+									.antMatchers("/search/{centerName}").permitAll()
+
+
+		                      .antMatchers("/api/edit/center").permitAll()
+					                .antMatchers("/api/centers").permitAll()
+					                .antMatchers("/api/center/{id}").permitAll()
+					                .antMatchers("/api/terms").permitAll()
+					                .antMatchers("/api/term").permitAll()
+					                .antMatchers("/api/terms/{isFree}").permitAll()
+					                .antMatchers("/api/stuffs").permitAll()
+					                .antMatchers("/api/stuffs/{id}").permitAll()
+					                .antMatchers("/api/edit/stuff").permitAll()
+
+
+
+					                //.antMatchers("/api/registeredUsers").permitAll()
+
+
+
+
+
+
 									.antMatchers("/api/centers/sort-by-name").permitAll()
 									.antMatchers("/api/centers/sort-by-average-grade").permitAll()
 									.antMatchers("/api/centers/sort-by-city").permitAll()
+
 									.antMatchers("/api/survey").permitAll()
 									//.antMatchers("api/centers/sort-by-grade").permitAll()
+
+
+									
+									.antMatchers("/api/registeredUsers").permitAll()
+									.antMatchers("/api/regUser/{id}").permitAll()
+									
+									.antMatchers("/api/updateRegUser").permitAll()
+
 								
 									//.antMatchers("api/client/makeNewAdventureRevision").permitAll()
 									//.antMatchers("/api/client/makeNewBoatComplaint").permitAll()
