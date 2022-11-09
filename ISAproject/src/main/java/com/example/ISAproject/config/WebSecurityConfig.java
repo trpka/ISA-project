@@ -94,6 +94,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		                      .antMatchers("/api/edit/center").permitAll()
 					                .antMatchers("/api/centers").permitAll()
 					                .antMatchers("/api/center/{id}").permitAll()
+					                .antMatchers("/api/terms").permitAll()
+					                .antMatchers("/api/term").permitAll()
+					                .antMatchers("/api/terms/{isFree}").permitAll()
+					                .antMatchers("/api/stuffs").permitAll()
+					                .antMatchers("/api/stuffs/{id}").permitAll()
+					                .antMatchers("/api/edit/stuff").permitAll()
+
+
+
+					                //.antMatchers("/api/registeredUsers").permitAll()
+
 
 
 

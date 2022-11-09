@@ -6,12 +6,22 @@ insert into user (id,role, username, password, first_name, last_name, email, mob
 
 insert into user (id,role, username, password, first_name, last_name, email, mobile,enabled,last_password_reset_date)
 values (7,'RegisteredUser','ulogovani_korisnik', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra', 'Aleksa', 'Aleksic', 'aleksic@gmail.com', '306-555-333',true,'1983-07-12 21:30:55.888');
-
 insert into user (id,role, username, password, first_name, last_name, email, mobile,enabled,last_password_reset_date)
 values (8,'RegisteredUser','ulogovani_korisnik2', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra', 'Nikola', 'Nikolic', 'nikolic@gmail.com', '307-558-0250',true,'1983-07-12 21:30:55.888');
 
+
+--Dodajem 2 Usera koji ce predstvaljati administratore centra i osoblje
+insert into user (id,role, username, password, first_name, last_name, email, mobile,enabled,last_password_reset_date)
+values (5,'Stuff','admin_centra', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra', 'Aleksa', 'Aleksic', 'aleksic@gmail.com', '306-555-333',true,'1983-07-12 21:30:55.888');
+
+insert into user (id,role, username, password, first_name, last_name, email, mobile,enabled,last_password_reset_date)
+values (6,'Stuff','admin_centra2', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra', 'Nikola', 'Nikolic', 'nikolic@gmail.com', '307-558-0250',true,'1983-07-12 21:30:55.888');
+
+
+
 insert into user_authority (user_id,authority_id) values (1,1);
 insert into user_authority (user_id,authority_id) values (2,2);
+
 
 insert into complaint (id,  title, content) values (1,  'Constantine''s Sword', 'Escuela de seducción');
 insert into complaint (id, title, content) values (2,  'Adventures of Milo and Otis, The (Koneko monogatari)', 'Brother of Sleep (Schlafes Bruder)');
@@ -26,9 +36,15 @@ insert into blood_center (id, center_name, address, city,  average_grade_centre,
 
 insert into registered_user (id, points, category, benefits) values (1, 7,'Redovan', 'Redovan');
 insert into registered_user (id, points, category, benefits) values (2, 3,'Redovan', 'Redovan');
-
 insert into registered_user (id, points, category, benefits) values (7, 3,'Redovan', 'Redovan');
 insert into registered_user (id, points, category, benefits) values (8, 33,'Redovan', 'Redovan');
+
+
+
+--Administratori centra i medicinsko osoblje
+insert into stuff (id, blood_center_id, is_first_login) values (5, 1, false);
+insert into stuff (id, blood_center_id, is_first_login) values (6, 2, false);
+
 
 
 insert into donation_terms (id, date, duration, is_free, reservation_start, reservation_end, profile_center_id)
