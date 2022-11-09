@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Survey } from '../model/survey';
+import { SurveyService } from '../service/survey.service';
 
 @Component({
   selector: 'app-questionnaire',
@@ -24,16 +26,41 @@ export class QuestionnaireComponent implements OnInit {
   p1:string;
   p2:string;
   p3:string;
+  p4:string;
   //answers: [];
-  constructor() { }
+
+  survey:Survey;
+  constructor(private surveyService:SurveyService) { 
+    this.survey=new Survey(
+      {
+        id: 0,
+        numberOfDonator:"",
+        date:"",
+        firstName: "",
+        lastName: "",
+        jmbg: "",
+        dateOfBirth:"",
+        sex:"",
+        adress:"",
+        township: "",
+        city:"",
+        mobile:"",
+        company:"",
+        profession: "",
+        numberOfBoodDonations: "",
+        p1:"",
+        p2:"",
+        p3:"",
+        p4:""
+      });
+  }
 
   ngOnInit(): void {
   }
 
-  save(){
-     
-    //console.log(this.newUser)
-   // this.registrationService.registration(this.newUser)
-   // .subscribe(_=>this.reloadData());
+  save(){ 
+    console.log("odgovor", this.survey.p2)
+    this.surveyService.save(this.survey)
+    .subscribe(res=>this.survey=res)
   }
 }

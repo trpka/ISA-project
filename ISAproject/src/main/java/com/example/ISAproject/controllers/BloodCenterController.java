@@ -40,7 +40,6 @@ public class BloodCenterController
     //Dodavanje Novog Centra
     @RequestMapping(value="api/center",method = RequestMethod.POST,
             consumes= MediaType.APPLICATION_JSON_VALUE)
-
     public ResponseEntity<BloodCenter> save(@RequestBody BloodCenter bloodCenter)
     {
         BloodCenter savedProfile = this.bloodCenterService.save(bloodCenter);
@@ -99,7 +98,8 @@ public class BloodCenterController
         return new ResponseEntity<>(bloodCenters,HttpStatus.OK);
     }
 
-    @RequestMapping(value="api/centers/sort-by-average-grade", method = RequestMethod.GET,
+    @RequestMapping(value="api/centers/" +
+            "", method = RequestMethod.GET,
             produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public ResponseEntity<List<BloodCenter>> sortByGrade(){
         List<BloodCenter> bloodCenters=this.bloodCenterService.sortByGrade();
