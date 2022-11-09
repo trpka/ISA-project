@@ -16,6 +16,7 @@ import { HomeComponent } from './home/home.component';
 import { NavbarHomeComponent } from './navbar-home/navbar-home.component';
 import { QuestionnaireComponent } from './questionnaire/questionnaire.component'; 
 import {MatRadioModule} from '@angular/material/radio';
+import { HomeRegisteredUserComponent } from './home-registered-user/home-registered-user.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import {MatRadioModule} from '@angular/material/radio';
     NavbarComponent,
     HomeComponent,
     NavbarHomeComponent,
-    QuestionnaireComponent
+    QuestionnaireComponent,
+    HomeRegisteredUserComponent
   ],
   imports: [
     BrowserModule,

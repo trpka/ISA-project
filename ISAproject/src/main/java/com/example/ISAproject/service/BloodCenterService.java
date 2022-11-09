@@ -28,7 +28,12 @@ public class BloodCenterService
 		return this.bloodCenterRepository.findByCenterName(name);
 	}
 
+    public List<BloodCenter> findCenterByCity(String city){
+		return this.bloodCenterRepository.findByCity(city);
+	}
 
+ 
+    
     public List<BloodCenter> sortByName(){
         return this.bloodCenterRepository.findByOrderByCenterName();
     }

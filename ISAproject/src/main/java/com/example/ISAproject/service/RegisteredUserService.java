@@ -29,6 +29,42 @@ public class RegisteredUserService {
 
      public List<RegisteredUser> findAll() { return this.registeredUserRepository.findAll();}
 
+		/*
+		 * public RegisteredUser update(RegisteredUser regUser) {
+		 * Optional<RegisteredUser> regUserOpt=this.findById(regUser.getId());
+		 * if(!regUserOpt.isPresent()) { return null; } RegisteredUser
+		 * regUserFound=regUserOpt.get();
+		 * regUserFound.setFirstName(regUser.getFirstName());
+		 * regUserFound.setLastName(regUser.getLastName());
+		 * regUserFound.setMobile(regUser.getMobile());
+		 * regUserFound.setUsername(regUser.getUsername());
+		 * regUserFound.setAdress(regUser.getAdress());
+		 * regUserFound.setCity(regUser.getCity());
+		 * regUserFound.setState(regUser.getState());
+		 * regUserFound.setJmbg(regUser.getJmbg());
+		 * regUserFound.setSex(regUser.getSex());
+		 * regUserFound.setProfession(regUser.getProfession());
+		 * regUserFound.setOrganizationInformation(regUser.getOrganizationInformation())
+		 * ;
+		 * 
+		 * return this.save(regUserFound); }
+		 */
      
+     public RegisteredUser UpdateRegUser(RegisteredUser reg)
+     {
+    	 RegisteredUser regUser = registeredUserRepository.getById(reg.getId());
+
+    	 regUser.setFirstName(reg.getFirstName());
+    	 regUser.setLastName(reg.getLastName());
+    	 regUser.setUsername(reg.getUsername());
+         regUser.setCity(reg.getCity());
+         regUser.setAdress(reg.getAdress());
+         regUser.setMobile(reg.getMobile());
+
+         return this.registeredUserRepository.save(regUser);
+
+
+     }
+
 
 }

@@ -74,7 +74,14 @@ public class BloodCenterController
 		return new ResponseEntity<>(bloodCenters,HttpStatus.OK);
 	}
 
-
+    @RequestMapping(value="api/centerName", method = RequestMethod.GET,
+			params = "city",
+			produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+	public ResponseEntity<List<BloodCenter>> findCenterByCity(@RequestParam String city){
+		List<BloodCenter> bloodCenters=this.bloodCenterService.findCenterByCity(city);
+		return new ResponseEntity<>(bloodCenters,HttpStatus.OK);
+	}
+    
 
     @GetMapping(path = "/search/{centerName}",
             produces = MediaType.APPLICATION_JSON_VALUE)
