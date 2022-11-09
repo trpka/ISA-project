@@ -35,6 +35,15 @@ public class Survey {
     private String profession;
     @Column
     private String numberOfBoodDonations;
+    @Column
+    private String p1;
+    @Column
+    private String p2;
+    @Column
+    private String p3;
+    @Column
+    private String p4;
+
 
     public Long getId() {
         return id;
@@ -156,7 +165,39 @@ public class Survey {
         this.numberOfBoodDonations = numberOfBoodDonations;
     }
 
-    public Survey(Long id, String numberOfDonator, String date, String firstName, String lastName, String jmbg, String dateOfBirth, String sex, String adress, String township, String city, String mobile, String company, String profession, String numberOfBoodDonations) {
+    public String getP1() {
+        return p1;
+    }
+
+    public void setP1(String p1) {
+        this.p1 = p1;
+    }
+
+    public String getP2() {
+        return p2;
+    }
+
+    public void setP2(String p2) {
+        this.p2 = p2;
+    }
+
+    public String getP3() {
+        return p3;
+    }
+
+    public void setP3(String p3) {
+        this.p3 = p3;
+    }
+
+    public String getP4() {
+        return p4;
+    }
+
+    public void setP4(String p4) {
+        this.p4 = p4;
+    }
+
+    public Survey(Long id, String numberOfDonator, String date, String firstName, String lastName, String jmbg, String dateOfBirth, String sex, String adress, String township, String city, String mobile, String company, String profession, String numberOfBoodDonations, String p1, String p2, String p3, String p4) {
         this.id = id;
         this.numberOfDonator = numberOfDonator;
         this.date = date;
@@ -172,6 +213,10 @@ public class Survey {
         this.company = company;
         this.profession = profession;
         this.numberOfBoodDonations = numberOfBoodDonations;
+        this.p1 = p1;
+        this.p2 = p2;
+        this.p3 = p3;
+        this.p4 = p4;
     }
 
     public Survey() {}
