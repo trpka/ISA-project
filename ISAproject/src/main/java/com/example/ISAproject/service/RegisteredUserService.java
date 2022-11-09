@@ -57,9 +57,14 @@ public class RegisteredUserService {
     	 regUser.setFirstName(reg.getFirstName());
     	 regUser.setLastName(reg.getLastName());
     	 regUser.setUsername(reg.getUsername());
-         regUser.setCity(reg.getCity());
+    	 regUser.setMobile(reg.getMobile());
          regUser.setAdress(reg.getAdress());
-         regUser.setMobile(reg.getMobile());
+         regUser.setCity(reg.getCity());
+         regUser.setState(reg.getState());
+         regUser.setJmbg(reg.getJmbg());
+         regUser.setSex(reg.getSex());
+         regUser.setProfession(reg.getProfession());
+         regUser.setOrganizationInformation(reg.getOrganizationInformation());
 
          return this.registeredUserRepository.save(regUser);
 
