@@ -34,14 +34,13 @@ getBloodCenterById(id:number):Observable<BloodCenter>
   return this.http.get<BloodCenter> (`${this.url1}/${id}`)
 }
 
-/*searchByPartUsername(username:string):Observable<User>
-  {
-    return this.http.get<User>(`${this.url}/${username}`)
-  }*/
 
- /* UpdateBloodCenter(bloodCenter: BloodCenter):Observable<BloodCenter>
+
+  UpdateBloodCenter(bloodCenter: BloodCenter):Observable<BloodCenter>
   {
-    return this.http.get<
-  }*/
+    return this.http.put<BloodCenter>(this.url+"/edit", bloodCenter);
+  }
+
+ 
 
 }

@@ -1,3 +1,5 @@
+import { BloodCenter } from "./bloodCenter";
+
 interface DonationTermsInterface{
     id:number;
     LocalDateTime: Date;
@@ -5,8 +7,9 @@ interface DonationTermsInterface{
     isFree: boolean;
     reservationStart: Date;
     reservationEnd: Date;
-    description:string;
-    //bloodCenter:BloodCenter;
+    bloodCenter: BloodCenter;
+    //description:string;
+    
     // treba jos polja fali
 }
 
@@ -17,16 +20,19 @@ export class DonationTerms implements DonationTermsInterface{
     isFree: boolean;
     reservationStart: Date;
     reservationEnd: Date;
-    description:string;
+    bloodCenter: BloodCenter;
+    //description:string;
     //bloodCenter:BloodCenter;
 
     constructor(obj:DonationTermsInterface){
         this.id=obj.id;
         this.LocalDateTime=obj.LocalDateTime;
         this.duration=obj.duration;
+        this.isFree = obj.isFree;
         this.reservationStart=obj.reservationStart;
         this.reservationEnd=obj.reservationEnd;
-        this.description=obj.description;
+        this.bloodCenter = obj.bloodCenter;
+        //this.description=obj.description;
         //this.bloodCenter = obj.bloodCenter;
     } 
 } 

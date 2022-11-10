@@ -28,4 +28,11 @@ export class ProfileCenterComponent implements OnInit
     .subscribe(res => this.bloodCenter = res)
   }
 
+  UpdateBloodCenter()
+  {
+    this.bloodCenterService.UpdateBloodCenter(this.bloodCenter)
+    .subscribe(res => this.bloodCenter = res)
+    window.location.reload();
+  }
+
 }

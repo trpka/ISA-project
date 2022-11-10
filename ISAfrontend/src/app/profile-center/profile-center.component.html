@@ -1,35 +1,73 @@
 <p>profile-center works!</p>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
 
 <div class = "BloodCenter Profile">
     <form >
         <label for="id">Center Id :</label>
-        <p>{{bloodCenter.id}}</p>
+         <p>{{bloodCenter.id}}</p> 
+        
 
         <label for="centerName">Center Name: </label>
-        <p>{{bloodCenter.centerName}}</p>
+        <!-- <p>{{bloodCenter.centerName}}</p> -->
+        <div class="form-group text-left">
+            <input [(ngModel)]="bloodCenter.centerName" id = "centerName" name = "centerName" type = "text" class = "from-control">
+        </div>
 
         <label for="address">Address: </label>
-        <p>{{bloodCenter.address}}</p>
+        <!-- <p>{{bloodCenter.address}}</p> -->
+        <div class = "form-group text-left">
+            <input [(ngModel)]="bloodCenter.address" id = "address" name = "address" type="text" class="from-control">
+        </div>
+
+        <label for = "city"> City: </label>
+         <!--<p>{{bloodCenter.city}}</p> -->
+        <div class = "form-group text-left">
+            <input [(ngModel)]="bloodCenter.city" id = "City" name = "City" type="text" class = "from-control">
+        
+        </div>
 
         <label for="description">Description:</label>
-        <p>{{bloodCenter.description}}</p>
+        <!-- <p>{{bloodCenter.description}}</p> -->
+        <div class = "form-group text-left">
+            <input [(ngModel)]="bloodCenter.description" id = "city" name = "city" type="text" class = "from-control">
+        </div>
 
         <label for="averageGradeCentre">Average Grade:</label>
-        <p>{{bloodCenter.averageGradeCentre}}</p>
+        <!-- <p>{{bloodCenter.averageGradeCentre}}</p> -->
+        <div class = "form-group text-left">
+            <input [(ngModel)]="bloodCenter.averageGradeCentre" id = "averageGradeCentre" name= "averageGradeCentre" type = "number" class = "from-control">
+        </div>
 
         <label for = "bloodA">Blood A[l]: </label>
-        <p>{{bloodCenter.bloodA}}</p>
+        <!-- <p>{{bloodCenter.bloodA}}</p> -->
+        <div class = "form-group text-left">
+            <input [(ngModel)]="bloodCenter.bloodA" id = "bloodA" name = "bloodA" type = "number" class="from-control">
+        </div>
 
         <label for = "bloodB">Blood B[l]: </label>
-        <p>{{bloodCenter.bloodB}}</p>
+        <!--<p>{{bloodCenter.bloodB}}</p>-->
+        <div class = "form-group text-left">
+            <input [(ngModel)]="bloodCenter.bloodB" id = "bloodB" name = "bloodB" type = "number" class = "from-control">
+        </div>
 
         <label for = "bloodAB">Blood AB[l]: </label>
-        <p>{{bloodCenter.bloodAB}}</p>
+        <!-- <p>{{bloodCenter.bloodAB}}</p> -->
+        <div class = "form-group text-left">
+            <input [(ngModel)]="bloodCenter.bloodAB" id = "bloodAB" name = "bloodAB" type = "number" class="from-control">
+        </div>
 
         <label for = "bloodO">Blood O[l]: </label>
-        <p>{{bloodCenter.bloodO}} </p>
+        <!-- <p>{{bloodCenter.bloodO}} </p> -->
+        <div class = "form-group text-left">
+            <input [(ngModel)]="bloodCenter.bloodO" id = "bloodO" name = "bloodO" type="number" class = "from-control">
+        </div>
         
         <label for = "listOfStuffs">List of Stuffs: </label>
         <p>{{bloodCenter.listOfStuffs}} </p>
     </form>
+
+    <!--Dugme za izmenu podataka-->
+    <button class = "btn btn-success" (click) = "UpdateBloodCenter()">UpdateBloodCenter</button>
+
 </div>
