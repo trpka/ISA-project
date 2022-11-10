@@ -89,7 +89,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 									.antMatchers("/api/centerName").permitAll()
 
 									.antMatchers("/search/{centerName}").permitAll()
-
+								
 
 		                      .antMatchers("/api/edit/center").permitAll()
 					                .antMatchers("/api/centers").permitAll()
@@ -119,6 +119,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 									.antMatchers("/api/regUser/{id}").permitAll()
 									
 									.antMatchers("/api/updateRegUser").permitAll()
+									//.antMatchers("/api/regUsers/{id}").permitAll()
 								
 									//.antMatchers("api/client/makeNewAdventureRevision").permitAll()
 									//.antMatchers("/api/client/makeNewBoatComplaint").permitAll()

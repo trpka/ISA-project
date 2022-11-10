@@ -64,8 +64,9 @@ public class RegisteredUserController {
 	    }
 
 		
+		
 		/*
-		 * @RequestMapping(value="api/regUsers",method = RequestMethod.PUT,
+		 * @RequestMapping(value="api/regUsers/{id}",method = RequestMethod.PUT,
 		 * consumes=MediaType.APPLICATION_JSON_VALUE)
 		 * 
 		 * @PreAuthorize("hasRole('RegisteredUser')") public
@@ -77,13 +78,14 @@ public class RegisteredUserController {
 		 * return new ResponseEntity<>(updatedRegUser,HttpStatus.OK); }
 		 */
 		 
+		 
 	 
-	    @PutMapping("api/updateRegUser")
-	    public ResponseEntity<RegisteredUser> UpdateRegUser(@RequestBody RegisteredUser reg)
-	    {
-	    	RegisteredUser regUser = this.registeredUserService.UpdateRegUser(reg);
-	        return  new ResponseEntity<>(regUser, HttpStatus.OK);
-	    }
+		
+		  @PutMapping("api/updateRegUser") public ResponseEntity<RegisteredUser>
+		  UpdateRegUser(@RequestBody RegisteredUser reg) { RegisteredUser regUser =
+		  this.registeredUserService.UpdateRegUser(reg); return new
+		  ResponseEntity<>(regUser, HttpStatus.OK); }
+		 
 	  
 	 
 

@@ -20,6 +20,7 @@ public interface BloodCenterRepository extends JpaRepository<BloodCenter, Long>
 	List<BloodCenter> findByAddress(String address);
 	List<BloodCenter> findByCenterNameContaining(String namePart);
 	List<BloodCenter> findByCity(String city);
+	List<BloodCenter> findByCenterNameAndAverageGradeCentre(String centerName, Long averageGradeCentre);
 	
     
 }
