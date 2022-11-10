@@ -5,19 +5,19 @@
     <div class="row">
       <div class="col-sm">
         <p style="text-align:center"><label for="numberOfDonator">Broj davaoca</label></p>
-        <p style="text-align:center"> <input id="numberOfDonator"  name="numberOfDonator" type="text"  class="form-control" [(ngModel)]="numberOfDonator" /></p>
+        <p style="text-align:center"> <input id="numberOfDonator"  name="numberOfDonator" type="text"  class="form-control" [(ngModel)]="survey.numberOfDonator" /></p>
 
         <p style="text-align:center"><label for="date">Datum</label></p>
-        <p style="text-align:center"> <input id="date"  name="date" type="text"  class="form-control" [(ngModel)]="date" /></p>
+        <p style="text-align:center"> <input id="date"  name="date" type="text"  class="form-control" [(ngModel)]="survey.date" /></p>
         
         <p style="text-align:center"><label for="firstName">Ime</label></p>
-        <p style="text-align:center"> <input id="firstName"  name="firstName" type="text"  class="form-control" [(ngModel)]="firstName" /></p>
+        <p style="text-align:center"> <input id="firstName"  name="firstName" type="text"  class="form-control" [(ngModel)]="survey.firstName" /></p>
 
         <p style="text-align:center"><label for="lastName">Prezime</label></p>
-        <p style="text-align:center"> <input id="lastName"  name="lastName" type="text"  class="form-control" [(ngModel)]="lastName" /></p>
+        <p style="text-align:center"> <input id="lastName"  name="lastName" type="text"  class="form-control" [(ngModel)]="survey.lastName" /></p>
 
         <p style="text-align:center"><label for="jmbg">JMBG</label></p>
-        <p style="text-align:center"> <input id="jmbg"  name="jmbg" type="text"  class="form-control" [(ngModel)]="jmbg" /></p>
+        <p style="text-align:center"> <input id="jmbg"  name="jmbg" type="text"  class="form-control" [(ngModel)]="survey.jmbg" /></p>
       </div>
       <div class="col-sm">
         One of three columns
@@ -37,7 +37,7 @@
         <p> Da li ste do sada dobrovoljno davali krv ili komponente krvi?</p>
     </div>
     <div class="col-sm">
-        <mat-radio-group aria-label="Select an option" style="margin-right: 450px;" [(ngModel)]="p1">
+        <mat-radio-group aria-label="Select an option" style="margin-right: 450px;" [(ngModel)]="survey.p1">
             <mat-radio-button value="DA">DA</mat-radio-button>
             <mat-radio-button value="NE">NE</mat-radio-button>
           </mat-radio-group>
@@ -49,7 +49,7 @@
         <p> Da li ste ikada bili odbijeni kao davalac krvi ili komponente krvi?</p>
     </div>
     <div class="col-sm">
-        <mat-radio-group aria-label="Select an option" style="margin-right: 450px;" [(ngModel)]="p2">
+        <mat-radio-group aria-label="Select an option" style="margin-right: 450px;" [(ngModel)]="survey.p2">
             <mat-radio-button value="DA">DA</mat-radio-button>
             <mat-radio-button value="NE">NE</mat-radio-button>
           </mat-radio-group>
@@ -61,19 +61,7 @@
         <p> Da li se trenutno osećate zdravim, sposobnim i odmornim da date krv ili komponente krvi?</p>
     </div>
     <div class="col-sm">
-        <mat-radio-group aria-label="Select an option" style="margin-right: 450px;" [(ngModel)]="p3">
-            <mat-radio-button value="DA">DA</mat-radio-button>
-            <mat-radio-button value="NE">NE</mat-radio-button>
-          </mat-radio-group>
-    </div>
-  </div>
-
- <!-- <div class="row">
-    <div class="col-sm">
-        <p>Da li ste nešto jeli pre dolaska na davanje krvi ili komponente krvi?</p>
-    </div>
-    <div class="col-sm">
-        <mat-radio-group aria-label="Select an option" style="margin-right: 450px;" [(ngModel)]="answers">
+        <mat-radio-group aria-label="Select an option" style="margin-right: 450px;" [(ngModel)]="survey.p3">
             <mat-radio-button value="DA">DA</mat-radio-button>
             <mat-radio-button value="NE">NE</mat-radio-button>
           </mat-radio-group>
@@ -81,6 +69,18 @@
   </div>
 
   <div class="row">
+    <div class="col-sm">
+        <p>Da li ste nešto jeli pre dolaska na davanje krvi ili komponente krvi?</p>
+    </div>
+    <div class="col-sm">
+        <mat-radio-group aria-label="Select an option" style="margin-right: 450px;" [(ngModel)]="survey.p4">
+            <mat-radio-button value="DA">DA</mat-radio-button>
+            <mat-radio-button value="NE">NE</mat-radio-button>
+          </mat-radio-group>
+    </div>
+  </div>
+
+ <!-- <div class="row">
     <div class="col-sm">
         <p>Da li se bavite opasnim zanimanjem ili hobijem?</p>
     </div>
