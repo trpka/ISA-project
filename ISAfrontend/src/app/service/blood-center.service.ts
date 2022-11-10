@@ -39,4 +39,9 @@ getBloodCenterById(id:number):Observable<BloodCenter>
     return this.http.get<User>(`${this.url}/${username}`)
   }*/
 
+ /* UpdateBloodCenter(bloodCenter: BloodCenter):Observable<BloodCenter>
+  {
+    return this.http.get<
+  }*/
+
 }
