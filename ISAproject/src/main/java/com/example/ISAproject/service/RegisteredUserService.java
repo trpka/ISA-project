@@ -49,27 +49,25 @@ public class RegisteredUserService {
 		 * 
 		 * return this.save(regUserFound); }
 		 */
+		 
      
-     public RegisteredUser UpdateRegUser(RegisteredUser reg)
-     {
-    	 RegisteredUser regUser = registeredUserRepository.getById(reg.getId());
-
-    	 regUser.setFirstName(reg.getFirstName());
-    	 regUser.setLastName(reg.getLastName());
-    	 regUser.setUsername(reg.getUsername());
-    	 regUser.setMobile(reg.getMobile());
-         regUser.setAdress(reg.getAdress());
-         regUser.setCity(reg.getCity());
-         regUser.setState(reg.getState());
-         regUser.setJmbg(reg.getJmbg());
-         regUser.setSex(reg.getSex());
-         regUser.setProfession(reg.getProfession());
-         regUser.setOrganizationInformation(reg.getOrganizationInformation());
-
-         return this.registeredUserRepository.save(regUser);
-
-
-     }
+		
+		  public RegisteredUser UpdateRegUser(RegisteredUser reg) { RegisteredUser
+		  regUser = registeredUserRepository.getById(reg.getId());
+		  
+		  regUser.setFirstName(reg.getFirstName());
+		  regUser.setLastName(reg.getLastName());
+		  regUser.setUsername(reg.getUsername()); regUser.setMobile(reg.getMobile());
+		  regUser.setAdress(reg.getAdress()); regUser.setCity(reg.getCity());
+		  regUser.setState(reg.getState()); regUser.setJmbg(reg.getJmbg());
+		  regUser.setSex(reg.getSex()); regUser.setProfession(reg.getProfession());
+		  regUser.setOrganizationInformation(reg.getOrganizationInformation());
+		  
+		  return this.registeredUserRepository.save(regUser);
+		  
+		  
+		  }
+		 
 
 
 }

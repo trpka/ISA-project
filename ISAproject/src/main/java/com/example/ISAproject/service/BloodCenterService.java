@@ -32,6 +32,11 @@ public class BloodCenterService
 		return this.bloodCenterRepository.findByCity(city);
 	}
 
+	
+	  public List<BloodCenter> findByCenterNameAndAverageGradeCentre(String centerName, Long averageGradeCentre){
+		  return this.bloodCenterRepository.findByCenterNameAndAverageGradeCentre(centerName,averageGradeCentre);
+	  }
+	 
  
     
     public List<BloodCenter> sortByName(){
