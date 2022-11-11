@@ -48,7 +48,7 @@ public class BloodCenterController
     }
 
     //Izmena centra
-    @PutMapping("api/edit/center")
+    @PutMapping("api/centers/edit")
     public ResponseEntity<BloodCenter> UpdateCenter(@RequestBody BloodCenter bc)
     {
         BloodCenter bloodCenter = this.bloodCenterService.UpdateCenter(bc);

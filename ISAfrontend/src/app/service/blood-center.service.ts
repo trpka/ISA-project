@@ -35,10 +35,18 @@ getBloodCenterById(id:number):Observable<BloodCenter>
   return this.http.get<BloodCenter> (`${this.url1}/${id}`)
 }
 
+
 findByName(name:string):Observable<BloodCenter[]>{
   const params:HttpParams=new HttpParams().append('name',name);
   return this.http.get<BloodCenter[]>(this.url2,{params});
 }
+
+
+
+  UpdateBloodCenter(bloodCenter: BloodCenter):Observable<BloodCenter>
+  {
+    return this.http.put<BloodCenter>(this.url+"/edit", bloodCenter);
+  }
 
 
 findByCity(city:string):Observable<BloodCenter[]>{
