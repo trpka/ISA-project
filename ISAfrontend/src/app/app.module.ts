@@ -18,6 +18,7 @@ import { QuestionnaireComponent } from './questionnaire/questionnaire.component'
 import {MatRadioModule} from '@angular/material/radio';
 import { HomeRegisteredUserComponent } from './home-registered-user/home-registered-user.component';
 import { ProfileCenterComponent } from './profile-center/profile-center.component';
+import { SearchCenterComponent } from './search-center/search-center.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { ProfileCenterComponent } from './profile-center/profile-center.componen
     NavbarHomeComponent,
     QuestionnaireComponent,
     HomeRegisteredUserComponent,
-    ProfileCenterComponent
+    ProfileCenterComponent,
+    SearchCenterComponent
   ],
   imports: [
     BrowserModule,
