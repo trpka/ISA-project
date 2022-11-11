@@ -30,8 +30,11 @@ insert into complaint (id,  title, content) values (4,'Robe, The', 'Men in Black
 
 
 insert into blood_center (id, center_name, address, city,  average_grade_centre, description, blooda,bloodb,bloodab,bloodo) values (1, 'Mellie', '3041 Dottie Junction', 'Wan’an', 8, 'unavailable',1222,2,14,433);
-insert into blood_center (id, center_name, address, city,  average_grade_centre, description,blooda,bloodb,bloodab,bloodo) values (2, 'Nert', '2 Westridge Pass', 'Okotoks', 4, 'Cacatua tenuirostris',1222,2,14,433);
+insert into blood_center (id, center_name, address, city,  average_grade_centre, description,blooda,bloodb,bloodab,bloodo) values (2, 'Nert', '2 Westridge Pass', 'Novi Sad', 4, 'Cacatua tenuirostris',1222,2,14,433);
 insert into blood_center (id, center_name, address, city,  average_grade_centre, description,blooda,bloodb,bloodab,bloodo) values (3, 'Leanna', '57 Havey Center', 'Pará de Minas', 7, 'Alouatta seniculus',1876,245,14,3);
+insert into blood_center (id, center_name, address, city,  average_grade_centre, description, blooda,bloodb,bloodab,bloodo) values (4, 'Mother&Child Institut', 'Kramerova 122', 'Novi Sad', 10, 'unavailable',76,2,14,433);
+insert into blood_center (id, center_name, address, city,  average_grade_centre, description,blooda,bloodb,bloodab,bloodo) values (5, 'Leona', '5th Avenue', 'New York', 9, 'Cacatua tenuirostris',22,52,18,4);
+insert into blood_center (id, center_name, address, city,  average_grade_centre, description,blooda,bloodb,bloodab,bloodo) values (6, 'Novak', '23 Street', 'Monaco', 10, 'Alouatta seniculus',176,25,4,3);
 
 
 insert into registered_user (id, points, category, benefits) values (1, 7,'Redovan', 'Redovan');
