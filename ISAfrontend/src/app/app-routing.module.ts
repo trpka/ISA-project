@@ -15,7 +15,8 @@ const routes: Routes = [
   {path: 'questionnaire', component:QuestionnaireComponent},
   {path: 'home/registered-user', component:HomeRegisteredUserComponent},
   {path: 'profile_center/:id', component: ProfileCenterComponent},
-  {path: 'donation_terms', component: DonationTermsComponent}
+  {path: 'donation_terms/:id', component: DonationTermsComponent},
+  
 ];
 
 @NgModule({

@@ -48,4 +48,6 @@ public class DonationTermsController
         return new ResponseEntity<>(donationTerms,HttpStatus.OK);
     }
 
+
+
 }

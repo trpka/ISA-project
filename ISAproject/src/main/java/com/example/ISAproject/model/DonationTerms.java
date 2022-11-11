@@ -20,7 +20,7 @@ public class DonationTerms {
 	private LocalDateTime date;
 	@Column
 	private int duration;
-	@Column
+	@Column(name = "isFree", nullable = false)
 	private boolean isFree;
 	
 	@Column(name = "reservationStart", nullable = false)

@@ -11,5 +11,7 @@ import java.util.List;
 public interface DonationTermsRepository extends JpaRepository<DonationTerms, Long>
 {
     List<DonationTerms> findByisFree(boolean isFree);
+
+
 }
 
