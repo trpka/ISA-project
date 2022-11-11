@@ -17,7 +17,7 @@ const routes: Routes = [
   {path: 'questionnaire', component:QuestionnaireComponent},
   {path: 'home/registered-user', component:HomeRegisteredUserComponent},
   {path: 'profile-center', component: ProfileCenterComponent},
-  { path: 'search-center', component: SearchCenterComponent }
+  { path: 'search-center', component: SearchCenterComponent },
   {path: 'profile_center/:id', component: ProfileCenterComponent},
   {path: 'donation_terms', component: DonationTermsComponent}
 
