@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BloodCenter } from '../model/bloodCenter';
@@ -10,7 +10,8 @@ import { BloodCenter } from '../model/bloodCenter';
 export class BloodCenterService {
 
   url="http://localhost:8081/api/centers";
-  url1 = "http://localhost:8081/api/center"
+  url1 = "http://localhost:8081/api/center";
+  url2= "http://localhost:8081/api/centerName";
   constructor(private http:HttpClient) { }
 
   getAllBloodCenters():Observable<BloodCenter[]>{
@@ -35,12 +36,29 @@ getBloodCenterById(id:number):Observable<BloodCenter>
 }
 
 
+findByName(name:string):Observable<BloodCenter[]>{
+  const params:HttpParams=new HttpParams().append('name',name);
+  return this.http.get<BloodCenter[]>(this.url2,{params});
+}
+
+
 
   UpdateBloodCenter(bloodCenter: BloodCenter):Observable<BloodCenter>
   {
     return this.http.put<BloodCenter>(this.url+"/edit", bloodCenter);
   }
 
- 
 
+findByCity(city:string):Observable<BloodCenter[]>{
+  const params:HttpParams=new HttpParams().append('city',city);
+  return this.http.get<BloodCenter[]>(this.url2,{params});
+}
+
+findByGradeAddress(averageGrade:number,address:string):Observable<BloodCenter[]>{
+    
+  const params=new HttpParams()
+    .set('averageGrade',averageGrade)
+    .set('address',address);
+    return this.http.get<BloodCenter[]>(this.url2,{params});
+}
 }

@@ -6,7 +6,9 @@ import { LoginComponent } from './login/login.component';
 import { QuestionnaireComponent } from './questionnaire/questionnaire.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { ProfileCenterComponent } from './profile-center/profile-center.component';
+import { SearchCenterComponent } from './search-center/search-center.component';
 import { DonationTermsComponent } from './donation-terms/donation-terms.component';
+
 
 const routes: Routes = [
   {path: '', component:HomeComponent},
@@ -14,8 +16,11 @@ const routes: Routes = [
   {path: 'registration', component:RegistrationComponent},
   {path: 'questionnaire', component:QuestionnaireComponent},
   {path: 'home/registered-user', component:HomeRegisteredUserComponent},
+  {path: 'profile-center', component: ProfileCenterComponent},
+  { path: 'search-center', component: SearchCenterComponent }
   {path: 'profile_center/:id', component: ProfileCenterComponent},
   {path: 'donation_terms', component: DonationTermsComponent}
+
 ];
 
 @NgModule({
