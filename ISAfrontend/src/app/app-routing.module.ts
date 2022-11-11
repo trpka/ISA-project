@@ -19,7 +19,12 @@ const routes: Routes = [
   {path: 'profile-center', component: ProfileCenterComponent},
   { path: 'search-center', component: SearchCenterComponent },
   {path: 'profile_center/:id', component: ProfileCenterComponent},
+
+  {path: 'donation_terms/:id', component: DonationTermsComponent},
+  
+
   {path: 'donation_terms', component: DonationTermsComponent}
+
 
 ];
 

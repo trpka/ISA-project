@@ -2,6 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BloodCenter } from '../model/bloodCenter';
+import { DonationTerms } from '../model/donationTerms';
 
 
 @Injectable({
@@ -11,7 +12,11 @@ export class BloodCenterService {
 
   url="http://localhost:8081/api/centers";
   url1 = "http://localhost:8081/api/center";
+
+  url3="http://localhost:8081/api/centers/terms";
+
   url2= "http://localhost:8081/api/centerName";
+
   constructor(private http:HttpClient) { }
 
   getAllBloodCenters():Observable<BloodCenter[]>{
@@ -35,6 +40,14 @@ getBloodCenterById(id:number):Observable<BloodCenter>
   return this.http.get<BloodCenter> (`${this.url1}/${id}`)
 }
 
+//Prikaz Svih Termina Vezanih za ovaj centar
+getAllTermsByCentre(id:number):Observable<DonationTerms[]>
+{
+  return this.http.get<DonationTerms[]> (`${this.url3}/${id}`)
+}
+
+
+
 
 findByName(name:string):Observable<BloodCenter[]>{
   const params:HttpParams=new HttpParams().append('name',name);
@@ -45,8 +58,11 @@ findByName(name:string):Observable<BloodCenter[]>{
 
   UpdateBloodCenter(bloodCenter: BloodCenter):Observable<BloodCenter>
   {
+
     return this.http.put<BloodCenter>(this.url+"/edit", bloodCenter);
   }
+
+
 
 
 findByCity(city:string):Observable<BloodCenter[]>{

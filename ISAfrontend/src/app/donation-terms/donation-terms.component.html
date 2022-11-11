@@ -8,9 +8,9 @@
         <thead>
             <tr>
                 <th>id</th>
-                <th>LocalDateTime</th>
-                <th>duration</th>
-                <th>isFree</th>
+                <th>Date</th>
+                <th>duration of term [minutes]</th>
+                <th>Is Term Free</th>
                 <th>reservationStart</th>
                 <th>reservationEnd</th>
                 <th>bloodCenter</th>
@@ -19,12 +19,21 @@
         <tbody>
           <tr *ngFor="let donationTerms of donationTerms">
                 <td>{{donationTerms.id}}</td>
-                <td>{{donationTerms.LocalDateTime}}</td>
+                <td>{{donationTerms.date}}</td>
                 <td>{{donationTerms.duration}}</td>
-                <td>{{donationTerms.isFree}}</td>
+                
+                <!--<td>
+                    <input [(ngModel)]="donationTerms.isFree" id="isFree" name="isFree" type="text" class="from-control">
+                </td> -->
+                <td>{{donationTerms.free}}</td>
                 <td>{{donationTerms.reservationStart}}</td>
                 <td>{{donationTerms.reservationEnd}}</td>
                 <td>{{donationTerms.bloodCenter.id}}</td>
+
+    
+       
+        
+        
                 
             </tr>
         </tbody>

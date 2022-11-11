@@ -51,13 +51,13 @@ insert into stuff (id, blood_center_id, is_first_login) values (6, 2, false);
 
 
 insert into donation_terms (id, date, duration, is_free, reservation_start, reservation_end, profile_center_id)
-values (1, '2016-02-20 06:30:00', 61, true, '2021-11-10 07:00:00','2021-11-12 13:00:00', 2);
+values (1, '2017-02-20 06:00:00', 61, true, '2021-11-10 07:00:00','2021-11-12 13:00:00', 2);
 
 insert into donation_terms (id, date, duration, is_free, reservation_start, reservation_end, profile_center_id)
-values (2, '2018-02-20 06:30:00', 61, false, '2021-11-10 08:00:00','2021-11-12 14:00:00', 2);
+values (2, '2018-02-20 07:00:00', 61, false, '2021-11-10 08:00:00','2021-11-12 14:00:00', 2);
 
 insert into donation_terms (id, date, duration, is_free, reservation_start, reservation_end, profile_center_id)
-values (3, '2016-02-20 06:30:00', 61, true, '2021-11-10 09:00:00','2021-11-12 15:00:00', 2);
+values (3, '2016-02-21 09:00:00', 61, true, '2021-11-10 09:00:00','2021-11-12 15:00:00', 2);
 
 
 

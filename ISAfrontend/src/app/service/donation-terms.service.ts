@@ -12,12 +12,12 @@ export class DonationTermsService
 {
 
   url = "http://localhost:8081/api/terms";
-
-
+  
   constructor(private http:HttpClient) { }
 
   getAllDonationTerms():Observable<DonationTerms[]>
   {
     return this.http.get<DonationTerms[]>(this.url);
-}
+  }
+
 }

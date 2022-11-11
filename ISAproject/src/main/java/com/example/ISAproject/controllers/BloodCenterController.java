@@ -1,7 +1,9 @@
 package com.example.ISAproject.controllers;
 
 import com.example.ISAproject.model.BloodCenter;
+import com.example.ISAproject.model.DonationTerms;
 import com.example.ISAproject.service.BloodCenterService;
+import com.example.ISAproject.service.DonationTermsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -17,6 +19,8 @@ public class BloodCenterController
 {
     @Autowired
     private BloodCenterService bloodCenterService;
+    @Autowired
+    private DonationTermsService donationTermsService;
 
     //Prikaz Svih Centara
     @RequestMapping(value="api/centers",method = RequestMethod.GET,produces = {
@@ -97,6 +101,15 @@ public class BloodCenterController
         if(bloodCenters.isEmpty())
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         return new ResponseEntity<List<BloodCenter>>(bloodCenters, HttpStatus.OK);
+    }
+
+    //Pretraga Termina Po centru kojem pripadaju
+    @RequestMapping(value="api/centers/terms/{id}",method = RequestMethod.GET,produces = {
+            MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+    public ResponseEntity<List<DonationTerms>> findAllTermsByCentre(@PathVariable Long id)
+    {
+        List<DonationTerms> terms=this.donationTermsService.findAllTermsByCentre(id);
+        return new ResponseEntity<>(terms,HttpStatus.OK);
     }
 
     @RequestMapping(value="api/centers/sort-by-name", method = RequestMethod.GET,
