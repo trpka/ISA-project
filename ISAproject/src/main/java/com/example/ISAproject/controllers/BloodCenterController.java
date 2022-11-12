@@ -157,6 +157,7 @@ public class BloodCenterController
     }
     @RequestMapping(value="api/centers/sort-by-city", method = RequestMethod.GET,
             produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    //@PreAuthorize("hasRole('REGISTERED_USER')")
     public ResponseEntity<List<BloodCenter>> sortByCity(){
         List<BloodCenter> bloodCenters=this.bloodCenterService.sortByCity();
         return new ResponseEntity<>(bloodCenters,HttpStatus.OK);
