@@ -86,10 +86,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 									.antMatchers("/api/registration").permitAll()
 									.antMatchers("/api/login").permitAll()
 									.antMatchers("/api/bloodCenter").permitAll()
+									
+									//Student 2
 									.antMatchers("/api/centerName").permitAll()
-
 									.antMatchers("/search/{centerName}").permitAll()
-								
+									.antMatchers("/api/regUsers/edit").permitAll()
+									
                                       //Student 3
 					                .antMatchers("/api/centers/edit").permitAll()
 					                .antMatchers("/api/centers").permitAll()
@@ -102,19 +104,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 					                .antMatchers("/api/edit/stuff").permitAll()
 					                .antMatchers("/api/centers/terms/{id}").permitAll()
 					                .antMatchers("/api/centers/stuffs/{id}").permitAll()
-
-
-
-
-
-
 					                //.antMatchers("/api/registeredUsers").permitAll()
-
-
-
-
-
-
 									.antMatchers("/api/centers/sort-by-name").permitAll()
 									.antMatchers("/api/centers/sort-by-average-grade").permitAll()
 									.antMatchers("/api/centers/sort-by-city").permitAll()
@@ -123,12 +113,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 									//.antMatchers("api/centers/sort-by-grade").permitAll()
 
 
+									//Student4
+									.antMatchers("/api/regUsers").permitAll()
+									.antMatchers("/api/regUsers/{id}").permitAll()
 									
-									.antMatchers("/api/registeredUsers").permitAll()
-									.antMatchers("/api/regUser/{id}").permitAll()
 									
-									.antMatchers("/api/updateRegUser").permitAll()
 
+									
+									
+									
 									//.antMatchers("/api/regUsers/{id}").permitAll()
 
 

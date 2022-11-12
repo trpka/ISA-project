@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.example.ISAproject.model.Authority;
 import com.example.ISAproject.model.BloodCenter;
 import com.example.ISAproject.model.RegisteredUser;
+import com.example.ISAproject.model.Stuff;
 import com.example.ISAproject.service.AuthorityService;
 import com.example.ISAproject.service.RegisteredUserService;
 
@@ -41,21 +42,19 @@ public class RegisteredUserController {
 	@Autowired
 	private AuthorityService authorityService;
 	
-	@RequestMapping(value="api/regUser/{id}",method = RequestMethod.GET,produces=
-			MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<RegisteredUser> getById(@PathVariable Long id){
-		Optional<RegisteredUser> item= registeredUserService.findById(id); 
-		
-		if(!item.isPresent()) {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		}
-		
-		RegisteredUser itemDto=new RegisteredUser();
-		return new ResponseEntity<>(itemDto,HttpStatus.OK);
-	}
+	
 
+	 @RequestMapping(value="api/regUsers/{id}",method = RequestMethod.GET,produces= {
+	            MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+	    public ResponseEntity<RegisteredUser> getById(@PathVariable Long id)
+	    {
 
-	  @RequestMapping(value="api/registeredUsers",method = RequestMethod.GET,produces = {
+		 RegisteredUser registeredUser =this.registeredUserService.findById(id);
+
+	        return new ResponseEntity<>(registeredUser,HttpStatus.OK);
+	    }
+
+	  @RequestMapping(value="api/regUsers",method = RequestMethod.GET,produces = {
 	            MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	    public ResponseEntity<List<RegisteredUser>> findAll()
 	    {
@@ -64,24 +63,8 @@ public class RegisteredUserController {
 	    }
 
 		
-		
-		/*
-		 * @RequestMapping(value="api/regUsers/{id}",method = RequestMethod.PUT,
-		 * consumes=MediaType.APPLICATION_JSON_VALUE)
-		 * 
-		 * @PreAuthorize("hasRole('RegisteredUser')") public
-		 * ResponseEntity<RegisteredUser> update(@RequestBody RegisteredUser
-		 * regUser,@PathVariable Long id){
-		 * 
-		 * RegisteredUser updatedRegUser=this.registeredUserService.update(regUser);
-		 * 
-		 * return new ResponseEntity<>(updatedRegUser,HttpStatus.OK); }
-		 */
-		 
-		 
-	 
-		
-		  @PutMapping("api/updateRegUser") public ResponseEntity<RegisteredUser>
+	
+		  @PutMapping("api/regUsers/edit") public ResponseEntity<RegisteredUser>
 		  UpdateRegUser(@RequestBody RegisteredUser reg) { RegisteredUser regUser =
 		  this.registeredUserService.UpdateRegUser(reg); return new
 		  ResponseEntity<>(regUser, HttpStatus.OK); }

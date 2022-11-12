@@ -5,3 +5,8 @@
 .form-search{
     margin: 5px;
 }
+.color {
+    color: white;
+    font-weight: bold;
+    background-color: red;
+  }

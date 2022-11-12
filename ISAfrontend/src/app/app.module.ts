@@ -20,6 +20,7 @@ import { HomeRegisteredUserComponent } from './home-registered-user/home-registe
 import { ProfileCenterComponent } from './profile-center/profile-center.component';
 import { SearchCenterComponent } from './search-center/search-center.component';
 import { DonationTermsComponent } from './donation-terms/donation-terms.component';
+import { RegisteredUserEditComponent } from './registered-user-edit/registered-user-edit.component';
 
 
 
@@ -35,7 +36,8 @@ import { DonationTermsComponent } from './donation-terms/donation-terms.componen
     HomeRegisteredUserComponent,
     ProfileCenterComponent,
     SearchCenterComponent,
-    DonationTermsComponent
+    DonationTermsComponent,
+    RegisteredUserEditComponent
   ],
   imports: [
     BrowserModule,
