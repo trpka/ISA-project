@@ -17,7 +17,6 @@ export class BloodCenterService {
   url3="http://localhost:8081/api/centers/terms";
   urlA = "http://localhost:8081/api/centers/stuffs";
 
-
   constructor(private http:HttpClient) { }
 
   getAllBloodCenters():Observable<BloodCenter[]>{
@@ -47,13 +46,11 @@ getAllTermsByCentre(id:number):Observable<DonationTerms[]>
   return this.http.get<DonationTerms[]> (`${this.url3}/${id}`)
 }
 
+
 getAllStuffsByCentre(id:number):Observable<Stuff[]>
 {
   return this.http.get<Stuff[]>(`${this.urlA}/${id}`)
 }
-
-
-
 
 findByName(name:string):Observable<BloodCenter[]>{
   const params:HttpParams=new HttpParams().append('name',name);

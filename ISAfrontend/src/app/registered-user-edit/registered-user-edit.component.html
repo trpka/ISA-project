@@ -1,0 +1,78 @@
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+<p style="text-align:center"><font size="4"   style="color:black;"></font></p>
+<p style="text-align:center"><font size="4"   style="color:black;">Your account</font></p>
+
+<div class = "RegisteredUserProfile">
+    <form >
+<label for="id"> Id : </label>
+         <p>{{registeredUser.id}}</p>
+
+         <label for="firstName"> First Name: </label> 
+         <div>
+            <input [(ngModel)] = "registeredUser.firstName" id = "firstName" name = "firstName" type = "text" class = "from-control">
+         </div>       
+
+        <label for="lastName"> Last Name: </label>
+        <div>
+            <input [(ngModel)] = "registeredUser.lastName" id = "lastName" name = "lastName" type = "text" class="from-control">
+        </div>
+
+        <label for="email"> Email: </label>
+        <div>
+            <input [(ngModel)] = "registeredUser.email" id = "email" name = "email" type = "text" class="from-control">
+        </div>
+
+        <label for="username"> Username: </label>
+        <div>
+            <input [(ngModel)] = "registeredUser.username" id = "username" name = "username" type = "text" class="from-control">
+        </div>
+
+        <label for="password"> Password: </label>
+        <div>
+            <input [(ngModel)] = "registeredUser.password" id = "password" name = "password" type = "password" class="from-control">
+        </div>
+
+
+        <label for="mobile"> Mobile Phone: </label>
+        <div>
+            <input [(ngModel)] = "registeredUser.mobile" id = "mobile" name = "mobile" type = "text" class="from-control">
+        </div>
+
+        <label for="adress"> Address: </label>
+        <div>
+            <input [(ngModel)] = "registeredUser.adress" id = "adress" name = "adress" type = "text" class="from-control">
+        </div>
+
+        <label for="city"> City: </label>
+        <div>
+            <input [(ngModel)] = "registeredUser.city" id = "city" name = "city" type = "text" class="from-control">
+        </div>
+
+        <label for="state"> State: </label>
+        <div>
+            <input [(ngModel)] = "registeredUser.state" id = "state" name = "state" type = "text" class="from-control">
+        </div>
+
+        <label for="jmbg"> Jmbg: </label>
+        <div>
+            <input [(ngModel)] = "registeredUser.jmbg" id = "jmbg" name = "jmbg" type = "text" class="from-control">
+        </div>
+
+        <label for="sex"> Gender: </label>
+        <div>
+            <input [(ngModel)] = "registeredUser.sex" id = "sex" name = "sex" type = "text" class="from-control">
+        </div>
+
+        <label for="profession"> Profession: </label>
+        <div>
+            <input [(ngModel)] = "registeredUser.profession" id = "profession" name = "profession" type = "text" class="from-control">
+        </div>
+
+        <label for="organizationInformation"> Organization Information: </label>
+        <div>
+            <input [(ngModel)] = "registeredUser.organizationInformation" id = "organizationInformation" name = "organizationInformation" type = "text" class="from-control">
+        </div>
+
+
+        <button class = "btn btn-success" (click) = "UpdateRegisteredUser()">Update registered user</button>

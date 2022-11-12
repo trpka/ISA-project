@@ -21,6 +21,7 @@ import { ProfileCenterComponent } from './profile-center/profile-center.componen
 import { TokenInterceptor } from './interceptor/TokenInterceptor';
 import { SearchCenterComponent } from './search-center/search-center.component';
 import { DonationTermsComponent } from './donation-terms/donation-terms.component';
+import { RegisteredUserEditComponent } from './registered-user-edit/registered-user-edit.component';
 import { StuffEditComponent } from './stuff-edit/stuff-edit.component';
 
 
@@ -39,6 +40,7 @@ import { StuffEditComponent } from './stuff-edit/stuff-edit.component';
     ProfileCenterComponent,
     SearchCenterComponent,
     DonationTermsComponent,
+    RegisteredUserEditComponent
     StuffEditComponent
   ],
   imports: [
