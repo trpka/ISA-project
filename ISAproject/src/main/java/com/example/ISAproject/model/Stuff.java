@@ -17,20 +17,14 @@ public class Stuff extends User
 	//Jedan clan osoblja vezan je za jedan centar
 	@OneToOne
     private BloodCenter bloodCenter;
-	
-	public boolean isFirstLogin()
-	{
-		return this.isFirstLogin;
-	}
-	public void setFirstLogin(boolean firstLogin)
-	{
-		this.isFirstLogin = firstLogin;
-	}
+
+
 
 	
 	public Stuff(String username, String password, String email,String firstName, String lastName,
 			String mobile, String adress, String city, String state, String jmbg, String sex, String profession,
-			String organizationInformation, boolean enabled, String role, List<Authority> authorities, boolean firstLogin)
+			String organizationInformation, boolean enabled, String role, List<Authority> authorities,
+				 boolean firstLogin,BloodCenter bloodCenter)
 	{
 		super();
 		setUsername(username);
@@ -49,6 +43,7 @@ public class Stuff extends User
 		setEnabled(enabled);
 		setRole(role);
 		setAuthorities(authorities);
+		this.bloodCenter = bloodCenter;
 		this.isFirstLogin = firstLogin;
 		
 	}
@@ -56,6 +51,24 @@ public class Stuff extends User
 	public Stuff()
 	{
 		
+	}
+
+	//Geteri i Seteri
+	public BloodCenter getBloodCenter() {
+		return bloodCenter;
+	}
+
+	public void setBloodCenter(BloodCenter bloodCenter) {
+		this.bloodCenter = bloodCenter;
+	}
+
+	public boolean isFirstLogin()
+	{
+		return this.isFirstLogin;
+	}
+	public void setFirstLogin(boolean firstLogin)
+	{
+		this.isFirstLogin = firstLogin;
 	}
 	
 	

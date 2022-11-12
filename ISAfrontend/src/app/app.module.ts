@@ -19,6 +19,11 @@ import {MatRadioModule} from '@angular/material/radio';
 import { HomeRegisteredUserComponent } from './home-registered-user/home-registered-user.component';
 import { ProfileCenterComponent } from './profile-center/profile-center.component';
 import { TokenInterceptor } from './interceptor/TokenInterceptor';
+import { SearchCenterComponent } from './search-center/search-center.component';
+import { DonationTermsComponent } from './donation-terms/donation-terms.component';
+import { StuffEditComponent } from './stuff-edit/stuff-edit.component';
+
+
 
 
 @NgModule({
@@ -31,7 +36,10 @@ import { TokenInterceptor } from './interceptor/TokenInterceptor';
     NavbarHomeComponent,
     QuestionnaireComponent,
     HomeRegisteredUserComponent,
-    ProfileCenterComponent
+    ProfileCenterComponent,
+    SearchCenterComponent,
+    DonationTermsComponent,
+    StuffEditComponent
   ],
   imports: [
     BrowserModule,

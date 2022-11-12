@@ -29,7 +29,7 @@ public class StuffController
         return new ResponseEntity<>(stuffs,HttpStatus.OK);
     }
 
-    @RequestMapping(value="api/stuffs/{id}",method = RequestMethod.GET,produces= {
+    @RequestMapping(value="api/stuff/{id}",method = RequestMethod.GET,produces= {
             MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public ResponseEntity<Stuff> getById(@PathVariable Long id)
     {
@@ -42,7 +42,7 @@ public class StuffController
 
 
     //Izmena podataka o administratoru centra
-    @PutMapping("api/edit/stuff")
+    @PutMapping("api/stuff/edit")
     public ResponseEntity<Stuff> UpdateStuff(@RequestBody Stuff st)
     {
         Stuff stuff = this.stuffService.UpdateStuff(st);

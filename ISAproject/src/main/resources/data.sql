@@ -10,12 +10,18 @@ insert into user (id,role, username, password, first_name, last_name, email, mob
 values (8,'RegisteredUser','ulogovani_korisnik2', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra', 'Nikola', 'Nikolic', 'nikolic@gmail.com', '307-558-0250',true,'1983-07-12 21:30:55.888');
 
 
---Dodajem 2 Usera koji ce predstvaljati administratore centra i osoblje
-insert into user (id,role, username, password, first_name, last_name, email, mobile,enabled,last_password_reset_date)
+--Dodajem 4 Usera koji ce predstvaljati administratore centra i osoblje
+insert into user (id,role, username, password, first_name, last_name, email,  mobile,enabled,last_password_reset_date)
 values (5,'Stuff','admin_centra', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra', 'Aleksa', 'Aleksic', 'aleksic@gmail.com', '306-555-333',true,'1983-07-12 21:30:55.888');
 
 insert into user (id,role, username, password, first_name, last_name, email, mobile,enabled,last_password_reset_date)
 values (6,'Stuff','admin_centra2', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra', 'Nikola', 'Nikolic', 'nikolic@gmail.com', '307-558-0250',true,'1983-07-12 21:30:55.888');
+
+insert into user (id,role, username, password, first_name, last_name, email,  mobile,enabled,last_password_reset_date)
+values (10,'Stuff','stuff3', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra', 'Milos', 'Milic', 'milos@gmail.com', '306-555-333',true,'2014-07-14 22:34:57.888');
+
+insert into user (id,role, username, password, first_name, last_name, email, mobile,enabled,last_password_reset_date)
+values (11,'Stuff','stuff4', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra', 'Pera', 'Peric', 'pera@gmail.com', '320-589-0251',true,'2020-04-03 11:37:23.888');
 
 
 
@@ -30,8 +36,11 @@ insert into complaint (id,  title, content) values (4,'Robe, The', 'Men in Black
 
 
 insert into blood_center (id, center_name, address, city,  average_grade_centre, description, blooda,bloodb,bloodab,bloodo) values (1, 'Mellie', '3041 Dottie Junction', 'Wan’an', 8, 'unavailable',1222,2,14,433);
-insert into blood_center (id, center_name, address, city,  average_grade_centre, description,blooda,bloodb,bloodab,bloodo) values (2, 'Nert', '2 Westridge Pass', 'Okotoks', 4, 'Cacatua tenuirostris',1222,2,14,433);
+insert into blood_center (id, center_name, address, city,  average_grade_centre, description,blooda,bloodb,bloodab,bloodo) values (2, 'Nert', '2 Westridge Pass', 'Novi Sad', 4, 'Cacatua tenuirostris',1222,2,14,433);
 insert into blood_center (id, center_name, address, city,  average_grade_centre, description,blooda,bloodb,bloodab,bloodo) values (3, 'Leanna', '57 Havey Center', 'Pará de Minas', 7, 'Alouatta seniculus',1876,245,14,3);
+insert into blood_center (id, center_name, address, city,  average_grade_centre, description, blooda,bloodb,bloodab,bloodo) values (4, 'Mother&Child Institut', 'Kramerova 122', 'Novi Sad', 10, 'unavailable',76,2,14,433);
+insert into blood_center (id, center_name, address, city,  average_grade_centre, description,blooda,bloodb,bloodab,bloodo) values (5, 'Leona', '5th Avenue', 'New York', 9, 'Cacatua tenuirostris',22,52,18,4);
+insert into blood_center (id, center_name, address, city,  average_grade_centre, description,blooda,bloodb,bloodab,bloodo) values (6, 'Novak', '23 Street', 'Monaco', 10, 'Alouatta seniculus',176,25,4,3);
 
 
 insert into registered_user (id, points, category, benefits) values (1, 7,'Redovan', 'Redovan');
@@ -44,17 +53,19 @@ insert into registered_user (id, points, category, benefits) values (8, 33,'Redo
 --Administratori centra i medicinsko osoblje
 insert into stuff (id, blood_center_id, is_first_login) values (5, 1, false);
 insert into stuff (id, blood_center_id, is_first_login) values (6, 2, false);
+insert into stuff (id, blood_center_id, is_first_login) values (10, 1, false);
+insert into stuff (id, blood_center_id, is_first_login) values (11, 2, false);
 
 
 
 insert into donation_terms (id, date, duration, is_free, reservation_start, reservation_end, profile_center_id)
-values (1, '2016-02-20 06:30:00', 61, true, '2021-11-10 07:00:00','2021-11-12 13:00:00', 2);
+values (1, '2017-02-20 06:00:00', 61, true, '2021-11-10 07:00:00','2021-11-12 13:00:00', 2);
 
 insert into donation_terms (id, date, duration, is_free, reservation_start, reservation_end, profile_center_id)
-values (2, '2018-02-20 06:30:00', 61, false, '2021-11-10 08:00:00','2021-11-12 14:00:00', 2);
+values (2, '2018-02-20 07:00:00', 61, false, '2021-11-10 08:00:00','2021-11-12 14:00:00', 2);
 
 insert into donation_terms (id, date, duration, is_free, reservation_start, reservation_end, profile_center_id)
-values (3, '2016-02-20 06:30:00', 61, true, '2021-11-10 09:00:00','2021-11-12 15:00:00', 2);
+values (3, '2016-02-21 09:00:00', 61, true, '2021-11-10 09:00:00','2021-11-12 15:00:00', 2);
 
 
 

@@ -1,0 +1,53 @@
+<div class="forma">
+    <form class="form-search" (ngSubmit)="findByAddress(address)">
+        <label for="address">Address of center: </label>
+        <input name="address" id="address" type="text" [placeholder]="placeholder1" [(ngModel)]="address">
+        <input type="submit" value="filter" class="btn btn-primary">
+    </form>
+    <form class="form-search" (ngSubmit)="findByAverageGrade(averageGradeCentre)">
+        <label for="averageGradeCenre">Average grade of center: </label>
+        <input name="averageGradeCentre" id="averageGradeCentre" type="text" [placeholder]="placeholder" [(ngModel)]="averageGradeCentre">
+        <input type="submit" value="filter" class="btn btn-primary">
+    </form>
+    <form class="form-search" (ngSubmit)="findByName(centerName)">
+        <label for="name">Name of  center: </label>
+        <input name="name" id="name" type="text" [placeholder]="placeholder2" [(ngModel)]="centerName">
+        <input type="submit" value="filter" class="btn btn-primary">
+    </form>
+    <form class="form-search" (ngSubmit)="findByCity(city)">
+        <label for="city">City of center: </label>
+        <input name="city" id="city" type="text" [placeholder]="placeholder3" [(ngModel)]="city">
+        <input type="submit" value="filter" class="btn btn-primary">
+    </form>
+</div>
+<div class="container">
+
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Center name</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>Description</th>
+                <th>Average Grade</th>
+                <th>bloodA</th>
+                <th>bloodB</th>
+                <th>bloodAB</th>
+                <th>bloodO</th>
+            </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let bloodCenter of bloodCenters">
+                <td>{{bloodCenter.centerName}}</td>
+                <td>{{bloodCenter.address}}</td>
+                <td>{{bloodCenter.city}}</td>
+                <td>{{bloodCenter.description}}</td>
+                <td>{{bloodCenter.averageGradeCentre}}</td>
+                <td>{{bloodCenter.bloodA}}</td>
+                <td>{{bloodCenter.bloodB}}</td>
+                <td>{{bloodCenter.bloodAB}}</td>
+                <td>{{bloodCenter.bloodO}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

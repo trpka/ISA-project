@@ -1,10 +1,13 @@
 package com.example.ISAproject.service;
 
 import com.example.ISAproject.model.BloodCenter;
+import com.example.ISAproject.model.DonationTerms;
 import com.example.ISAproject.repository.BloodCenterRepository;
+import com.example.ISAproject.repository.DonationTermsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,6 +16,8 @@ public class BloodCenterService
 {
     @Autowired
     private BloodCenterRepository bloodCenterRepository;
+    @Autowired
+    private DonationTermsRepository donationTermsRepository;
 
     public List<BloodCenter> findAll()
     {
@@ -20,9 +25,6 @@ public class BloodCenterService
     }
 
 
-    public List<BloodCenter> findByAddress(String address){
-		return this.bloodCenterRepository.findByAddress(address);
-	}
     
     public List<BloodCenter> findByCenterName(String name){
 		return this.bloodCenterRepository.findByCenterName(name);
@@ -31,7 +33,20 @@ public class BloodCenterService
     public List<BloodCenter> findCenterByCity(String city){
 		return this.bloodCenterRepository.findByCity(city);
 	}
+    
+    public List<BloodCenter> findByAddress(String address){
+		return this.bloodCenterRepository.findByAddress(address);
+	}
+    
+    public List<BloodCenter> findByAverageGradeCentre(Long averageGradeCentre){
+		return this.bloodCenterRepository.findByAverageGradeCentre(averageGradeCentre);
+	}
 
+    
+	  public List<BloodCenter> findByAddressAndAverageGradeCentre(String address, Long averageGradeCentre){
+		  return this.bloodCenterRepository.findByAddressAndAverageGradeCentre(address,averageGradeCentre);
+	  }
+	 
  
     
     public List<BloodCenter> sortByName(){
@@ -71,6 +86,9 @@ public class BloodCenterService
 
         return  this.bloodCenterRepository.save(bloodCenter);
     }
+
+
+
 
     public BloodCenter save(BloodCenter bloodCenter)
     {

@@ -1,1 +1,147 @@
 <p>profile-center works!</p>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+
+<div class = "BloodCenter Profile">
+    <form >
+        <label for="id">Center Id :</label>
+         <p>{{bloodCenter.id}}</p> 
+        
+
+        <label for="centerName">Center Name: </label>
+        <!-- <p>{{bloodCenter.centerName}}</p> -->
+        <div class="form-group text-left">
+            <input [(ngModel)]="bloodCenter.centerName" id = "centerName" name = "centerName" type = "text" class = "from-control">
+        </div>
+
+        <label for="address">Address: </label>
+        <!-- <p>{{bloodCenter.address}}</p> -->
+        <div class = "form-group text-left">
+            <input [(ngModel)]="bloodCenter.address" id = "address" name = "address" type="text" class="from-control">
+        </div>
+
+        <label for = "city"> City: </label>
+         <!--<p>{{bloodCenter.city}}</p> -->
+        <div class = "form-group text-left">
+            <input [(ngModel)]="bloodCenter.city" id = "City" name = "City" type="text" class = "from-control">
+        
+        </div>
+
+        <label for="description">Description:</label>
+        <!-- <p>{{bloodCenter.description}}</p> -->
+        <div class = "form-group text-left">
+            <input [(ngModel)]="bloodCenter.description" id = "city" name = "city" type="text" class = "from-control">
+        </div>
+
+        <label for="averageGradeCentre">Average Grade:</label>
+        <!-- <p>{{bloodCenter.averageGradeCentre}}</p> -->
+        <div class = "form-group text-left">
+            <input [(ngModel)]="bloodCenter.averageGradeCentre" id = "averageGradeCentre" name= "averageGradeCentre" type = "number" class = "from-control">
+        </div>
+
+        <label for = "bloodA">Blood A[l]: </label>
+        <!-- <p>{{bloodCenter.bloodA}}</p> -->
+        <div class = "form-group text-left">
+            <input [(ngModel)]="bloodCenter.bloodA" id = "bloodA" name = "bloodA" type = "number" class="from-control">
+        </div>
+
+        <label for = "bloodB">Blood B[l]: </label>
+        <!--<p>{{bloodCenter.bloodB}}</p>-->
+        <div class = "form-group text-left">
+            <input [(ngModel)]="bloodCenter.bloodB" id = "bloodB" name = "bloodB" type = "number" class = "from-control">
+        </div>
+
+        <label for = "bloodAB">Blood AB[l]: </label>
+        <!-- <p>{{bloodCenter.bloodAB}}</p> -->
+        <div class = "form-group text-left">
+            <input [(ngModel)]="bloodCenter.bloodAB" id = "bloodAB" name = "bloodAB" type = "number" class="from-control">
+        </div>
+
+        <label for = "bloodO">Blood O[l]: </label>
+        <!-- <p>{{bloodCenter.bloodO}} </p> -->
+        <div class = "form-group text-left">
+            <input [(ngModel)]="bloodCenter.bloodO" id = "bloodO" name = "bloodO" type="number" class = "from-control">
+        </div>
+        
+        
+    </form>
+
+    <!--Dugme za izmenu podataka-->
+    <button class = "btn btn-success" (click) = "UpdateBloodCenter()">UpdateBloodCenter</button>
+    <button id="btnView" class = "btn btn-success" (click) = "ViewTerms()">View Terms</button>
+
+</div>
+
+<p style="text-align:center"><font size="4"   style="color:black;"></font></p>
+<p style="text-align:center"><font size="4"   style="color:black;">List of Stuffs and Employes</font></p>
+<div class="container">
+
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>firstName</th>
+                <th>lastName</th>
+                <th>email</th>
+                <th>mobile</th>
+                <th>enabled</th>
+                <th>bloodCenter</th>
+            </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let stuff of stuff">
+                <td>{{stuff.id}}</td>
+                <td>{{stuff.firstName}}</td>
+                <td>{{stuff.lastName}}</td>
+                <td>{{stuff.email}}</td>
+                <td>{{stuff.mobile}}</td>
+                <td>{{stuff.enabled}}</td>
+                <td>{{stuff.bloodCenter.id}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <button id="btnstuff"  class = "btn btn-success" style="text-align: center" (click) = "showStuffs()">View Stuff</button>
+
+
+</div>
+
+<p style="text-align:center"><font size="4"   style="color:black;"></font></p>
+<p style="text-align:center"><font size="4"   style="color:black;">List of Donation Terms</font></p>
+<div class="container">
+
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>Date</th>
+                <th>duration of term [minutes]</th>
+                <th>Is Term Free</th>
+                <th>reservationStart</th>
+                <th>reservationEnd</th>
+                <th>bloodCenter</th>
+            </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let donationTerms of donationTerms">
+                <td>{{donationTerms.id}}</td>
+                <td>{{donationTerms.date}}</td>
+                <td>{{donationTerms.duration}}</td>
+                
+               <!-- <td>
+                    <div>
+                    <input [(ngModel)]="donationTerms.free" id="isFree" name="isFree" type="text" class="from-control">
+                </div>
+                </td> -->
+                <td>{{donationTerms.free}}</td>
+                <td>{{donationTerms.reservationStart}}</td>
+                <td>{{donationTerms.reservationEnd}}</td>
+                <td>{{donationTerms.bloodCenter.id}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <button id="btnTerms" class = "btn btn-success" (click) = "ViewTermsForThisProfileCenter()">ViewTermsForThisProfileCenter</button>
+
+
+</div>
