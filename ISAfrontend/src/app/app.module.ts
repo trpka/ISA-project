@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 
@@ -18,6 +18,7 @@ import { QuestionnaireComponent } from './questionnaire/questionnaire.component'
 import {MatRadioModule} from '@angular/material/radio';
 import { HomeRegisteredUserComponent } from './home-registered-user/home-registered-user.component';
 import { ProfileCenterComponent } from './profile-center/profile-center.component';
+import { TokenInterceptor } from './interceptor/TokenInterceptor';
 
 
 @NgModule({
@@ -43,7 +44,12 @@ import { ProfileCenterComponent } from './profile-center/profile-center.componen
     MatButtonModule,
     MatRadioModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptor,
+    multi: true
+  }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

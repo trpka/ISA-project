@@ -84,14 +84,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.authorizeRequests().antMatchers("/auth/**").permitAll()		// /auth/**
 										// /api/foo
 									.antMatchers("/api/registration").permitAll()
-									.antMatchers("/api/login").permitAll()
+									.antMatchers("/auth/login").permitAll()
 									.antMatchers("/api/bloodCenter").permitAll()
 									.antMatchers("/api/centerName").permitAll()
-
 									.antMatchers("/search/{centerName}").permitAll()
-
-
-		                      .antMatchers("/api/edit/center").permitAll()
+									.antMatchers("/api/edit/center").permitAll()
 					                .antMatchers("/api/centers").permitAll()
 					                .antMatchers("/api/center/{id}").permitAll()
 					                .antMatchers("/api/terms").permitAll()
@@ -100,33 +97,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 					                .antMatchers("/api/stuffs").permitAll()
 					                .antMatchers("/api/stuffs/{id}").permitAll()
 					                .antMatchers("/api/edit/stuff").permitAll()
-
-
-
 					                //.antMatchers("/api/registeredUsers").permitAll()
-
-
-
-
-
-
 									.antMatchers("/api/centers/sort-by-name").permitAll()
 									.antMatchers("/api/centers/sort-by-average-grade").permitAll()
 									.antMatchers("/api/centers/sort-by-city").permitAll()
-
 									.antMatchers("/api/survey").permitAll()
 									//.antMatchers("api/centers/sort-by-grade").permitAll()
-
-
-									
 									.antMatchers("/api/registeredUsers").permitAll()
 									.antMatchers("/api/regUser/{id}").permitAll()
-									
 									.antMatchers("/api/updateRegUser").permitAll()
-
-								
-									//.antMatchers("api/client/makeNewAdventureRevision").permitAll()
-									//.antMatchers("/api/client/makeNewBoatComplaint").permitAll()
+									.antMatchers("/auth/signup").permitAll()
 									
 				// ukoliko ne zelimo da koristimo @PreAuthorize anotacije nad metodama kontrolera, moze se iskoristiti hasRole() metoda da se ogranici
 				// koji tip korisnika moze da pristupi odgovarajucoj ruti. Npr. ukoliko zelimo da definisemo da ruti 'admin' moze da pristupi

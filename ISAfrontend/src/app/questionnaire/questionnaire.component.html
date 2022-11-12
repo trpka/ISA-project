@@ -58,18 +58,6 @@
 
   <div class="row">
     <div class="col-sm">
-        <p> Da li se trenutno osećate zdravim, sposobnim i odmornim da date krv ili komponente krvi?</p>
-    </div>
-    <div class="col-sm">
-        <mat-radio-group aria-label="Select an option" style="margin-right: 450px;" [(ngModel)]="survey.p3">
-            <mat-radio-button value="DA">DA</mat-radio-button>
-            <mat-radio-button value="NE">NE</mat-radio-button>
-          </mat-radio-group>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-sm">
         <p>Da li ste nešto jeli pre dolaska na davanje krvi ili komponente krvi?</p>
     </div>
     <div class="col-sm">
@@ -78,6 +66,22 @@
             <mat-radio-button value="NE">NE</mat-radio-button>
           </mat-radio-group>
     </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm">
+        <p> Da li se trenutno osećate zdravim, sposobnim i odmornim da date krv ili komponente krvi?</p>
+    </div>
+    <div class="col-sm">
+        <mat-radio-group aria-label="Select an option" style="margin-right: 450px;" [(ngModel)]="survey.p3">
+            <mat-radio-button value="DA">DA</mat-radio-button>
+           
+            <div class="col-sm">
+              <mat-radio-button value="NE">NE</mat-radio-button>
+            </div>
+          </mat-radio-group>
+    </div>
+    
   </div>
 
  <!-- <div class="row">
