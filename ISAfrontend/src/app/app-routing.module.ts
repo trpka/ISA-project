@@ -24,7 +24,7 @@ const routes: Routes = [
   {path: 'profile_center/:id', component: ProfileCenterComponent},
   {path: 'donation_terms/:id', component: DonationTermsComponent},
   {path: 'donation_terms', component: DonationTermsComponent},
-  {path: 'regUser_edit/:id', component: RegisteredUserEditComponent}
+  {path: 'regUser_edit/:id', component: RegisteredUserEditComponent},
   {path: 'stuff_edit/:id', component: StuffEditComponent}
   
 
