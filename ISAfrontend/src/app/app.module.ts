@@ -40,7 +40,7 @@ import { StuffEditComponent } from './stuff-edit/stuff-edit.component';
     ProfileCenterComponent,
     SearchCenterComponent,
     DonationTermsComponent,
-    RegisteredUserEditComponent
+    RegisteredUserEditComponent,
     StuffEditComponent
   ],
   imports: [
