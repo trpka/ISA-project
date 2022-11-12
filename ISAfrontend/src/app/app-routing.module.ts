@@ -9,6 +9,8 @@ import { ProfileCenterComponent } from './profile-center/profile-center.componen
 import { SearchCenterComponent } from './search-center/search-center.component';
 import { DonationTermsComponent } from './donation-terms/donation-terms.component';
 import { RegisteredUserEditComponent } from './registered-user-edit/registered-user-edit.component';
+import { StuffEditComponent } from './stuff-edit/stuff-edit.component';
+
 
 
 const routes: Routes = [
@@ -20,12 +22,12 @@ const routes: Routes = [
   {path: 'profile-center', component: ProfileCenterComponent},
   { path: 'search-center', component: SearchCenterComponent },
   {path: 'profile_center/:id', component: ProfileCenterComponent},
-
   {path: 'donation_terms/:id', component: DonationTermsComponent},
-  
-
   {path: 'donation_terms', component: DonationTermsComponent},
   {path: 'regUser_edit/:id', component: RegisteredUserEditComponent}
+  {path: 'stuff_edit/:id', component: StuffEditComponent}
+  
+
 
 
 ];

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 
@@ -18,9 +18,12 @@ import { QuestionnaireComponent } from './questionnaire/questionnaire.component'
 import {MatRadioModule} from '@angular/material/radio';
 import { HomeRegisteredUserComponent } from './home-registered-user/home-registered-user.component';
 import { ProfileCenterComponent } from './profile-center/profile-center.component';
+import { TokenInterceptor } from './interceptor/TokenInterceptor';
 import { SearchCenterComponent } from './search-center/search-center.component';
 import { DonationTermsComponent } from './donation-terms/donation-terms.component';
 import { RegisteredUserEditComponent } from './registered-user-edit/registered-user-edit.component';
+import { StuffEditComponent } from './stuff-edit/stuff-edit.component';
+
 
 
 
@@ -38,6 +41,7 @@ import { RegisteredUserEditComponent } from './registered-user-edit/registered-u
     SearchCenterComponent,
     DonationTermsComponent,
     RegisteredUserEditComponent
+    StuffEditComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +54,12 @@ import { RegisteredUserEditComponent } from './registered-user-edit/registered-u
     MatButtonModule,
     MatRadioModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptor,
+    multi: true
+  }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

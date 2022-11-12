@@ -53,12 +53,6 @@ public class DonationTermsService
     }
 
 
-
-
-
-
-
-
     //Prikazivanje Lista Slobodnih i Zauzetih termina
     public List<DonationTerms> findFreeTerms(boolean isFree)
     {
@@ -87,6 +81,9 @@ public class DonationTermsService
             return reserved_terms;
         }
     }
+
+    //Kreiranje Slobodnih Termina Za davanje krvi koje ce korisnici rezervisati jednim klikom
+
 
 
 }

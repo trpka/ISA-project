@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BloodCenter } from '../model/bloodCenter';
 import { DonationTerms } from '../model/donationTerms';
+import { Stuff } from '../model/stuff';
 
 
 @Injectable({
@@ -12,11 +13,9 @@ export class BloodCenterService {
 
   url="http://localhost:8081/api/centers";
   url1 = "http://localhost:8081/api/center";
-
-  url3="http://localhost:8081/api/centers/terms";
-
   url2= "http://localhost:8081/api/centerName";
- 
+  url3="http://localhost:8081/api/centers/terms";
+  urlA = "http://localhost:8081/api/centers/stuffs";
 
   constructor(private http:HttpClient) { }
 
@@ -47,13 +46,19 @@ getAllTermsByCentre(id:number):Observable<DonationTerms[]>
   return this.http.get<DonationTerms[]> (`${this.url3}/${id}`)
 }
 
+
+getAllStuffsByCentre(id:number):Observable<Stuff[]>
+{
+  return this.http.get<Stuff[]>(`${this.urlA}/${id}`)
+}
+
 findByName(name:string):Observable<BloodCenter[]>{
   const params:HttpParams=new HttpParams().append('name',name);
   return this.http.get<BloodCenter[]>(this.url2,{params});
 }
 
 
-
+  //Izmena podataka o Centru
   UpdateBloodCenter(bloodCenter: BloodCenter):Observable<BloodCenter>
   {
 

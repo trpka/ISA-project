@@ -1,0 +1,64 @@
+<p>stuff-edit works!</p>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+<p style="text-align:center"><font size="4"   style="color:black;"></font></p>
+<p style="text-align:center"><font size="4"   style="color:black;">List of Stuffs and Employes</font></p>
+
+<div class = "StuffProfile">
+    <form >
+        <label for="id">Stuff Id :</label>
+         <p>{{stuff.id}}</p>
+         
+         <label for="firstName"> First Name: </label> 
+         <div>
+            <input [(ngModel)] = "stuff.firstName" id = "firstName" name = "firstName" type = "text" class = "from-control">
+         </div>       
+
+        <label for="lastName"> Last Name: </label>
+        <div>
+            <input [(ngModel)] = "stuff.lastName" id = "lastName" name = "lastName" type = "text" class="from-control">
+        </div>
+
+        <label for="email"> Email: </label>
+        <div>
+            <input [(ngModel)] = "stuff.email" id = "email" name = "email" type = "text" class="from-control">
+        </div>
+
+        <label for="username"> Username: </label>
+        <div>
+            <input [(ngModel)] = "stuff.username" id = "username" name = "username" type = "text" class="from-control">
+        </div>
+
+        <label for="password"> Password: </label>
+        <div>
+            <input [(ngModel)] = "stuff.password" id = "password" name = "password" type = "password" class="from-control">
+        </div>
+        
+
+       
+
+        <label for="mobile"> Mobile Phone: </label>
+        <div>
+            <input [(ngModel)] = "stuff.mobile" id = "mobile" name = "mobile" type = "text" class="from-control">
+        </div>
+
+        <label for="bloodCenter"> Blood Center: </label>
+        <div>
+            <input [(ngModel)] = "stuff.bloodCenter.id" id = "bloodCenter" name = "bloodCenter" type = "text" class="from-control">
+        </div>
+
+
+        <label for="firstLogin"> First Login: </label>
+        <div>
+            <input [(ngModel)] = "stuff.firstLogin" id = "firstLogin" name = "firstLogin" type = "text" class="from-control">
+        </div>
+     
+        <!--Dugme za izmenu podataka-->
+    <button class = "btn btn-success" (click) = "UpdateStuff()">Update Stuff</button>
+    <button class = "btn btn-success" (click) = "ShowStuffCenter()">Show BloodCenter</button>
+
+
+
+
