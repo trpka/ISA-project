@@ -8,6 +8,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import { ProfileCenterComponent } from './profile-center/profile-center.component';
 import { SearchCenterComponent } from './search-center/search-center.component';
 import { DonationTermsComponent } from './donation-terms/donation-terms.component';
+import { StuffEditComponent } from './stuff-edit/stuff-edit.component';
 
 
 const routes: Routes = [
@@ -23,7 +24,9 @@ const routes: Routes = [
   {path: 'donation_terms/:id', component: DonationTermsComponent},
   
 
-  {path: 'donation_terms', component: DonationTermsComponent}
+  {path: 'donation_terms', component: DonationTermsComponent},
+  {path: 'stuff_edit/:id', component: StuffEditComponent}
+  
 
 
 ];
