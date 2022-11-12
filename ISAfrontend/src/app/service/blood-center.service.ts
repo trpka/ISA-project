@@ -70,11 +70,24 @@ findByCity(city:string):Observable<BloodCenter[]>{
   return this.http.get<BloodCenter[]>(this.url2,{params});
 }
 
-findByGradeAddress(averageGrade:number,address:string):Observable<BloodCenter[]>{
+
+findByAddress(address:string):Observable<BloodCenter[]>{
+  const params:HttpParams=new HttpParams().append('address',address);
+  return this.http.get<BloodCenter[]>(this.url2,{params});
+}
+
+findByAverageGrade(averageGradeCentre:number):Observable<BloodCenter[]>{
+  const params:HttpParams=new HttpParams().append('averageGradeCentre',averageGradeCentre);
+  return this.http.get<BloodCenter[]>(this.url2,{params});
+}
+
+findByGradeAndAddress(address:string,averageGradeCenre:number):Observable<BloodCenter[]>{
     
   const params=new HttpParams()
-    .set('averageGrade',averageGrade)
-    .set('address',address);
+    .set('address',address)
+    .set('averageGradeCenre',averageGradeCenre);
     return this.http.get<BloodCenter[]>(this.url2,{params});
 }
+
+
 }

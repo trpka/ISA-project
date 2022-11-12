@@ -73,14 +73,28 @@ public class BloodCenterController
 		return new ResponseEntity<>(bloodCenters,HttpStatus.OK);
 	}
   
-    @RequestMapping(value="api/centerName", method = RequestMethod.GET,
-			params = "address",
-			produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-	public ResponseEntity<List<BloodCenter>> findByAddress(@RequestParam String address){
-		List<BloodCenter> bloodCenters=this.bloodCenterService.findByAddress(address);
-		return new ResponseEntity<>(bloodCenters,HttpStatus.OK);
-	}
 
+	
+	  @RequestMapping(value="api/centerName", method = RequestMethod.GET, params =
+	  "address", produces= {MediaType.APPLICATION_JSON_VALUE,
+	  MediaType.APPLICATION_XML_VALUE}) 
+	  public ResponseEntity<List<BloodCenter>>findByAddressCentre(@RequestParam String address){ 
+		  List<BloodCenter> bloodCenters=this.bloodCenterService.findByAddress(address); 
+		  return new ResponseEntity<>(bloodCenters,HttpStatus.OK); }
+	  
+	 
+    
+	
+	  @RequestMapping(value="api/centerName", method = RequestMethod.GET, params =
+	  "averageGradeCentre", produces= {MediaType.APPLICATION_JSON_VALUE,
+	  MediaType.APPLICATION_XML_VALUE}) public ResponseEntity<List<BloodCenter>>
+	  findByAverageGradeCentre(@RequestParam Long averageGradeCentre){
+	  List<BloodCenter>
+	  bloodCenters=this.bloodCenterService.findByAverageGradeCentre(
+	  averageGradeCentre); return new ResponseEntity<>(bloodCenters,HttpStatus.OK);
+	  }
+	 
+    
     @RequestMapping(value="api/centerName", method = RequestMethod.GET,
 			params = "city",
 			produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
@@ -88,13 +102,12 @@ public class BloodCenterController
 		List<BloodCenter> bloodCenters=this.bloodCenterService.findCenterByCity(city);
 		return new ResponseEntity<>(bloodCenters,HttpStatus.OK);
 	}
-    
-	
+
 	 @RequestMapping(value="api/centerName", method = RequestMethod.GET, params =
-	  {"centerName","averageGradeCentre"}, produces=
+	  {"address","averageGradeCentre"}, produces=
 	  {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE}) 
-	  public ResponseEntity<List<BloodCenter>> findByGradeAddress(@RequestParam String centerName,@RequestParam Long averageGradeCentre){
-		 List<BloodCenter> centers=this.bloodCenterService.findByCenterNameAndAverageGradeCentre(centerName, averageGradeCentre);
+	  public ResponseEntity<List<BloodCenter>> findByAddressAndAverageGrade(@RequestParam String address,@RequestParam Long averageGradeCentre){
+		 List<BloodCenter> centers=this.bloodCenterService.findByAddressAndAverageGradeCentre(address, averageGradeCentre);
 	  return new ResponseEntity<>(centers,HttpStatus.OK); }
 	 
 
