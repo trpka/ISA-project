@@ -23,7 +23,7 @@ public class DonationTermsService
         return this.donationTermsRepository.findAll();
     }
 
-    //Pretraga Termina po centru
+    //Pretraga Termina po centru(NE GLEDAJ OVU F-JU)
     public List<DonationTerms> findByCenter(Long id)
     {
         Optional<DonationTerms> opt=this.donationTermsRepository.findById(id);

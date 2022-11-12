@@ -6,6 +6,7 @@ import com.example.ISAproject.repository.StuffRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,6 +32,23 @@ public class StuffService
             return null;
         }
         return opt.get();
+    }
+
+    //Pretraga Zaposlenih Po Centru kojem pripada
+    public List<Stuff> FindStuffByCenter(Long id)
+    {
+        List<Stuff> all_stuffs = stuffRepository.findAll();
+        List<Stuff> finded_stuffs = new ArrayList<>();
+
+        for(Stuff s: all_stuffs)
+        {
+            if(s.getBloodCenter().getId() == id)
+            {
+                finded_stuffs.add(s);
+            }
+        }
+
+        return  finded_stuffs;
     }
 
     //Izmena Podataka Za administratore centra i medicinsko osoblje
