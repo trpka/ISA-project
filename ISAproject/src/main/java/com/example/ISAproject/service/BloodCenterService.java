@@ -20,9 +20,6 @@ public class BloodCenterService
     }
 
 
-    public List<BloodCenter> findByAddress(String address){
-		return this.bloodCenterRepository.findByAddress(address);
-	}
     
     public List<BloodCenter> findByCenterName(String name){
 		return this.bloodCenterRepository.findByCenterName(name);
@@ -31,10 +28,18 @@ public class BloodCenterService
     public List<BloodCenter> findCenterByCity(String city){
 		return this.bloodCenterRepository.findByCity(city);
 	}
+    
+    public List<BloodCenter> findByAddress(String address){
+		return this.bloodCenterRepository.findByAddress(address);
+	}
+    
+    public List<BloodCenter> findByAverageGradeCentre(Long averageGradeCentre){
+		return this.bloodCenterRepository.findByAverageGradeCentre(averageGradeCentre);
+	}
 
-	
-	  public List<BloodCenter> findByCenterNameAndAverageGradeCentre(String centerName, Long averageGradeCentre){
-		  return this.bloodCenterRepository.findByCenterNameAndAverageGradeCentre(centerName,averageGradeCentre);
+    
+	  public List<BloodCenter> findByAddressAndAverageGradeCentre(String address, Long averageGradeCentre){
+		  return this.bloodCenterRepository.findByAddressAndAverageGradeCentre(address,averageGradeCentre);
 	  }
 	 
  

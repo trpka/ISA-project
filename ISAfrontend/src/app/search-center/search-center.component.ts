@@ -10,6 +10,10 @@ import { BloodCenterService } from '../service/blood-center.service';
 })
 export class SearchCenterComponent implements OnInit {
 
+  placeholder = 'average grade';
+  placeholder1 = 'address';
+  placeholder2= 'name';
+  placeholder3 = 'city';
 
     centerName: string;
     address: string;
@@ -44,9 +48,19 @@ export class SearchCenterComponent implements OnInit {
     .subscribe(res=>this.bloodCenters=res)
   }
 
-  findByGradeAddress(averageGradeCentre:number,address:string){
-    this.bloodCenterService.findByGradeAddress(averageGradeCentre,address)
+  findByAddress(address:string){
+    this.bloodCenterService.findByAddress(address)
     .subscribe(res=>this.bloodCenters=res)
   }
+
+  findByAverageGrade(averageGradeCentre:number){
+    this.bloodCenterService.findByAverageGrade(averageGradeCentre)
+    .subscribe(res=>this.bloodCenters=res)
+  }
+  // findByGradeAndAddress(address:string,averageGradeCenre:number){
+    
+  //   this.bloodCenterService.findByGradeAndAddress(address,averageGradeCenre)
+  //   .subscribe(res=>this.bloodCenters=res)
+  // }
  
 }
