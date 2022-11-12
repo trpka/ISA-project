@@ -90,8 +90,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 									.antMatchers("/search/{centerName}").permitAll()
 								
-
-		                      .antMatchers("/api/centers/edit").permitAll()
+                                      //Student 3
+					                .antMatchers("/api/centers/edit").permitAll()
 					                .antMatchers("/api/centers").permitAll()
 					                .antMatchers("/api/center/{id}").permitAll()
 					                .antMatchers("/api/terms").permitAll()
@@ -101,6 +101,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 					                .antMatchers("/api/stuffs/{id}").permitAll()
 					                .antMatchers("/api/edit/stuff").permitAll()
 					                .antMatchers("/api/centers/terms/{id}").permitAll()
+					                .antMatchers("/api/centers/stuffs/{id}").permitAll()
+
 
 
 
