@@ -98,8 +98,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 					                .antMatchers("/api/term").permitAll()
 					                .antMatchers("/api/terms/{isFree}").permitAll()
 					                .antMatchers("/api/stuffs").permitAll()
-					                .antMatchers("/api/stuffs/{id}").permitAll()
-					                .antMatchers("/api/edit/stuff").permitAll()
+					                .antMatchers("/api/stuff/{id}").permitAll()
+					                .antMatchers("/api/stuff/edit").permitAll()
 					                .antMatchers("/api/centers/terms/{id}").permitAll()
 					                .antMatchers("/api/centers/stuffs/{id}").permitAll()
 

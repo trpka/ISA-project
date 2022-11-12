@@ -63,13 +63,46 @@
             <input [(ngModel)]="bloodCenter.bloodO" id = "bloodO" name = "bloodO" type="number" class = "from-control">
         </div>
         
-        <label for = "listOfStuffs">List of Stuffs: </label>
-        <p>{{bloodCenter.listOfStuffs}} </p>
+        
     </form>
 
     <!--Dugme za izmenu podataka-->
     <button class = "btn btn-success" (click) = "UpdateBloodCenter()">UpdateBloodCenter</button>
-    <button class = "btn btn-success" (click) = "ViewTerms()">View Terms</button>
+    <button id="btnView" class = "btn btn-success" (click) = "ViewTerms()">View Terms</button>
+
+</div>
+
+<p style="text-align:center"><font size="4"   style="color:black;"></font></p>
+<p style="text-align:center"><font size="4"   style="color:black;">List of Stuffs and Employes</font></p>
+<div class="container">
+
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>firstName</th>
+                <th>lastName</th>
+                <th>email</th>
+                <th>mobile</th>
+                <th>enabled</th>
+                <th>bloodCenter</th>
+            </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let stuff of stuff">
+                <td>{{stuff.id}}</td>
+                <td>{{stuff.firstName}}</td>
+                <td>{{stuff.lastName}}</td>
+                <td>{{stuff.email}}</td>
+                <td>{{stuff.mobile}}</td>
+                <td>{{stuff.enabled}}</td>
+                <td>{{stuff.bloodCenter.id}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <button id="btnstuff"  class = "btn btn-success" style="text-align: center" (click) = "showStuffs()">View Stuff</button>
+
 
 </div>
 
@@ -95,8 +128,10 @@
                 <td>{{donationTerms.date}}</td>
                 <td>{{donationTerms.duration}}</td>
                 
-                <!--<td>
-                    <input [(ngModel)]="donationTerms.isFree" id="isFree" name="isFree" type="text" class="from-control">
+               <!-- <td>
+                    <div>
+                    <input [(ngModel)]="donationTerms.free" id="isFree" name="isFree" type="text" class="from-control">
+                </div>
                 </td> -->
                 <td>{{donationTerms.free}}</td>
                 <td>{{donationTerms.reservationStart}}</td>
@@ -106,7 +141,7 @@
         </tbody>
     </table>
 
-    <button class = "btn btn-success" (click) = "ViewTermsForThisProfileCenter()">ViewTermsForThisProfileCenter</button>
+    <button id="btnTerms" class = "btn btn-success" (click) = "ViewTermsForThisProfileCenter()">ViewTermsForThisProfileCenter</button>
 
 
 </div>
