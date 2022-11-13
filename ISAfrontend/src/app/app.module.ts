@@ -23,6 +23,7 @@ import { SearchCenterComponent } from './search-center/search-center.component';
 import { DonationTermsComponent } from './donation-terms/donation-terms.component';
 import { RegisteredUserEditComponent } from './registered-user-edit/registered-user-edit.component';
 import { StuffEditComponent } from './stuff-edit/stuff-edit.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 

@@ -3,15 +3,20 @@
     margin-left: 10px;
 }
 .form-search{
-    margin: 5px;
+  float: center;
+    margin: 30px;
 }
-.color {
-    color: white;
-    font-weight: bold;
-    background-color: red;
-  }
 
   ::placeholder {
     color: lightslategrey;
     font-style: italic;
+  }
+
+  
+
+  .container {
+    margin: auto;
+    width: 90%;
+    border: 3px solid lightslategray;
+    padding: 70px;
   }
