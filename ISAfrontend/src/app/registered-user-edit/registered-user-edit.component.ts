@@ -14,6 +14,8 @@ export class RegisteredUserEditComponent implements OnInit {
   id: number;
   registeredUser: RegisteredUser;
 
+  placeholder = 'please enter info...';
+
   constructor(private route: ActivatedRoute, private registeredUserService: RegisteredUserEditService) { }
 
   ngOnInit(): void {

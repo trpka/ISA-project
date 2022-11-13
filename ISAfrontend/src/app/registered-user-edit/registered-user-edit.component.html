@@ -1,78 +1,122 @@
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+   <section class="text-center">
+<h1 style="color:navy; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 1cm;">Welcome to Your Account</h1>
+<div class="main-image">
+    <img alt="My image name" src="./assets/img/user-profilna.jpg"> 
+</div>
+  
+    <div class="card mx-4 mx-md-5 shadow-5-strong" style="
+          margin-top: -100px;
+          background: lavender;
+          backdrop-filter: blur(30px);
+          ">
+      <div class="card-body py-5 px-md-5">
+  
+        <div class="row d-flex justify-content-center">
+          <div class="col-lg-8">
+            <h2 class="fw-bold mb-5" style="color:dimgrey">Change your information</h2>
+            <form>
+                    
+                   
+                      <div class="form-outline mb-4">
+                        <input id="firstName"  name="firstName" type="text"  class="form-control" [placeholder]="placeholder"  [(ngModel)]="registeredUser.firstName" />
+                        <label class="form-label" for="username">First Name</label>
+                      </div>
+          
+                      
+                      <div class="form-outline mb-4">
+                        <input id="lastName" name="lastName" type="text"  class="form-control" [placeholder]="placeholder"  [(ngModel)]="registeredUser.lastName" />
+                        <label class="form-label" for="password">Last name</label>
+                      </div>
+                  
+    
+                  
+                  <div class="form-outline mb-4">
+                    <input id="username"  name="username" type="text"  class="form-control" [placeholder]="placeholder"  [(ngModel)]="registeredUser.username" />
+                    <label class="form-label" for="username">Username</label>
+                  </div>
+      
+                  
+                  <div class="form-outline mb-4">
+                    <input id="password" name="password" type="password"  class="form-control" [placeholder]="placeholder"  [(ngModel)]="registeredUser.password" />
+                    <label class="form-label" for="password">Password</label>
+                  </div>
+    
+    
+                  <div class="form-outline mb-4">
+                    <input id="email" name="email" type="text"  class="form-control" [placeholder]="placeholder"  [(ngModel)]="registeredUser.email" />
+                    <label class="form-label" for="email">Email</label>
+                  </div>
+    
+                  <div class="form-outline mb-4">
+                    <input id="mobile" name="mobile" type="text"  class="form-control" [placeholder]="placeholder"  [(ngModel)]="registeredUser.mobile" />
+                    <label class="form-label" for="mobile">Mobile</label>
+                  </div>
+    
+                  <div class="form-outline mb-4">
+                    <input id="adress" name="adress" type="text"  class="form-control" [placeholder]="placeholder"  [(ngModel)]="registeredUser.adress" />
+                    <label class="form-label" for="adress">Address</label>
+                  </div>
+    
+                  <div class="form-outline mb-4">
+                    <input id="city" name="city" type="text"  class="form-control" [placeholder]="placeholder"  [(ngModel)]="registeredUser.city" />
+                    <label class="form-label" for="city">City</label>
+                  </div>
+    
+                  <div class="form-outline mb-4">
+                    <input id="state" name="state" type="text"  class="form-control" [placeholder]="placeholder"  [(ngModel)]="registeredUser.state" />
+                    <label class="form-label" for="state">State</label>
+                  </div>
+    
+                  <div class="form-outline mb-4">
+                    <input id="jmbg" name="jmbg" type="text"  class="form-control" [placeholder]="placeholder"  [(ngModel)]="registeredUser.jmbg" />
+                    <label class="form-label" for="jmbg">Jmbg</label>
+                  </div>
+    
+                  <div class="form-outline mb-4">
+                    <input id="profession" name="profession" type="text"  class="form-control" [placeholder]="placeholder"  [(ngModel)]="registeredUser.profession" />
+                    <label class="form-label" for="profession">Profession</label>
+                  </div>
 
-<p style="text-align:center"><font size="4"   style="color:black;"></font></p>
-<p style="text-align:center"><font size="4"   style="color:black;">Your account</font></p>
+                  <div class="form-outline mb-4">
+                    <input id="organizationInformation" name="organizationInformation" type="text"  class="form-control" [placeholder]="placeholder"  [(ngModel)]="registeredUser.organizationInformation" />
+                    <label class="form-label" for="organizationInformation">Organization Information</label>
+                  </div>
 
-<div class = "RegisteredUserProfile">
-    <form >
-<label for="id"> Id : </label>
-         <p>{{registeredUser.id}}</p>
+                  <div class="form-outline mb-4">
+                    <input id="sex" name="sex" type="text"  class="form-control" [placeholder]="placeholder"  [(ngModel)]="registeredUser.sex" />
+                    <label class="form-label" for="sex">Gender</label>
+                  </div>
+    
 
-         <label for="firstName"> First Name: </label> 
-         <div>
-            <input [(ngModel)] = "registeredUser.firstName" id = "firstName" name = "firstName" type = "text" class = "from-control">
-         </div>       
+                  <div class="form-outline mb-4">
+                    <input id="points" name="points" type="text"  class="form-control" [placeholder]="placeholder"  [placeholder]="placeholder"  [(ngModel)]="registeredUser.points" />
+                    <label class="form-label" for="points">Points</label>
+                  </div>
 
-        <label for="lastName"> Last Name: </label>
-        <div>
-            <input [(ngModel)] = "registeredUser.lastName" id = "lastName" name = "lastName" type = "text" class="from-control">
+                  <div class="form-outline mb-4">
+                    <input id="category" name="category" type="text"  class="form-control" [placeholder]="placeholder"  [(ngModel)]="registeredUser.category" />
+                    <label class="form-label" for="category">Category </label>
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <input id="benefits" name="benefits" type="text"  class="form-control" [placeholder]="placeholder"  [(ngModel)]="registeredUser.benefits" />
+                    <label class="form-label" for="benefits">Benefits</label>
+                  </div>
+    
+                  <button class = "btn btn-success" (click) = "UpdateRegisteredUser()" style="background-color:steelblue">
+                    Update registered user
+                  </button>
+  
+
+           
+                </form>
+            </div>
+          </div>
         </div>
+      </div>
+    </section>
 
-        <label for="email"> Email: </label>
-        <div>
-            <input [(ngModel)] = "registeredUser.email" id = "email" name = "email" type = "text" class="from-control">
-        </div>
-
-        <label for="username"> Username: </label>
-        <div>
-            <input [(ngModel)] = "registeredUser.username" id = "username" name = "username" type = "text" class="from-control">
-        </div>
-
-        <label for="password"> Password: </label>
-        <div>
-            <input [(ngModel)] = "registeredUser.password" id = "password" name = "password" type = "password" class="from-control">
-        </div>
-
-
-        <label for="mobile"> Mobile Phone: </label>
-        <div>
-            <input [(ngModel)] = "registeredUser.mobile" id = "mobile" name = "mobile" type = "text" class="from-control">
-        </div>
-
-        <label for="adress"> Address: </label>
-        <div>
-            <input [(ngModel)] = "registeredUser.adress" id = "adress" name = "adress" type = "text" class="from-control">
-        </div>
-
-        <label for="city"> City: </label>
-        <div>
-            <input [(ngModel)] = "registeredUser.city" id = "city" name = "city" type = "text" class="from-control">
-        </div>
-
-        <label for="state"> State: </label>
-        <div>
-            <input [(ngModel)] = "registeredUser.state" id = "state" name = "state" type = "text" class="from-control">
-        </div>
-
-        <label for="jmbg"> Jmbg: </label>
-        <div>
-            <input [(ngModel)] = "registeredUser.jmbg" id = "jmbg" name = "jmbg" type = "text" class="from-control">
-        </div>
-
-        <label for="sex"> Gender: </label>
-        <div>
-            <input [(ngModel)] = "registeredUser.sex" id = "sex" name = "sex" type = "text" class="from-control">
-        </div>
-
-        <label for="profession"> Profession: </label>
-        <div>
-            <input [(ngModel)] = "registeredUser.profession" id = "profession" name = "profession" type = "text" class="from-control">
-        </div>
-
-        <label for="organizationInformation"> Organization Information: </label>
-        <div>
-            <input [(ngModel)] = "registeredUser.organizationInformation" id = "organizationInformation" name = "organizationInformation" type = "text" class="from-control">
-        </div>
-
-
-        <button class = "btn btn-success" (click) = "UpdateRegisteredUser()">Update registered user</button>
+        
+        
+  
+       

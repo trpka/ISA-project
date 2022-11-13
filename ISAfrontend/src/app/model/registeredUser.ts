@@ -14,6 +14,9 @@ interface RegisteredUserInterface{
     profession:string;
     organizationInformation:string;
     enabled:boolean;
+    points: number;
+    category:string;
+    benefits:string;
     //fali
     
 }
@@ -33,6 +36,9 @@ export class RegisteredUser implements RegisteredUserInterface{
     profession:string;
     organizationInformation:string;
     enabled:boolean;
+    points: number;
+    category:string;
+    benefits:string
     //fali
 
     constructor(obj:RegisteredUserInterface){
@@ -51,6 +57,9 @@ export class RegisteredUser implements RegisteredUserInterface{
         this.profession=obj.profession;
         this.organizationInformation=obj.organizationInformation;
         this.enabled = obj.enabled;
+        this.points=obj.points;
+        this.category=obj.category;
+        this.benefits=obj.benefits;
   
     } 
 }
