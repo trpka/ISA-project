@@ -1,29 +1,29 @@
 insert into authority(id,name) values (1,'ROLE_ADMIN');
 insert into authority(id,name) values (2,'ROLE_REGISTERED_USER');
 
-insert into user (id,role, username, password, first_name, last_name, email, mobile,enabled,last_password_reset_date) values (1,'Admin','truman', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra', 'Truman', 'Willis', 'isamarkomarkovic99@gmail.com', '305-555-0163',true,'1983-07-12 21:30:55.888');
-insert into user (id,role, username, password, first_name, last_name, email, mobile,enabled,last_password_reset_date) values (2,'RegisteredUser','raymond', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra', 'Raymond', 'Weaving', 'isamarkomarkovic99@gmail.com', '305-555-0720',true,'1983-07-12 21:30:55.888');
+insert into user (id,role, username, password, first_name, last_name, email, mobile,enabled,last_password_reset_date) values (1,'Admin','truman@gmail.com', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra', 'Truman', 'Willis', 'truman@gmail.com', '305-555-0163',true,'1983-07-12 21:30:55.888');
+insert into user (id,role, username, password, first_name, last_name, email, mobile,enabled,last_password_reset_date) values (2,'RegisteredUser','raymond@gmail.com', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra', 'Raymond', 'Weaving', 'raymond@gmail.com', '305-555-0720',true,'1983-07-12 21:30:55.888');
 
 insert into user (id,role, username, password, first_name, last_name, email, mobile,enabled,last_password_reset_date)
-values (7,'RegisteredUser','ulogovani_korisnik', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra', 'Aleksa', 'Aleksic', 'aleksic@gmail.com', '306-555-333',true,'1983-07-12 21:30:55.888');
+values (7,'RegisteredUser','aleksic@gmail.com', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra', 'Aleksa', 'Aleksic', 'aleksic@gmail.com', '306-555-333',true,'1983-07-12 21:30:55.888');
 insert into user (id,role, username, password, first_name, last_name, email, mobile,enabled,last_password_reset_date)
-values (8,'RegisteredUser','ulogovani_korisnik2', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra', 'Nikola', 'Nikolic', 'nikolic@gmail.com', '307-558-0250',true,'1983-07-12 21:30:55.888');
+values (8,'RegisteredUser','nikolic@gmail.com', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra', 'Nikola', 'Nikolic', 'nikolic@gmail.com', '307-558-0250',true,'1983-07-12 21:30:55.888');
 
 insert into user (id,role, username, password, first_name, last_name, email, mobile,adress,city,state,jmbg,sex,enabled,last_password_reset_date)
-values (14,'RegisteredUser','aradulovicc', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra', 'Andjela', 'Radulovic', 'arada@gmail.com', '306-980-413','Bulevar Evrope 2','Vrsac','Serbia','0987895456221','Female',true,'1983-07-12 21:30:55.888');
+values (14,'RegisteredUser','arada@gmail.com', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra', 'Andjela', 'Radulovic', 'arada@gmail.com', '306-980-413','Bulevar Evrope 2','Vrsac','Serbia','0987895456221','Female',true,'1983-07-12 21:30:55.888');
 
 --Dodajem 4 Usera koji ce predstvaljati administratore centra i osoblje
 insert into user (id,role, username, password, first_name, last_name, email,  mobile,enabled,last_password_reset_date)
-values (5,'Stuff','admin_centra', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra', 'Aleksa', 'Aleksic', 'aleksic@gmail.com', '306-555-333',true,'1983-07-12 21:30:55.888');
+values (5,'Stuff','aleksa@gmail.com', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra', 'Aleksa', 'Aleksic', 'aleksa@gmail.com', '306-555-333',true,'1983-07-12 21:30:55.888');
 
 insert into user (id,role, username, password, first_name, last_name, email, mobile,enabled,last_password_reset_date)
-values (6,'Stuff','admin_centra2', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra', 'Nikola', 'Nikolic', 'nikolic@gmail.com', '307-558-0250',true,'1983-07-12 21:30:55.888');
+values (6,'Stuff','nikola@gmail.com', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra', 'Nikola', 'Nikolic', 'nikola@gmail.com', '307-558-0250',true,'1983-07-12 21:30:55.888');
 
 insert into user (id,role, username, password, first_name, last_name, email,  mobile,enabled,last_password_reset_date)
-values (10,'Stuff','stuff3', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra', 'Milos', 'Milic', 'milos@gmail.com', '306-555-333',true,'2014-07-14 22:34:57.888');
+values (10,'Stuff','milos@gmail.com', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra', 'Milos', 'Milic', 'milos@gmail.com', '306-555-333',true,'2014-07-14 22:34:57.888');
 
 insert into user (id,role, username, password, first_name, last_name, email, mobile,enabled,last_password_reset_date)
-values (11,'Stuff','stuff4', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra', 'Pera', 'Peric', 'pera@gmail.com', '320-589-0251',true,'2020-04-03 11:37:23.888');
+values (11,'Stuff','pera@gmail.com', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra', 'Pera', 'Peric', 'pera@gmail.com', '320-589-0251',true,'2020-04-03 11:37:23.888');
 
 
 
