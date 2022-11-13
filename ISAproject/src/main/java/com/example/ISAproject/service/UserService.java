@@ -73,8 +73,9 @@ public class UserService {
 		u.setSex(userRequest.getSex());
 		u.setProfession(userRequest.getProfession());
 		u.setOrganizationInformation(userRequest.getOrganizationInformation());
-		
-		u.setEnabled(false);
+
+		//postavljeno na true
+		u.setEnabled(true);
 		u.setEmail(userRequest.getEmail());
 		
 		u.setMobile(userRequest.getMobile());

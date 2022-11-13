@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from '../model/user';
 import { RegistrationService } from '../service/registration.service';
 
@@ -9,11 +10,13 @@ import { RegistrationService } from '../service/registration.service';
 })
 export class RegistrationComponent implements OnInit {
   mustfill:string;
+  mustfillp:string;
+  differentPasswords = false;
   newUser:User;
   users:User[];
   password1:string;
 
-  constructor(private registrationService:RegistrationService) 
+  constructor(private registrationService:RegistrationService, private router: Router) 
   {
       this.newUser = new User
       (
@@ -44,27 +47,59 @@ export class RegistrationComponent implements OnInit {
 
   ngOnInit(): void 
   {
-
-  }
-
-  checkPassword(){
-    if(this.password1 != this.newUser.password)
-    {
-      console.log("password is not same")
-    }
+    
   }
 
   registration()
   {
     if(this.newUser.lastName==''){
-      console.log("prazno je")
+      //console.log("prazno je")
       this.mustfill="required";
-      console.log(this.mustfill);
-    }else{
+      //console.log(this.mustfill);
+    }
+    else if (this.newUser.firstName=='') {
+      this.mustfill="required";
+    }
+    else if (this.newUser.email=='') {
+    this.mustfill="required";
+    }
+    /*else if (this.newUser.password=='') {
+      this.mustfill="required";
+    }
+    else if (this.password1=='') {
+      this.mustfill="required";
+    }*/
+    else if (this.newUser.mobile=='') {
+      this.mustfill="required";
+    }
+    else if (this.newUser.adress=='') {
+      this.mustfill="required";
+    }
+    else if (this.newUser.city=='') {
+      this.mustfill="required";
+    }
+    else if (this.newUser.state=='') {
+      this.mustfill="required";
+    }
+    else if (this.newUser.jmbg=='') {
+      this.mustfill="required";
+    }
+    else if (this.newUser.profession=='') {
+      this.mustfill="required";
+    }
+    else if (this.newUser.organizationInformation=='') {
+      this.mustfill="required";
+    }
+    else if (this.newUser.password!=this.password1) {
+      this.differentPasswords=true;
+    }
+    else{
       console.log(this.newUser)
       this.newUser.role = "RegisteredUser"
+      this.newUser.username = this.newUser.email;
       this.registrationService.registration(this.newUser)
-      .subscribe(_=>this.checkPassword());
+      .subscribe();
+      this.router.navigate(['/login']);
     }
 
   }

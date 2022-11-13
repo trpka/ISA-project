@@ -21,7 +21,7 @@
               <div class="row">
                 <div class="col-md-6 mb-4">
                   <div class="form-outline">
-                    <input id="firstName" name="firstName" type="text" class="form-control"  [(ngModel)]="newUser.firstName"/>
+                    <input id="firstName" name="firstName" type="text" class="form-control"  [(ngModel)]="newUser.firstName"  placeholder="{{mustfill}}"/>
                     <label class="form-label" for="firstName">First name</label>
                   </div>
                 </div>
@@ -35,60 +35,60 @@
               </div>
 
               
-              <div class="form-outline mb-4">
+             <!--<div class="form-outline mb-4">
                 <input id="username"  name="username" type="text"  class="form-control" [(ngModel)]="newUser.username" />
                 <label class="form-label" for="username">Username</label>
-              </div>
+              </div>--> 
   
-              
+              <div *ngIf="differentPasswords"> <label><font style="color:red;">Password must be the same</font></label></div>
               <div class="form-outline mb-4">
                 <input id="password" name="password" type="password"  class="form-control" [(ngModel)]="newUser.password" />
                 <label class="form-label" for="password">Password</label>
               </div>
-
+             <div *ngIf="differentPasswords"> <label><font style="color:red;">Password must be the same</font></label></div>
               <div class="form-outline mb-4">
                 <input id="password1" name="password1" type="password"  class="form-control" [(ngModel)]="password1" />
                 <label class="form-label" for="password1">Password</label>
               </div>
-
+              
               <div class="form-outline mb-4">
-                <input id="email" name="email" type="text"  class="form-control" [(ngModel)]="newUser.email" />
+                <input id="email" name="email" type="text"  class="form-control" [(ngModel)]="newUser.email" placeholder="{{mustfill}}"/>
                 <label class="form-label" for="email">Email</label>
               </div>
 
 
               <div class="form-outline mb-4">
-                <input id="mobile" name="mobile" type="text"  class="form-control" [(ngModel)]="newUser.mobile" />
+                <input id="mobile" name="mobile" type="text"  class="form-control" [(ngModel)]="newUser.mobile" placeholder="{{mustfill}}"/>
                 <label class="form-label" for="mobile">Mobile</label>
               </div>
 
               <div class="form-outline mb-4">
-                <input id="adress" name="adress" type="text"  class="form-control" [(ngModel)]="newUser.adress" />
+                <input id="adress" name="adress" type="text"  class="form-control" [(ngModel)]="newUser.adress" placeholder="{{mustfill}}"/>
                 <label class="form-label" for="adress">Address</label>
               </div>
 
               <div class="form-outline mb-4">
-                <input id="city" name="city" type="text"  class="form-control" [(ngModel)]="newUser.city" />
+                <input id="city" name="city" type="text"  class="form-control" [(ngModel)]="newUser.city" placeholder="{{mustfill}}"/>
                 <label class="form-label" for="city">City</label>
               </div>
 
               <div class="form-outline mb-4">
-                <input id="state" name="state" type="text"  class="form-control" [(ngModel)]="newUser.state" />
+                <input id="state" name="state" type="text"  class="form-control" [(ngModel)]="newUser.state" placeholder="{{mustfill}}"/>
                 <label class="form-label" for="state">State</label>
               </div>
 
               <div class="form-outline mb-4">
-                <input id="jmbg" name="jmbg" type="text"  class="form-control" [(ngModel)]="newUser.jmbg" />
+                <input id="jmbg" name="jmbg" type="text"  class="form-control" [(ngModel)]="newUser.jmbg" placeholder="{{mustfill}}"/>
                 <label class="form-label" for="jmbg">Jmbg</label>
               </div>
 
               <div class="form-outline mb-4">
-                <input id="profession" name="profession" type="text"  class="form-control" [(ngModel)]="newUser.profession" />
+                <input id="profession" name="profession" type="text"  class="form-control" [(ngModel)]="newUser.profession" placeholder="{{mustfill}}"/>
                 <label class="form-label" for="profession">Profession</label>
               </div>
 
               <div class="form-outline mb-4">
-                <input id="organizationInformation" name="organizationInformation" type="text"  class="form-control" [(ngModel)]="newUser.organizationInformation" />
+                <input id="organizationInformation" name="organizationInformation" type="text"  class="form-control" [(ngModel)]="newUser.organizationInformation" placeholder="{{mustfill}}"/>
                 <label class="form-label" for="organizationInformation">Organization Information</label>
               </div>
 
