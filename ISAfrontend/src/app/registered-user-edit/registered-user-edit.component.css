@@ -1,8 +1,8 @@
 .RegisteredUserProfile {
     margin: auto;
-    width: 50%;
-    border: 3px solid green;
-    padding: 30px;
+    width: 30%;
+    border: 3px solid royalblue;
+    padding: 60px;
   }
 
   label {
@@ -10,17 +10,31 @@
     width: 9em;
     margin-right: 1em;
     text-align: right;
+    color:midnightblue;
+    font-weight:lighter;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     }
 
 .container {
       margin: auto;
       width: 50%;
-      border: 3px solid green;
-      padding: 30px;
+      border: 3px solid royalblue;
+      padding: 70px;
     }
 
     button {
-      font-size: 1em;
+      font-size: 1.5em;
       margin: 5px;
       position: right;
+    }
+
+    .main-image{
+      margin: auto;
+      width: 50%;
+      padding: 50px;
+    }
+
+    ::placeholder {
+      color: lightslategrey;
+      font-style: italic;
     }

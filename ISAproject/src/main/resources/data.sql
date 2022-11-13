@@ -9,6 +9,8 @@ values (7,'RegisteredUser','ulogovani_korisnik', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.9
 insert into user (id,role, username, password, first_name, last_name, email, mobile,enabled,last_password_reset_date)
 values (8,'RegisteredUser','ulogovani_korisnik2', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra', 'Nikola', 'Nikolic', 'nikolic@gmail.com', '307-558-0250',true,'1983-07-12 21:30:55.888');
 
+insert into user (id,role, username, password, first_name, last_name, email, mobile,adress,city,state,jmbg,sex,enabled,last_password_reset_date)
+values (14,'RegisteredUser','aradulovicc', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra', 'Andjela', 'Radulovic', 'arada@gmail.com', '306-980-413','Bulevar Evrope 2','Vrsac','Serbia','0987895456221','Female',true,'1983-07-12 21:30:55.888');
 
 --Dodajem 4 Usera koji ce predstvaljati administratore centra i osoblje
 insert into user (id,role, username, password, first_name, last_name, email,  mobile,enabled,last_password_reset_date)
@@ -47,6 +49,7 @@ insert into registered_user (id, points, category, benefits) values (1, 7,'Redov
 insert into registered_user (id, points, category, benefits) values (2, 3,'Redovan', 'Redovan');
 insert into registered_user (id, points, category, benefits) values (7, 3,'Redovan', 'Redovan');
 insert into registered_user (id, points, category, benefits) values (8, 33,'Redovan', 'Redovan');
+insert into registered_user (id, points, category, benefits) values (14, 15,'Pretplacen', 'Gift programi');
 
 
 

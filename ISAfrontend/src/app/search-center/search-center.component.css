@@ -10,3 +10,8 @@
     font-weight: bold;
     background-color: red;
   }
+
+  ::placeholder {
+    color: lightslategrey;
+    font-style: italic;
+  }
