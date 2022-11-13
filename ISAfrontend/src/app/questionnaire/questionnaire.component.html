@@ -1,5 +1,5 @@
-<div> <img src="assets/img/logo-transfuzija.png"><p style="text-align:center"><font size="7"   style="color:red;">УПИТНИК ЗА ДАВАОЦА КРВИ ИЛИ КОМПОНЕНАТА КРВИ</font></p></div>
-<p style="text-align:center"><font size="4"   style="color:black;">ПОПУЊАВА ДАВАЛАЦ</font></p>
+<div> <img src="assets/img/logo-transfuzija.png"><p style="text-align:center"><font size="7"   style="color:red;">UPITNIK ZA DAVAOCA KRVI ILI KOMPONENATA KRVI</font></p></div>
+<p style="text-align:center"><font size="4"   style="color:black;">POPUNJAVA DAVALAC</font></p>
 
 <div >
     <div class="row">
@@ -18,9 +18,32 @@
 
         <p style="text-align:center"><label for="jmbg">JMBG</label></p>
         <p style="text-align:center"> <input id="jmbg"  name="jmbg" type="text"  class="form-control" [(ngModel)]="survey.jmbg" /></p>
+
+        <p style="text-align:center"><label for="jmbg">Datum rođenja</label></p>
+        <p style="text-align:center"> <input id="jmbg"  name="jmbg" type="text"  class="form-control" [(ngModel)]="survey.dateOfBirth" /></p>
+
+        <p style="text-align:center"><label for="jmbg">Pol</label></p>
+        <p style="text-align:center"> <input id="jmbg"  name="jmbg" type="text"  class="form-control" [(ngModel)]="survey.sex" /></p>
+
       </div>
       <div class="col-sm">
-        One of three columns
+        <p style="text-align:center"><label for="jmbg">Adresa</label></p>
+        <p style="text-align:center"> <input id="jmbg"  name="jmbg" type="text"  class="form-control" [(ngModel)]="survey.adress" /></p>
+
+        <p style="text-align:center"><label for="jmbg">Grad</label></p>
+        <p style="text-align:center"> <input id="jmbg"  name="jmbg" type="text"  class="form-control" [(ngModel)]="survey.city" /></p>
+
+        <p style="text-align:center"><label for="jmbg">Mobilni telefon</label></p>
+        <p style="text-align:center"> <input id="jmbg"  name="jmbg" type="text"  class="form-control" [(ngModel)]="survey.mobile" /></p>
+
+        <p style="text-align:center"><label for="jmbg">Organizacija</label></p>
+        <p style="text-align:center"> <input id="jmbg"  name="jmbg" type="text"  class="form-control" [(ngModel)]="survey.company" /></p>
+
+        <p style="text-align:center"><label for="jmbg">Profesija</label></p>
+        <p style="text-align:center"> <input id="jmbg"  name="jmbg" type="text"  class="form-control" [(ngModel)]="survey.profession" /></p>
+
+        <p style="text-align:center"><label for="jmbg">Broj donacija</label></p>
+        <p style="text-align:center"> <input id="jmbg"  name="jmbg" type="text"  class="form-control" [(ngModel)]="survey.numberOfBoodDonations" /></p>
       </div>
     </div>
   </div>
@@ -31,7 +54,7 @@
 
 </div>
 
-<p style="text-align:center"><font size="4"   style="color:black;">ПОПУЊАВА ДАВАЛАЦ</font></p>
+<p style="text-align:center"><font size="4"   style="color:black;">POPUNJAVA DAVALAC</font></p>
   <div class="row">
     <div class="col-sm">
         <p> Da li ste do sada dobrovoljno davali krv ili komponente krvi?</p>
@@ -61,7 +84,7 @@
         <p>Da li ste nešto jeli pre dolaska na davanje krvi ili komponente krvi?</p>
     </div>
     <div class="col-sm">
-        <mat-radio-group aria-label="Select an option" style="margin-right: 450px;" [(ngModel)]="survey.p4">
+        <mat-radio-group aria-label="Select an option" style="margin-right: 450px;" [(ngModel)]="survey.p3">
             <mat-radio-button value="DA">DA</mat-radio-button>
             <mat-radio-button value="NE">NE</mat-radio-button>
           </mat-radio-group>
@@ -73,12 +96,9 @@
         <p> Da li se trenutno osećate zdravim, sposobnim i odmornim da date krv ili komponente krvi?</p>
     </div>
     <div class="col-sm">
-        <mat-radio-group aria-label="Select an option" style="margin-right: 450px;" [(ngModel)]="survey.p3">
-            <mat-radio-button value="DA">DA</mat-radio-button>
-           
-            <div class="col-sm">
-              <mat-radio-button value="NE">NE</mat-radio-button>
-            </div>
+        <mat-radio-group aria-label="Select an option" style="margin-right: 450px;" [(ngModel)]="survey.p4">
+          <mat-radio-button value="DA">DA</mat-radio-button>
+          <mat-radio-button value="NE">NE</mat-radio-button>
           </mat-radio-group>
     </div>
     
