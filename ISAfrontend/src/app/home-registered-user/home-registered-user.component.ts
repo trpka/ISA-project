@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { BloodCenter } from '../model/bloodCenter';
+import { RegisteredUser } from '../model/registeredUser';
 import { BloodCenterService } from '../service/blood-center.service';
+import { RegisteredUserEditService } from '../service/registered-user-edit.service';
 
 @Component({
   selector: 'app-home-registered-user',
@@ -10,7 +12,9 @@ import { BloodCenterService } from '../service/blood-center.service';
 export class HomeRegisteredUserComponent implements OnInit {
 
   bloodCenters : BloodCenter[];
-  constructor(private bloodCenterService:BloodCenterService) {
+  registeredUser : RegisteredUser;
+  userId:number;
+  constructor(private bloodCenterService:BloodCenterService,  private registeredUserEditService:RegisteredUserEditService) {
     /*this.bloodCenter = new BloodCenter({
       user : new User({
       id: 0,
@@ -28,10 +32,31 @@ export class HomeRegisteredUserComponent implements OnInit {
       privateProfile: true,
       followers : []
     }),*/
+    this.registeredUser = new RegisteredUser({
+      id:0,
+      username: "",
+      password: "",
+      firstName: "",
+      lastName: "",
+      email: "",
+      mobile:"",
+      adress: "",
+      city: "",
+      state: "",
+      jmbg: "",
+      sex: "",
+      profession: "",
+      organizationInformation: "",
+      enabled: true,
+      points: 0,
+      category: "",
+      benefits:""
+    })
    }
 
   ngOnInit(): void {
     this.findAll();
+    this.findRegisteredUser();
     //this.sortByName();
   }
 
@@ -53,5 +78,11 @@ export class HomeRegisteredUserComponent implements OnInit {
   sortByAverageGrade(){
     this.bloodCenterService.getAllBloodCentersSortedByAverageGrade()
     .subscribe(res=>this.bloodCenters=res)
+  }
+
+  findRegisteredUser() {
+    this.userId = Number(sessionStorage.getItem('id'));
+    this.registeredUserEditService.getRegisteredUserById(this.userId)
+    .subscribe(res=>this.registeredUser=res);
   }
 }
