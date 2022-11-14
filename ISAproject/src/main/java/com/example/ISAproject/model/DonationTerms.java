@@ -15,36 +15,36 @@ public class DonationTerms {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long Id;
-	
+
 	@Column
 	private LocalDateTime date;
 	@Column
 	private int duration;
 	@Column(name = "isFree", nullable = false)
 	private boolean isFree;
-	
-	@Column(name = "reservationStart", nullable = false)
-    private LocalDateTime reservationStart;
 
-    @Column(name = "reservationEnd", nullable = false)
-    private LocalDateTime reservationEnd;
-	
+	@Column(name = "reservationStart", nullable = false)
+	private LocalDateTime reservationStart;
+
+	@Column(name = "reservationEnd", nullable = false)
+	private LocalDateTime reservationEnd;
+
 	@ManyToOne
-    private RegisteredUser registeredUser;
-	
+	private RegisteredUser registeredUser;
+
 
 	@ManyToOne
 	@JoinColumn(name = "profile_center_id")
 	private BloodCenter bloodCenter;
-	
+
 	public DonationTerms()
 	{
-		
+
 	}
-	
-	
+
+
 	public DonationTerms(Long id, LocalDateTime reservationStart, LocalDateTime reservationEnd, int duration,
-			boolean isFree, RegisteredUser registeredUser, BloodCenter bloodCenter)
+						 boolean isFree, RegisteredUser registeredUser, BloodCenter bloodCenter)
 	{
 		super();
 		this.Id = id;
@@ -65,8 +65,8 @@ public class DonationTerms {
 		this.registeredUser = registeredUser;
 		this.bloodCenter = bloodCenter;
 	}
-	
-	
+
+
 	public LocalDateTime getDate() {
 		return date;
 	}
@@ -115,7 +115,7 @@ public class DonationTerms {
 	public void setId(Long id) {
 		this.Id = id;
 	}
-	
+
 
 	public int getDuration() {
 		return duration;
@@ -123,6 +123,6 @@ public class DonationTerms {
 	public void setDuration(int duration) {
 		this.duration = duration;
 	}
-	
-	
+
+
 }
