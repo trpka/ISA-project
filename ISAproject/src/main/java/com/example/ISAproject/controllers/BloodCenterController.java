@@ -148,8 +148,7 @@ public class BloodCenterController
         return new ResponseEntity<>(bloodCenters,HttpStatus.OK);
     }
 
-    @RequestMapping(value="api/centers/" +
-            "", method = RequestMethod.GET,
+    @RequestMapping(value="api/centers/sort-by-average-grade", method = RequestMethod.GET,
             produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public ResponseEntity<List<BloodCenter>> sortByGrade(){
         List<BloodCenter> bloodCenters=this.bloodCenterService.sortByGrade();
