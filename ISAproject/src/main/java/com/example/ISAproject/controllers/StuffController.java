@@ -1,7 +1,7 @@
 package com.example.ISAproject.controllers;
 
 
-import com.example.ISAproject.model.RegisteredUser;
+import com.example.ISAproject.model.BloodCenter;
 import com.example.ISAproject.model.Stuff;
 import com.example.ISAproject.service.StuffService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,20 +29,26 @@ public class StuffController
         return new ResponseEntity<>(stuffs,HttpStatus.OK);
     }
 
-    @RequestMapping(value="api/stuffs/{id}",method = RequestMethod.GET,produces=
-            MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value="api/stuff/{id}",method = RequestMethod.GET,produces= {
+            MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public ResponseEntity<Stuff> getById(@PathVariable Long id)
     {
 
-        Optional<Stuff> stuff= stuffService.findById(id);
+        Stuff stuff =this.stuffService.findById(id);
 
-        if(!stuff.isPresent()) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-
-        Stuff s=new Stuff();
-        return new ResponseEntity<>(s,HttpStatus.OK);
+        return new ResponseEntity<>(stuff,HttpStatus.OK);
     }
+
+
+
+    //Izmena podataka o administratoru centra
+    @PutMapping("api/stuff/edit")
+    public ResponseEntity<Stuff> UpdateStuff(@RequestBody Stuff st)
+    {
+        Stuff stuff = this.stuffService.UpdateStuff(st);
+        return  new ResponseEntity<>(stuff, HttpStatus.OK);
+    }
+
 
 
 

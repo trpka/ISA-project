@@ -9,6 +9,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.PessimisticLockException;
+import java.time.DateTimeException;
 import java.util.List;
 
 @RestController
@@ -47,5 +49,26 @@ public class DonationTermsController
 
         return new ResponseEntity<>(donationTerms,HttpStatus.OK);
     }
+
+    //Kreiranje slobodnih termina od strane administratora centra
+    @RequestMapping(value="api/terms/create_reservation",method = RequestMethod.PUT,produces = {
+            MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+    //@PreAuthorize("hasRole('STUFF')")
+    public ResponseEntity<DonationTerms>  createFreeTermForCenter(@RequestBody DonationTerms dt)
+    {
+        DonationTerms donationTerms = new DonationTerms();
+        try {
+            donationTerms = this.donationTermsService.createFreeTermForCenter(dt);
+        } catch (PessimisticLockException e)
+        {
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        } catch (DateTimeException e)
+        {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return new ResponseEntity<>(donationTerms,HttpStatus.OK);
+    }
+
+
 
 }

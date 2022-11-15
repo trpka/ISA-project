@@ -1,5 +1,3 @@
-import { Timestamp } from "rxjs";
-
 interface UserInterface{
     id:number;
     username: string ;
@@ -8,6 +6,13 @@ interface UserInterface{
     firstName: string;
     lastName: string;
     mobile:string;
+    adress:string;
+    city:string;
+    state:string;
+    jmbg:string;
+    sex:string;
+    profession:string;
+    organizationInformation:string;
     enabled:boolean;
     //lastPasswordResetDate:string;
     role:string;
@@ -22,6 +27,13 @@ export class User implements UserInterface{
     username: string ;
     password: string ;
     mobile:string;
+    adress:string;
+    city:string;
+    state:string;
+    jmbg:string;
+    sex:string;
+    profession:string;
+    organizationInformation:string;
     enabled:boolean;
     //lastPasswordResetDate:string;
     role:string;
@@ -34,6 +46,13 @@ export class User implements UserInterface{
         this.username=obj.username;
         this.password=obj.password;
         this.mobile = obj.mobile;
+        this.adress=obj.adress;
+        this.city=obj.city;
+        this.state=obj.state;
+        this.jmbg=obj.jmbg;
+        this.sex = obj.sex;
+        this.profession=obj.profession;
+        this.organizationInformation = obj.organizationInformation;
         this.enabled = obj.enabled;
         //this.lastPasswordResetDate = obj.lastPasswordResetDate;
         this.role = obj.role;

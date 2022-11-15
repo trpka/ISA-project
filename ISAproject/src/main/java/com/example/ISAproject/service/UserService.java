@@ -22,8 +22,15 @@ public class UserService {
 	@Autowired
 	private UserRepository userRepository;
 
+
+	@Autowired
+	private AuthorityService authorityService;
+	
 	@Autowired
 	private PasswordEncoder passwordEncoder;
+	
+	@Autowired
+	private RegisteredUserService registeredUserService;
 	
 	
 	public User findByUsername(String username) throws UsernameNotFoundException {
@@ -59,8 +66,16 @@ public class UserService {
 		
 		u.setFirstName(userRequest.getFirstName());
 		u.setLastName(userRequest.getLastName());
-		
-		u.setEnabled(false);
+		u.setAdress(userRequest.getAdress());
+		u.setCity(userRequest.getCity());
+		u.setState(userRequest.getState());
+		u.setJmbg(userRequest.getJmbg());
+		u.setSex(userRequest.getSex());
+		u.setProfession(userRequest.getProfession());
+		u.setOrganizationInformation(userRequest.getOrganizationInformation());
+
+		//postavljeno na true
+		u.setEnabled(true);
 		u.setEmail(userRequest.getEmail());
 		
 		u.setMobile(userRequest.getMobile());
@@ -69,6 +84,16 @@ public class UserService {
 		// u primeru se registruju samo obicni korisnici i u skladu sa tim im se i dodeljuje samo rola USER
 		List<Authority> authorities=new ArrayList<>();
 		//User newUser=new User();
+		
+		RegisteredUser newRegisteredUser=new RegisteredUser();
+		if(u.getRole().equalsIgnoreCase("RegisteredUser")) {
+			authorities = authorityService.findByName("ROLE_REGISTERED_USER");
+			u.setAuthorities(authorities);
+			RegisteredUser registeredUser=new RegisteredUser(u.getUsername(),u.getPassword(),u.getEmail(),u.getFirstName(),u.getLastName(),u.getMobile(),u.getAdress(),u.getCity(),u.getState(),u.getJmbg(),u.getSex(),u.getProfession(),u.getOrganizationInformation(),u.isEnabled(),u.getRole(),authorities);
+			newRegisteredUser=this.registeredUserService.save(registeredUser);
+			u.setId(newRegisteredUser.getId());
+		}
+
 		
 		System.out.println("id iz userService"+ u.getId());
 		return u;

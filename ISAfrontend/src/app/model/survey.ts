@@ -14,6 +14,10 @@ interface SurveyInterface{
     company:string;
     profession: string;
     numberOfBoodDonations: string;
+    p1:string;
+    p2:string;
+    p3:string;
+    p4:string;
     //answers : [];
 }
 
@@ -33,6 +37,10 @@ export class Survey implements SurveyInterface{
     company:string;
     profession: string;
     numberOfBoodDonations: string;
+    p1:string;
+    p2:string;
+    p3:string;
+    p4:string;
     //answers : [];
 
     constructor(obj:SurveyInterface){
@@ -51,6 +59,10 @@ export class Survey implements SurveyInterface{
         this.company = obj.company;
         this.profession = obj.profession;
         this.numberOfBoodDonations=obj.numberOfBoodDonations;
+        this.p1=obj.p1;
+        this.p2=obj.p2;
+        this.p3=obj.p3;
+        this.p4=obj.p4;
         //this.answers = obj.answers;
     } 
 }
