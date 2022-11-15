@@ -12,6 +12,7 @@ values (8,'RegisteredUser','nikolic@gmail.com', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97
 insert into user (id,role, username, password, first_name, last_name, email, mobile,adress,city,state,jmbg,sex,enabled,last_password_reset_date)
 values (14,'RegisteredUser','arada@gmail.com', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra', 'Andjela', 'Radulovic', 'arada@gmail.com', '306-980-413','Bulevar Evrope 2','Vrsac','Serbia','0987895456221','Female',true,'1983-07-12 21:30:55.888');
 
+
 --Dodajem 4 Usera koji ce predstvaljati administratore centra i osoblje
 insert into user (id,role, username, password, first_name, last_name, email,  mobile,enabled,last_password_reset_date)
 values (5,'Stuff','aleksa@gmail.com', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra', 'Aleksa', 'Aleksic', 'aleksa@gmail.com', '306-555-333',true,'1983-07-12 21:30:55.888');
@@ -43,6 +44,11 @@ insert into blood_center (id, center_name, address, city,  average_grade_centre,
 insert into blood_center (id, center_name, address, city,  average_grade_centre, description, blooda,bloodb,bloodab,bloodo) values (4, 'Mother&Child Institut', 'Kramerova 122', 'Novi Sad', 10, 'unavailable',76,2,14,433);
 insert into blood_center (id, center_name, address, city,  average_grade_centre, description,blooda,bloodb,bloodab,bloodo) values (5, 'Leona', '5th Avenue', 'New York', 9, 'Cacatua tenuirostris',22,52,18,4);
 insert into blood_center (id, center_name, address, city,  average_grade_centre, description,blooda,bloodb,bloodab,bloodo) values (6, 'Novak', '23 Street', 'Monaco', 10, 'Alouatta seniculus',176,25,4,3);
+
+insert into blood_center (id, center_name, address, city,  average_grade_centre, description,blooda,bloodb,bloodab,bloodo) values (7, 'Wake and Wonder', '6th Street', 'Chicago', 7, 'Alouatta seniculus',543,65,111,341);
+insert into blood_center (id, center_name, address, city,  average_grade_centre, description, blooda,bloodb,bloodab,bloodo) values (8, 'Rey Az Mir Health', '104 Elm St', 'Boston', 10, 'unavailable',7611,209,1451,98);
+insert into blood_center (id, center_name, address, city,  average_grade_centre, description,blooda,bloodb,bloodab,bloodo) values (9, '24hr Homecare', 'De Wittenkade', 'Amsterdam', 9, 'Cacatua tenuirostris',225,452,189,433);
+insert into blood_center (id, center_name, address, city,  average_grade_centre, description,blooda,bloodb,bloodab,bloodo) values (10, 'Mend Life Medical', '49276 Bernard Wall', 'Sofia', 10, 'Alouatta seniculus',753,235,444,323);
 
 
 insert into registered_user (id, points, category, benefits) values (1, 7,'Redovan', 'Redovan');
