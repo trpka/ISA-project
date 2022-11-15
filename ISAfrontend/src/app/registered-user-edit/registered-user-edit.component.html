@@ -18,13 +18,13 @@
             <form>
                       <div class="form-outline mb-4">
                         <label class="form-label" for="username">First Name</label>
-                        <input id="firstName"  name="firstName" type="text"  class="form-control" [placeholder]="placeholder"  [(ngModel)]="registeredUser.firstName" />                   
+                        <input id="firstName"  name="firstName" type="text"  class="form-control" required [placeholder]="placeholder"  [(ngModel)]="registeredUser.firstName" />                   
                       </div>
           
                       
                       <div class="form-outline mb-4">
                         <label class="form-label" for="password">Last name</label>
-                        <input id="lastName" name="lastName" type="text"  class="form-control" [placeholder]="placeholder"  [(ngModel)]="registeredUser.lastName" />
+                        <input id="lastName" name="lastName" type="text"  class="form-control" required [placeholder]="placeholder"  [(ngModel)]="registeredUser.lastName" />
                         
                       </div>
                   
@@ -32,7 +32,7 @@
                   
                   <div class="form-outline mb-4">
                     <label class="form-label" for="username">Username</label>
-                    <input id="username"  name="username" type="text"  class="form-control" [placeholder]="placeholder"  [(ngModel)]="registeredUser.username" />
+                    <input id="username"  name="username" type="text"  class="form-control" required [placeholder]="placeholder"  [(ngModel)]="registeredUser.username" />
                     
                   </div>
       
@@ -46,7 +46,7 @@
     
                   <div class="form-outline mb-4">
                     <label class="form-label" for="email">Email</label>
-                    <input id="email" name="email" type="text"  class="form-control" [placeholder]="placeholder"  [(ngModel)]="registeredUser.email" />
+                    <input id="email" name="email" type="text"  class="form-control" [placeholder]="placeholder" required  [(ngModel)]="registeredUser.email" />
                   
                   </div>
     
@@ -58,25 +58,25 @@
     
                   <div class="form-outline mb-4">
                     <label class="form-label" for="adress">Address</label>
-                    <input id="adress" name="adress" type="text"  class="form-control" [placeholder]="placeholder"  [(ngModel)]="registeredUser.adress" />
+                    <input id="adress" name="adress" type="text"  class="form-control" [placeholder]="placeholder" required [(ngModel)]="registeredUser.adress" />
                    
                   </div>
     
                   <div class="form-outline mb-4">
                     <label class="form-label" for="city">City</label>
-                    <input id="city" name="city" type="text"  class="form-control" [placeholder]="placeholder"  [(ngModel)]="registeredUser.city" />
+                    <input id="city" name="city" type="text"  class="form-control" [placeholder]="placeholder" required [(ngModel)]="registeredUser.city" />
                    
                   </div>
     
                   <div class="form-outline mb-4">
                     <label class="form-label" for="state">State</label>
-                    <input id="state" name="state" type="text"  class="form-control" [placeholder]="placeholder"  [(ngModel)]="registeredUser.state" />
+                    <input id="state" name="state" type="text"  class="form-control" [placeholder]="placeholder" required [(ngModel)]="registeredUser.state" />
                    
                   </div>
     
                   <div class="form-outline mb-4">
                     <label class="form-label" for="jmbg">Jmbg</label>
-                    <input id="jmbg" name="jmbg" type="text"  class="form-control" [placeholder]="placeholder" ng-model="myInput"  [(ngModel)]="registeredUser.jmbg" />   
+                    <input id="jmbg" name="jmbg" type="text"  class="form-control" [placeholder]="placeholder" required maxlength="13" ng-model="myInput"  [(ngModel)]="registeredUser.jmbg" />   
                   
                   </div>
     
