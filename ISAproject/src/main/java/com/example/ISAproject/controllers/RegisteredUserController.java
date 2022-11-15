@@ -73,9 +73,19 @@ public class RegisteredUserController {
 		List<RegisteredUser> registeredUsers=this.registeredUserService.findByFirstName(name);
 		return new ResponseEntity<>(registeredUsers,HttpStatus.OK);
 	}
-		
-	
-		  @PutMapping("api/regUsers/edit") public ResponseEntity<RegisteredUser>
+
+	@RequestMapping(value="api/registeredUsers", method = RequestMethod.GET,
+			params = "lastName",
+			produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+	public ResponseEntity<List<RegisteredUser>> findByLastName(@RequestParam String lastName){
+		List<RegisteredUser> registeredUsers=this.registeredUserService.findByLastName(lastName);
+		return new ResponseEntity<>(registeredUsers,HttpStatus.OK);
+	}
+
+
+
+
+	@PutMapping("api/regUsers/edit") public ResponseEntity<RegisteredUser>
 		  UpdateRegUser(@RequestBody RegisteredUser reg) { RegisteredUser regUser =
 		  this.registeredUserService.UpdateRegUser(reg); return new
 		  ResponseEntity<>(regUser, HttpStatus.OK); }
