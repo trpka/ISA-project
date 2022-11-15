@@ -29,6 +29,7 @@ public class RegisteredUserService {
 
      public List<RegisteredUser> findAll() { return this.registeredUserRepository.findAll();}
 
-     
+	 public List<RegisteredUser> findByFirstName(String name) {return this.registeredUserRepository.findByFirstName(name);}
 
+	 public List<RegisteredUser> findByFirstnameAndLastName(String firstName, String lastName) {return this.registeredUserRepository.findByFirstnameAndLastName(firstName, lastName);}
 }
