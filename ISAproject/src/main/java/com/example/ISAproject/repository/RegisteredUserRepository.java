@@ -13,6 +13,7 @@ import java.util.List;
 public interface RegisteredUserRepository extends JpaRepository<RegisteredUser, Long>
 {
     List<RegisteredUser> findByFirstName(String name);
+    List<RegisteredUser> findByLastName(String lastName);
 }
 
 
