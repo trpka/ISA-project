@@ -17,6 +17,9 @@ export class StuffEditComponent implements OnInit
   stuff: Stuff;
   bloodCenter: BloodCenter;
 
+  placeholder = 'please enter info...';
+
+
 
   constructor(private route: ActivatedRoute, private stuffService: StuffService) { }
 

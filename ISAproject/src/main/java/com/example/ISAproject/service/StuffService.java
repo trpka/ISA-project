@@ -61,9 +61,12 @@ public class StuffService
         stuff.setUsername(s.getUsername());
         stuff.setPassword(s.getPassword());
         stuff.setEmail(s.getEmail());
+        stuff.setState(s.getState());
         stuff.setCity(s.getCity());
         stuff.setAdress(s.getAdress());
         stuff.setMobile(s.getMobile());
+        stuff.setProfession(s.getProfession());
+        stuff.setOrganizationInformation(s.getOrganizationInformation());
 
         return this.stuffRepository.save(stuff);
 
