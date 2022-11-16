@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { RegisteredUser } from '../model/registeredUser';
 import { Survey } from '../model/survey';
 import { RegisteredUserEditService } from '../service/registered-user-edit.service';
@@ -10,31 +11,16 @@ import { SurveyService } from '../service/survey.service';
   styleUrls: ['./questionnaire.component.css']
 })
 export class QuestionnaireComponent implements OnInit {
-  id:number;
-  numberOfDonator: string;
-  date: string;
-  firstName: string;
-  lastName: string;
-  jmbg: string;
-  dateOfBirth:string;
-  sex:string;
-  adress:string;
-  township: string ;
-  city:string;
-  mobile:string;
-  company:string;
-  profession: string;
-  numberOfBoodDonations: string;
-  p1:string;
-  p2:string;
-  p3:string;
-  p4:string;
+  
   registeredUser:RegisteredUser;
   userId:number;
+  survey:Survey;
+  mustfill = false;
+  checkGender1 = false;
   //answers: [];
 
-  survey:Survey;
-  constructor(private surveyService:SurveyService, private registeredUserEditService:RegisteredUserEditService) { 
+  
+  constructor(private surveyService:SurveyService, private registeredUserEditService:RegisteredUserEditService, private router: Router) { 
     this.registeredUser = new RegisteredUser({
       id:0,
       username: "",
@@ -76,33 +62,81 @@ export class QuestionnaireComponent implements OnInit {
         p1:"",
         p2:"",
         p3:"",
-        p4:""
+        p4:"",
+        p5:"",
+        p6:"",
+        p7:"",
+        p8:""
       })
 
   }
 
   ngOnInit(): void {
     this.findRegisteredUser()
+    //this.checkGender()
   }
 
   save(){ 
-    this.survey.firstName = this.registeredUser.firstName;
-    this.survey.lastName = this.registeredUser.lastName;
-    this.survey.jmbg = this.registeredUser.jmbg;
-    this.survey.sex = this.registeredUser.sex;
-    this.survey.adress = this.registeredUser.adress;
-    this.survey.city = this.registeredUser.city;
-    this.survey.mobile = this.registeredUser.mobile;
-    this.survey.company = this.registeredUser.organizationInformation;
-    this.survey.profession = this.registeredUser.profession;
-    this.survey.numberOfBoodDonations = String(this.registeredUser.points);
-    this.surveyService.save(this.survey)
-    .subscribe()
+    if(this.survey.p1==''){
+      this.mustfill=true;
+    }
+    else if (this.survey.p2=='') {
+      this.mustfill=true;
+    }
+    else if (this.survey.p3=='') {
+      this.mustfill=true;
+    }
+    else if (this.survey.p4=='') {
+      this.mustfill=true;
+    }
+    else if (this.survey.p5=='') {
+      this.mustfill=true;
+    }
+    else if (this.survey.p6=='') {
+      this.mustfill=true;
+    }
+    else if (this.survey.p7=='') {
+      this.mustfill=true;
+    }
+    else if (this.survey.p8=='' && this.registeredUser.sex == "Female") {
+      this.mustfill=true;
+    }
+    else{
+      this.survey.firstName = this.registeredUser.firstName;
+      this.survey.lastName = this.registeredUser.lastName;
+      this.survey.jmbg = this.registeredUser.jmbg;
+      this.survey.sex = this.registeredUser.sex;
+      this.survey.adress = this.registeredUser.adress;
+      this.survey.city = this.registeredUser.city;
+      this.survey.mobile = this.registeredUser.mobile;
+      this.survey.company = this.registeredUser.organizationInformation;
+      this.survey.profession = this.registeredUser.profession;
+      this.survey.numberOfBoodDonations = String(this.registeredUser.points);
+      this.surveyService.save(this.survey)
+      .subscribe()
+      this.router.navigate(['/home/registered-user']);
+    }
   }
+
+  /*checkGender():boolean{
+    if(this.registeredUser.sex = "Female")
+      {
+        this.checkGender1 = true;
+      }
+      return this.checkGender1;
+    
+    
+  }*/
 
   findRegisteredUser() {
     this.userId = Number(sessionStorage.getItem('id'));
     this.registeredUserEditService.getRegisteredUserById(this.userId)
-    .subscribe(res=>this.registeredUser=res);
+    .subscribe(res=>{this.registeredUser=res;
+        if(this.registeredUser.sex == "Female")
+        {
+          this.checkGender1 = true;
+        }
+    })
   }
+
 }
