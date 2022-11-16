@@ -18,6 +18,10 @@ interface SurveyInterface{
     p2:string;
     p3:string;
     p4:string;
+    p5:string;
+    p6:string;
+    p7:string;
+    p8:string;
     //answers : [];
 }
 
@@ -41,6 +45,10 @@ export class Survey implements SurveyInterface{
     p2:string;
     p3:string;
     p4:string;
+    p5:string;
+    p6:string;
+    p7:string;
+    p8:string;
     //answers : [];
 
     constructor(obj:SurveyInterface){
@@ -63,6 +71,10 @@ export class Survey implements SurveyInterface{
         this.p2=obj.p2;
         this.p3=obj.p3;
         this.p4=obj.p4;
+        this.p5=obj.p5;
+        this.p6=obj.p6;
+        this.p7=obj.p7;
+        this.p8=obj.p8;
         //this.answers = obj.answers;
     } 
 }

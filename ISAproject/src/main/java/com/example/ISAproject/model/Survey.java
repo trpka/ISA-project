@@ -43,6 +43,14 @@ public class Survey {
     private String p3;
     @Column
     private String p4;
+    @Column
+    private String p5;
+    @Column
+    private String p6;
+    @Column
+    private String p7;
+    @Column
+    private String p8;
 
 
     public Long getId() {
@@ -197,7 +205,41 @@ public class Survey {
         this.p4 = p4;
     }
 
-    public Survey(Long id, String numberOfDonator, String date, String firstName, String lastName, String jmbg, String dateOfBirth, String sex, String adress, String township, String city, String mobile, String company, String profession, String numberOfBoodDonations, String p1, String p2, String p3, String p4) {
+    public String getP5() {
+        return p5;
+    }
+
+    public void setP5(String p5) {
+        this.p5 = p5;
+    }
+
+    public String getP6() {
+        return p6;
+    }
+
+    public void setP6(String p6) {
+        this.p6 = p6;
+    }
+
+    public String getP7() {
+        return p7;
+    }
+
+    public void setP7(String p7) {
+        this.p7 = p7;
+    }
+
+    public String getP8() {
+        return p8;
+    }
+
+    public void setP8(String p8) {
+        this.p8 = p8;
+    }
+
+
+
+    public Survey(Long id, String numberOfDonator, String date, String firstName, String lastName, String jmbg, String dateOfBirth, String sex, String adress, String township, String city, String mobile, String company, String profession, String numberOfBoodDonations, String p1, String p2, String p3, String p4,String p5, String p6, String p7, String p8) {
         this.id = id;
         this.numberOfDonator = numberOfDonator;
         this.date = date;
@@ -217,6 +259,10 @@ public class Survey {
         this.p2 = p2;
         this.p3 = p3;
         this.p4 = p4;
+        this.p5 = p5;
+        this.p6 = p6;
+        this.p7 = p7;
+        this.p8 = p8;
     }
 
     public Survey() {}
