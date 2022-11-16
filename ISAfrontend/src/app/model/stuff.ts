@@ -14,6 +14,7 @@ interface StuffInterface{
     profession: string;
     organizationInformation: string;
     enabled:boolean;
+    role: string;
     //fali
     bloodCenter: BloodCenter;
     firstLogin: boolean;
@@ -33,6 +34,7 @@ export class Stuff implements StuffInterface{
     profession: string;
     organizationInformation: string;
     enabled:boolean;
+    role: string;
     bloodCenter: BloodCenter;
     firstLogin: boolean;
 
@@ -50,6 +52,7 @@ export class Stuff implements StuffInterface{
         this.profession = obj.profession;
         this.organizationInformation = obj.organizationInformation;
         this.enabled = obj.enabled;
+        this.role = obj.role;
         this.bloodCenter = obj.bloodCenter;
         this.firstLogin = obj.firstLogin;
   
