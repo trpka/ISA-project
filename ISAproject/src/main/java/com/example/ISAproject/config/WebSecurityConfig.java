@@ -131,6 +131,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 									.antMatchers("/api/regUsers").permitAll()
 									.antMatchers("/api/regUsers/{id}").permitAll()
 									.antMatchers("/api/registeredUsersLastName").permitAll()
+									.antMatchers("/api/center").permitAll()
 
 									
 
@@ -138,7 +139,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 									
 									
 
-									.antMatchers("/api/registeredUsers").permitAll()
+									.antMatchers("/api/registeredUsersFirstName").permitAll()
 									.antMatchers("/api/regUser/{id}").permitAll()
 									.antMatchers("/api/updateRegUser").permitAll()
 									.antMatchers("/auth/signup").permitAll()

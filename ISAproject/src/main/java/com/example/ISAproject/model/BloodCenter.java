@@ -208,4 +208,21 @@ public class BloodCenter {
 		this.freeAppointments = freeAppointments;
 		this.listOfStuffs = listOfStuffs;
 	}
+
+	public BloodCenter(Long id, String centerName, String address, String description, Long averageGradeCentre,
+					   double bloodA, double bloodB, double bloodAB, double bloodO,
+					   List<Stuff> listOfStuffs)
+	{
+		this.id = id;
+		this.centerName = centerName;
+		this.address = address;
+		this.description = description;
+		this.averageGradeCentre = averageGradeCentre;
+		this.bloodA = bloodA;
+		this.bloodB = bloodB;
+		this.bloodAB = bloodAB;
+		this.bloodO = bloodO;
+		//this.freeAppointments = freeAppointments;
+		this.listOfStuffs = listOfStuffs;
+	}
 }

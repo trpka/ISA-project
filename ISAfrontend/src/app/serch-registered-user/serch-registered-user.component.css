@@ -1,0 +1,22 @@
+.forma{
+    margin-top: 10px;
+    margin-left: 10px;
+}
+.form-search{
+  float: center;
+    margin: 30px;
+}
+
+  ::placeholder {
+    color: lightslategrey;
+    font-style: italic;
+  }
+
+  
+
+  .container {
+    margin: auto;
+    width: 90%;
+    border: 3px solid lightslategray;
+    padding: 70px;
+  }

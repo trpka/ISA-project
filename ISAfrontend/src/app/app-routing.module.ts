@@ -10,6 +10,9 @@ import { SearchCenterComponent } from './search-center/search-center.component';
 import { DonationTermsComponent } from './donation-terms/donation-terms.component';
 import { RegisteredUserEditComponent } from './registered-user-edit/registered-user-edit.component';
 import { StuffEditComponent } from './stuff-edit/stuff-edit.component';
+import { RegistrationStuffComponent } from './registration-stuff/registration-stuff.component';
+import { SerchRegisteredUserComponent } from './serch-registered-user/serch-registered-user.component';
+import { RegistrationBloodCenterComponent } from './registration-blood-center/registration-blood-center.component';
 
 
 
@@ -25,7 +28,11 @@ const routes: Routes = [
   {path: 'donation_terms/:id', component: DonationTermsComponent},
   {path: 'donation_terms', component: DonationTermsComponent},
   {path: 'regUser_edit/:id', component: RegisteredUserEditComponent},
-  {path: 'stuff_edit/:id', component: StuffEditComponent}
+  {path: 'stuff_edit/:id', component: StuffEditComponent},
+  {path: 'registration-stuff', component: RegistrationStuffComponent},
+  {path: 'registered-users-search', component:  SerchRegisteredUserComponent},
+  {path: 'registration-blood-center', component:  RegistrationBloodCenterComponent}
+ 
   
 
 
