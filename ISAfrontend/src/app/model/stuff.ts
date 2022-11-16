@@ -8,6 +8,11 @@ interface StuffInterface{
     firstName: string;
     lastName: string;
     mobile:string;
+    state: string;
+    city: string;
+    adress: string;
+    profession: string;
+    organizationInformation: string;
     enabled:boolean;
     //fali
     bloodCenter: BloodCenter;
@@ -22,6 +27,11 @@ export class Stuff implements StuffInterface{
     username: string ;
     password: string ;
     mobile:string;
+    state: string;
+    city: string;
+    adress: string;
+    profession: string;
+    organizationInformation: string;
     enabled:boolean;
     bloodCenter: BloodCenter;
     firstLogin: boolean;
@@ -34,6 +44,11 @@ export class Stuff implements StuffInterface{
         this.username=obj.username;
         this.password=obj.password;
         this.mobile = obj.mobile;
+        this.state = obj.state;
+        this.city = obj.city;
+        this.adress = obj.adress;
+        this.profession = obj.profession;
+        this.organizationInformation = obj.organizationInformation;
         this.enabled = obj.enabled;
         this.bloodCenter = obj.bloodCenter;
         this.firstLogin = obj.firstLogin;

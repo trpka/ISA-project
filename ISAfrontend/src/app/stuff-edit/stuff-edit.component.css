@@ -1,28 +1,41 @@
-.StuffProfile {
-    margin: auto;
-    width: 50%;
-    border: 3px solid green;
-    padding: 30px;
+.RegisteredUserProfile {
+  margin: auto;
+  width: 30%;
+  border: 3px solid royalblue;
+  padding: 60px;
+}
+
+label {
+  float: left;
+  width: 9em;
+  margin-right: 1em;
+  text-align: right;
+  color:midnightblue;
+  font-weight:lighter;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   }
 
-  label {
-    float: left;
-    width: 9em;
-    margin-right: 1em;
-    text-align: right;
-    }
-
 .container {
-      margin: auto;
-      width: 50%;
-      border: 3px solid green;
-      padding: 30px;
-    }
-  
-    button {
-      font-size: 1em;
-      margin: 5px;
-      position: right;
-    }
+    margin: auto;
+    width: 50%;
+    border: 3px solid royalblue;
+    padding: 0px;
+  }
 
-   
+  button {
+    font-size: 1.5em;
+    margin: 5px;
+    position: right;
+  }
+
+  .main-image{
+    margin: auto;
+    width: 50%;
+    padding: 50px;
+  }
+
+  ::placeholder {
+    color: lightslategrey;
+    font-style: italic;
+  }
+
