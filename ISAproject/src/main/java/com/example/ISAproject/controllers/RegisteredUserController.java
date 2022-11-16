@@ -74,7 +74,7 @@ public class RegisteredUserController {
 		return new ResponseEntity<>(registeredUsers,HttpStatus.OK);
 	}
 
-	@RequestMapping(value="api/registeredUsers", method = RequestMethod.GET,
+	@RequestMapping(value="api/registeredUsersLastName", method = RequestMethod.GET,
 			params = "lastName",
 			produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
 	public ResponseEntity<List<RegisteredUser>> findByLastName(@RequestParam String lastName){
