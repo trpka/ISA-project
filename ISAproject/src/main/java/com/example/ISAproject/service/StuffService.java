@@ -1,6 +1,7 @@
 package com.example.ISAproject.service;
 
 import com.example.ISAproject.model.BloodCenter;
+import com.example.ISAproject.model.RegisteredUser;
 import com.example.ISAproject.model.Stuff;
 import com.example.ISAproject.repository.StuffRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,7 +74,9 @@ public class StuffService
 
     }
 
-
+    public Stuff save(Stuff newStuff) {
+        return this.stuffRepository.save(newStuff);
+    }
 
 
 

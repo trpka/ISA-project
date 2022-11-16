@@ -2,6 +2,7 @@ package com.example.ISAproject.controllers;
 
 import javax.servlet.http.HttpServletResponse;
 
+import com.example.ISAproject.dto.StuffDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -92,5 +93,19 @@ public class AuthenticationController {
 
 		return new ResponseEntity<>(user, HttpStatus.CREATED);
 	}*/
+
+	@PostMapping("/stuffSignup")
+	public ResponseEntity<User> addStuff(@RequestBody StuffDTO userRequest, UriComponentsBuilder ucBuilder) {
+
+		User existUser = this.userService.findByUsername(userRequest.getUsername());
+
+		if (existUser != null) {
+			throw new ResourceConflictException(userRequest.getId(), "Username already exists");
+		}
+
+		User user = this.userService.saveStuff(userRequest);
+
+		return new ResponseEntity<>(user, HttpStatus.CREATED);
+	}
 }
 
