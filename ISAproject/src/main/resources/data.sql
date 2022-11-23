@@ -38,17 +38,27 @@ insert into complaint (id,  title, content) values (3,  'Loaded', 'Our Paradise 
 insert into complaint (id,  title, content) values (4,'Robe, The', 'Men in Black II (a.k.a. MIIB) (a.k.a. MIB 2)');
 
 
-insert into blood_center (id, center_name, address, city,  average_grade_centre, description, blooda,bloodb,bloodab,bloodo) values (1, 'Mellie', '3041 Dottie Junction', 'Wan’an', 8, 'unavailable',1222,2,14,433);
---insert into blood_center (id, center_name, address, city,  average_grade_centre, description,blooda,bloodb,bloodab,bloodo) values (2, 'Nert', '2 Westridge Pass', 'Novi Sad', 4, 'Cacatua tenuirostris',1222,2,14,433);
---insert into blood_center (id, center_name, address, city,  average_grade_centre, description,blooda,bloodb,bloodab,bloodo) values (3, 'Leanna', '57 Havey Center', 'Pará de Minas', 7, 'Alouatta seniculus',1876,245,14,3);
---insert into blood_center (id, center_name, address, city,  average_grade_centre, description, blooda,bloodb,bloodab,bloodo) values (4, 'Mother&Child Institut', 'Kramerova 122', 'Novi Sad', 10, 'unavailable',76,2,14,433);
---insert into blood_center (id, center_name, address, city,  average_grade_centre, description,blooda,bloodb,bloodab,bloodo) values (5, 'Leona', '5th Avenue', 'New York', 9, 'Cacatua tenuirostris',22,52,18,4);
---insert into blood_center (id, center_name, address, city,  average_grade_centre, description,blooda,bloodb,bloodab,bloodo) values (6, 'Novak', '23 Street', 'Monaco', 10, 'Alouatta seniculus',176,25,4,3);
+insert into blood_center (id, center_name, address, city,  average_grade_centre, description, blooda,bloodb,bloodab,bloodo)
+values (1, 'Mellie', '3041 Dottie Junction', 'Wan’an', 8, 'unavailable',1222,2,14,433);
+insert into blood_center (id, center_name, address, city,  average_grade_centre, description,blooda,bloodb,bloodab,bloodo)
+values (2, 'Nert', '2 Westridge Pass', 'Novi Sad', 4, 'Cacatua tenuirostris',1222,2,14,433);
+insert into blood_center (id, center_name, address, city,  average_grade_centre, description,blooda,bloodb,bloodab,bloodo)
+values (3, 'Leanna', '57 Havey Center', 'Pará de Minas', 7, 'Alouatta seniculus',1876,245,14,3);
+insert into blood_center (id, center_name, address, city,  average_grade_centre, description, blooda,bloodb,bloodab,bloodo)
+values (4, 'Mother&Child Institut', 'Kramerova 122', 'Novi Sad', 10, 'unavailable',76,2,14,433);
+insert into blood_center (id, center_name, address, city,  average_grade_centre, description,blooda,bloodb,bloodab,bloodo)
+values (5, 'Leona', '5th Avenue', 'New York', 9, 'Cacatua tenuirostris',22,52,18,4);
+insert into blood_center (id, center_name, address, city,  average_grade_centre, description,blooda,bloodb,bloodab,bloodo)
+values (6, 'Novak', '23 Street', 'Monaco', 10, 'Alouatta seniculus',176,25,4,3);
 
---insert into blood_center (id, center_name, address, city,  average_grade_centre, description,blooda,bloodb,bloodab,bloodo) values (7, 'Wake and Wonder', '6th Street', 'Chicago', 7, 'Alouatta seniculus',543,65,111,341);
---insert into blood_center (id, center_name, address, city,  average_grade_centre, description, blooda,bloodb,bloodab,bloodo) values (8, 'Rey Az Mir Health', '104 Elm St', 'Boston', 10, 'unavailable',7611,209,1451,98);
---insert into blood_center (id, center_name, address, city,  average_grade_centre, description,blooda,bloodb,bloodab,bloodo) values (9, '24hr Homecare', 'De Wittenkade', 'Amsterdam', 9, 'Cacatua tenuirostris',225,452,189,433);
---insert into blood_center (id, center_name, address, city,  average_grade_centre, description,blooda,bloodb,bloodab,bloodo) values (10, 'Mend Life Medical', '49276 Bernard Wall', 'Sofia', 10, 'Alouatta seniculus',753,235,444,323);
+insert into blood_center (id, center_name, address, city,  average_grade_centre, description,blooda,bloodb,bloodab,bloodo)
+values (7, 'Wake and Wonder', '6th Street', 'Chicago', 7, 'Alouatta seniculus',543,65,111,341);
+insert into blood_center (id, center_name, address, city,  average_grade_centre, description, blooda,bloodb,bloodab,bloodo)
+values (8, 'Rey Az Mir Health', '104 Elm St', 'Boston', 10, 'unavailable',7611,209,1451,98);
+insert into blood_center (id, center_name, address, city,  average_grade_centre, description,blooda,bloodb,bloodab,bloodo)
+values (9, '24hr Homecare', 'De Wittenkade', 'Amsterdam', 9, 'Cacatua tenuirostris',225,452,189,433);
+insert into blood_center (id, center_name, address, city,  average_grade_centre, description,blooda,bloodb,bloodab,bloodo)
+values (10, 'Mend Life Medical', '49276 Bernard Wall', 'Sofia', 10, 'Alouatta seniculus',753,235,444,323);
 
 
 insert into registered_user (id, points, category, benefits) values (1, 7,'Redovan', 'Redovan');
@@ -60,30 +70,30 @@ insert into registered_user (id, points, category, benefits) values (14, 15,'Pre
 
 
 --Administratori centra i medicinsko osoblje
---insert into stuff (id, blood_center_id, is_first_login) values (5, 1, false);
---insert into stuff (id, blood_center_id, is_first_login) values (6, 2, false);
---insert into stuff (id, blood_center_id, is_first_login) values (10, 1, false);
---insert into stuff (id, blood_center_id, is_first_login) values (11, 2, false);
+insert into stuff (id, blood_center_id, is_first_login) values (5, 1, false);
+insert into stuff (id, blood_center_id, is_first_login) values (6, 2, false);
+insert into stuff (id, blood_center_id, is_first_login) values (10, 1, false);
+insert into stuff (id, blood_center_id, is_first_login) values (11, 2, false);
 
 
 
-insert into donation_terms (id, date, duration, is_free, reservation_start, reservation_end, profile_center_id)
-values (1, '2017-02-20 06:00:00', 60, true, '2021-11-10 07:00:00','2021-11-12 13:00:00', 1);
+insert into donation_terms (id, date, duration, is_free, is_registered_user_come, reservation_start, reservation_end, profile_center_id)
+values (1, '2017-02-20 06:00:00', 60, true, false ,'2021-11-10 07:00:00','2021-11-12 13:00:00', 1);
 
---insert into donation_terms (id, date, duration, is_free, reservation_start, reservation_end, profile_center_id)
---values (2, '2018-02-20 07:00:00', 45, false, '2021-11-10 08:00:00','2021-11-12 14:00:00', 2);
+insert into donation_terms (id, date, duration, is_free, is_registered_user_come, reservation_start, reservation_end, profile_center_id)
+values (2, '2018-02-20 07:00:00', 45, false, false, '2021-11-10 08:00:00','2021-11-12 14:00:00', 2);
 
---insert into donation_terms (id, date, duration, is_free, reservation_start, reservation_end, profile_center_id)
---values (3, '2016-02-21 09:00:00', 15, true, '2021-11-10 09:00:00','2021-11-12 15:00:00', 2);
+insert into donation_terms (id, date, duration, is_free, is_registered_user_come, reservation_start, reservation_end, profile_center_id)
+values (3, '2016-02-21 09:00:00', 15, true, false, '2021-11-10 09:00:00','2021-11-12 15:00:00', 2);
 
---insert into donation_terms (id, date, duration, is_free, reservation_start, reservation_end, profile_center_id)
---values (4, '2019-02-21 06:00:00', 25, true, '2021-11-10 07:00:00','2021-11-12 13:00:00', 1);
+insert into donation_terms (id, date, duration, is_free, is_registered_user_come, reservation_start, reservation_end, profile_center_id)
+values (4, '2019-02-21 06:00:00', 25, true, false, '2021-11-10 07:00:00','2021-11-12 13:00:00', 1);
 
---insert into donation_terms (id, date, duration, is_free, reservation_start, reservation_end, profile_center_id)
---values (5, '2018-02-20 07:00:00', 30, false, '2021-11-10 08:00:00','2021-11-12 14:00:00', 3);
+insert into donation_terms (id, date, duration, is_free, is_registered_user_come, reservation_start, reservation_end, profile_center_id)
+values (5, '2018-02-20 07:00:00', 30, false, false, '2021-11-10 08:00:00','2021-11-12 14:00:00', 3);
 
---insert into donation_terms (id, date, duration, is_free, reservation_start, reservation_end, profile_center_id)
---values (6, '2016-02-21 09:00:00', 45, true, '2021-11-10 09:00:00','2021-11-12 15:00:00', 1);
+insert into donation_terms (id, date, duration, is_free, is_registered_user_come, reservation_start, reservation_end, profile_center_id)
+values (6, '2016-02-21 09:00:00', 45, true, false, '2021-11-10 09:00:00','2021-11-12 15:00:00', 1);
 
 
 insert into calendar (id)
