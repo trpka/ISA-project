@@ -1,12 +1,11 @@
 package com.example.ISAproject.model;
 
 import java.sql.Timestamp;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -22,8 +21,19 @@ public class RegisteredUser extends User{
 	private String category;
 	@Column
 	private String benefits;
-	
-	
+
+	@OneToMany (cascade = CascadeType.ALL,orphanRemoval = true)
+	@JsonIgnore
+	private List<Survey> surveys;
+
+	//veze korisnika sa blood centrom
+	@ManyToMany
+	@JoinTable(name="reg_user_blood_center",
+			joinColumns = @JoinColumn(name = "r_user_id", referencedColumnName = "id"),
+			inverseJoinColumns = @JoinColumn(name = "blood_center_id", referencedColumnName = "id"))
+	private Set<BloodCenter> bloodCenters=new HashSet<>();
+
+
 	public List<DonationTerms> getDonationHistory() {
 		return donationHistory;
 	}
@@ -47,6 +57,14 @@ public class RegisteredUser extends User{
 	}
 	public void setBenefits(String benefits) {
 		this.benefits = benefits;
+	}
+
+	public Set<BloodCenter> getBloodCenters() {
+		return bloodCenters;
+	}
+
+	public void setBloodCenters(Set<BloodCenter> bloodCenters) {
+		this.bloodCenters = bloodCenters;
 	}
 
 	public RegisteredUser(String username, String password, String email, String firstName, String lastName,

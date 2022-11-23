@@ -124,7 +124,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 									.antMatchers("/api/centers/sort-by-city").permitAll()
 									.antMatchers("/api/survey").permitAll()
 									//.antMatchers("api/centers/sort-by-grade").permitAll()
-
+									.antMatchers("/users/signup/async").permitAll()
 
 
 									//Student4
