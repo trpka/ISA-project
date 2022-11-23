@@ -16,7 +16,7 @@ public class Stuff extends User
 	private boolean isFirstLogin;
 	
 	//Jedan clan osoblja vezan je za jedan centar
-	@ManyToOne
+	@OneToOne
     private BloodCenter bloodCenter;
 
 

@@ -11,14 +11,19 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.security.access.prepost.PreAuthorize;
 
 @Entity
+//@PreAuthorize("hasRole('STUFF') or hasRole('ADMIN')")
 public class Calendar {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	//@Column
 	//private Stuff stuff;
+	@OneToMany (cascade = CascadeType.ALL,orphanRemoval = true)
+	@JsonIgnore
+	private List<DonationTerms> donationTerms;
 	
 	//termini koji su unapred definisani
 	/*
