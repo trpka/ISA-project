@@ -20,8 +20,21 @@ public class Complaint {
 	private String title;
 	@Column
 	private String content;
+	@Column
+	private String response;
+
+
 	@ManyToOne
 	private Admin admin;
+
+	public String getResponse() {
+		return response;
+	}
+
+	public void setResponse(String response) {
+		this.response = response;
+	}
+
 
 	public Long getId() {
 		return id;
