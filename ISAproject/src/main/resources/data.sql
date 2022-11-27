@@ -85,10 +85,9 @@ values (5, '2018-02-20 07:00:00', 30, false, '2021-11-10 08:00:00','2021-11-12 1
 insert into donation_terms (id, date, duration, is_free, reservation_start, reservation_end, profile_center_id)
 values (6, '2016-02-21 09:00:00', 45, true, '2021-11-10 09:00:00','2021-11-12 15:00:00', 1);
 
-
-
-
-
+insert into calendar (id) values (1);
+insert into calendar (id) values (2);
+insert into calendar (id) values (3);
 
 
 

@@ -37,6 +37,7 @@ public class DonationTerms {
 	@JoinColumn(name = "profile_center_id")
 	private BloodCenter bloodCenter;
 
+
 	public DonationTerms()
 	{
 

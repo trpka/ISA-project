@@ -3,8 +3,11 @@ package com.example.ISAproject.service;
 import com.example.ISAproject.model.BloodCenter;
 import com.example.ISAproject.model.DonationTerms;
 import com.example.ISAproject.model.RegisteredUser;
+import com.example.ISAproject.model.Stuff;
 import com.example.ISAproject.repository.BloodCenterRepository;
 import com.example.ISAproject.repository.DonationTermsRepository;
+import com.example.ISAproject.repository.StuffRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.PessimisticLockingFailureException;
 import org.springframework.stereotype.Service;
@@ -30,6 +33,8 @@ public class DonationTermsService
     private BloodCenterRepository bloodCenterRepository;
     @Autowired
     private BloodCenterService bloodCenterService;
+    @Autowired
+    private StuffRepository stuffReposiory;
 
     public List<DonationTerms> findAll() {
         return this.donationTermsRepository.findAll();
@@ -116,7 +121,6 @@ public class DonationTermsService
 
         return donationTerms;
     }
-
 
 
 }
