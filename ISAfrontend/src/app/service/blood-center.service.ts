@@ -65,7 +65,11 @@ findByName(name:string):Observable<BloodCenter[]>{
     return this.http.put<BloodCenter>(this.url+"/edit", bloodCenter);
   }
 
+  SaveBloodCenter(bloodCenter: BloodCenter):Observable<BloodCenter>
+  {
 
+    return this.http.post<BloodCenter>(this.url1, bloodCenter);
+  }
 
 
 findByCity(city:string):Observable<BloodCenter[]>{

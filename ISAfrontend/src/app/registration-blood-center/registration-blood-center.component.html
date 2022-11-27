@@ -1,0 +1,92 @@
+<section class="text-center">
+
+    <div class="p-5 bg-image" style="
+          background-image: url('https://mdbootstrap.com/img/new/textures/full/171.jpg');
+          height: 300px;
+          "></div>
+
+  
+    <div class="card mx-4 mx-md-5 shadow-5-strong" style="
+          margin-top: -100px;
+          background: hsla(0, 0%, 100%, 0.8);
+          backdrop-filter: blur(30px);
+          ">
+      <div class="card-body py-5 px-md-5">
+  
+        <div class="row d-flex justify-content-center">
+          <div class="col-lg-8">
+            <h2 class="fw-bold mb-5">Register</h2>
+            <form>
+            
+            
+              <div class="form-outline mb-4">
+                <input id="centerName" name="centerName" type="text"  class="form-control" [(ngModel)]="newBloodCenter.centerName"/>
+                <label class="form-label" for="centerName">CenterName</label>
+              </div>
+
+
+              <div class="form-outline mb-4">
+                <input id="address" name="address" type="text"  class="form-control" [(ngModel)]="newBloodCenter.address"/>
+                <label class="form-label" for="address">Address</label>
+              </div>
+
+              <div class="form-outline mb-4">
+                <input id="city" name="city" type="text"  class="form-control" [(ngModel)]="newBloodCenter.city"/>
+                <label class="form-label" for="city">City</label>
+              </div>
+
+              <div class="form-outline mb-4">
+                <input id="startWork" name="startWork" type="text"  class="form-control" [(ngModel)]="newBloodCenter.startWork" />
+                <label class="form-label" for="startWork">Start Work</label>
+              </div>
+
+              <div class="form-outline mb-4">
+                <input id="endWork" name="endWork" type="text"  class="form-control" [(ngModel)]="newBloodCenter.endWork"/>
+                <label class="form-label" for="endWork">End Work</label>
+              </div>
+
+              <div class="form-outline mb-4">
+                <input id="description" name="description" type="text"  class="form-control" [(ngModel)]="newBloodCenter.description"/>
+                <label class="form-label" for="description">Description</label>
+              </div>
+
+ <!--             
+              <div class="form-outline mb-4">
+                <input id="averageGradeCentre" name="averageGradeCentre" type="text"  class="form-control" [(ngModel)]="newBloodCenter.averageGradeCentre"/>
+                <label class="form-label" for="averageGradeCentre">Average grade of center</label>
+              </div>
+     
+              <div class="form-outline mb-4">
+                <input id="bloodA" name="bloodA" type="text"  class="form-control" [(ngModel)]="newBloodCenter.bloodA"/>
+                <label class="form-label" for="bloodA">Amount of blood group A</label>
+              </div>
+     
+              
+              <div class="form-outline mb-4">
+                <input id="bloodB" name="bloodB" type="text"  class="form-control" [(ngModel)]="newBloodCenter.bloodB"/>
+                <label class="form-label" for="bloodB">Amount of blood group B</label>
+              </div>
+              
+              <div class="form-outline mb-4">
+                <input id="bloodAB" name="bloodAB" type="text"  class="form-control" [(ngModel)]="newBloodCenter.bloodAB"/>
+                <label class="form-label" for="bloodAB">Amount of blood group AB</label>
+              </div>
+              
+              <div class="form-outline mb-4">
+                <input id="bloodO" name="bloodO" type="text"  class="form-control" [(ngModel)]="newBloodCenter.bloodO"/>
+                <label class="form-label" for="bloodO">Amount of blood group 0</label>
+              </div>
+-->
+              <button type="submit" class="btn btn-primary btn-block mb-4" (click)="saveBloodCenter()">
+                Save
+              </button>
+              
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  

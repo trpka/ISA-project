@@ -51,6 +51,10 @@ public class Survey {
     private String p7;
     @Column
     private String p8;
+    //@Column
+    //private String p8;
+    @OneToOne
+    private RegisteredUser registeredUser;
 
 
     public Long getId() {

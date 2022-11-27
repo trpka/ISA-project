@@ -1,16 +1,12 @@
 package com.example.ISAproject.model;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -54,6 +50,11 @@ public class BloodCenter {
 	@OneToMany (cascade = CascadeType.ALL,orphanRemoval = true)
 	@JsonIgnore
 	private List<Stuff> listOfStuffs;
+
+	//veze korisnika sa blood centrom
+	@ManyToMany(mappedBy="bloodCenters")
+	private Set<RegisteredUser> registered_users_for_this_center=new HashSet<>();
+
 
 	public BloodCenter()
 	{
@@ -172,6 +173,14 @@ public class BloodCenter {
 		this.listOfStuffs = listOfStuffs;
 	}
 
+	public Set<RegisteredUser> getRegistered_users_for_this_center() {
+		return registered_users_for_this_center;
+	}
+
+	public void setRegistered_users_for_this_centerregistered_users_for_this_center(Set<RegisteredUser> registered_users_for_this_center) {
+		this.registered_users_for_this_center = registered_users_for_this_center;
+	}
+
 	public BloodCenter(Long id, String centerName, String address, String city, String startWork, String endWork,
 					   String description, Long averageGradeCentre, double bloodA, double bloodB, double bloodAB,
 					   double bloodO, List<DonationTerms> freeAppointments, List<Stuff> listOfStuffs)
@@ -206,6 +215,23 @@ public class BloodCenter {
 		this.bloodAB = bloodAB;
 		this.bloodO = bloodO;
 		this.freeAppointments = freeAppointments;
+		this.listOfStuffs = listOfStuffs;
+	}
+
+	public BloodCenter(Long id, String centerName, String address, String description, Long averageGradeCentre,
+					   double bloodA, double bloodB, double bloodAB, double bloodO,
+					   List<Stuff> listOfStuffs)
+	{
+		this.id = id;
+		this.centerName = centerName;
+		this.address = address;
+		this.description = description;
+		this.averageGradeCentre = averageGradeCentre;
+		this.bloodA = bloodA;
+		this.bloodB = bloodB;
+		this.bloodAB = bloodAB;
+		this.bloodO = bloodO;
+		//this.freeAppointments = freeAppointments;
 		this.listOfStuffs = listOfStuffs;
 	}
 }

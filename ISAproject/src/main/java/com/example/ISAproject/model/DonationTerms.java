@@ -29,6 +29,11 @@ public class DonationTerms {
 	@Column(name = "reservationEnd", nullable = false)
 	private LocalDateTime reservationEnd;
 
+	@Column
+	private boolean isRegisteredUserCome;
+
+
+
 	@ManyToOne
 	private RegisteredUser registeredUser;
 
@@ -36,6 +41,10 @@ public class DonationTerms {
 	@ManyToOne
 	@JoinColumn(name = "profile_center_id")
 	private BloodCenter bloodCenter;
+
+
+	@ManyToOne
+	private Calendar calendar;
 
 
 	public DonationTerms()
@@ -67,6 +76,18 @@ public class DonationTerms {
 		this.bloodCenter = bloodCenter;
 	}
 
+	public DonationTerms(Long id, LocalDateTime date, int duration, boolean isFree, LocalDateTime reservationStart, LocalDateTime reservationEnd, boolean isRegisteredUserCome, RegisteredUser registeredUser, BloodCenter bloodCenter, Calendar calendar) {
+		Id = id;
+		this.date = date;
+		this.duration = duration;
+		this.isFree = isFree;
+		this.reservationStart = reservationStart;
+		this.reservationEnd = reservationEnd;
+		this.isRegisteredUserCome = isRegisteredUserCome;
+		this.registeredUser = registeredUser;
+		this.bloodCenter = bloodCenter;
+		this.calendar = calendar;
+	}
 
 	public LocalDateTime getDate() {
 		return date;
@@ -125,5 +146,19 @@ public class DonationTerms {
 		this.duration = duration;
 	}
 
+	public boolean isRegisteredUserCome() {
+		return isRegisteredUserCome;
+	}
 
+	public void setRegisteredUserCome(boolean registeredUserCome) {
+		isRegisteredUserCome = registeredUserCome;
+	}
+
+	public Calendar getCalendar() {
+		return calendar;
+	}
+
+	public void setCalendar(Calendar calendar) {
+		this.calendar = calendar;
+	}
 }

@@ -66,11 +66,11 @@ public class RegisteredUserController {
 	    }
 
 
-	@RequestMapping(value="api/registeredUsers", method = RequestMethod.GET,
-			params = "name",
+	@RequestMapping(value="api/registeredUsersFirstName", method = RequestMethod.GET,
+			params = "firstName",
 			produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-	public ResponseEntity<List<RegisteredUser>> findByName(@RequestParam String name){
-		List<RegisteredUser> registeredUsers=this.registeredUserService.findByFirstName(name);
+	public ResponseEntity<List<RegisteredUser>> findByName(@RequestParam String firstName){
+		List<RegisteredUser> registeredUsers=this.registeredUserService.findByFirstName(firstName);
 		return new ResponseEntity<>(registeredUsers,HttpStatus.OK);
 	}
 
