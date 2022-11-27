@@ -96,11 +96,12 @@ insert into donation_terms (id, date, duration, is_free, is_registered_user_come
 values (6, '2016-02-21 09:00:00', 45, true, false, '2021-11-10 09:00:00','2021-11-12 15:00:00', 1);
 
 
-insert into calendar (id)
-values (1);
+insert into calendar (id) values (1);
+insert into calendar (id) values (2);
+insert into calendar (id) values (3);
 
-insert into calendar_donation_terms (calendar_id, donation_terms_id)
-values (1,1);
+insert into calendar_donation_terms (calendar_id, donation_terms_id) values (1,1);
+
 
 
 

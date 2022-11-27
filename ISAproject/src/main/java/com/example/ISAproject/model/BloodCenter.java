@@ -27,7 +27,7 @@ public class BloodCenter {
 	@Column
 	private String startWork;
 	@Column
-	private String endWork;
+	private String endWork;  //не може стринг
 	@Column
 	private String description;
 	@Column
