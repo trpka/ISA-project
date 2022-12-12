@@ -53,8 +53,7 @@ public class DonationTerms {
 	@JoinColumn(name = "Stuff")
 	private Stuff stuff;
 
-	@ManyToOne
-	private Calendar calendar;
+	
 
 
 
