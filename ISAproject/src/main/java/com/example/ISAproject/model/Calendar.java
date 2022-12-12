@@ -19,17 +19,13 @@ public class Calendar {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+
 	//@Column
 	//private Stuff stuff;
 	@OneToMany (cascade = CascadeType.ALL,orphanRemoval = true)
 	@JsonIgnore
 	private List<DonationTerms> donationTerms;
+
 	
-	//termini koji su unapred definisani
-	/*
-	 * @OneToMany(cascade = CascadeType.ALL,orphanRemoval = true)
-	 * 
-	 * @JsonIgnore private List<DonationTerms> reservedTerms;
-	 */
 	
 }

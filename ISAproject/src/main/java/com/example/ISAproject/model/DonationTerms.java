@@ -44,6 +44,7 @@ public class DonationTerms {
 
 
 
+
 	@ManyToOne
 	private Calendar calendar;
 
@@ -51,6 +52,11 @@ public class DonationTerms {
 	@ManyToOne
 	@JoinColumn(name = "Stuff")
 	private Stuff stuff;
+
+	@ManyToOne
+	private Calendar calendar;
+
+
 
 	public DonationTerms()
 	{
