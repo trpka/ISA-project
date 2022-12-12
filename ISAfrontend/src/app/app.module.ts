@@ -52,7 +52,7 @@ import { StuffUserProfileComponent } from './stuff-user-profile/stuff-user-profi
     RegistrationStuffComponent,
     SerchRegisteredUserComponent,
     RegistrationBloodCenterComponent,
-    CreateDonationTermComponent
+    CreateDonationTermComponent,
     AllRegisteredUsersComponent,
     StuffUserProfileComponent
   ],

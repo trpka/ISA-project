@@ -84,4 +84,4 @@ public class DonationTermsController
         }
         return new ResponseEntity<>(donationTermsDTO,HttpStatus.OK);
     }
-
+}
