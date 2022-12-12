@@ -28,6 +28,8 @@ import { RegistrationStuffComponent } from './registration-stuff/registration-st
 import { SerchRegisteredUserComponent } from './serch-registered-user/serch-registered-user.component';
 import { RegistrationBloodCenterComponent } from './registration-blood-center/registration-blood-center.component';
 import { CreateDonationTermComponent } from './create-donation-term/create-donation-term.component';
+import { AllRegisteredUsersComponent } from './all-registered-users/all-registered-users.component';
+import { StuffUserProfileComponent } from './stuff-user-profile/stuff-user-profile.component';
 
 
 
@@ -51,6 +53,8 @@ import { CreateDonationTermComponent } from './create-donation-term/create-donat
     SerchRegisteredUserComponent,
     RegistrationBloodCenterComponent,
     CreateDonationTermComponent
+    AllRegisteredUsersComponent,
+    StuffUserProfileComponent
   ],
   imports: [
     BrowserModule,

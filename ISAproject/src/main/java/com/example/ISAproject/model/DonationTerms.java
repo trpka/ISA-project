@@ -42,8 +42,18 @@ public class DonationTerms {
 	private BloodCenter bloodCenter;
 
 
+
+
 	@ManyToOne
 	private Calendar calendar;
+
+	//Povratna Veza sa Osobljem centra
+	@ManyToOne
+	@JoinColumn(name = "Stuff")
+	private Stuff stuff;
+
+	
+
 
 
 	public DonationTerms()
@@ -75,6 +85,20 @@ public class DonationTerms {
 		this.bloodCenter = bloodCenter;
 	}
 
+	public DonationTerms(Long id, LocalDateTime date, LocalDateTime reservationStart, LocalDateTime reservationEnd, int duration,
+						 boolean isFree, RegisteredUser registeredUser, BloodCenter bloodCenter)
+	{
+		super();
+		this.Id = id;
+		this.date = date;
+		this.reservationStart = reservationStart;
+		this.reservationEnd = reservationEnd;
+		this.duration = duration;
+		this.isFree = isFree;
+		this.registeredUser = registeredUser;
+		this.bloodCenter = bloodCenter;
+	}
+
 	public DonationTerms(Long id, int duration, boolean isFree, RegisteredUser registeredUser, BloodCenter bloodCenter)
 	{
 		super();
@@ -96,6 +120,23 @@ public class DonationTerms {
 		this.registeredUser = registeredUser;
 		this.bloodCenter = bloodCenter;
 		this.calendar = calendar;
+	}
+
+	//Aleksin Konstruktor-- Za kreiranje Termina koji se brzo rezervisu
+	public DonationTerms(Long id, LocalDateTime date, int duration, boolean isFree, LocalDateTime reservationStart,
+						 LocalDateTime reservationEnd, boolean isRegisteredUserCome, RegisteredUser registeredUser,
+						 BloodCenter bloodCenter, Calendar calendar, Stuff stuff) {
+		Id = id;
+		this.date = date;
+		this.duration = duration;
+		this.isFree = isFree;
+		this.reservationStart = reservationStart;
+		this.reservationEnd = reservationEnd;
+		this.isRegisteredUserCome = isRegisteredUserCome;
+		this.registeredUser = registeredUser;
+		this.bloodCenter = bloodCenter;
+		this.calendar = calendar;
+		this.stuff = stuff;
 	}
 
 	public LocalDateTime getDate() {
