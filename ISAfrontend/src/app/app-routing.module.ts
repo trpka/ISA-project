@@ -13,6 +13,8 @@ import { StuffEditComponent } from './stuff-edit/stuff-edit.component';
 import { RegistrationStuffComponent } from './registration-stuff/registration-stuff.component';
 import { SerchRegisteredUserComponent } from './serch-registered-user/serch-registered-user.component';
 import { RegistrationBloodCenterComponent } from './registration-blood-center/registration-blood-center.component';
+import { AllRegisteredUsersComponent } from './all-registered-users/all-registered-users.component';
+import { StuffUserProfileComponent } from './stuff-user-profile/stuff-user-profile.component';
 
 
 
@@ -31,7 +33,10 @@ const routes: Routes = [
   {path: 'stuff_edit/:id', component: StuffEditComponent},
   {path: 'registration-stuff', component: RegistrationStuffComponent},
   {path: 'registered-users-search', component:  SerchRegisteredUserComponent},
-  {path: 'registration-blood-center', component:  RegistrationBloodCenterComponent}
+  {path: 'registration-blood-center', component:  RegistrationBloodCenterComponent},
+  {path: 'all_registered_users',component: AllRegisteredUsersComponent},
+  {path: 'stuff_user_profile/:id',component: StuffUserProfileComponent}
+
  
   
 

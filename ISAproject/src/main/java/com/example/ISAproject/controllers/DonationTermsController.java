@@ -1,5 +1,6 @@
 package com.example.ISAproject.controllers;
 
+import com.example.ISAproject.dto.DonationTermsDTO;
 import com.example.ISAproject.model.BloodCenter;
 import com.example.ISAproject.model.DonationTerms;
 import com.example.ISAproject.service.DonationTermsService;
@@ -51,7 +52,7 @@ public class DonationTermsController
     }
 
     //Kreiranje slobodnih termina od strane administratora centra
-    @RequestMapping(value="api/terms/create_reservation",method = RequestMethod.PUT,produces = {
+    /*@RequestMapping(value="api/terms/create_reservation",method = RequestMethod.PUT,produces = {
             MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
     //@PreAuthorize("hasRole('STUFF')")
     public ResponseEntity<DonationTerms>  createFreeTermForCenter(@RequestBody DonationTerms dt)
@@ -67,7 +68,25 @@ public class DonationTermsController
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
         return new ResponseEntity<>(donationTerms,HttpStatus.OK);
+    }*/
+
+    @RequestMapping(value="api/terms/create_reservation",method = RequestMethod.PUT,produces = {
+            MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+    //@PreAuthorize("hasRole('STUFF')")
+    public ResponseEntity<DonationTermsDTO>  addCottageFastReservation(@RequestBody DonationTermsDTO dto){
+        DonationTermsDTO donationTermsDTO=new DonationTermsDTO();
+        DonationTerms donationTerms = new DonationTerms();
+        try {
+            donationTermsDTO = this.donationTermsService.CreateFreeTermForReservation(dto);
+        } catch (PessimisticLockException e) {
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        } catch (DateTimeException e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return new ResponseEntity<>(donationTermsDTO,HttpStatus.OK);
     }
+
+
 
 
 
