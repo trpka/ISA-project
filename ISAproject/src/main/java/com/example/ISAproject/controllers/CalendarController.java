@@ -23,4 +23,15 @@ import com.example.ISAproject.service.DonationTermsService;
 @CrossOrigin
 public class CalendarController {
 	
+	 @Autowired
+     private CalendarService calendarService;
+	
+	 
+	 @RequestMapping(value="api/calendars",method = RequestMethod.GET,produces = {
+	            MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+	    public ResponseEntity<List<Calendar>> findAll()
+	    {
+	        List<Calendar> c= this.calendarService.findAll();
+	        return new ResponseEntity<>(c,HttpStatus.OK);
+	    }
 }

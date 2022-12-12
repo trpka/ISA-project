@@ -24,6 +24,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
+import javax.persistence.PessimisticLockException;
+
 @Service
 public class DonationTermsService
 {
@@ -99,28 +101,27 @@ public class DonationTermsService
         }
     }
 
-    //Kreiranje Slobodnih Termina Za davanje krvi koje ce korisnici rezervisati jednim klikom
+
+
+    
     @Transactional(readOnly=false)
-    public DonationTerms createFreeTermForCenter(DonationTerms dt) throws PessimisticLockingFailureException, DateTimeException {
-        //BloodCenter bloodCenter = bloodCenterRepository.getById(dt.getBloodCenter().getId());
-        BloodCenter bloodCenter = bloodCenterService.findById(dt.getBloodCenter().getId());
+    public DonationTerms addDonationTerm(DonationTerms dt) throws PessimisticLockingFailureException, DateTimeException {
+       
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
+        LocalDateTime date = LocalDateTime.parse(dt.getDate().toString(),formatter);
         LocalDateTime start = LocalDateTime.parse(dt.getReservationStart().toString(),formatter);
         LocalDateTime end = LocalDateTime.parse(dt.getReservationEnd().toString(),formatter);
 
         DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
 
-        DonationTerms donationTerms = new DonationTerms(dt.getId(),start, end, dt.getDuration(),
-                                                        dt.isFree(), dt.getRegisteredUser(), bloodCenter);
+        DonationTerms donationTerms = new DonationTerms(dt.getId(),date,start, end, dt.getDuration());
 
         donationTermsRepository.save(donationTerms);
 
-        String message="There is new available terms for BloodCenter "+ bloodCenter.getCenterName();
 
         return donationTerms;
     }
-
 
 }

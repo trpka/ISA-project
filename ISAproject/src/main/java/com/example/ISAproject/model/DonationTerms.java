@@ -37,7 +37,6 @@ public class DonationTerms {
 	@ManyToOne
 	private RegisteredUser registeredUser;
 
-
 	@ManyToOne
 	@JoinColumn(name = "profile_center_id")
 	private BloodCenter bloodCenter;
@@ -51,7 +50,17 @@ public class DonationTerms {
 	{
 
 	}
-
+	
+	
+	public DonationTerms(Long id,LocalDateTime date, LocalDateTime reservationStart, LocalDateTime reservationEnd, int duration)
+	{
+	super();
+	this.Id = id;
+	this.date = date;
+	this.reservationStart = reservationStart;
+	this.reservationEnd = reservationEnd;
+	this.duration = duration;
+	}
 
 	public DonationTerms(Long id, LocalDateTime reservationStart, LocalDateTime reservationEnd, int duration,
 						 boolean isFree, RegisteredUser registeredUser, BloodCenter bloodCenter)
