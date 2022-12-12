@@ -1,5 +1,6 @@
 package com.example.ISAproject.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,7 +17,17 @@ import com.example.ISAproject.repository.DonationTermsRepository;
 
 @Service
 public class CalendarService {
-
 	
+    @Autowired
+    private CalendarRepository calendarRepository;
+    
+    @Autowired
+    private DonationTermsRepository donationTermsRepository;
+
+    
+	 public List<Calendar> findAll()
+	    {   
+	        return this.calendarRepository.findAll();
+	    }
 
 }

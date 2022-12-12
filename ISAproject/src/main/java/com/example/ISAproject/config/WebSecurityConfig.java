@@ -94,6 +94,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 									
 
 									.antMatchers("/api/edit/center").permitAll()
+									.antMatchers("/api/terms/addTerm").permitAll()
+									//.antMatchers("/api/calendars").permitAll()
 
                                       //Student 3
 					                .antMatchers("/api/centers/edit").permitAll()
