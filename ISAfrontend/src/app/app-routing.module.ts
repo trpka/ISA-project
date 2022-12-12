@@ -36,6 +36,7 @@ const routes: Routes = [
   {path: 'registration-blood-center', component:  RegistrationBloodCenterComponent},
   {path: 'all_registered_users',component: AllRegisteredUsersComponent},
   {path: 'stuff_user_profile/:id',component: StuffUserProfileComponent}
+  
 
  
   
