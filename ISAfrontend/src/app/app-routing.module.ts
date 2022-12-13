@@ -40,7 +40,7 @@ const routes: Routes = [
   {path: 'registered-users-search', component:  SerchRegisteredUserComponent},
   {path: 'registration-blood-center', component:  RegistrationBloodCenterComponent},
 
-  {path: 'confirm-registration/:id', component:  ConfirmRegistrationRegisteredUserComponent}
+  {path: 'confirm-registration/:id', component:  ConfirmRegistrationRegisteredUserComponent},
  
   
 
