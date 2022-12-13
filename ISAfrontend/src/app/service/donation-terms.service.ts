@@ -20,4 +20,9 @@ export class DonationTermsService
     return this.http.get<DonationTerms[]>(this.url);
   }
 
+  AddTerm(donationTerm: DonationTerms):Observable<DonationTerms>
+  {
+
+    return this.http.put<DonationTerms>(this.url+"/addTerm", donationTerm);
+  }
 }

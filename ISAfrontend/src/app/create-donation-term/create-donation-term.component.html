@@ -1,0 +1,53 @@
+<section class="text-center">
+    <h1 style="color:navy; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 1cm; font-weight: lighter;">
+     Start free term</h1>
+    <div class="main-image">
+        <img alt="My image name" src="./assets/img/term.jpg"> 
+    </div>
+
+<div class="card mx-4 mx-md-5 shadow-5-strong" style="
+margin-top: -100px;
+background: lavender;
+backdrop-filter: blur(30px);
+">
+<div class="card-body py-5 px-md-5">
+
+<div class="row d-flex justify-content-center">
+<div class="col-lg-8">
+  <h2 class="fw-bold mb-5" style="color:slateblue">Define free term</h2>
+  <form>
+
+    <div class="form-outline mb-4">
+    
+      <input id="date" name="date" type="datetime-local"  class="form-control" [(ngModel)]="donationTerm.date"  />
+      <label class="form-label" for="date">Date</label>   
+     </div>
+            <div class="form-outline mb-4">
+    
+             <input id="reservationStart" name="reservationStart" type="datetime-local"  class="form-control" [(ngModel)]="donationTerm.reservationStart"  />
+             <label class="form-label" for="date">Reservation start</label>   
+            </div>
+
+            
+            <div class="form-outline mb-4">
+              
+              <input id="reservationEnd" name="reservationEnd" type="datetime-local"  class="form-control" [(ngModel)]="donationTerm.reservationEnd" />
+              <label class="form-label" for="date">Reservation end</label>
+            </div>
+        
+
+        
+        <div class="form-outline mb-4">
+          
+          <input id="duration" name="duration" type="number"  class="form-control" [(ngModel)]="donationTerm.duration"  />
+          <label class="form-label" for="num_of_dur">duration</label>
+        </div>
+
+  
+        <button class = "btn btn-success" (click) = "addDonationTerm()" style="background-color:steelblue">Update</button>
+      </form>
+  </div>
+</div>
+</div>
+</div>
+</section>

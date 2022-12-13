@@ -1,11 +1,10 @@
 package com.example.ISAproject.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 @Entity
 public class Stuff extends User
@@ -18,6 +17,11 @@ public class Stuff extends User
 	//Jedan clan osoblja vezan je za jedan centar
 	@OneToOne
     private BloodCenter bloodCenter;
+
+	//Dodata je veza sa OSOBLJEM CENTRA-- Jedan clan osoblja ucestvuje u vise termina
+	@OneToMany(cascade = CascadeType.ALL,orphanRemoval = true)
+	@JsonIgnore
+	private List<DonationTerms> terms;
 
 
 
