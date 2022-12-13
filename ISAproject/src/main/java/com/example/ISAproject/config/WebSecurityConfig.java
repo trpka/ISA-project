@@ -110,8 +110,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 					                .antMatchers("/api/centers/terms/{id}").permitAll()
 					                .antMatchers("/api/centers/stuffs/{id}").permitAll()
 					                .antMatchers("/api/terms/create_reservation").permitAll()
-					                .antMatchers("/auth/stuffSignup").permitAll()
+
 					                .antMatchers("/api/regUsers").permitAll()
+					                .antMatchers("/api/users/terms/{id}").permitAll()
+					                .antMatchers("/api/add_negative").permitAll()
+
+
+
+					                .antMatchers("/auth/stuffSignup").permitAll()
 
 
 

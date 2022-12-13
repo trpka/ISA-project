@@ -71,6 +71,26 @@ public class DonationTermsService
         return findedTerms;
     }
 
+    //Pretraga Termina Prema korisniku koji ih je zakazao
+    public List<DonationTerms> findAllTermsByUser(Long id)
+    {
+        List<DonationTerms> allTerms = donationTermsRepository.findAll();
+        List<DonationTerms> findedTerms = new ArrayList<>();
+
+        for(DonationTerms dt: allTerms)
+        {
+            if(dt.getRegisteredUser() != null && dt.getRegisteredUser().getId() == id)
+            {
+                findedTerms.add(dt);
+            }
+        }
+
+        return findedTerms;
+    }
+
+
+
+
 
     //Prikazivanje Lista Slobodnih i Zauzetih termina
     public List<DonationTerms> findFreeTerms(boolean isFree)

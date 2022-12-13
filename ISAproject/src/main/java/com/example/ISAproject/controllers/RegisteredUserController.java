@@ -2,13 +2,11 @@ package com.example.ISAproject.controllers;
 
 import java.util.Optional;
 
+import com.example.ISAproject.model.*;
+import com.example.ISAproject.service.DonationTermsService;
 import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.example.ISAproject.model.Authority;
-import com.example.ISAproject.model.BloodCenter;
-import com.example.ISAproject.model.RegisteredUser;
-import com.example.ISAproject.model.Stuff;
 import com.example.ISAproject.service.AuthorityService;
 import com.example.ISAproject.service.RegisteredUserService;
 
@@ -43,6 +41,9 @@ public class RegisteredUserController {
 	
 	@Autowired
 	private AuthorityService authorityService;
+
+	@Autowired
+	private DonationTermsService donationTermsService;
 	
 	
 
@@ -89,5 +90,16 @@ public class RegisteredUserController {
 		  UpdateRegUser(@RequestBody RegisteredUser reg) { RegisteredUser regUser =
 		  this.registeredUserService.UpdateRegUser(reg); return new
 		  ResponseEntity<>(regUser, HttpStatus.OK); }
+
+	//Pretraga Termina prema korisniku za kojeg je zakazano
+	@RequestMapping(value="api/users/terms/{id}",method = RequestMethod.GET,produces = {
+			MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+
+	public ResponseEntity<List<DonationTerms>> findAllTermsByUser(@PathVariable Long id)
+
+	{
+		List<DonationTerms> terms=this.donationTermsService.findAllTermsByUser(id);
+		return new ResponseEntity<>(terms,HttpStatus.OK);
+	}
 
 }
