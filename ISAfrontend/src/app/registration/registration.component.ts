@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../model/user';
 import { RegistrationService } from '../service/registration.service';
+import { UserService } from '../service/user.service';
 
 @Component({
   selector: 'app-registration',
@@ -15,8 +16,9 @@ export class RegistrationComponent implements OnInit {
   newUser:User;
   users:User[];
   password1:string;
+  registrated: boolean = true;;
 
-  constructor(private registrationService:RegistrationService, private router: Router) 
+  constructor(private registrationService:RegistrationService, private router: Router, private userService: UserService) 
   {
       this.newUser = new User
       (
@@ -95,11 +97,16 @@ export class RegistrationComponent implements OnInit {
     }
     else{
       console.log(this.newUser)
-      this.newUser.role = "RegisteredUser"
+      this.newUser.role = 'RegisteredUser'
       this.newUser.username = this.newUser.email;
-      this.registrationService.registration(this.newUser)
+      //ovde je bilo dok je bila obicna registracija
+      /*this.registrationService.registration(this.newUser)
+      .subscribe();*/
+      //sada je ovde zbog mail-a
+      this.userService.sendEmail(this.newUser)
       .subscribe();
-      this.router.navigate(['/login']);
+      this.registrated = false;
+      //this.router.navigate(['/login']);
     }
 
   }
