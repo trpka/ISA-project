@@ -57,7 +57,7 @@ import { StuffUserProfileComponent } from './stuff-user-profile/stuff-user-profi
     SerchRegisteredUserComponent,
     RegistrationBloodCenterComponent,
 
-    ConfirmRegistrationRegisteredUserComponent
+    ConfirmRegistrationRegisteredUserComponent,
 
     CreateDonationTermComponent,
     AllRegisteredUsersComponent,
