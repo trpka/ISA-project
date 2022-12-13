@@ -30,7 +30,7 @@ values (11,'Stuff','pera@gmail.com', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfA
 
 insert into user_authority (user_id,authority_id) values (1,1);
 insert into user_authority (user_id,authority_id) values (2,2);
-
+insert into user_authority (user_id,authority_id) values (14,2);
 
 insert into complaint (id,  title, content) values (1,  'Constantine''s Sword', 'Escuela de seducción');
 insert into complaint (id, title, content) values (2,  'Adventures of Milo and Otis, The (Koneko monogatari)', 'Brother of Sleep (Schlafes Bruder)');

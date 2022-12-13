@@ -91,6 +91,7 @@ public class RegisteredUserController {
 		  this.registeredUserService.UpdateRegUser(reg); return new
 		  ResponseEntity<>(regUser, HttpStatus.OK); }
 
+
 	//Pretraga Termina prema korisniku za kojeg je zakazano
 	@RequestMapping(value="api/users/terms/{id}",method = RequestMethod.GET,produces = {
 			MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
@@ -100,6 +101,15 @@ public class RegisteredUserController {
 	{
 		List<DonationTerms> terms=this.donationTermsService.findAllTermsByUser(id);
 		return new ResponseEntity<>(terms,HttpStatus.OK);
+    
+  }
+
+	@RequestMapping(value="/api/confirm-registration-register-user/{id}",method = RequestMethod.GET,produces=
+			MediaType.APPLICATION_JSON_VALUE)
+	public void confirmRegistrationForRegisteredUser(@PathVariable Long id) {
+		//this.clientService.activateById(id);
+		this.registeredUserService.save(this.registeredUserService.activateById(id));
+
 	}
 
 }

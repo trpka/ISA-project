@@ -94,6 +94,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 									
 
 									.antMatchers("/api/edit/center").permitAll()
+									.antMatchers("/api/terms/addTerm").permitAll()
+									//.antMatchers("/api/calendars").permitAll()
 
                                       //Student 3
 					                .antMatchers("/api/centers/edit").permitAll()
@@ -124,13 +126,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 					        //.antMatchers("/api/registeredUsers").permitAll()
 
-									.antMatchers("/api/centers/sort-by-name").permitAll()
-									.antMatchers("/api/centers/sort-by-average-grade").permitAll()
-									.antMatchers("/api/centers/sort-by-city").permitAll()
+									//.antMatchers("/api/centers/sort-by-name").permitAll()
+									//.antMatchers("/api/centers/sort-by-average-grade").permitAll()
+									//.antMatchers("/api/centers/sort-by-city").permitAll()
 									.antMatchers("/api/survey").permitAll()
 									//.antMatchers("api/centers/sort-by-grade").permitAll()
 									.antMatchers("/users/signup/async").permitAll()
-
+									.antMatchers("/api/confirm-registration-register-user/{id}").permitAll()
 
 									//Student4
 									.antMatchers("/api/regUsers").permitAll()

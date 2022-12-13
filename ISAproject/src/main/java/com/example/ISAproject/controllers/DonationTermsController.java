@@ -51,15 +51,14 @@ public class DonationTermsController
         return new ResponseEntity<>(donationTerms,HttpStatus.OK);
     }
 
-    //Kreiranje slobodnih termina od strane administratora centra
-    /*@RequestMapping(value="api/terms/create_reservation",method = RequestMethod.PUT,produces = {
+    @RequestMapping(value="api/terms/addTerm",method = RequestMethod.PUT,produces = {
             MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
     //@PreAuthorize("hasRole('STUFF')")
-    public ResponseEntity<DonationTerms>  createFreeTermForCenter(@RequestBody DonationTerms dt)
+    public ResponseEntity<DonationTerms>addDonationTerm(@RequestBody DonationTerms dt)
     {
         DonationTerms donationTerms = new DonationTerms();
         try {
-            donationTerms = this.donationTermsService.createFreeTermForCenter(dt);
+            donationTerms = this.donationTermsService.addDonationTerm(dt);
         } catch (PessimisticLockException e)
         {
             return new ResponseEntity<>(HttpStatus.CONFLICT);
@@ -68,7 +67,7 @@ public class DonationTermsController
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
         return new ResponseEntity<>(donationTerms,HttpStatus.OK);
-    }*/
+    }
 
     @RequestMapping(value="api/terms/create_reservation",method = RequestMethod.PUT,produces = {
             MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
@@ -85,9 +84,4 @@ public class DonationTermsController
         }
         return new ResponseEntity<>(donationTermsDTO,HttpStatus.OK);
     }
-
-
-
-
-
 }
