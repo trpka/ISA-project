@@ -13,6 +13,7 @@ import { StuffEditComponent } from './stuff-edit/stuff-edit.component';
 import { RegistrationStuffComponent } from './registration-stuff/registration-stuff.component';
 import { SerchRegisteredUserComponent } from './serch-registered-user/serch-registered-user.component';
 import { RegistrationBloodCenterComponent } from './registration-blood-center/registration-blood-center.component';
+import { ConfirmRegistrationRegisteredUserComponent } from './confirm-registration-registered-user/confirm-registration-registered-user.component';
 
 
 
@@ -31,7 +32,8 @@ const routes: Routes = [
   {path: 'stuff_edit/:id', component: StuffEditComponent},
   {path: 'registration-stuff', component: RegistrationStuffComponent},
   {path: 'registered-users-search', component:  SerchRegisteredUserComponent},
-  {path: 'registration-blood-center', component:  RegistrationBloodCenterComponent}
+  {path: 'registration-blood-center', component:  RegistrationBloodCenterComponent},
+  {path: 'confirm-registration/:id', component:  ConfirmRegistrationRegisteredUserComponent}
  
   
 

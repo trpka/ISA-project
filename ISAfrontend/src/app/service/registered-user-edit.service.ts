@@ -12,6 +12,7 @@ export class RegisteredUserEditService {
   url = "http://localhost:8081/api/regUsers";
   url2 = "http://localhost:8081/api/registeredUsersFirstName";
   url3 = "http://localhost:8081/api/registeredUsersLastName";
+  url4 = "http://localhost:8081/api/confirm-registration-register-user";
 
   constructor(private http:HttpClient) { }
 
@@ -37,6 +38,10 @@ findByFirstName(firstName:string):Observable<RegisteredUser[]>{
 findByLastName(lastName:string):Observable<RegisteredUser[]>{
   const params:HttpParams=new HttpParams().append('lastName',lastName);
   return this.http.get<RegisteredUser[]>(this.url3,{params});
+}
+
+activateById(id: number): Observable<RegisteredUser> {
+  return this.http.get<RegisteredUser>(`${this.url4}/${id}`);
 }
 
 }

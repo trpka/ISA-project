@@ -3,14 +3,14 @@
     <div class="p-5 bg-image" style="
           background-image: url('https://mdbootstrap.com/img/new/textures/full/171.jpg');
           height: 300px;
-          "></div>
+          " ></div>
 
   
     <div class="card mx-4 mx-md-5 shadow-5-strong" style="
           margin-top: -100px;
           background: hsla(0, 0%, 100%, 0.8);
           backdrop-filter: blur(30px);
-          ">
+          " *ngIf="registrated">
       <div class="card-body py-5 px-md-5">
   
         <div class="row d-flex justify-content-center">
@@ -115,6 +115,13 @@
       </div>
     </div>
   </section>
+  <div class="alert alert-success" role="alert" *ngIf="!registrated">
+  <h1 class="alert-heading">Well done!</h1>
+  <h2>Aww yeah, you succeeded. You should go to your email account and check your message.</h2>
+  <hr>
+  <p class="mb-0">In message you will receive link for activation you account</p>
+</div>
+
 
   
   

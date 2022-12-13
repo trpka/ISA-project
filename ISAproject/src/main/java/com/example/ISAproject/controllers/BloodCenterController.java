@@ -143,6 +143,7 @@ public class BloodCenterController
 
     @RequestMapping(value="api/centers/sort-by-name", method = RequestMethod.GET,
             produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    @PreAuthorize("hasRole('REGISTERED_USER')")
     public ResponseEntity<List<BloodCenter>> sortByName(){
         List<BloodCenter> bloodCenters=this.bloodCenterService.sortByName();
         return new ResponseEntity<>(bloodCenters,HttpStatus.OK);
@@ -150,13 +151,14 @@ public class BloodCenterController
 
     @RequestMapping(value="api/centers/sort-by-average-grade", method = RequestMethod.GET,
             produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    @PreAuthorize("hasRole('REGISTERED_USER')")
     public ResponseEntity<List<BloodCenter>> sortByGrade(){
         List<BloodCenter> bloodCenters=this.bloodCenterService.sortByGrade();
         return new ResponseEntity<>(bloodCenters,HttpStatus.OK);
     }
     @RequestMapping(value="api/centers/sort-by-city", method = RequestMethod.GET,
             produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-    //@PreAuthorize("hasRole('REGISTERED_USER')")
+    @PreAuthorize("hasRole('REGISTERED_USER')")
     public ResponseEntity<List<BloodCenter>> sortByCity(){
         List<BloodCenter> bloodCenters=this.bloodCenterService.sortByCity();
         return new ResponseEntity<>(bloodCenters,HttpStatus.OK);

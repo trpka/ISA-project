@@ -90,4 +90,11 @@ public class RegisteredUserController {
 		  this.registeredUserService.UpdateRegUser(reg); return new
 		  ResponseEntity<>(regUser, HttpStatus.OK); }
 
+	@RequestMapping(value="/api/confirm-registration-register-user/{id}",method = RequestMethod.GET,produces=
+			MediaType.APPLICATION_JSON_VALUE)
+	public void confirmRegistrationForRegisteredUser(@PathVariable Long id) {
+		//this.clientService.activateById(id);
+		this.registeredUserService.save(this.registeredUserService.activateById(id));
+	}
+
 }

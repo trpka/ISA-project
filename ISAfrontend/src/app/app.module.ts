@@ -27,6 +27,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RegistrationStuffComponent } from './registration-stuff/registration-stuff.component';
 import { SerchRegisteredUserComponent } from './serch-registered-user/serch-registered-user.component';
 import { RegistrationBloodCenterComponent } from './registration-blood-center/registration-blood-center.component';
+import { ConfirmRegistrationRegisteredUserComponent } from './confirm-registration-registered-user/confirm-registration-registered-user.component';
 
 
 
@@ -48,7 +49,8 @@ import { RegistrationBloodCenterComponent } from './registration-blood-center/re
     StuffEditComponent,
     RegistrationStuffComponent,
     SerchRegisteredUserComponent,
-    RegistrationBloodCenterComponent
+    RegistrationBloodCenterComponent,
+    ConfirmRegistrationRegisteredUserComponent
   ],
   imports: [
     BrowserModule,
