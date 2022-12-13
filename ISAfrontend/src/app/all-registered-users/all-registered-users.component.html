@@ -13,7 +13,7 @@
  <div class="card-body py-5 px-md-5">
 
     <div>
-        <form class="form-search" (ngSubmit)="FindProfileById(id)">
+        <form class="form-search" (ngSubmit)="FindProfileById()">
             <label for="id" style="font-weight:bold">Profile ID: </label>
             <input name="id" id="id" type="text" [placeholder]="placeholder1" [(ngModel)]="id" style="color:navy">
             <input type="submit" value="filter" class="btn btn-primary" >
@@ -62,7 +62,9 @@
                 <td>{{registeredUsers.points}}</td>
                 <td>{{registeredUsers.category}}</td>
                 <td>{{registeredUsers.benefits}}</td>
-               <td><button class = "btn btn-primary" (click) = "FindProfileById(registeredUsers.id)" style="background-color: steelblue">Profile</button></td>
+               <td><button class = "btn btn-success" (click)="FindProfileByButton(registeredUsers.id)"  style="background-color: steelblue">Profile</button></td>
+
+               
               
             </tr>
         </tbody>

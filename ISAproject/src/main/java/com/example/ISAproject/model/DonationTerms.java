@@ -35,6 +35,7 @@ public class DonationTerms {
 
 
 	@ManyToOne
+	@JoinColumn(name = "registered_user_id")
 	private RegisteredUser registeredUser;
 
 	@ManyToOne
@@ -52,7 +53,7 @@ public class DonationTerms {
 	@JoinColumn(name = "Stuff")
 	private Stuff stuff;
 
-	
+
 
 
 

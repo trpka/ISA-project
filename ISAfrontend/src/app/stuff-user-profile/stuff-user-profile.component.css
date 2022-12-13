@@ -1,7 +1,7 @@
 .Profile {
     margin: auto;
     width: 50%;
-    border: 3px solid green;
+    border: 3px solid navy;
     padding: 30px;
   }
 
@@ -14,8 +14,8 @@
 
 .container {
       margin: auto;
-      width: 50%;
-      border: 3px solid green;
+      width: 60%;
+      border: 3px solid navy;
       padding: 30px;
     }
   

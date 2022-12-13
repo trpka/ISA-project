@@ -16,6 +16,7 @@ export class AllRegisteredUsersComponent implements OnInit
    registeredUsers: RegisteredUser[];
    registeredUser: RegisteredUser;
    id: number;
+   user_id: number;
 
   constructor(private route: ActivatedRoute, private stuffService: StuffService) 
   { 
@@ -33,12 +34,20 @@ export class AllRegisteredUsersComponent implements OnInit
       .subscribe(res => this.registeredUsers = res)
   }
 
-  FindProfileById(id:number)
+  FindProfileById()
   {
     // this.stuffService.getUserById(id)
      //.subscribe(res=> this.registeredUser=res)
      location.pathname = ('stuff_user_profile/' + this.id);
   }
+
+  //Pretraga korisnika po Dugmetu u redu
+  FindProfileByButton(user_id:number)
+  {
+    location.pathname = ('stuff_user_profile/' + user_id);
+
+  }
+
 
   
 

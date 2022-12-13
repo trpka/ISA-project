@@ -89,11 +89,26 @@ values (3, '2016-02-21 09:00:00', 15, true, false, '2021-11-10 09:00:00','2021-1
 insert into donation_terms (id, date, duration, is_free, is_registered_user_come, reservation_start, reservation_end, profile_center_id)
 values (4, '2019-02-21 06:00:00', 25, true, false, '2021-11-10 07:00:00','2021-11-12 13:00:00', 1);
 
-insert into donation_terms (id, date, duration, is_free, is_registered_user_come, reservation_start, reservation_end, profile_center_id)
-values (5, '2018-02-20 07:00:00', 30, false, false, '2021-11-10 08:00:00','2021-11-12 14:00:00', 3);
+--insert into donation_terms (id, date, duration, is_free, is_registered_user_come, reservation_start, reservation_end, profile_center_id)
+--values (5, '2018-02-20 07:00:00', 30, false, false, '2021-11-10 08:00:00','2021-11-12 14:00:00', 3);
 
 insert into donation_terms (id, date, duration, is_free, is_registered_user_come, reservation_start, reservation_end, profile_center_id)
 values (6, '2016-02-21 09:00:00', 45, true, false, '2021-11-10 09:00:00','2021-11-12 15:00:00', 1);
+
+
+--Termini vezani za registronvane korisnie
+insert into donation_terms (id, date, duration, is_free, is_registered_user_come, reservation_start, reservation_end, profile_center_id, registered_user_id)
+values (8, '2019-11-22 11:00:00', 60, true, true, '2022-12-12 10:30:00','2022-12-12 11:30:00', 3, 14);
+
+insert into donation_terms (id, date, duration, is_free, is_registered_user_come, reservation_start, reservation_end, profile_center_id, registered_user_id)
+values (9, '2017-02-21 10:00:00', 45, true, false, '2021-11-11 09:30:00','2021-11-11 10:15:00', 3, 14);
+
+insert into donation_terms (id, date, duration, is_free, is_registered_user_come, reservation_start, reservation_end, profile_center_id, registered_user_id)
+values (10, '2017-02-21 10:00:00', 45, true, false, '2021-11-11 09:30:00','2021-11-11 10:15:00', 3, 8);
+
+
+
+
 
 
 insert into calendar (id) values (1);
