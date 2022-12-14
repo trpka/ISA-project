@@ -39,8 +39,4 @@ export class CalendarDefindedTermsComponent implements OnInit {
     .subscribe(res => this.donationTerms = res)
   }
 
-  ViewTerms()
-  {
-    location.pathname = ('defined_terms/' + this.id);
-  }
 }
