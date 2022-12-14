@@ -33,6 +33,7 @@ import { ConfirmRegistrationRegisteredUserComponent } from './confirm-registrati
 import { CreateDonationTermComponent } from './create-donation-term/create-donation-term.component';
 import { AllRegisteredUsersComponent } from './all-registered-users/all-registered-users.component';
 import { StuffUserProfileComponent } from './stuff-user-profile/stuff-user-profile.component';
+import { CalendarDefindedTermsComponent } from './calendar-definded-terms/calendar-definded-terms.component';
 
 
 
@@ -61,6 +62,9 @@ import { StuffUserProfileComponent } from './stuff-user-profile/stuff-user-profi
 
     CreateDonationTermComponent,
     AllRegisteredUsersComponent,
+
+    StuffUserProfileComponent,
+    CalendarDefindedTermsComponent,
     StuffUserProfileComponent
 
   ],

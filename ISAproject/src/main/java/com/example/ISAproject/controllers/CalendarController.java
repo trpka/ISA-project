@@ -25,6 +25,8 @@ public class CalendarController {
 	
 	 @Autowired
      private CalendarService calendarService;
+	 @Autowired
+     private DonationTermsService donationTermsService;
 	
 	 
 	 @RequestMapping(value="api/calendars",method = RequestMethod.GET,produces = {
@@ -34,4 +36,27 @@ public class CalendarController {
 	        List<Calendar> c= this.calendarService.findAll();
 	        return new ResponseEntity<>(c,HttpStatus.OK);
 	    }
+	 
+	  @RequestMapping(value="api/calendars/{id}",method = RequestMethod.GET,produces= {
+	            MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+	    public ResponseEntity<Calendar> getById(@PathVariable Long id)
+	    {
+
+		  Calendar calendar =this.calendarService.findById(id);
+
+	        return new ResponseEntity<>(calendar,HttpStatus.OK);
+	    }
+
+	  //Prikazivanje termina prema kalendaru kojem pripada
+	    @RequestMapping(value="api/calendars/terms/{id}",method = RequestMethod.GET,produces = {
+	            MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+
+	    public ResponseEntity<List<DonationTerms>> findAllTermsByCalendar(@PathVariable Long id)
+	    {
+	        List<DonationTerms> terms=this.donationTermsService.findAllTermsByCalendar(id);
+	        return new ResponseEntity<>(terms,HttpStatus.OK);
+	    }
+	    
+	   
+
 }
