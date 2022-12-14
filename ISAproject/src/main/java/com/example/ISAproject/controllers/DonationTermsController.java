@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.PessimisticLockException;
@@ -71,7 +72,7 @@ public class DonationTermsController
 
     @RequestMapping(value="api/terms/create_reservation",method = RequestMethod.PUT,produces = {
             MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-    //@PreAuthorize("hasRole('STUFF')")
+  //  @PreAuthorize("hasRole('STUFF')")
     public ResponseEntity<DonationTermsDTO>  addCottageFastReservation(@RequestBody DonationTermsDTO dto){
         DonationTermsDTO donationTermsDTO=new DonationTermsDTO();
         DonationTerms donationTerms = new DonationTerms();

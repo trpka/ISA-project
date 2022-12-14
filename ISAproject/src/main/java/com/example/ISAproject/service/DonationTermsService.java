@@ -3,6 +3,7 @@ package com.example.ISAproject.service;
 import com.example.ISAproject.dto.DonationTermsDTO;
 import com.example.ISAproject.dto.TimePeriodDTO;
 import com.example.ISAproject.model.BloodCenter;
+import com.example.ISAproject.model.Calendar;
 import com.example.ISAproject.model.DonationTerms;
 import com.example.ISAproject.model.RegisteredUser;
 import com.example.ISAproject.model.Stuff;
@@ -38,6 +39,8 @@ public class DonationTermsService
     @Autowired
     private BloodCenterService bloodCenterService;
     @Autowired
+    private CalendarService calendarService;
+    @Autowired
     private StuffRepository stuffReposiory;
 
     public List<DonationTerms> findAll() {
@@ -65,6 +68,23 @@ public class DonationTermsService
         for(DonationTerms dt: allTerms)
         {
             if(dt.getBloodCenter().getId() == id)
+            {
+                findedTerms.add(dt);
+            }
+        }
+
+        return findedTerms;
+    }
+    
+    //Pretraga Termina Po Kalendaru kojem pripadaju
+    public List<DonationTerms> findAllTermsByCalendar(Long id)
+    {
+        List<DonationTerms> allTerms = donationTermsRepository.findAll();
+        List<DonationTerms> findedTerms = new ArrayList<>();
+
+        for(DonationTerms dt: allTerms)
+        {
+            if(dt.getCalendar().getId() == id)
             {
                 findedTerms.add(dt);
             }
@@ -105,7 +125,8 @@ public class DonationTermsService
 
     @Transactional(readOnly=false)
     public DonationTerms addDonationTerm(DonationTerms dt) throws PessimisticLockingFailureException, DateTimeException {
-       
+    	BloodCenter bloodCenter = bloodCenterService.findById(dt.getBloodCenter().getId());
+    	Calendar calendar = calendarService.findById(dt.getCalendar().getId());
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
         LocalDateTime date = LocalDateTime.parse(dt.getDate().toString(),formatter);
@@ -115,7 +136,7 @@ public class DonationTermsService
         DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
 
-        DonationTerms donationTerms = new DonationTerms(dt.getId(),date,start, end, dt.getDuration());
+        DonationTerms donationTerms = new DonationTerms(dt.getId(),date,start, end, dt.getDuration(),dt.isFree(),bloodCenter,calendar);
 
         donationTermsRepository.save(donationTerms);
 
