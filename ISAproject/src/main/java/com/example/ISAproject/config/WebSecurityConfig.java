@@ -95,7 +95,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 									.antMatchers("/api/edit/center").permitAll()
 									.antMatchers("/api/terms/addTerm").permitAll()
-									//.antMatchers("/api/calendars").permitAll()
+									.antMatchers("/api/calendars").permitAll()
+									.antMatchers("/api/calendars/{id}").permitAll()							
+									.antMatchers("/api/calendars/terms/{id}").permitAll()
 
                                       //Student 3
 					                .antMatchers("/api/centers/edit").permitAll()
@@ -112,8 +114,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 					                .antMatchers("/api/centers/terms/{id}").permitAll()
 					                .antMatchers("/api/centers/stuffs/{id}").permitAll()
 					                .antMatchers("/api/terms/create_reservation").permitAll()
-					                .antMatchers("/auth/stuffSignup").permitAll()
+
 					                .antMatchers("/api/regUsers").permitAll()
+					                .antMatchers("/api/users/terms/{id}").permitAll()
+					                .antMatchers("/api/add_negative").permitAll()
+
+
+
+					                .antMatchers("/auth/stuffSignup").permitAll()
 
 
 

@@ -1,8 +1,11 @@
 package com.example.ISAproject.service;
 
 import com.example.ISAproject.model.BloodCenter;
+import com.example.ISAproject.model.DonationTerms;
 import com.example.ISAproject.model.RegisteredUser;
 import com.example.ISAproject.model.Stuff;
+import com.example.ISAproject.repository.DonationTermsRepository;
+import com.example.ISAproject.repository.RegisteredUserRepository;
 import com.example.ISAproject.repository.StuffRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +19,12 @@ public class StuffService
 {
     @Autowired
     private StuffRepository stuffRepository;
+
+    @Autowired
+    private RegisteredUserRepository registeredUserRepository;
+
+    @Autowired
+    private DonationTermsRepository donationTermsRepository;
 
     public List<Stuff> findAll() {return  this.stuffRepository.findAll();}
 
@@ -76,6 +85,22 @@ public class StuffService
 
     public Stuff save(Stuff newStuff) {
         return this.stuffRepository.save(newStuff);
+    }
+
+    //Student3 Funkcionalnost -- Dodeljivanje negativnog boda ako se korisnik ne pojavi na pregledu
+    public RegisteredUser addNegativePoint(Long id)
+    {
+        DonationTerms donationTerms = donationTermsRepository.getById(id);
+        RegisteredUser registeredUser = donationTerms.getRegisteredUser();
+
+        if(donationTerms.isRegisteredUserCome() == false)
+        {
+            registeredUser.setPoints(registeredUser.getPoints() + 1);
+        }
+
+        registeredUserRepository.save(registeredUser);
+
+        return registeredUser;
     }
 
 

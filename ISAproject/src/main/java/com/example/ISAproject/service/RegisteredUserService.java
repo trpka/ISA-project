@@ -68,6 +68,7 @@ public class RegisteredUserService {
 	 public List<RegisteredUser> findByFirstName(String name) {return this.registeredUserRepository.findByFirstName(name);}
 	 public List<RegisteredUser> findByLastName(String lastName){ return this.registeredUserRepository.findByLastName(lastName);}
 
+
 	public RegisteredUser activateById(Long id) {
 		Optional<RegisteredUser> registeredUserOpt= Optional.ofNullable(this.findById(id));
 		if(!registeredUserOpt.isPresent()) {
@@ -77,4 +78,5 @@ public class RegisteredUserService {
 		//client.setEnabled(true);
 		return registeredUser;
 	}
+
 }

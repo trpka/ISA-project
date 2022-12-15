@@ -35,16 +35,15 @@ public class DonationTerms {
 
 
 	@ManyToOne
+	@JoinColumn(name = "registered_user_id")
 	private RegisteredUser registeredUser;
 
 	@ManyToOne
 	@JoinColumn(name = "profile_center_id")
 	private BloodCenter bloodCenter;
 
-
-
-
 	@ManyToOne
+	@JoinColumn(name = "calendar_id")
 	private Calendar calendar;
 
 	//Povratna Veza sa Osobljem centra
@@ -52,7 +51,7 @@ public class DonationTerms {
 	@JoinColumn(name = "Stuff")
 	private Stuff stuff;
 
-	
+
 
 
 
@@ -61,8 +60,9 @@ public class DonationTerms {
 
 	}
 	
-	
-	public DonationTerms(Long id,LocalDateTime date, LocalDateTime reservationStart, LocalDateTime reservationEnd, int duration)
+	//Nikolina
+	public DonationTerms(Long id,LocalDateTime date, LocalDateTime reservationStart, LocalDateTime reservationEnd, int duration,
+			 boolean isFree,BloodCenter bloodCenter,Calendar calendar)
 	{
 	super();
 	this.Id = id;
@@ -70,6 +70,9 @@ public class DonationTerms {
 	this.reservationStart = reservationStart;
 	this.reservationEnd = reservationEnd;
 	this.duration = duration;
+	this.isFree=isFree;
+	this.bloodCenter = bloodCenter;
+	this.calendar=calendar;
 	}
 
 	public DonationTerms(Long id, LocalDateTime reservationStart, LocalDateTime reservationEnd, int duration,
