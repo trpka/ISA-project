@@ -4,7 +4,9 @@ import com.example.ISAproject.dto.DonationTermsDTO;
 import com.example.ISAproject.dto.ScheduleDonationTermDTO;
 import com.example.ISAproject.model.BloodCenter;
 import com.example.ISAproject.model.DonationTerms;
+import com.example.ISAproject.model.QRCodeGenerator;
 import com.example.ISAproject.service.DonationTermsService;
+import com.example.ISAproject.service.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -22,6 +24,8 @@ public class DonationTermsController
 {
     @Autowired
     private DonationTermsService donationTermsService;
+    @Autowired
+    private EmailService emailService;
 
     //Prikaz Svih Termina
     @RequestMapping(value="api/terms",method = RequestMethod.GET,produces = {
@@ -97,9 +101,15 @@ public class DonationTermsController
 
     @RequestMapping(value="api/schedule-term",method = RequestMethod.PUT,
             consumes=MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<DonationTerms>  scheduleTerm(@RequestBody ScheduleDonationTermDTO dto){
+    public ResponseEntity<DonationTerms>  scheduleTerm(@RequestBody ScheduleDonationTermDTO dto)throws Exception{
         DonationTerms updatedDonationTerm=this.donationTermsService.scheduleTerm(dto);
 
+        String text = "Reservation info: \n\nReservation start: " + updatedDonationTerm.getReservationStart() ;
+        String QR_CODE_IMAGE_PATH = "./src/main/resources/QRCode.png";
+        QRCodeGenerator.generateQRCodeImage(text, 350, 350, QR_CODE_IMAGE_PATH);
+        String body = "This is qr code for your reservation";
+        String subject = "QR CODE";
+        this.emailService.sendMailWithAttachment(updatedDonationTerm.getRegisteredUser().getEmail(), body, subject, QR_CODE_IMAGE_PATH);
         return new ResponseEntity<>(new DonationTerms(updatedDonationTerm),HttpStatus.OK);
 
     }
