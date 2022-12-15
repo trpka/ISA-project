@@ -78,22 +78,25 @@ insert into stuff (id, blood_center_id, is_first_login) values (11, 2, false);
 
 
 insert into donation_terms (id, date, duration, is_free, is_registered_user_come, reservation_start, reservation_end, profile_center_id)
-values (1, '2017-02-20 06:00:00', 60, true, false ,'2021-11-10 07:00:00','2021-11-12 13:00:00', 1);
+values (1, '2023-02-20 06:00', 60, true, false ,'2023-02-20 06:00','2023-02-20 07:00', 1);
 
 insert into donation_terms (id, date, duration, is_free, is_registered_user_come, reservation_start, reservation_end, profile_center_id)
-values (2, '2018-02-20 07:00:00', 45, false, false, '2021-11-10 08:00:00','2021-11-12 14:00:00', 2);
+values (2, '2023-02-20 10:00', 45, true, false, '2023-02-20 10:00','2023-02-20 10:45', 2);
 
 insert into donation_terms (id, date, duration, is_free, is_registered_user_come, reservation_start, reservation_end, profile_center_id)
-values (3, '2016-02-21 09:00:00', 15, true, false, '2021-11-10 09:00:00','2021-11-12 15:00:00', 2);
+values (3, '2023-02-22 10:00', 15, true, false, '2023-02-22 10:00','2023-02-22 10:15', 2);
 
 insert into donation_terms (id, date, duration, is_free, is_registered_user_come, reservation_start, reservation_end, profile_center_id)
-values (4, '2019-02-21 06:00:00', 25, true, false, '2021-11-10 07:00:00','2021-11-12 13:00:00', 1);
+values (4, '2023-02-22 11:00', 25, true, false, '2023-02-22 11:00','2023-02-22 11:25', 1);
 
 insert into donation_terms (id, date, duration, is_free, is_registered_user_come, reservation_start, reservation_end, profile_center_id)
-values (5, '2018-02-20 07:00:00', 30, false, false, '2021-11-10 08:00:00','2021-11-12 14:00:00', 3);
+values (5, '2023-02-23 11:00', 30, true, false, '2023-02-23 11:00','2023-02-23 11:30', 3);
 
 insert into donation_terms (id, date, duration, is_free, is_registered_user_come, reservation_start, reservation_end, profile_center_id)
-values (6, '2016-02-21 09:00:00', 45, true, false, '2021-11-10 09:00:00','2021-11-12 15:00:00', 1);
+values (6, '2023-02-23 07:00', 45, true, false, '2023-02-23 07:00','2023-02-23 07:45', 1);
+
+insert into donation_terms (id, date, duration, is_free, is_registered_user_come, reservation_start, reservation_end, profile_center_id)
+values (7, '2023-01-29 10:00', 15, true, false, '2023-01-29 10:00','2023-01-29 10:15', 2);
 
 
 insert into calendar (id) values (1);

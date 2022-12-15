@@ -15,6 +15,7 @@ export class BloodCenterService {
   url1 = "http://localhost:8081/api/center";
   url2= "http://localhost:8081/api/centerName";
   url3="http://localhost:8081/api/centers/terms";
+  url4="http://localhost:8081/api/centers/scheduled-terms";
   urlA = "http://localhost:8081/api/centers/stuffs";
 
   constructor(private http:HttpClient) { }
@@ -44,6 +45,24 @@ getBloodCenterById(id:number):Observable<BloodCenter>
 getAllTermsByCentre(id:number):Observable<DonationTerms[]>
 {
   return this.http.get<DonationTerms[]> (`${this.url3}/${id}`)
+}
+//OVO MENJAJ
+/*getAllScheduledTermsByCentre(bloodCenterRegisteredUser:BloodCenterRegisteredUser):Observable<DonationTerms[]>
+{
+  return this.http.get<DonationTerms[]> (`${this.url4}/${bloodCenterRegisteredUser}`)
+}*/
+
+/*getAllScheduledTermsByCentre(bloodCenterRegisteredUser:any):Observable<DonationTerms[]>{
+  const params:HttpParams=new HttpParams().append('bloodCenterRegisteredUser',bloodCenterRegisteredUser);
+  return this.http.get<DonationTerms[]>(this.url4, {params});
+}*/
+
+getAllScheduledTermsByCentre(bloodCenterId:number,registeredUserId:number):Observable<DonationTerms[]>{
+
+  const params=new HttpParams()
+    .set('bloodCenterId',bloodCenterId)
+    .set('registeredUserId',registeredUserId);
+    return this.http.get<DonationTerms[]>(this.url4,{params});
 }
 
 

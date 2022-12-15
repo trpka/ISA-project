@@ -1,11 +1,11 @@
 package com.example.ISAproject.service;
 
 import com.example.ISAproject.dto.DonationTermsDTO;
+import com.example.ISAproject.dto.ScheduleDonationTermDTO;
 import com.example.ISAproject.dto.TimePeriodDTO;
 import com.example.ISAproject.model.BloodCenter;
 import com.example.ISAproject.model.DonationTerms;
 import com.example.ISAproject.model.RegisteredUser;
-import com.example.ISAproject.model.Stuff;
 import com.example.ISAproject.repository.BloodCenterRepository;
 import com.example.ISAproject.repository.DonationTermsRepository;
 import com.example.ISAproject.repository.StuffRepository;
@@ -18,15 +18,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.DateTimeException;
 import java.time.format.DateTimeFormatter;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
-
-import javax.persistence.PessimisticLockException;
 
 @Service
 public class DonationTermsService
@@ -39,9 +34,36 @@ public class DonationTermsService
     private BloodCenterService bloodCenterService;
     @Autowired
     private StuffRepository stuffReposiory;
+    @Autowired
+    private RegisteredUserService registeredUserService;
 
     public List<DonationTerms> findAll() {
         return this.donationTermsRepository.findAll();
+    }
+
+    public Optional<DonationTerms> findById(Long id) {
+        return this.donationTermsRepository.findById(id);
+    }
+
+
+    public List<DonationTerms> sortByDate(Long id){
+
+        //List<DonationTerms> donationTermsList=this.donationTermsRepository.findAll();
+        List<DonationTerms> donationTermsList = this.donationTermsRepository.findByOrderByDate();
+        List<DonationTerms> list = new ArrayList<>();
+        for(DonationTerms donTerm : donationTermsList)
+        {
+            if(donTerm.getBloodCenter().getId().equals(id))
+            {
+                if(donTerm.isFree() == true)
+                {
+                    list.add(donTerm);
+                }
+
+            }
+        }
+        return list;
+        //return this.donationTermsRepository.findByOrderByDate();
     }
 
     //Pretraga Termina po centru(NE GLEDAJ OVU F-JU)
@@ -66,7 +88,34 @@ public class DonationTermsService
         {
             if(dt.getBloodCenter().getId() == id)
             {
-                findedTerms.add(dt);
+                if(dt.isFree() == true)
+                {
+                    findedTerms.add(dt);
+                }
+
+            }
+        }
+
+        return findedTerms;
+    }
+
+    public List<DonationTerms> findAllScheduledTermsByCentre(Long bloodCenterId,Long registeredUserId)
+    {
+        List<DonationTerms> allTerms = donationTermsRepository.findAll();
+        List<DonationTerms> findedTerms = new ArrayList<>();
+
+        for(DonationTerms dt: allTerms)
+        {
+            if(dt.getBloodCenter().getId() == bloodCenterId)
+            {
+                if(dt.isFree() == false)
+                {
+                    if(dt.getRegisteredUser().getId() == registeredUserId)
+                    {
+                        findedTerms.add(dt);
+                    }
+                }
+
             }
         }
 
@@ -158,6 +207,38 @@ public class DonationTermsService
 
 
 
+    }
+
+    public DonationTerms save(DonationTerms newDonationTerm) {
+        return this.donationTermsRepository.save(newDonationTerm);
+    }
+
+    public DonationTerms scheduleTerm(ScheduleDonationTermDTO dto) {
+        Optional<DonationTerms> donationTerms = this.findById(dto.getDonationTermId());
+        RegisteredUser registeredUser = this.registeredUserService.findById(dto.getRegisteredUserId());
+        if (!donationTerms.isPresent()) {
+            return null;
+        }
+        DonationTerms donationTerms1 = donationTerms.get();
+        donationTerms1.setRegisteredUser(registeredUser);
+        donationTerms1.setFree(false);
+        return this.save(donationTerms1);
+    }
+
+    public DonationTerms cancelTerm(ScheduleDonationTermDTO dto) {
+        Optional<DonationTerms> donationTerms = this.findById(dto.getDonationTermId());
+        RegisteredUser registeredUser = this.registeredUserService.findById(dto.getRegisteredUserId());
+        if (!donationTerms.isPresent()) {
+            return null;
+        }
+        DonationTerms donationTerms1 = donationTerms.get();
+        if(donationTerms1.getRegisteredUser().getId().equals(registeredUser.getId()))
+        {
+            donationTerms1.setRegisteredUser(null);
+            donationTerms1.setFree(true);
+        }
+
+        return this.save(donationTerms1);
     }
 
 }

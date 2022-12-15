@@ -27,7 +27,7 @@
                 <td>{{donationTerms.reservationStart}}</td>
                 <td>{{donationTerms.reservationEnd}}</td>
                 <td>{{donationTerms.bloodCenter.id}}</td>
-                <td><button  (click)="scheduleTerm(donationTerms.id)">Schedule</button></td>
+                <td><button  (click)="cancelAppointment(donationTerms.id)">Cancel the appointment</button></td>
     
        
         
@@ -40,12 +40,7 @@
 <div class="container">
     <div class="row">
       <div class="col-sm" style="text-align:center">
-        <label>Sort by Date and time</label>
-        <button class="btn btn-success" (click)="sortByDate()">Sort</button>
-      </div>
-      <div class="col-sm" style="text-align:center">
-        <label>See my appointments</label>
-        <button class="btn btn-success" (click)="goToScheduledAppointments()">Scheduled appointments</button>
+        <button class="btn btn-success" (click)="back()">Back</button>
       </div>
       <div class="col-sm" style="text-align:center">
         <label>Go to the blood center page</label>

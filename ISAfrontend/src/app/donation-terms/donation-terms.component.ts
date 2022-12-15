@@ -7,6 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 import { BloodCenterService } from '../service/blood-center.service';
 import { DonationTermsService } from '../service/donation-terms.service';
 import { BloodCenter } from '../model/bloodCenter';
+import { ScheduleDonationTerm } from '../model/ScheduleDonationTerm';
 
 @Component({
   selector: 'app-donation-terms',
@@ -19,12 +20,16 @@ export class DonationTermsComponent implements OnInit
   broj: number;
   donationTerms: DonationTerms[];
   bloodCenter: BloodCenter[];
+  scheduleDonationTerm:ScheduleDonationTerm;
 
 
   constructor(private route: ActivatedRoute,private donationTermsService: DonationTermsService, 
-    private bloodCenterService: BloodCenterService) 
+    private bloodCenterService: BloodCenterService, private router: Router) 
   {
-
+    this.scheduleDonationTerm = new ScheduleDonationTerm({
+      donationTermId:0,
+      registeredUserId: 0
+    })
   }
 
   ngOnInit(): void 
@@ -54,7 +59,30 @@ export class DonationTermsComponent implements OnInit
     
   }
    
-  
+  sortByDate()
+  {
+    this.id = Number(this.route.snapshot.params['id']);
+    this.donationTermsService.getAllDonationTermsSortedByDate(this.id)
+    .subscribe(res => {this.donationTerms = res;})
+  }
+
+  scheduleTerm(donationTermId:any)
+  {
+    this.scheduleDonationTerm.registeredUserId =  Number(sessionStorage.getItem('id')); 
+    this.scheduleDonationTerm.donationTermId = Number(donationTermId);
+    this.donationTermsService.scheduleTerm(this.scheduleDonationTerm)
+    .subscribe(_=>this. viewTermsByCentre())
+  }
+
+  goToScheduledAppointments()
+  {
+    this.router.navigate(['scheduled-appointments', this.id]);
+  }
+
+  goToCenter()
+  {
+    this.router.navigate(['profile_center', this.id]);
+  }
 
 
 }
