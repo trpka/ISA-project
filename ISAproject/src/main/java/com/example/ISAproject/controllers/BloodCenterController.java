@@ -130,6 +130,26 @@ public class BloodCenterController
         return new ResponseEntity<>(terms,HttpStatus.OK);
     }
 
+
+   /* @RequestMapping(value="api/centers/scheduled-terms",method = RequestMethod.GET,produces = {
+            MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+
+    public ResponseEntity<List<DonationTerms>> findAllScheduledTermsByCentre(@RequestBody BloodCenterRegisteredUserDTO bloodCenterRegisteredUserDTO)
+    {
+        List<DonationTerms> terms=this.donationTermsService.findAllScheduledTermsByCentre(bloodCenterRegisteredUserDTO);
+        return new ResponseEntity<>(terms,HttpStatus.OK);
+    }*/
+
+    @RequestMapping(value="api/centers/scheduled-terms", method = RequestMethod.GET,
+            params = {"bloodCenterId","registeredUserId"},
+            produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    //@PreAuthorize("hasRole('REGISTERED_USER')")
+    public ResponseEntity<List<DonationTerms>> findAllScheduledTermsByCentre(@RequestParam Long bloodCenterId,@RequestParam Long registeredUserId){
+        List<DonationTerms> terms=this.donationTermsService.findAllScheduledTermsByCentre(bloodCenterId, registeredUserId);
+        return new ResponseEntity<>(terms,HttpStatus.OK);
+    }
+
+
     //Prikazivanje Radnika(Stuff-ova) prema centru kojem pripadaju
     @RequestMapping(value="api/centers/stuffs/{id}",method = RequestMethod.GET,produces = {
             MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
