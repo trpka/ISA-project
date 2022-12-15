@@ -132,6 +132,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 									//.antMatchers("/api/centers/sort-by-average-grade").permitAll()
 									//.antMatchers("/api/centers/sort-by-city").permitAll()
 									.antMatchers("/api/terms/sort-by-date").permitAll()
+									.antMatchers("/genrateAndDownloadQRCode/**").permitAll()
+
 									.antMatchers("/api/schedule-term").permitAll()
 									.antMatchers("/api/cancel-term").permitAll()
 									.antMatchers("/api/survey").permitAll()
