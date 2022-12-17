@@ -11,11 +11,12 @@ import { Stuff } from '../model/stuff';
 })
 export class StuffService 
 {
-   url = "http://localhost:8081/api/stuff";
+   url =   "http://localhost:8081/api/stuff";
    url1A = "http://localhost:8081/api/regUsers";
    url2A = "http://localhost:8081/api/users/terms";
    url3A = "http://localhost:8081/api/addPenal";
    url4A = "http://localhost:8081/api/exam/edit";
+   url5A = "http://localhost:8081/api/stuff/edit";
    
 
   constructor(private http:HttpClient) { }
@@ -29,7 +30,8 @@ export class StuffService
   //Izmena Podataka o Radniku
   UpdateStuff(stuff: Stuff):Observable<Stuff>
   {
-      return this.http.put<Stuff>(this.url + "/edit",stuff);
+      return this.http.put<Stuff>(this.url+"/edit",stuff);
+      //return this.http.put<Stuff>(this.url5A,stuff);
   }
 
   //Prikaz Svih Registrovanih korisnika
