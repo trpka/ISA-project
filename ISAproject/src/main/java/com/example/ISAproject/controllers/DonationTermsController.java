@@ -72,7 +72,7 @@ public class DonationTermsController
     @RequestMapping(value="api/terms/create_reservation",method = RequestMethod.PUT,produces = {
             MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
     //@PreAuthorize("hasRole('STUFF')")
-    public ResponseEntity<DonationTermsDTO>  addCottageFastReservation(@RequestBody DonationTermsDTO dto){
+    public ResponseEntity<DonationTermsDTO>  addTermFastReservation(@RequestBody DonationTermsDTO dto){
         DonationTermsDTO donationTermsDTO=new DonationTermsDTO();
         DonationTerms donationTerms = new DonationTerms();
         try {
@@ -84,4 +84,24 @@ public class DonationTermsController
         }
         return new ResponseEntity<>(donationTermsDTO,HttpStatus.OK);
     }
+
+
+    //Pretraga Termina Po ID-ju, samo termina na koje dolaze korisnici
+    @RequestMapping(value="api/term/{id}",method = RequestMethod.GET,produces= {
+            MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    public ResponseEntity<DonationTerms> getById(@PathVariable Long id)
+    {
+        DonationTerms donationTerms =this.donationTermsService.findById(id);
+        if(donationTerms.isRegisteredUserCome() == false)
+        {
+            return  null;
+        }
+        else
+        {
+            return new ResponseEntity<>(donationTerms,HttpStatus.OK);
+
+        }
+    }
+
+
 }

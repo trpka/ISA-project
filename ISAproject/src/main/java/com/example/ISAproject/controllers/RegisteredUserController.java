@@ -104,6 +104,8 @@ public class RegisteredUserController {
     
   }
 
+
+
 	@RequestMapping(value="/api/confirm-registration-register-user/{id}",method = RequestMethod.GET,produces=
 			MediaType.APPLICATION_JSON_VALUE)
 	public void confirmRegistrationForRegisteredUser(@PathVariable Long id) {

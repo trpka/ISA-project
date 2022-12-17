@@ -12,6 +12,7 @@ export class DonationTermsService
 {
 
   url = "http://localhost:8081/api/terms";
+  url1A = "http://localhost:8081/api/term";
   
   constructor(private http:HttpClient) { }
 
@@ -25,4 +26,12 @@ export class DonationTermsService
 
     return this.http.put<DonationTerms>(this.url+"/addTerm", donationTerm);
   }
+
+  //Pretraga Termina po ID-ju
+  getTermById(id:number):Observable<DonationTerms>
+  {
+    return this.http.get<DonationTerms>(`${this.url1A}/${id}`)
+  }
+
+
 }

@@ -42,9 +42,6 @@ public class DonationTerms {
 	@JoinColumn(name = "profile_center_id")
 	private BloodCenter bloodCenter;
 
-
-
-
 	@ManyToOne
 	private Calendar calendar;
 

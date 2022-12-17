@@ -1,5 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Params } from '@angular/router';
 import { Observable } from 'rxjs';
 import { DonationTerms } from '../model/donationTerms';
 import { RegisteredUser } from '../model/registeredUser';
@@ -13,7 +14,8 @@ export class StuffService
    url = "http://localhost:8081/api/stuff";
    url1A = "http://localhost:8081/api/regUsers";
    url2A = "http://localhost:8081/api/users/terms";
-   url3A = "http://localhost:8081/api/add_negative";
+   url3A = "http://localhost:8081/api/addPenal";
+   url4A = "http://localhost:8081/api/exam/edit";
    
 
   constructor(private http:HttpClient) { }
@@ -47,13 +49,25 @@ export class StuffService
     return this.http.get<DonationTerms[]>(`${this.url2A}/${id}`)
   }
 
-  //Dodeljivanje Negativnih Poena
-  addNegativePoint(terms_id:number): Observable<RegisteredUser>
+  //Dodeljivanje Negativnih Poena ako se ne pojavi na pregledu
+  addNegativePoint(donationTerm: DonationTerms):Observable<DonationTerms>
   {
-    const params: HttpParams = new HttpParams().append('terms_id',terms_id);
-    return this.http.get<RegisteredUser>(this.url3A,{params});
+
+      return this.http.post<DonationTerms>(this.url3A,donationTerm);
   }
 
+  //Oznacavanje da li je korisnik dosao na pregled
+  updateExam(donationTerm: DonationTerms):Observable<DonationTerms>
+  {
+    return this.http.put<DonationTerms>(this.url4A, donationTerm);
+  }
+
+  
+
+
+  
+
+ 
   
 
 }

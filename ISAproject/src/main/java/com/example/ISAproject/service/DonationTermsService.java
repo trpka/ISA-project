@@ -8,6 +8,7 @@ import com.example.ISAproject.model.RegisteredUser;
 import com.example.ISAproject.model.Stuff;
 import com.example.ISAproject.repository.BloodCenterRepository;
 import com.example.ISAproject.repository.DonationTermsRepository;
+import com.example.ISAproject.repository.RegisteredUserRepository;
 import com.example.ISAproject.repository.StuffRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +40,8 @@ public class DonationTermsService
     private BloodCenterService bloodCenterService;
     @Autowired
     private StuffRepository stuffReposiory;
+    @Autowired
+    private RegisteredUserRepository registeredUserRepository;
 
     public List<DonationTerms> findAll() {
         return this.donationTermsRepository.findAll();
@@ -55,6 +58,19 @@ public class DonationTermsService
         return (List<DonationTerms>) opt.get();
 
     }
+
+    public DonationTerms findById(Long id)
+    {
+        Optional<DonationTerms> opt=this.donationTermsRepository.findById(id);
+        if(!opt.isPresent())
+        {
+            return null;
+        }
+        return opt.get();
+
+
+    }
+
 
     //Pretraga Termina Po Centru kojem pripadaju
     public List<DonationTerms> findAllTermsByCentre(Long id)
