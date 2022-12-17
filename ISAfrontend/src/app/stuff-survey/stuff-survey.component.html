@@ -1,0 +1,192 @@
+<div>
+    <div class="row">
+      <div class="col-2">
+        <p style="text-align:center"><img src="assets/img/logo-transfuzija.png"></p>
+      </div>
+      <div class="col-10">
+        <p><font size="5"   style="color:white;">.</font></p>
+        <p><font size="5"   style="color:white;">.</font></p>
+        <p style="text-align:center"><font size="7"   style="color:red;">QUESTIONNAIRE FOR BLOOD DONORS</font></p>
+      </div>
+  </div>
+  <p style="text-align:center"><font size="4"   style="color:black;">INFORMATION ABOUT BLOOD DONOR</font></p>
+  
+  
+    <div class = "DonationTerm">
+      <form >  
+        <div class="row">
+          <div class="col-sm">
+         
+            
+            <p>---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+            <p style="text-align:center"><label for="firstName">First name:</label></p>
+            <p style="text-align:center">{{donationTerm.registeredUser.firstName}}</p>
+            <p>---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+    
+            <p style="text-align:center"><label for="lastName">Last name: </label></p>
+            <p style="text-align:center">{{donationTerm.registeredUser.lastName}}</p>
+            <p>---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+    
+            
+            <p style="text-align:center"><label for="sex">Gender:</label></p>
+            <p style="text-align:center">{{donationTerm.registeredUser.sex}}</p>
+            <p>---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+
+            <p style="text-align:center"><label for="addreess">Address:</label></p>
+            <p style="text-align:center">{{donationTerm.registeredUser.adress}}</p>
+            <p>---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+            
+            <p style="text-align:center"><label for="city">City:</label></p>
+            <p style="text-align:center">{{donationTerm.registeredUser.city}}</p>
+            <p>---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+            
+            
+          </div>
+          <div class="col-sm">
+            
+            <p style="text-align:center"><label for="mobile">Phone number:</label></p>
+            <p style="text-align:center">{{donationTerm.registeredUser.mobile}}</p>
+            <p>---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+            
+            <p style="text-align:center"><label for="points">Points:</label></p>
+            <p style="text-align:center">{{donationTerm.registeredUser.points}}</p>
+            <p>---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+
+            <p style="text-align:center"><label for="Term Id">Term Id:</label></p>
+            <p style="text-align:center">{{donationTerm.id}}</p>
+            <p>---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+            
+            <p style="text-align:center"><label for="Reservation Start">Reservation Start:</label></p>
+            <p style="text-align:center">{{donationTerm.reservationStart}}</p>
+            <p>---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+
+
+            <p style="text-align:center"><label for="Reservation End">Reservation End:</label></p>
+            <p style="text-align:center">{{donationTerm.reservationEnd}}</p>
+            <p>---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+            <p style="text-align:center"><label for="Blood Centar">Blood  Center Id:</label></p>
+            <p style="text-align:center">{{donationTerm.bloodCenter.id}}</p>
+            <p>---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+
+          </div>
+        </div>
+         
+      </form>
+  </div>
+  
+  <div>
+      
+   
+  
+  </div>
+  
+  <p style="text-align:center"><font size="4"   style="color:black;">FILLED IN BY BLOOD DONOR</font></p>
+    <div class="row">
+      <div *ngIf="mustFill"><p style="text-align:center"><label><font size="5" style="color:brown;">You have to answer on all questions!</font></label></p> </div>
+      <div class="col-sm">
+          <p> Do you weigh less than 50 kg?</p>
+      </div>
+      <div class="col-sm">
+          <mat-radio-group aria-label="Select an option" style="margin-right: 450px;" [(ngModel)]="stuffSurvey.p1">
+              <mat-radio-button value="YES">YES</mat-radio-button>
+              <mat-radio-button value="NO">NO</mat-radio-button>
+            </mat-radio-group>
+      </div>
+    </div>
+  
+    <div class="row">
+      <div class="col-sm">
+          <p> Do you have symptoms of a cold, some illness or simply not feeling well?</p>
+      </div>
+      <div class="col-sm">
+          <mat-radio-group aria-label="Select an option" style="margin-right: 450px;" [(ngModel)]="stuffSurvey.p2">
+            <mat-radio-button value="YES">YES</mat-radio-button>
+            <mat-radio-button value="NO">NO</mat-radio-button>
+            </mat-radio-group>
+      </div>
+    </div>
+  
+    <div class="row">
+      <div class="col-sm">
+          <p>Do you have skin changes (infections, rashes, fungal diseases...)?</p>
+      </div>
+      <div class="col-sm">
+          <mat-radio-group aria-label="Select an option" style="margin-right: 450px;" [(ngModel)]="stuffSurvey.p3">
+            <mat-radio-button value="YES">YES</mat-radio-button>
+            <mat-radio-button value="NO">NO</mat-radio-button>
+            </mat-radio-group>
+      </div>
+    </div>
+  
+    <div class="row">
+      <div class="col-sm">
+          <p> Do you have high or low blood pressure?</p>
+      </div>
+      <div class="col-sm">
+          <mat-radio-group aria-label="Select an option" style="margin-right: 450px;" [(ngModel)]="stuffSurvey.p4">
+            <mat-radio-button value="YES">YES</mat-radio-button>
+            <mat-radio-button value="NO">NO</mat-radio-button>
+            </mat-radio-group>
+      </div>
+      
+    </div>
+  
+   <div class="row">
+      <div class="col-sm">
+          <p>Are you under therapy or has it been at least 7 days since therapy antibiotics?</p>
+      </div>
+      <div class="col-sm">
+          <mat-radio-group aria-label="Select an option" style="margin-right: 450px;" [(ngModel)]="stuffSurvey.p5">
+              <mat-radio-button value="YES">YES</mat-radio-button>
+              <mat-radio-button value="NO">NO</mat-radio-button>
+            </mat-radio-group>
+      </div>
+    </div>
+  
+    <div class="row">
+      <div class="col-sm">
+          <p>Has it been 7 days since tooth extraction and minor dental interventions?</p>
+      </div>
+      <div class="col-sm">
+          <mat-radio-group aria-label="Select an option" style="margin-right: 450px;" [(ngModel)]="stuffSurvey.p6">
+              <mat-radio-button value="YES">YES</mat-radio-button>
+              <mat-radio-button value="NO">NO</mat-radio-button>
+            </mat-radio-group>
+      </div>
+    </div>
+  
+    <div class="row">
+      <div class="col-sm">
+          <p>Has it been 6 months since body and skin piercing (piercing),tattoos or certain surgical interventions and blood transfusions?</p>
+      </div>
+      <div class="col-sm">
+          <mat-radio-group aria-label="Select an option" style="margin-right: 450px;" [(ngModel)]="stuffSurvey.p7">
+              <mat-radio-button value="YES">YES</mat-radio-button>
+              <mat-radio-button value="NO">NO</mat-radio-button>
+            </mat-radio-group>
+      </div>
+    </div>
+  
+    
+    <div class="row" *ngIf="checkGender1">
+      <div class="col-sm">
+          <p>Are you in the phase of a regular monthly cycle?</p>
+      </div>
+      <div class="col-sm">
+          <mat-radio-group aria-label="Select an option" style="margin-right: 450px;" [(ngModel)]="stuffSurvey.p8">
+              <mat-radio-button value="YES">YES</mat-radio-button>
+              <mat-radio-button value="NO">NO</mat-radio-button>
+            </mat-radio-group>
+      </div>
+    </div>
+  
+  
+  
+   
+  
+  <button class="btn btn-primary btn-block mb-4" (click)="save()">
+      Save
+    </button>
+  
+  
+  

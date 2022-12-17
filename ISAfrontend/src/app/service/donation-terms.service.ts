@@ -13,8 +13,12 @@ export class DonationTermsService
 {
 
   url = "http://localhost:8081/api/terms";
+
+  url1A = "http://localhost:8081/api/term";
+
   url1 = "http://localhost:8081/api/schedule-term";
   url2 = "http://localhost:8081/api/cancel-term";
+
   
   constructor(private http:HttpClient) { }
 
@@ -28,6 +32,15 @@ export class DonationTermsService
 
     return this.http.put<DonationTerms>(this.url+"/addTerm", donationTerm);
   }
+
+
+  //Pretraga Termina po ID-ju
+  getTermById(id:number):Observable<DonationTerms>
+  {
+    return this.http.get<DonationTerms>(`${this.url1A}/${id}`)
+  }
+
+
 
   /*getAllDonationTermsSortedByDate(id:number):Observable<DonationTerms[]>{
     return this.http.get<DonationTerms[]>(this.url1, id);
@@ -45,4 +58,5 @@ export class DonationTermsService
     return this.http.put<DonationTerms>(this.url2 , scheduleDonationTerm)
   }
   
+
 }

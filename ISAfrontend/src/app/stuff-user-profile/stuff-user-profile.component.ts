@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient, HttpParams } from '@angular/common/http';
+
 import { ActivatedRoute } from '@angular/router';
 import { DonationTerms } from '../model/donationTerms';
 import { RegisteredUser } from '../model/registeredUser';
@@ -12,15 +14,21 @@ import { StuffService } from '../service/stuff.service';
 })
 export class StuffUserProfileComponent implements OnInit {
 
+
+
   placeholder = 'terms_id';
+  placeholder1 = 'user_id';
 
   id:number;
-  terms_id: number;
+  terms_id: any;
   registeredUser: RegisteredUser;
   donationTerms: DonationTerms[];
+  donationTerm: DonationTerms;
   stuff: Stuff;
+  user_id: number;
 
-  constructor(private route: ActivatedRoute, private stuffService: StuffService) { }
+  constructor(private route: ActivatedRoute, 
+    private stuffService: StuffService) { }
 
   ngOnInit(): void 
   {
@@ -41,19 +49,32 @@ export class StuffUserProfileComponent implements OnInit {
   }
 
   //Dodavanje Negativnog Poena Za Korisnika
-  /*addNegativePoint(terms_id:number)
+  
+  addNegativePoint(donationTerm: DonationTerms)
   {
-    this.stuffService.addNegativePoint(this.terms_id)
-    
-  }*/
-
-  addNegativePoint(idt:number)
-  {
-    this.stuffService.addNegativePoint(idt)
-    .subscribe(res => this.registeredUser = res)
+    //this.donationTerm.id = Number(sessionStorage.getItem('id'))
+    this.stuffService.addNegativePoint(donationTerm)
+    .subscribe(res => this.donationTerm = res)
     window.location.reload();
   }
 
+  //Promena Statusa da li je korisnik dosao na pregled
+  UpdateExam(donationTerm:DonationTerms)
+  {
+    this.stuffService.updateExam(donationTerm)
+    .subscribe(res => this.donationTerm = res)
+    window.location.reload();
+  }
+
+  //Prelazak na Zakazivanje Termina Za korisnika
+  CreateAppointmentByUserId()
+  {
+    location.pathname = ('stuff_survey/'+ this.terms_id)
+  }
+
+
+
  
+  
 
 }

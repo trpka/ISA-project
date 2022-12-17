@@ -104,8 +104,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 					                .antMatchers("/api/centers").permitAll()
 					                .antMatchers("/api/center/{id}").permitAll()
 					                .antMatchers("/api/terms").permitAll()
+					                .antMatchers("/api/term/{id}").permitAll()
 					                .antMatchers("/api/term").permitAll()
-					                .antMatchers("/api/terms/{isFree}").permitAll()
+					                //.antMatchers("/api/terms/{isFree}").permitAll()
 					                .antMatchers("/api/stuffs").permitAll()
 					                .antMatchers("/api/stuffs/{id}").permitAll()
 					                .antMatchers("/api/edit/stuff").permitAll()
@@ -117,9 +118,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 					                .antMatchers("/api/regUsers").permitAll()
 					                .antMatchers("/api/users/terms/{id}").permitAll()
-					                .antMatchers("/api/add_negative").permitAll()
-
-
+					                .antMatchers("/api/users/term/{id}").permitAll()
+					                .antMatchers("/api/addPenal").permitAll()
+					                .antMatchers("/api/exam/edit").permitAll()
+					                .antMatchers("/api/stuff-survey").permitAll()
 
 					                .antMatchers("/auth/stuffSignup").permitAll()
 
