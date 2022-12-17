@@ -100,7 +100,7 @@ public class DonationTermsController
             MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public ResponseEntity<DonationTerms> getById(@PathVariable Long id)
     {
-        DonationTerms donationTerms =this.donationTermsService.findById(id);
+        DonationTerms donationTerms =this.donationTermsService.findByTermsId(id);
         if(donationTerms.isRegisteredUserCome() == false)
         {
             return  null;

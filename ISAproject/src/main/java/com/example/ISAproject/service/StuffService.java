@@ -110,7 +110,7 @@ public class StuffService
     //Sa povratnom vrednoscu
     public DonationTerms addPenalty(DonationTerms dt)
     {
-        DonationTerms donationTerms = donationTermsService.findById(dt.getId());
+        DonationTerms donationTerms = donationTermsService.findByTermsId(dt.getId());
         RegisteredUser registeredUser = donationTerms.getRegisteredUser();
 
         if(donationTerms.isRegisteredUserCome() == false)
@@ -126,7 +126,7 @@ public class StuffService
     //Provera Da li se Korisnik Pojavio ili nije na pregledu
     public DonationTerms UpdateExam(DonationTerms dt)
     {
-        DonationTerms donationTerms = donationTermsService.findById(dt.getId());
+        DonationTerms donationTerms = donationTermsService.findByTermsId(dt.getId());
 
         if (donationTerms.isRegisteredUserCome() == true)
         {

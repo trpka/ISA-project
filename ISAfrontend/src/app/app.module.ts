@@ -68,7 +68,7 @@ import { CalendarDefindedTermsComponent } from './calendar-definded-terms/calend
     CreateDonationTermComponent,
     AllRegisteredUsersComponent,
     StuffUserProfileComponent,
-    StuffSurveyComponent
+    StuffSurveyComponent,
 
 
     StuffUserProfileComponent,
