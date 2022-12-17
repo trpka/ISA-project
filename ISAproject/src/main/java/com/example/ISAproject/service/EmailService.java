@@ -10,6 +10,11 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
+import javax.mail.internet.MimeMessage;
+import org.springframework.mail.javamail.MimeMessageHelper;
+import javax.mail.MessagingException;
+import java.io.File;
+import org.springframework.core.io.FileSystemResource;
 
 import org.springframework.stereotype.Service;
 
@@ -71,6 +76,27 @@ public class EmailService {
         javaMailSender.send(mail);
 
         System.out.println("Email poslat!");
+    }
+
+    //attachment putanja do slike
+    public void sendMailWithAttachment(String toEmail,
+                                       String body,
+                                       String subject,
+                                       String attachment) throws MessagingException {
+        MimeMessage mimeMessage=javaMailSender.createMimeMessage();
+        MimeMessageHelper mimeMessageHelper=new MimeMessageHelper(mimeMessage,true);
+        mimeMessageHelper.setFrom("arjungautam8877@gmail.com");
+        mimeMessageHelper.setTo(toEmail);
+        mimeMessageHelper.setText(body);
+        mimeMessageHelper.setSubject(subject);
+
+        FileSystemResource fileSystemResource=
+                new FileSystemResource(new File(attachment));
+        mimeMessageHelper.addAttachment(fileSystemResource.getFilename(),
+                fileSystemResource);
+        javaMailSender.send(mimeMessage);
+        System.out.printf("Mail with attachment sent successfully..");
+
     }
 
 }

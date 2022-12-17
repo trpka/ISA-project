@@ -35,6 +35,11 @@ import { AllRegisteredUsersComponent } from './all-registered-users/all-register
 import { StuffUserProfileComponent } from './stuff-user-profile/stuff-user-profile.component';
 import { StuffSurveyComponent } from './stuff-survey/stuff-survey.component';
 
+import { ScheduledAppointmentsComponent } from './scheduled-appointments/scheduled-appointments.component';
+
+import { CalendarDefindedTermsComponent } from './calendar-definded-terms/calendar-definded-terms.component';
+
+
 
 
 
@@ -64,6 +69,16 @@ import { StuffSurveyComponent } from './stuff-survey/stuff-survey.component';
     AllRegisteredUsersComponent,
     StuffUserProfileComponent,
     StuffSurveyComponent
+
+
+    StuffUserProfileComponent,
+    ScheduledAppointmentsComponent,
+
+
+    StuffUserProfileComponent,
+    CalendarDefindedTermsComponent,
+    StuffUserProfileComponent
+
 
   ],
   imports: [

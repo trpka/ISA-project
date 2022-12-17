@@ -20,6 +20,8 @@ public class CalendarService {
 	
     @Autowired
     private CalendarRepository calendarRepository;
+    @Autowired
+    private BloodCenterRepository bloodCenterRepository;
     
     @Autowired
     private DonationTermsRepository donationTermsRepository;
@@ -30,4 +32,14 @@ public class CalendarService {
 	        return this.calendarRepository.findAll();
 	    }
 
+	   public Calendar findById(Long id)
+	    {
+	        Optional<Calendar> opt=this.calendarRepository.findById(id);
+	        if(!opt.isPresent())
+	        {
+	            return null;
+	        }
+	        return opt.get();
+	    }
+	   
 }

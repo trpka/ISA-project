@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { BloodCenter } from '../model/bloodCenter';
 import { RegisteredUser } from '../model/registeredUser';
 import { BloodCenterService } from '../service/blood-center.service';
@@ -14,7 +15,9 @@ export class HomeRegisteredUserComponent implements OnInit {
   bloodCenters : BloodCenter[];
   registeredUser : RegisteredUser;
   userId:number;
-  constructor(private bloodCenterService:BloodCenterService,  private registeredUserEditService:RegisteredUserEditService) {
+  bloodCenterId : number;
+  constructor(private bloodCenterService:BloodCenterService,  private registeredUserEditService:RegisteredUserEditService
+    ,private router: Router) {
     /*this.bloodCenter = new BloodCenter({
       user : new User({
       id: 0,
@@ -84,5 +87,10 @@ export class HomeRegisteredUserComponent implements OnInit {
     this.userId = Number(sessionStorage.getItem('id'));
     this.registeredUserEditService.getRegisteredUserById(this.userId)
     .subscribe(res=>this.registeredUser=res);
+  }
+
+  goToBloodCenter(bloodCenter:BloodCenter){
+  
+    this.router.navigate(['profile_center', bloodCenter.id]);
   }
 }
