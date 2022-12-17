@@ -56,7 +56,7 @@ const routes: Routes = [
   {path: 'all_registered_users',component: AllRegisteredUsersComponent},
   {path: 'stuff_user_profile/:id',component: StuffUserProfileComponent},
 
-  {path: 'stuff_survey/:id', component: StuffSurveyComponent}
+  {path: 'stuff_survey/:id', component: StuffSurveyComponent},
 
 
   {path: 'scheduled-appointments/:id', component:  ScheduledAppointmentsComponent},

@@ -85,7 +85,7 @@ public class DonationTermsService
 
     }
 
-    public DonationTerms findById(Long id)
+    public DonationTerms findByTermsId(Long id)
     {
         Optional<DonationTerms> opt=this.donationTermsRepository.findById(id);
         if(!opt.isPresent())
