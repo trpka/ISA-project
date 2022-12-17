@@ -1,5 +1,8 @@
 package com.example.ISAproject.controllers;
 
+import com.example.ISAproject.dto.ScheduleDonationTermDTO;
+import com.example.ISAproject.dto.SurveyRegisteredUserDTO;
+import com.example.ISAproject.model.DonationTerms;
 import com.example.ISAproject.model.Survey;
 import com.example.ISAproject.service.SurveyService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,4 +24,5 @@ public class SurveyController {
         Survey savedSurvey=this.surveyService.save(survey);
         return new ResponseEntity<>(savedSurvey, HttpStatus.CREATED);
     }
+
 }

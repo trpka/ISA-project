@@ -129,10 +129,10 @@ public class DonationTermsController
 
         String text = "Reservation info: \n\nReservation start: " + updatedDonationTerm.getReservationStart() ;
         String QR_CODE_IMAGE_PATH = "./src/main/resources/QRCode.png";
-        QRCodeGenerator.generateQRCodeImage(text, 350, 350, QR_CODE_IMAGE_PATH);
-        String body = "This is qr code for your reservation";
-        String subject = "QR CODE";
-        this.emailService.sendMailWithAttachment(updatedDonationTerm.getRegisteredUser().getEmail(), body, subject, QR_CODE_IMAGE_PATH);
+        //QRCodeGenerator.generateQRCodeImage(text, 350, 350, QR_CODE_IMAGE_PATH);
+        //String body = "This is qr code for your reservation";
+        //String subject = "QR CODE";
+        //this.emailService.sendMailWithAttachment(updatedDonationTerm.getRegisteredUser().getEmail(), body, subject, QR_CODE_IMAGE_PATH);
         return new ResponseEntity<>(new DonationTerms(updatedDonationTerm),HttpStatus.OK);
 
     }
