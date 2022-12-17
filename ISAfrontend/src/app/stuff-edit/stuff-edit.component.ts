@@ -39,7 +39,7 @@ export class StuffEditComponent implements OnInit
   {
     this.stuffService.UpdateStuff(this.stuff)
     .subscribe(res => this.stuff = res)
-    window.location.reload();
+    //window.location.reload();
   }
 
   ShowStuffCenter()
