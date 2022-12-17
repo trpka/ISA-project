@@ -1,3 +1,5 @@
+import { RegisteredUser } from "./registeredUser";
+
 interface SurveyInterface{
     id:number;
     numberOfDonator: string;
@@ -14,6 +16,7 @@ interface SurveyInterface{
     company:string;
     profession: string;
     numberOfBoodDonations: string;
+    registeredUser: RegisteredUser;
     p1:string;
     p2:string;
     p3:string;
@@ -41,6 +44,7 @@ export class Survey implements SurveyInterface{
     company:string;
     profession: string;
     numberOfBoodDonations: string;
+    registeredUser: RegisteredUser;
     p1:string;
     p2:string;
     p3:string;
@@ -67,6 +71,7 @@ export class Survey implements SurveyInterface{
         this.company = obj.company;
         this.profession = obj.profession;
         this.numberOfBoodDonations=obj.numberOfBoodDonations;
+        this.registeredUser = obj.registeredUser;
         this.p1=obj.p1;
         this.p2=obj.p2;
         this.p3=obj.p3;

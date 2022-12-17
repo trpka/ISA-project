@@ -241,9 +241,15 @@ public class Survey {
         this.p8 = p8;
     }
 
+    public RegisteredUser getRegisteredUser() {
+        return registeredUser;
+    }
 
+    public void setRegisteredUser(RegisteredUser registeredUser) {
+        this.registeredUser = registeredUser;
+    }
 
-    public Survey(Long id, String numberOfDonator, String date, String firstName, String lastName, String jmbg, String dateOfBirth, String sex, String adress, String township, String city, String mobile, String company, String profession, String numberOfBoodDonations, String p1, String p2, String p3, String p4,String p5, String p6, String p7, String p8) {
+    public Survey(Long id, String numberOfDonator, String date, String firstName, String lastName, String jmbg, String dateOfBirth, String sex, String adress, String township, String city, String mobile, String company, String profession, String numberOfBoodDonations, String p1, String p2, String p3, String p4, String p5, String p6, String p7, String p8) {
         this.id = id;
         this.numberOfDonator = numberOfDonator;
         this.date = date;
@@ -267,6 +273,33 @@ public class Survey {
         this.p6 = p6;
         this.p7 = p7;
         this.p8 = p8;
+    }
+
+    public Survey(Long id, String numberOfDonator, String date, String firstName, String lastName, String jmbg, String dateOfBirth, String sex, String adress, String township, String city, String mobile, String company, String profession, String numberOfBoodDonations, String p1, String p2, String p3, String p4, String p5, String p6, String p7, String p8, RegisteredUser registeredUser) {
+        this.id = id;
+        this.numberOfDonator = numberOfDonator;
+        this.date = date;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.jmbg = jmbg;
+        this.dateOfBirth = dateOfBirth;
+        this.sex = sex;
+        this.adress = adress;
+        this.township = township;
+        this.city = city;
+        this.mobile = mobile;
+        this.company = company;
+        this.profession = profession;
+        this.numberOfBoodDonations = numberOfBoodDonations;
+        this.p1 = p1;
+        this.p2 = p2;
+        this.p3 = p3;
+        this.p4 = p4;
+        this.p5 = p5;
+        this.p6 = p6;
+        this.p7 = p7;
+        this.p8 = p8;
+        this.registeredUser = registeredUser;
     }
 
     public Survey() {}

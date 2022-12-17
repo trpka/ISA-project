@@ -39,6 +39,9 @@ public class DonationTermsService
     private StuffRepository stuffReposiory;
     @Autowired
     private RegisteredUserService registeredUserService;
+    @Autowired
+    private SurveyService surveyService;
+
 
     public List<DonationTerms> findAll() {
         return this.donationTermsRepository.findAll();
@@ -260,11 +263,19 @@ public class DonationTermsService
         if (!donationTerms.isPresent()) {
             return null;
         }
+
+
         DonationTerms donationTerms1 = donationTerms.get();
-        donationTerms1.setRegisteredUser(registeredUser);
-        donationTerms1.setFree(false);
+        if(this.surveyService.registeredUserHasFilledOutQuestionnaire(registeredUser.getId()) == true){
+            donationTerms1.setRegisteredUser(registeredUser);
+            donationTerms1.setFree(false);
+        }
+
+
         return this.save(donationTerms1);
     }
+
+
 
     public DonationTerms cancelTerm(ScheduleDonationTermDTO dto) {
         Optional<DonationTerms> donationTerms = this.findById(dto.getDonationTermId());
