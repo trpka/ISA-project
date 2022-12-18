@@ -75,7 +75,7 @@ public class UserService {
 		u.setOrganizationInformation(userRequest.getOrganizationInformation());
 
 		//postavljeno na true
-		u.setEnabled(true);
+		u.setEnabled(false);
 		u.setEmail(userRequest.getEmail());
 		
 		u.setMobile(userRequest.getMobile());

@@ -26,6 +26,19 @@ public class SurveyService {
         return opt.get();
     }
 
+    public Survey findByRegisteredUserId(Long id)
+    {
+        List<Survey> surveys = this.findAll();
+        for (Survey survey:surveys)
+        {
+            if(survey.getRegisteredUser().getId() == id)
+            {
+                return survey;
+            }
+        }
+        return null;
+    }
+
     public void delete(Survey survey) {
         this.surveyRepository.delete(survey);
     }
