@@ -3,10 +3,7 @@ package com.example.ISAproject.service;
 import com.example.ISAproject.dto.DonationTermsDTO;
 import com.example.ISAproject.dto.ScheduleDonationTermDTO;
 import com.example.ISAproject.dto.TimePeriodDTO;
-import com.example.ISAproject.model.BloodCenter;
-import com.example.ISAproject.model.Calendar;
-import com.example.ISAproject.model.DonationTerms;
-import com.example.ISAproject.model.RegisteredUser;
+import com.example.ISAproject.model.*;
 import com.example.ISAproject.repository.BloodCenterRepository;
 import com.example.ISAproject.repository.DonationTermsRepository;
 import com.example.ISAproject.repository.RegisteredUserRepository;
@@ -274,18 +271,52 @@ public class DonationTermsService
         return this.donationTermsRepository.save(newDonationTerm);
     }
 
+    public boolean RegisteredUserCanNotHaveTwoTerms(Long registeredUserId)
+    {
+        List<DonationTerms> donationTerms = this.findAll();
+
+
+        for(DonationTerms donationTerm:donationTerms)
+        {
+            if(donationTerm.getRegisteredUser() != null)
+            {
+               if(donationTerm.getRegisteredUser().getId() == registeredUserId && donationTerm.isRegisteredUserCome() == true)
+               {
+                   return true;
+               }
+               else if(donationTerm.getRegisteredUser().getId() == registeredUserId && donationTerm.isRegisteredUserCome() == false)
+               {
+                   return false;
+               }
+            }
+
+        }
+
+      return true;
+    }
+
     public DonationTerms scheduleTerm(ScheduleDonationTermDTO dto) {
         Optional<DonationTerms> donationTerms = this.findById(dto.getDonationTermId());
         RegisteredUser registeredUser = this.registeredUserService.findById(dto.getRegisteredUserId());
+        Survey survey = this.surveyService.findByRegisteredUserId(dto.getRegisteredUserId());
         if (!donationTerms.isPresent()) {
             return null;
         }
 
 
         DonationTerms donationTerms1 = donationTerms.get();
-        if(this.surveyService.registeredUserHasFilledOutQuestionnaire(registeredUser.getId()) == true){
-            donationTerms1.setRegisteredUser(registeredUser);
-            donationTerms1.setFree(false);
+        if(this.surveyService.registeredUserHasFilledOutQuestionnaire(dto.getRegisteredUserId()) == true){
+          if(RegisteredUserCanNotHaveTwoTerms(dto.getRegisteredUserId()) == true)
+            {
+                LocalDateTime endTime = donationTerms1.getReservationEnd();
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                String endTimeString = endTime.format(formatter);
+                survey.setDate(endTimeString);
+
+                donationTerms1.setRegisteredUser(registeredUser);
+                donationTerms1.setFree(false);
+            }
+
         }
 
 
@@ -300,12 +331,27 @@ public class DonationTermsService
         if (!donationTerms.isPresent()) {
             return null;
         }
+
+        LocalDateTime currentTime = LocalDateTime.now();
+        LocalDateTime currentDateMinus1Day = currentTime.plusDays(1);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String currentDateMinus1DayString = currentDateMinus1Day.format(formatter);
+        DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDateTime currentDateMinus1Day1 = LocalDateTime.parse(currentDateMinus1DayString, formatter1);
+
+
         DonationTerms donationTerms1 = donationTerms.get();
-        if(donationTerms1.getRegisteredUser().getId().equals(registeredUser.getId()))
-        {
-            donationTerms1.setRegisteredUser(null);
-            donationTerms1.setFree(true);
+
+        LocalDateTime timeOfDonationTerm = donationTerms1.getReservationStart();
+
+        if (!timeOfDonationTerm.isBefore(currentDateMinus1Day1)) {
+            if(donationTerms1.getRegisteredUser().getId().equals(registeredUser.getId()))
+            {
+                donationTerms1.setRegisteredUser(null);
+                donationTerms1.setFree(true);
+            }
         }
+
 
         return this.save(donationTerms1);
     }

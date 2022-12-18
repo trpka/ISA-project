@@ -127,12 +127,16 @@ public class DonationTermsController
     public ResponseEntity<DonationTerms>  scheduleTerm(@RequestBody ScheduleDonationTermDTO dto)throws Exception{
         DonationTerms updatedDonationTerm=this.donationTermsService.scheduleTerm(dto);
 
-        String text = "Reservation info: \n\nReservation start: " + updatedDonationTerm.getReservationStart() ;
+        String text = "Reservation info: \n\nReservation start: " + updatedDonationTerm.getReservationStart() +
+                "\nReservation end: " + updatedDonationTerm.getReservationEnd() +
+                "\nDuration: " + updatedDonationTerm.getDuration() +
+                "\nFirst name: " + updatedDonationTerm.getRegisteredUser().getFirstName() +
+                "\nLast name: " + updatedDonationTerm.getRegisteredUser().getLastName();
         String QR_CODE_IMAGE_PATH = "./src/main/resources/QRCode.png";
-        //QRCodeGenerator.generateQRCodeImage(text, 350, 350, QR_CODE_IMAGE_PATH);
-        //String body = "This is qr code for your reservation";
-        //String subject = "QR CODE";
-        //this.emailService.sendMailWithAttachment(updatedDonationTerm.getRegisteredUser().getEmail(), body, subject, QR_CODE_IMAGE_PATH);
+        QRCodeGenerator.generateQRCodeImage(text, 350, 350, QR_CODE_IMAGE_PATH);
+        String body = "This is qr code for your reservation";
+        String subject = "QR CODE";
+        this.emailService.sendMailWithAttachment(updatedDonationTerm.getRegisteredUser().getEmail(), body, subject, QR_CODE_IMAGE_PATH);
         return new ResponseEntity<>(new DonationTerms(updatedDonationTerm),HttpStatus.OK);
 
     }
