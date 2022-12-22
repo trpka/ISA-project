@@ -52,7 +52,7 @@ const routes: Routes = [
   {path: 'stuff_user_profile/:id',component: StuffUserProfileComponent},
 
   {path: 'defined_terms/:id', component:CalendarDefindedTermsComponent},  
-  {path:'viewAllTerms', component:ListOfTermsComponent}
+  {path:'viewAllTerms', component:ListOfTermsComponent},
 
 
   {path: 'stuff_survey/:id', component: StuffSurveyComponent},
