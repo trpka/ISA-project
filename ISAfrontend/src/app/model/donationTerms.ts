@@ -1,6 +1,7 @@
 import { BooleanInput } from "@angular/cdk/coercion";
 import { BloodCenter } from "./bloodCenter";
 import { RegisteredUser } from "./registeredUser";
+import { Calendar } from "./calendar";
 
 interface DonationTermsInterface{
     id:number;
@@ -12,6 +13,7 @@ interface DonationTermsInterface{
     bloodCenter: BloodCenter;
     registeredUser: RegisteredUser;
     registeredUserCome: boolean;
+    calendar: Calendar;
     //description:string;
     
     // treba jos polja fali
@@ -27,6 +29,7 @@ export class DonationTerms implements DonationTermsInterface{
     bloodCenter: BloodCenter;
     registeredUser: RegisteredUser;
     registeredUserCome: boolean;
+    calendar: Calendar;
     //description:string;
     //bloodCenter:BloodCenter;
 
@@ -40,6 +43,7 @@ export class DonationTerms implements DonationTermsInterface{
         this.bloodCenter = obj.bloodCenter;
         this.registeredUser = obj.registeredUser;
         this.registeredUserCome = obj.registeredUserCome;
+        this.calendar=obj.calendar;
         //this.description=obj.description;
         //this.bloodCenter = obj.bloodCenter;
     } 

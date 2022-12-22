@@ -38,6 +38,7 @@ import { StuffSurveyComponent } from './stuff-survey/stuff-survey.component';
 import { ScheduledAppointmentsComponent } from './scheduled-appointments/scheduled-appointments.component';
 
 import { CalendarDefindedTermsComponent } from './calendar-definded-terms/calendar-definded-terms.component';
+import { ListOfTermsComponent } from './list-of-terms/list-of-terms.component';
 
 
 
@@ -77,7 +78,8 @@ import { CalendarDefindedTermsComponent } from './calendar-definded-terms/calend
 
     StuffUserProfileComponent,
     CalendarDefindedTermsComponent,
-    StuffUserProfileComponent
+    StuffUserProfileComponent,
+    ListOfTermsComponent
 
 
   ],

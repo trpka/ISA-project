@@ -1,5 +1,6 @@
 package com.example.ISAproject.service;
 
+import com.example.ISAproject.dto.DefinedTermDTO;
 import com.example.ISAproject.dto.DonationTermsDTO;
 import com.example.ISAproject.dto.ScheduleDonationTermDTO;
 import com.example.ISAproject.dto.TimePeriodDTO;
@@ -209,26 +210,58 @@ public class DonationTermsService
         }
     }
 
-    @Transactional(readOnly=false)
-    public DonationTerms addDonationTerm(DonationTerms dt) throws PessimisticLockingFailureException, DateTimeException {
-    	BloodCenter bloodCenter = bloodCenterService.findById(dt.getBloodCenter().getId());
-    	Calendar calendar = calendarService.findById(dt.getCalendar().getId());
+    
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
-        LocalDateTime date = LocalDateTime.parse(dt.getDate().toString(),formatter);
-        LocalDateTime start = LocalDateTime.parse(dt.getReservationStart().toString(),formatter);
-        LocalDateTime end = LocalDateTime.parse(dt.getReservationEnd().toString(),formatter);
+	
+	/*  @Transactional(readOnly=false) public DonationTerms addDonationTerm(DonationTerms dt) throws PessimisticLockingFailureException, DateTimeException { // BloodCenter bloodCenter =
+	 // bloodCenterService.findById(dt.getBloodCenter().getId()); 
+		  Calendar calendar = calendarService.findById(dt.getCalendar().getId());
+	  
+	  DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm"); 
+	  LocalDateTime date =LocalDateTime.parse(dt.getDate().toString(),formatter);
+	  LocalDateTime start = LocalDateTime.parse(dt.getReservationStart().toString(),formatter);
+	  LocalDateTime end = LocalDateTime.parse(dt.getReservationEnd().toString(),formatter);
+	  
+	  DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+	  
+	  
+	  DonationTerms donationTerms = new DonationTerms(dt.getId(),date,start, end, dt.getDuration(),calendar);
+	  
+	  donationTermsRepository.save(donationTerms);
+	  
+	  
+	  return donationTerms;
+	  }*/
+	 
+    
+    
+    @Transactional(readOnly=false) public DefinedTermDTO addDonationTerm(DefinedTermDTO dt) throws PessimisticLockingFailureException, DateTimeException { // BloodCenter bloodCenter =
+    	
+   	  DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm"); 
+   	  LocalDateTime date =LocalDateTime.parse(dt.getDate().toString(),formatter);
+   	  LocalDateTime start = LocalDateTime.parse(dt.getReservationStart(),formatter);
+   	//  LocalDateTime end = LocalDateTime.parse(dt.getReservationEnd(),formatter);
+   	  
+   	  
 
-        DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+      TimePeriodDTO time=new TimePeriodDTO();
+      time.setStart(dt.getReservationStart());
+   //   time.setEnd(dt.getReservationEnd());
+   
+   	  
+   	  
+   	  DonationTerms newTerm = new DonationTerms(dt.getId(),date,start, dt.getDuration());
+   	  
+   	  donationTermsRepository.save(newTerm);
+   	  
+   	DefinedTermDTO definedTermsDTO = new DefinedTermDTO(newTerm.getId(), newTerm.getDuration(),
+   			newTerm.getDate().format(formatter),
+   			newTerm.getReservationStart().format(formatter));
 
+  
+     return definedTermsDTO;
 
-        DonationTerms donationTerms = new DonationTerms(dt.getId(),date,start, end, dt.getDuration(),dt.isFree(),bloodCenter,calendar);
-
-        donationTermsRepository.save(donationTerms);
-
-
-        return donationTerms;
-    }
+   	  }
 
 
     @Transactional(readOnly=false)
@@ -263,9 +296,9 @@ public class DonationTermsService
         //return CottageFastReservationMapper.convertToDTO(fast);
         return donationTermsDTO;
 
-
-
     }
+    
+
 
     public DonationTerms save(DonationTerms newDonationTerm) {
         return this.donationTermsRepository.save(newDonationTerm);
