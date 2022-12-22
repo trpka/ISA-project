@@ -1,5 +1,6 @@
 package com.example.ISAproject.controllers;
 
+import com.example.ISAproject.dto.DefinedTermDTO;
 import com.example.ISAproject.dto.DonationTermsDTO;
 import com.example.ISAproject.model.BloodCenter;
 import com.example.ISAproject.model.DonationTerms;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.PessimisticLockException;
 import java.time.DateTimeException;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -54,12 +56,13 @@ public class DonationTermsController
 
     @RequestMapping(value="api/terms/addTerm",method = RequestMethod.PUT,produces = {
             MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-    //@PreAuthorize("hasRole('STUFF')")
-    public ResponseEntity<DonationTerms>addDonationTerm(@RequestBody DonationTerms dt)
+   // @PreAuthorize("hasRole('STUFF')")
+    public ResponseEntity<DefinedTermDTO>addDonationTerm(@RequestBody DefinedTermDTO dto)
     {
-        DonationTerms donationTerms = new DonationTerms();
+    	DefinedTermDTO definedTermDTO = new DefinedTermDTO();
+    	DonationTerms donationTerms = new DonationTerms();
         try {
-            donationTerms = this.donationTermsService.addDonationTerm(dt);
+        	definedTermDTO = this.donationTermsService.addDonationTerm(dto);
         } catch (PessimisticLockException e)
         {
             return new ResponseEntity<>(HttpStatus.CONFLICT);
@@ -67,8 +70,10 @@ public class DonationTermsController
         {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        return new ResponseEntity<>(donationTerms,HttpStatus.OK);
+        return new ResponseEntity<>(definedTermDTO,HttpStatus.OK);
     }
+    
+    
 
     @RequestMapping(value="api/terms/create_reservation",method = RequestMethod.PUT,produces = {
             MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
@@ -85,4 +90,6 @@ public class DonationTermsController
         }
         return new ResponseEntity<>(donationTermsDTO,HttpStatus.OK);
     }
+    
+
 }

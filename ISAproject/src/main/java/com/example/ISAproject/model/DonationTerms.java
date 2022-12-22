@@ -21,12 +21,12 @@ public class DonationTerms {
 	@Column
 	private int duration;
 	@Column(name = "isFree", nullable = false)
-	private boolean isFree;
+	private boolean isFree =true ;
 
 	@Column(name = "reservationStart", nullable = false)
 	private LocalDateTime reservationStart;
 
-	@Column(name = "reservationEnd", nullable = false)
+	@Column
 	private LocalDateTime reservationEnd;
 
 	@Column
@@ -60,19 +60,20 @@ public class DonationTerms {
 
 	}
 	
+
+
 	//Nikolina
-	public DonationTerms(Long id,LocalDateTime date, LocalDateTime reservationStart, LocalDateTime reservationEnd, int duration,
-			 boolean isFree,BloodCenter bloodCenter,Calendar calendar)
+	public DonationTerms(Long id,LocalDateTime date, LocalDateTime reservationStart,int duration)
 	{
 	super();
 	this.Id = id;
 	this.date = date;
 	this.reservationStart = reservationStart;
-	this.reservationEnd = reservationEnd;
+	//this.reservationEnd = reservationEnd;
 	this.duration = duration;
-	this.isFree=isFree;
-	this.bloodCenter = bloodCenter;
-	this.calendar=calendar;
+	//this.isFree=isFree;
+//	this.bloodCenter = bloodCenter;
+//	this.calendar=calendar;
 	}
 
 	public DonationTerms(Long id, LocalDateTime reservationStart, LocalDateTime reservationEnd, int duration,
@@ -213,5 +214,13 @@ public class DonationTerms {
 
 	public void setCalendar(Calendar calendar) {
 		this.calendar = calendar;
+	}
+	
+	public Stuff getStuff() {
+		return stuff;
+	}
+
+	public void setStuff(Stuff stuff) {
+		this.stuff = stuff;
 	}
 }

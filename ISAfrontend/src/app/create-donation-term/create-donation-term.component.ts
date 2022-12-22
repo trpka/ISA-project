@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute,Router } from '@angular/router';
 import { DonationTerms } from '../model/donationTerms';
 import { DonationTermsService } from '../service/donation-terms.service';
-import { BloodCenter } from '../model/bloodCenter';
-import { BloodCenterService } from '../service/blood-center.service';
+import { DefinedDonationTerms } from '../model/definedDonationTerms';
 
 
 
@@ -17,16 +16,22 @@ import { BloodCenterService } from '../service/blood-center.service';
 export class CreateDonationTermComponent implements OnInit {
 
   
-  donationTerm: DonationTerms;
+  //newTerm : DefinedDonationTerms;
 
-
-
-  constructor(private route: ActivatedRoute,private DonationTermsService: DonationTermsService) { 
+  newTerm: DefinedDonationTerms = new DefinedDonationTerms({
+    date: '',
+    reservationStart: '',
+    duration: 0
     
-  }
-  ngOnInit(): void {
 
+  })
+  constructor(private router: Router,private route: ActivatedRoute,private DonationTermsService: DonationTermsService) { 
+    
+   }
+  
+  ngOnInit(): void {
   }
+
 
   // addDonationTerm(){
   //   this.DonationTermsService.AddTerm(this.donationTerm)
@@ -34,9 +39,12 @@ export class CreateDonationTermComponent implements OnInit {
   // }
 
   addDonationTerm()
-  {
-    this.DonationTermsService.AddTerm(this.donationTerm)
-    .subscribe(res => this.donationTerm = res)
-    window.location.reload();
+  { 
+    console.log('janko',this.newTerm);
+    this.DonationTermsService.AddTerm(this.newTerm)
+    .subscribe(res => this.newTerm = res);
+   // window.location.reload();
   }
+
+
 }

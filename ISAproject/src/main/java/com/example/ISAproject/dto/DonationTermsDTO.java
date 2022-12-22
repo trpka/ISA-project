@@ -34,6 +34,8 @@ public class DonationTermsDTO
         this.bloodCenter = bloodCenter;
     }
 
+    
+    
     public Long getId() {
         return id;
     }

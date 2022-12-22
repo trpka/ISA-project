@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { DonationTerms } from '../model/donationTerms';
+import { DefinedDonationTerms } from '../model/definedDonationTerms';
 
 @Injectable
 ({
@@ -20,9 +21,11 @@ export class DonationTermsService
     return this.http.get<DonationTerms[]>(this.url);
   }
 
-  AddTerm(donationTerm: DonationTerms):Observable<DonationTerms>
+  AddTerm(donationTerm: DefinedDonationTerms):Observable<DefinedDonationTerms>
   {
-
-    return this.http.put<DonationTerms>(this.url+"/addTerm", donationTerm);
+    console.log('marko',donationTerm);
+    return this.http.put<DefinedDonationTerms>(this.url+'/addTerm', donationTerm);
   }
+
+
 }

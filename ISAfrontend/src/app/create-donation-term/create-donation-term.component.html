@@ -19,32 +19,34 @@ backdrop-filter: blur(30px);
 
     <div class="form-outline mb-4">
     
-      <input id="date" name="date" type="datetime-local"  class="form-control" [(ngModel)]="donationTerm.date"  />
+      <input id="date" name="date" type="datetime-local"  class="form-control" [(ngModel)]="newTerm.date"  />
       <label class="form-label" for="date">Date</label>   
      </div>
-            <div class="form-outline mb-4">
+
+      <div class="form-outline mb-4">
     
-             <input id="reservationStart" name="reservationStart" type="datetime-local"  class="form-control" [(ngModel)]="donationTerm.reservationStart"  />
+             <input id="reservationStart" name="reservationStart" type="datetime-local"  class="form-control" [(ngModel)]="newTerm.reservationStart"  />
              <label class="form-label" for="date">Reservation start</label>   
             </div>
-
+<!-- 
             
-            <div class="form-outline mb-4">
+     <div class="form-outline mb-4">
               
               <input id="reservationEnd" name="reservationEnd" type="datetime-local"  class="form-control" [(ngModel)]="donationTerm.reservationEnd" />
               <label class="form-label" for="date">Reservation end</label>
             </div>
-        
+         -->
 
         
         <div class="form-outline mb-4">
           
-          <input id="duration" name="duration" type="number"  class="form-control" [(ngModel)]="donationTerm.duration"  />
+          <input id="duration" name="duration" type="text"  class="form-control" [(ngModel)]="newTerm.duration"  />
           <label class="form-label" for="num_of_dur">duration</label>
         </div>
 
-  
-        <button class = "btn btn-success" (click) = "addDonationTerm()" style="background-color:steelblue">Update</button>
+       
+     
+        <button class = "btn btn-success" (click) = "addDonationTerm()" style="background-color:steelblue">Define new term</button>
       </form>
   </div>
 </div>
