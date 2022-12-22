@@ -20,8 +20,13 @@ import { ConfirmRegistrationRegisteredUserComponent } from './confirm-registrati
 import { CreateDonationTermComponent } from './create-donation-term/create-donation-term.component';
 import { AllRegisteredUsersComponent } from './all-registered-users/all-registered-users.component';
 import { StuffUserProfileComponent } from './stuff-user-profile/stuff-user-profile.component';
+import { StuffSurveyComponent } from './stuff-survey/stuff-survey.component';
+
+import { ScheduledAppointmentsComponent } from './scheduled-appointments/scheduled-appointments.component';
+
 import { CalendarDefindedTermsComponent } from './calendar-definded-terms/calendar-definded-terms.component';
 import { ListOfTermsComponent } from './list-of-terms/list-of-terms.component';
+
 
 
 const routes: Routes = [
@@ -45,8 +50,19 @@ const routes: Routes = [
   {path: 'create-term', component:CreateDonationTermComponent},
   {path: 'all_registered_users',component: AllRegisteredUsersComponent},
   {path: 'stuff_user_profile/:id',component: StuffUserProfileComponent},
+
   {path: 'defined_terms/:id', component:CalendarDefindedTermsComponent},  
   {path:'viewAllTerms', component:ListOfTermsComponent}
+
+
+  {path: 'stuff_survey/:id', component: StuffSurveyComponent},
+
+
+  {path: 'scheduled-appointments/:id', component:  ScheduledAppointmentsComponent},
+
+  {path: 'defined_terms/:id', component:CalendarDefindedTermsComponent}
+
+
 
 
 ];

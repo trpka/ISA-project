@@ -10,6 +10,8 @@ import { SurveyService } from '../service/survey.service';
   templateUrl: './questionnaire.component.html',
   styleUrls: ['./questionnaire.component.css']
 })
+
+
 export class QuestionnaireComponent implements OnInit {
   
   registeredUser:RegisteredUser;
@@ -17,10 +19,12 @@ export class QuestionnaireComponent implements OnInit {
   survey:Survey;
   mustfill = false;
   checkGender1 = false;
+  registeredUserId : number;
   //answers: [];
 
   
-  constructor(private surveyService:SurveyService, private registeredUserEditService:RegisteredUserEditService, private router: Router) { 
+  constructor(private surveyService:SurveyService, private registeredUserEditService:RegisteredUserEditService, 
+    private router: Router) { 
     this.registeredUser = new RegisteredUser({
       id:0,
       username: "",
@@ -59,6 +63,26 @@ export class QuestionnaireComponent implements OnInit {
         company:"",
         profession: "",
         numberOfBoodDonations: "",
+        registeredUser : new RegisteredUser({
+          id:0,
+          username: "",
+          password: "",
+          firstName: "",
+          lastName: "",
+          email: "",
+          mobile:"",
+          adress: "",
+          city: "",
+          state: "",
+          jmbg: "",
+          sex: "",
+          profession: "",
+          organizationInformation: "",
+          enabled: true,
+          points: 0,
+          category: "",
+          benefits:""
+          }),
         p1:"",
         p2:"",
         p3:"",
@@ -67,15 +91,17 @@ export class QuestionnaireComponent implements OnInit {
         p6:"",
         p7:"",
         p8:""
+        
       })
 
   }
 
   ngOnInit(): void {
-    this.findRegisteredUser()
+    this.findRegisteredUser();
     //this.checkGender()
   }
 
+  
   save(){ 
     if(this.survey.p1==''){
       this.mustfill=true;
@@ -102,6 +128,9 @@ export class QuestionnaireComponent implements OnInit {
       this.mustfill=true;
     }
     else{
+      const now = formatDate(new Date());
+      this.registeredUserId = Number(sessionStorage.getItem('id')); 
+      this.survey.date = String(now);
       this.survey.firstName = this.registeredUser.firstName;
       this.survey.lastName = this.registeredUser.lastName;
       this.survey.jmbg = this.registeredUser.jmbg;
@@ -112,11 +141,16 @@ export class QuestionnaireComponent implements OnInit {
       this.survey.company = this.registeredUser.organizationInformation;
       this.survey.profession = this.registeredUser.profession;
       this.survey.numberOfBoodDonations = String(this.registeredUser.points);
+      this.survey.registeredUser = this.registeredUser;
+      console.log(this.survey.registeredUser.email);
       this.surveyService.save(this.survey)
-      .subscribe()
+        .subscribe()
+      //this.surveyService.save(this.survey)
+      //.subscribe()
       this.router.navigate(['/home/registered-user']);
     }
   }
+
 
   /*checkGender():boolean{
     if(this.registeredUser.sex = "Female")
@@ -139,4 +173,24 @@ export class QuestionnaireComponent implements OnInit {
     })
   }
 
+}
+
+function padTo2Digits(num: number) {
+  return num.toString().padStart(2, '0');
+}
+
+function formatDate(date: Date) {
+  return (
+    [
+      date.getFullYear(),
+      padTo2Digits(date.getMonth() + 1),
+      padTo2Digits(date.getDate()),
+    ].join('-') +
+    ' ' +
+    [
+      padTo2Digits(date.getHours()),
+      padTo2Digits(date.getMinutes()),
+      padTo2Digits(date.getSeconds()),
+    ].join(':')
+  );
 }

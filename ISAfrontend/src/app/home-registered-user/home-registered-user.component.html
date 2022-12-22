@@ -42,6 +42,7 @@
                 <th>End Work</th>
                 <th>Description</th>
                 <th>Average Grade</th>
+                
             </tr>
         </thead>
         <tbody>
@@ -53,6 +54,7 @@
                 <td>{{bloodCenter.endWork}}</td>
                 <td>{{bloodCenter.description}}</td>
                 <td>{{bloodCenter.averageGradeCentre}}</td>
+                <button  (click)="goToBloodCenter(bloodCenter)">Go to center</button>
             </tr>
         </tbody>
     </table>

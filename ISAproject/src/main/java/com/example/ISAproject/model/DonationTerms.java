@@ -143,6 +143,19 @@ public class DonationTerms {
 		this.stuff = stuff;
 	}
 
+	public DonationTerms(DonationTerms donationTerms) {
+		this.date = donationTerms.getDate();
+		this.duration = donationTerms.getDuration();
+		this.isFree = donationTerms.isFree();
+		this.reservationStart = donationTerms.getReservationStart();
+		this.reservationEnd = donationTerms.getReservationEnd();
+		this.isRegisteredUserCome = donationTerms.isRegisteredUserCome();
+		this.registeredUser = donationTerms.getRegisteredUser();
+		this.bloodCenter = donationTerms.getBloodCenter();
+		this.calendar = donationTerms.getCalendar();
+		this.stuff = donationTerms.getStuff();
+	}
+
 	public LocalDateTime getDate() {
 		return date;
 	}
@@ -215,7 +228,7 @@ public class DonationTerms {
 	public void setCalendar(Calendar calendar) {
 		this.calendar = calendar;
 	}
-	
+
 	public Stuff getStuff() {
 		return stuff;
 	}

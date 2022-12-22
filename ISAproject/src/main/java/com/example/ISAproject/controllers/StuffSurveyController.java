@@ -1,10 +1,8 @@
 package com.example.ISAproject.controllers;
 
-import com.example.ISAproject.dto.ScheduleDonationTermDTO;
-import com.example.ISAproject.dto.SurveyRegisteredUserDTO;
-import com.example.ISAproject.model.DonationTerms;
+import com.example.ISAproject.model.StuffSurvey;
 import com.example.ISAproject.model.Survey;
-import com.example.ISAproject.service.SurveyService;
+import com.example.ISAproject.service.StuffSurveyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -13,16 +11,19 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin
-public class SurveyController {
-
+public class StuffSurveyController
+{
     @Autowired
-    private SurveyService surveyService;
+    private StuffSurveyService stuffSurveyService;
 
-    @RequestMapping(value="api/survey",method = RequestMethod.POST,
+    @RequestMapping(value="api/stuff-survey",method = RequestMethod.POST,
             consumes= MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Survey> save(@RequestBody Survey survey){
-        Survey savedSurvey=this.surveyService.save(survey);
+    public ResponseEntity<StuffSurvey> save(@RequestBody StuffSurvey survey)
+    {
+        StuffSurvey savedSurvey=this.stuffSurveyService.save(survey);
         return new ResponseEntity<>(savedSurvey, HttpStatus.CREATED);
     }
+
+
 
 }

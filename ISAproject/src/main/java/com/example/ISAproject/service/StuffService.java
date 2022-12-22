@@ -26,6 +26,9 @@ public class StuffService
     @Autowired
     private DonationTermsRepository donationTermsRepository;
 
+    @Autowired
+    private  DonationTermsService donationTermsService;
+
     public List<Stuff> findAll() {return  this.stuffRepository.findAll();}
 
     /*public Optional<Stuff> findById(Long id)
@@ -102,6 +105,42 @@ public class StuffService
 
         return registeredUser;
     }
+
+
+    //Sa povratnom vrednoscu
+    public DonationTerms addPenalty(DonationTerms dt)
+    {
+        DonationTerms donationTerms = donationTermsService.findByTermsId(dt.getId());
+        RegisteredUser registeredUser = donationTerms.getRegisteredUser();
+
+        if(donationTerms.isRegisteredUserCome() == false)
+        {
+            registeredUser.setPoints(registeredUser.getPoints() + 1);
+        }
+
+        registeredUserRepository.save(registeredUser);
+
+        return donationTerms;
+    }
+
+    //Provera Da li se Korisnik Pojavio ili nije na pregledu
+    public DonationTerms UpdateExam(DonationTerms dt)
+    {
+        DonationTerms donationTerms = donationTermsService.findByTermsId(dt.getId());
+
+        if (donationTerms.isRegisteredUserCome() == true)
+        {
+            donationTerms.setRegisteredUserCome(false);
+        }
+
+        donationTermsRepository.save(donationTerms);
+
+        return  donationTerms;
+
+    }
+
+
+
 
 
 

@@ -33,8 +33,13 @@ import { ConfirmRegistrationRegisteredUserComponent } from './confirm-registrati
 import { CreateDonationTermComponent } from './create-donation-term/create-donation-term.component';
 import { AllRegisteredUsersComponent } from './all-registered-users/all-registered-users.component';
 import { StuffUserProfileComponent } from './stuff-user-profile/stuff-user-profile.component';
+import { StuffSurveyComponent } from './stuff-survey/stuff-survey.component';
+
+import { ScheduledAppointmentsComponent } from './scheduled-appointments/scheduled-appointments.component';
+
 import { CalendarDefindedTermsComponent } from './calendar-definded-terms/calendar-definded-terms.component';
 import { ListOfTermsComponent } from './list-of-terms/list-of-terms.component';
+
 
 
 
@@ -63,11 +68,19 @@ import { ListOfTermsComponent } from './list-of-terms/list-of-terms.component';
 
     CreateDonationTermComponent,
     AllRegisteredUsersComponent,
+    StuffUserProfileComponent,
+    StuffSurveyComponent,
+
+
+    StuffUserProfileComponent,
+    ScheduledAppointmentsComponent,
+
 
     StuffUserProfileComponent,
     CalendarDefindedTermsComponent,
     StuffUserProfileComponent,
     ListOfTermsComponent
+
 
   ],
   imports: [

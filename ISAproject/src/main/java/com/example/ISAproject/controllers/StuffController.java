@@ -15,8 +15,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-@CrossOrigin("*")
 @RestController
+@CrossOrigin("*")
+
 public class StuffController
 {
     @Autowired
@@ -52,14 +53,39 @@ public class StuffController
     }
 
    //Student 3 funkcionalnost dodavanje negativnih poena
-    @PutMapping(value="api/add_negative",
+    /* @CrossOrigin(origins = "http://localhost:4200")
+    @RequestMapping(value="api/addPenal", method = RequestMethod.POST,
             params = "id",
-            produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-    public ResponseEntity<RegisteredUser> findByName(@RequestParam Long id)
+            consumes= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    public ResponseEntity<RegisteredUser> AddNegative(@RequestParam Long id)
     {
         RegisteredUser registeredUser = this.stuffService.addNegativePoint(id);
+
         return new ResponseEntity<>(registeredUser,HttpStatus.OK);
+    }*/
+
+    //Dodavanje penala ukoliko se korisnik ne pojavi na pregledu
+    @RequestMapping(value="api/addPenal",method = RequestMethod.POST,
+            consumes= MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<DonationTerms> addPenal(@RequestBody DonationTerms dt)
+    {
+        DonationTerms donationTerms = this.stuffService.addPenalty(dt);
+        return new ResponseEntity<>(donationTerms, HttpStatus.CREATED);
     }
+
+    //Provera Da Li se Korisnik pojavio na pregledu
+    @PutMapping("api/exam/edit")
+    public ResponseEntity<DonationTerms> UpdateExam(@RequestBody DonationTerms dt)
+    {
+        DonationTerms donationTerms = this.stuffService.UpdateExam(dt);
+        return  new ResponseEntity<>(donationTerms, HttpStatus.OK);
+    }
+
+
+
+
+
+
 
 
 

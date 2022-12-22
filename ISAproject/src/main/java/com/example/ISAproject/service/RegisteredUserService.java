@@ -75,6 +75,7 @@ public class RegisteredUserService {
 			return null;
 		}
 		RegisteredUser registeredUser=registeredUserOpt.get();
+		registeredUser.setEnabled(true);
 		//client.setEnabled(true);
 		return registeredUser;
 	}

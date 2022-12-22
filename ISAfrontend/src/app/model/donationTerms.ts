@@ -4,7 +4,7 @@ import { RegisteredUser } from "./registeredUser";
 import { Calendar } from "./calendar";
 
 interface DonationTermsInterface{
-    id?:number;
+    id:number;
     date: Date;
     duration: number;
     free: boolean;
@@ -20,7 +20,7 @@ interface DonationTermsInterface{
 }
 
 export class DonationTerms implements DonationTermsInterface{
-    id?:number;
+    id:number;
     date: Date;
     duration: number;
     free: boolean;
