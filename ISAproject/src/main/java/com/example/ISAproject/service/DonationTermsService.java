@@ -334,7 +334,7 @@ public class DonationTermsService
     }
 
     public DonationTerms scheduleTerm(ScheduleDonationTermDTO dto) {
-    	System.out.println(dto.getDonationTermId());
+    	
         Optional<DonationTerms> donationTerms = this.findById(dto.getDonationTermId());
         RegisteredUser registeredUser = this.registeredUserService.findById(dto.getRegisteredUserId());
         Survey survey = this.surveyService.findByRegisteredUserId(dto.getRegisteredUserId());
@@ -342,13 +342,12 @@ public class DonationTermsService
             return null;
         }
 
-        System.out.println(survey.getFirstName());
         DonationTerms donationTerms1 = donationTerms.get();
         if(this.surveyService.registeredUserHasFilledOutQuestionnaire(dto.getRegisteredUserId()) == true){
-        	System.out.println("blablabla");
+        
           if(RegisteredUserCanNotHaveTwoTerms(dto.getRegisteredUserId()) == true)
             {
-        	  System.out.println("konj");
+        	
                 LocalDateTime endTime = donationTerms1.getReservationEnd();
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
                 String endTimeString = endTime.format(formatter);
@@ -356,12 +355,12 @@ public class DonationTermsService
 
                 donationTerms1.setRegisteredUser(registeredUser);
                 donationTerms1.setFree(false);
-                System.out.println("konjfddfdfdfdf");
+            
             }
 
         }
 
-        System.out.println(donationTerms1);
+
      return this.save(donationTerms1);
    
     }

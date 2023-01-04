@@ -131,9 +131,7 @@ public class DonationTermsController
     @RequestMapping(value="api/schedule-term",method = RequestMethod.PUT,
             consumes=MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<DonationTerms>  scheduleTerm(@RequestBody ScheduleDonationTermDTO dto)throws Exception{
-    	System.out.println(dto.getDonationTermId());
-    	System.out.println(dto.getRegisteredUserId());
-    	System.out.println("sdfvgfrew");
+    	
         DonationTerms updatedDonationTerm=this.donationTermsService.scheduleTerm(dto);
 
       
