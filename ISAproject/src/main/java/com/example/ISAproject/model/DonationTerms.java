@@ -21,7 +21,7 @@ public class DonationTerms {
 	@Column
 	private int duration;
 	@Column(name = "isFree", nullable = false)
-	private boolean isFree =true ;
+	private boolean isFree =false ;
 
 	@Column(name = "reservationStart", nullable = false)
 	private LocalDateTime reservationStart;
@@ -30,7 +30,7 @@ public class DonationTerms {
 	private LocalDateTime reservationEnd;
 
 	@Column
-	private boolean isRegisteredUserCome;
+	private boolean isRegisteredUserCome=false;
 
 
 
@@ -63,17 +63,17 @@ public class DonationTerms {
 
 
 	//Nikolina
-	public DonationTerms(Long id,LocalDateTime date, LocalDateTime reservationStart,int duration)
+	public DonationTerms(Long id,LocalDateTime date, LocalDateTime reservationStart,LocalDateTime reservationEnd,
+			int duration, Calendar calendar, BloodCenter bloodCenter )
 	{
 	super();
 	this.Id = id;
 	this.date = date;
 	this.reservationStart = reservationStart;
-	//this.reservationEnd = reservationEnd;
+	this.reservationEnd = reservationEnd;
 	this.duration = duration;
-	//this.isFree=isFree;
-//	this.bloodCenter = bloodCenter;
-//	this.calendar=calendar;
+	this.calendar=calendar;
+	this.bloodCenter=bloodCenter;
 	}
 
 	public DonationTerms(Long id, LocalDateTime reservationStart, LocalDateTime reservationEnd, int duration,

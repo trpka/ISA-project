@@ -1,0 +1,64 @@
+
+<section class="text-center" style="background-color:ghostwhite">
+        <h2 style="color:whitesmoke; background-color: navy; font-weight: lighter;">You can look for Free Terms to Schedule it</h2>
+
+       
+        <div >
+            <img alt="My image name" src="./assets/img/logo-transfuzija.png"> 
+        </div>
+    
+        
+ <div class="card-body py-5 px-md-5">
+
+<div>
+ 
+      <form class="form-search" (ngSubmit)="getFreeTerms()">
+        <label for="avaliableTerm" style="font-weight:bold">Search for terms: </label>
+        <input name="avaliableTerm" id="avaliableTerm" type="datetime-local"  [(ngModel)]="userTerm" style="color:navy">
+        <input type="submit" value="filter" class="btn btn-primary" >
+    </form>
+</div>
+
+<div>
+<table class="table table-bordered table-bordered" border="1">
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>Is Term Free</th>
+            <th>Is RegisteredUser Come</th>
+            <th>Date</th>
+            <th>reservationStart</th>
+            <th>reservationEnd</th>
+            <th>Duration</th>
+            <th>Center Name</th>
+            <th>Center Address</th>
+            <th>Center Grade</th>
+        </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let donationTerm of avaliableTerms">
+            <td>{{donationTerm.id}}</td>
+            <td>{{donationTerm.free}}</td>
+            <td>{{donationTerm.registeredUserCome}}</td>
+            <td>{{donationTerm.date}}</td>
+            <td>{{donationTerm.reservationStart}}</td>
+            <td>{{donationTerm.reservationEnd}}</td>
+            <td>{{donationTerm.duration}}</td>
+            <td>{{donationTerm.bloodCenter.centerName}}</td>
+            <td>{{donationTerm.bloodCenter.address}}</td>
+            <td>{{donationTerm.bloodCenter.averageGradeCentre}}</td>
+            <td><button  (click)="goToSurvey(donationTerm.id)">Schedule</button></td>
+
+        </tr>
+    </tbody>
+</table>
+
+
+<!-- <div>
+    <div class="col-sm" style="text-align:center">
+        <label>Sort by average grade</label>
+        <button class="btn btn-success" (click)="sortByAverageGrade()">Sort</button>
+      </div>
+</div> -->
+
+

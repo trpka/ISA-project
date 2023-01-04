@@ -1,5 +1,7 @@
 package com.example.ISAproject.dto;
 
+import com.example.ISAproject.model.BloodCenter;
+import com.example.ISAproject.model.Calendar;
 import com.example.ISAproject.model.DonationTerms;
 
 import java.time.LocalDateTime;
@@ -10,8 +12,9 @@ public class DefinedTermDTO
    private String date;
    private int duration;
    private String reservationStart;
-  // private String reservationEnd;
- //  private Calendar calendar;
+   private String reservationEnd;
+   private Calendar calendar;
+   private BloodCenter center;
 
 
 
@@ -20,14 +23,16 @@ public DefinedTermDTO()
 
    }
 
-    public DefinedTermDTO(Long id,int duration, String date,String reservationStart)
+    public DefinedTermDTO(Long id,int duration, String date,String reservationStart ,String reservationEnd,Calendar calendar,
+    		BloodCenter center)
     {
         this.id = id;
         this.duration = duration;
         this.date=date;
         this.reservationStart = reservationStart;
-    //    this.reservationEnd = reservationEnd;
-      //  this.calendar=calendar;
+        this.reservationEnd = reservationEnd;
+        this.calendar=calendar;
+        this.center=center;
     }
 
     public Long getId() {
@@ -63,13 +68,17 @@ public DefinedTermDTO()
         this.reservationStart = reservationStart;
     }
 	
-/*	 public String getReservationEnd() { return reservationEnd; }
+	 public String getReservationEnd() { return reservationEnd; }
 	 
 	  public void setReservationEnd(String reservationEnd) { this.reservationEnd =
 	  reservationEnd; }
 	 
-	 * public Calendar getCalendar() { return calendar; }
-	 * 
-	 * public void setCalendar(Calendar calendar) { this.calendar = calendar; }
-	 */
+	 public Calendar getCalendar() { return calendar; }
+	 
+	  public void setCalendar(Calendar calendar) { this.calendar = calendar; }
+	 
+	  
+	  public BloodCenter getBloodCenter() { return center; }
+		 
+	  public void setBloodCenter(BloodCenter center) { this.center = center; }
 }

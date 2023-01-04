@@ -1,9 +1,14 @@
-
+<section>
+    <div class="col-sm" style="text-align:left">
+        <button class="btn btn-success" (click)="goToHome()">Back to home page</button>
+      </div>
+</section>
 <section class="text-center" style="background-color:ghostwhite">
     <h1 style="color:navy; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 1cm; font-weight: bold;">
         List of all centers</h1>
         <h2 style="color:whitesmoke; background-color: navy; font-weight: lighter;">You can look for any needed center</h2>
 
+       
         <div >
             <img alt="My image name" src="./assets/img/logo-transfuzija.png"> 
         </div>
@@ -13,17 +18,18 @@
 
     
 <div  >
-    <form class="form-search" (ngSubmit)="findByAddress(address)">
-        <label for="address" style="font-weight:bold">Address of center: </label>
-        <input name="address" id="address" type="text" [placeholder]="placeholder1" [(ngModel)]="address" style="color:navy">
-        <input type="submit" value="filter" class="btn btn-primary" >
-    </form>
 
     <form class="form-search" (ngSubmit)="findByAverageGrade(averageGradeCentre)">
         <label for="averageGradeCentre" style="font-weight:bold">Average grade of center: </label>
         <input name="averageGradeCentre" id="averageGradeCentre" type="text" [placeholder]="placeholder" [(ngModel)]="averageGradeCentre" style="color:navy">
         <input type="submit" value="filter" class="btn btn-primary" >
     </form>
+    <form class="form-search" (ngSubmit)="findByAddress(address)">
+        <label for="address" style="font-weight:bold">Address of center: </label>
+        <input name="address" id="address" type="text" [placeholder]="placeholder1" [(ngModel)]="address" style="color:navy">
+        <input type="submit" value="filter" class="btn btn-primary" >
+    </form>
+
     <form class="form-search" (ngSubmit)="findByName(centerName)">
         <label for="name" style="font-weight:bold">Name of  center: </label>
         <input name="name" id="name" type="text" [placeholder]="placeholder2" [(ngModel)]="centerName" style="color:navy">
@@ -71,6 +77,7 @@
         </tbody>
     </table>
 </div>
+
 </div>
    
 

@@ -1,8 +1,10 @@
 package com.example.ISAproject.service;
 
 import com.example.ISAproject.dto.DefinedTermDTO;
+import org.springframework.data.repository.query.Param;
 import com.example.ISAproject.dto.DonationTermsDTO;
 import com.example.ISAproject.dto.ScheduleDonationTermDTO;
+import com.example.ISAproject.dto.SearchForReservationDTO;
 import com.example.ISAproject.dto.TimePeriodDTO;
 import com.example.ISAproject.model.*;
 import com.example.ISAproject.repository.BloodCenterRepository;
@@ -12,6 +14,7 @@ import com.example.ISAproject.repository.StuffRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.PessimisticLockingFailureException;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import org.springframework.transaction.annotation.Transactional;
@@ -54,6 +57,7 @@ public class DonationTermsService
     }
 
 
+    
     public List<DonationTerms> sortByDate(Long id){
 
         //List<DonationTerms> donationTermsList=this.donationTermsRepository.findAll();
@@ -237,26 +241,27 @@ public class DonationTermsService
     
     @Transactional(readOnly=false) public DefinedTermDTO addDonationTerm(DefinedTermDTO dt) throws PessimisticLockingFailureException, DateTimeException { // BloodCenter bloodCenter =
     	
+    	Calendar calendar = calendarService.findById(dt.getCalendar().getId());
+        BloodCenter bloodCenter = bloodCenterService.findById(dt.getBloodCenter().getId());
+    			
    	  DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm"); 
    	  LocalDateTime date =LocalDateTime.parse(dt.getDate().toString(),formatter);
    	  LocalDateTime start = LocalDateTime.parse(dt.getReservationStart(),formatter);
-   	//  LocalDateTime end = LocalDateTime.parse(dt.getReservationEnd(),formatter);
+      LocalDateTime end = LocalDateTime.parse(dt.getReservationEnd(),formatter);
    	  
    	  
 
       TimePeriodDTO time=new TimePeriodDTO();
       time.setStart(dt.getReservationStart());
-   //   time.setEnd(dt.getReservationEnd());
-   
-   	  
-   	  
-   	  DonationTerms newTerm = new DonationTerms(dt.getId(),date,start, dt.getDuration());
+      time.setEnd(dt.getReservationEnd());
+
+   	  DonationTerms newTerm = new DonationTerms(dt.getId(),date,start,end, dt.getDuration(),calendar,bloodCenter);
    	  
    	  donationTermsRepository.save(newTerm);
    	  
    	DefinedTermDTO definedTermsDTO = new DefinedTermDTO(newTerm.getId(), newTerm.getDuration(),
    			newTerm.getDate().format(formatter),
-   			newTerm.getReservationStart().format(formatter));
+   			newTerm.getReservationStart().format(formatter),newTerm.getReservationEnd().format(formatter),calendar,bloodCenter);
 
   
      return definedTermsDTO;
@@ -329,6 +334,7 @@ public class DonationTermsService
     }
 
     public DonationTerms scheduleTerm(ScheduleDonationTermDTO dto) {
+    	System.out.println(dto.getDonationTermId());
         Optional<DonationTerms> donationTerms = this.findById(dto.getDonationTermId());
         RegisteredUser registeredUser = this.registeredUserService.findById(dto.getRegisteredUserId());
         Survey survey = this.surveyService.findByRegisteredUserId(dto.getRegisteredUserId());
@@ -336,11 +342,13 @@ public class DonationTermsService
             return null;
         }
 
-
+        System.out.println(survey.getFirstName());
         DonationTerms donationTerms1 = donationTerms.get();
         if(this.surveyService.registeredUserHasFilledOutQuestionnaire(dto.getRegisteredUserId()) == true){
+        	System.out.println("blablabla");
           if(RegisteredUserCanNotHaveTwoTerms(dto.getRegisteredUserId()) == true)
             {
+        	  System.out.println("konj");
                 LocalDateTime endTime = donationTerms1.getReservationEnd();
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
                 String endTimeString = endTime.format(formatter);
@@ -348,12 +356,14 @@ public class DonationTermsService
 
                 donationTerms1.setRegisteredUser(registeredUser);
                 donationTerms1.setFree(false);
+                System.out.println("konjfddfdfdfdf");
             }
 
         }
 
-
-        return this.save(donationTerms1);
+        System.out.println(donationTerms1);
+     return this.save(donationTerms1);
+   
     }
 
 
@@ -386,7 +396,36 @@ public class DonationTermsService
         }
 
 
-        return this.save(donationTerms1);
+      return this.save(donationTerms1);
+       
+    }
+    
+    
+    //3.11
+    public List<DonationTerms> findAllAvailableTerms(SearchForReservationDTO dto){
+	
+		List<DonationTerms> terms=this.findAll();
+		
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
+		LocalDateTime start = LocalDateTime.parse(dto.getDateAndTime(),formatter);
+		
+		List<DonationTerms> availableTerms=new ArrayList<>();
+		for (DonationTerms term : terms) {
+		
+			if(term.isFree()==false && term.isRegisteredUserCome()==false) {
+				availableTerms.add(term);
+	}
+		}
+		return availableTerms;
     }
 
+    
+    public List<DonationTerms> findAllAvailableTerms(LocalDateTime userTerm) {
+        return this.donationTermsRepository.getAvailableTerms(userTerm);
+    }
+    
+	/*
+	 * public List<DonationTerms> sortByGrade(){ return
+	 * this.donationTermsRepository.sortTermsByCenter(); }
+	 */
 }
