@@ -21,7 +21,7 @@ export class DonationTermsService
 
   url1 = "http://localhost:8081/api/schedule-term";
   url2 = "http://localhost:8081/api/cancel-term";
-
+  url3= "http://localhost:8081/api/findAvaliableTerms/"
   
   constructor(private http:HttpClient) { }
 
@@ -53,14 +53,23 @@ export class DonationTermsService
     return this.http.get<DonationTerms[]>(this.url+"/sort-by-date",{params});
   }
 
-  scheduleTerm(scheduleDonationTerm: ScheduleDonationTerm): Observable<DonationTerms> {
-    return this.http.put<DonationTerms>(this.url1 , scheduleDonationTerm)
+ scheduleTerm(scheduleDonationTerm: ScheduleDonationTerm): Observable<DonationTerms> {
+     return this.http.put<DonationTerms>(this.url1 , scheduleDonationTerm)
   }
  
   cancelTerm(scheduleDonationTerm: ScheduleDonationTerm): Observable<DonationTerms> {
     return this.http.put<DonationTerms>(this.url2 , scheduleDonationTerm)
   }
   
+  findAllAvailableTerms(userTerm:string):Observable<DonationTerms[]>{
+    return this.http.get<DonationTerms[]>(this.url3 + userTerm);
+
+  }
+
+  sortAvaliableTerms() {
+    return this.http.get<DonationTerms[]>(this.url3+"sort-by-average-grade");
+  }
+
 
 
 }

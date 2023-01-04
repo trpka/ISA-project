@@ -85,10 +85,10 @@ insert into donation_terms (id, date, duration, is_free, is_registered_user_come
 values (1, '2017-02-20 06:00:00', 60, true, false ,'2023-02-10 07:00:00','2023-02-10 08:00:00', 1,3);
 
 insert into donation_terms (id, date, duration, is_free, is_registered_user_come, reservation_start, reservation_end, profile_center_id,calendar_id)
-values (2, '2018-02-20 07:00:00', 45, true, false, '2023-02-17 07:00:00','2023-02-17 07:45:00', 2,1);
+values (2, '2018-02-20 07:00:00', 45, false, false, '2023-02-17 07:00:00','2023-02-17 07:45:00', 2,1);
 
 insert into donation_terms (id, date, duration, is_free, is_registered_user_come, reservation_start, reservation_end, profile_center_id,calendar_id)
-values (3, '2016-02-21 09:00:00', 15, true, false, '2023-02-15 07:00:00','2023-02-15 07:15:00', 2,3);
+values (3, '2016-02-21 09:00:00', 15, false, false, '2023-02-17 07:00:00','2023-02-17 07:15:00', 3,3);
 
 
 insert into donation_terms (id, date, duration, is_free, is_registered_user_come, reservation_start, reservation_end, profile_center_id,calendar_id)
@@ -127,3 +127,10 @@ values (7, '2016-02-21 09:00:00', 45, true, false, '2022-12-19 13:00:00','2022-1
 
 --insert into donation_terms (id, date, duration, is_free, is_registered_user_come, reservation_start, reservation_end, profile_center_id, registered_user_id,calendar_id)
 --values (10, '2017-02-21 10:00:00', 45, false, false, '2021-11-11 09:30:00','2021-11-11 10:15:00', 3, 8,2);
+
+insert into donation_terms (id, date, duration, is_free, is_registered_user_come, reservation_start, reservation_end, profile_center_id,calendar_id)
+values (32, '2018-03-20 07:00:00', 45, false, false, '2023-02-17 07:00:00','2023-02-17 07:35:00', 6,3);
+insert into donation_terms (id, date, duration, is_free, is_registered_user_come, reservation_start, reservation_end, profile_center_id,calendar_id)
+values (27, '2018-02-16 10:00:00', 45, false, false, '2023-02-17 07:00:00','2023-02-17 07:20:00', 10,1);
+insert into donation_terms (id, date, duration, is_free, is_registered_user_come, reservation_start, reservation_end, profile_center_id,calendar_id)
+values (40, '2018-02-14 09:30:00', 45, false, false, '2023-02-17 07:00:00','2023-02-17 07:20:00', 9,1);

@@ -39,6 +39,7 @@ import { ScheduledAppointmentsComponent } from './scheduled-appointments/schedul
 
 import { CalendarDefindedTermsComponent } from './calendar-definded-terms/calendar-definded-terms.component';
 import { ListOfTermsComponent } from './list-of-terms/list-of-terms.component';
+import { SearchAvaliableTermsComponent } from './search-avaliable-terms/search-avaliable-terms.component';
 
 
 
@@ -79,7 +80,8 @@ import { ListOfTermsComponent } from './list-of-terms/list-of-terms.component';
     StuffUserProfileComponent,
     CalendarDefindedTermsComponent,
     StuffUserProfileComponent,
-    ListOfTermsComponent
+    ListOfTermsComponent,
+    SearchAvaliableTermsComponent
 
 
   ],

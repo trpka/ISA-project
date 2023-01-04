@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DonationTerms } from '../model/donationTerms';
+import { Router } from '@angular/router';
 import { DonationTermsService } from '../service/donation-terms.service';
 import { Calendar } from '../model/calendar';
 import { CalendarService} from '../service/calendar.service';
@@ -20,7 +21,7 @@ export class CalendarDefindedTermsComponent implements OnInit {
   donationTerms: DonationTerms[];
  
 
-  constructor(private route: ActivatedRoute, private calendarService:CalendarService) { }
+  constructor(private route: ActivatedRoute,private router: Router, private calendarService:CalendarService) { }
 
   ngOnInit(): void {
     this.loadCenter();
@@ -39,4 +40,8 @@ export class CalendarDefindedTermsComponent implements OnInit {
     .subscribe(res => this.donationTerms = res)
   }
 
+  back()
+  {
+    this.router.navigate(['create-term']);
+  }
 }

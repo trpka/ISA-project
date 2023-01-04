@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.persistence.PessimisticLockException;
 import java.time.DateTimeException;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @RestController
@@ -130,8 +131,12 @@ public class DonationTermsController
     @RequestMapping(value="api/schedule-term",method = RequestMethod.PUT,
             consumes=MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<DonationTerms>  scheduleTerm(@RequestBody ScheduleDonationTermDTO dto)throws Exception{
+    	System.out.println(dto.getDonationTermId());
+    	System.out.println(dto.getRegisteredUserId());
+    	System.out.println("sdfvgfrew");
         DonationTerms updatedDonationTerm=this.donationTermsService.scheduleTerm(dto);
 
+      
         String text = "Reservation info: \n\nReservation start: " + updatedDonationTerm.getReservationStart() +
                 "\nReservation end: " + updatedDonationTerm.getReservationEnd() +
                 "\nDuration: " + updatedDonationTerm.getDuration() +
@@ -156,5 +161,30 @@ public class DonationTermsController
 
     }
 
+    
+    //Prikaz Svih Termina
+    @RequestMapping(value="api/findAvaliableTerms/{userTerm}",method = RequestMethod.GET,produces = {
+            MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+    public ResponseEntity<List<DonationTerms>> findAllAvaliableTerms(@PathVariable String userTerm)
+    {
+    	System.out.println(userTerm);
+    	  DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
+        
+           LocalDateTime localUserTerm = LocalDateTime.parse(userTerm,formatter);
+           
+    	
+        List<DonationTerms> terms= this.donationTermsService.findAllAvailableTerms(localUserTerm);
+        return new ResponseEntity<>(terms, HttpStatus.OK);
+    }
+    
+
+	/*
+	 * @RequestMapping(value="api/avaliableTerms/sort-by-average-grade", method =
+	 * RequestMethod.GET, produces= {MediaType.APPLICATION_JSON_VALUE,
+	 * MediaType.APPLICATION_XML_VALUE}) public ResponseEntity<List<DonationTerms>>
+	 * sortByGrade(){ List<DonationTerms>
+	 * terms=this.donationTermsService.sortByGrade(); return new
+	 * ResponseEntity<>(terms,HttpStatus.OK); }
+	 */
 
 }

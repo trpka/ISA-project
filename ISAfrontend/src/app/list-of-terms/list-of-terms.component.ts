@@ -8,6 +8,8 @@ import { ActivatedRoute } from '@angular/router';
 import { BloodCenterService } from '../service/blood-center.service';
 import { DonationTermsService } from '../service/donation-terms.service';
 import { BloodCenter } from '../model/bloodCenter';
+import { Calendar } from '../model/calendar';
+import { CalendarService } from '../service/calendar.service';
 
 
 @Component({
@@ -18,24 +20,32 @@ import { BloodCenter } from '../model/bloodCenter';
 export class ListOfTermsComponent implements OnInit {
 
 
-  
   id: any;
-  broj: number;
+  calendars :Calendar[];
   donationTerms: DonationTerms[];
   bloodCenter: BloodCenter[];
 
   constructor(private route: ActivatedRoute,private donationTermsService: DonationTermsService, 
-    private bloodCenterService: BloodCenterService) { }
+    private bloodCenterService: BloodCenterService,private calendarService: CalendarService,private router: Router) { }
 
   ngOnInit(): void {
 
-    this.geAllTerms();
+    this.geAllCalendars();
   }
 
-  geAllTerms()
+  geAllCalendars()
   {
-     this.donationTermsService.getAllDonationTerms()
-    .subscribe(res => this.donationTerms = res)
+     this.calendarService.getAllCalendars()
+    .subscribe(res => this.calendars = res)
   }
 
+  // goToCalendar(){
+  
+  //   location.pathname = ('defined_terms/' + this.id);
+  //   //this.router.navigate(['defined_terms', this.id]);
+  // }
+
+
+
+  
 }

@@ -27,7 +27,7 @@ import { ScheduledAppointmentsComponent } from './scheduled-appointments/schedul
 import { CalendarDefindedTermsComponent } from './calendar-definded-terms/calendar-definded-terms.component';
 import { ListOfTermsComponent } from './list-of-terms/list-of-terms.component';
 
-
+import { SearchAvaliableTermsComponent } from './search-avaliable-terms/search-avaliable-terms.component';
 
 const routes: Routes = [
   {path: '', component:HomeComponent},
@@ -60,7 +60,8 @@ const routes: Routes = [
 
   {path: 'scheduled-appointments/:id', component:  ScheduledAppointmentsComponent},
 
-  {path: 'defined_terms/:id', component:CalendarDefindedTermsComponent}
+  {path: 'defined_terms/:id', component:CalendarDefindedTermsComponent},
+  {path: 'avaliableTerms', component: SearchAvaliableTermsComponent}
 
 
 

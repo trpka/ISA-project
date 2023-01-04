@@ -5,6 +5,7 @@ interface CalendarInterface{
     listOfDefinedTerms: DonationTerms[];
 }
 
+
 export class Calendar implements CalendarInterface{
     id:number;
     listOfDefinedTerms: DonationTerms[];

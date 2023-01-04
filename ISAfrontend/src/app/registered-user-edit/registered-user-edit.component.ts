@@ -17,9 +17,6 @@ export class RegisteredUserEditComponent implements OnInit {
 
   id: number;
   registeredUser: RegisteredUser;
-  
-
-
   placeholder = 'please enter info...';
 
 
@@ -45,6 +42,7 @@ export class RegisteredUserEditComponent implements OnInit {
   {
     this.registeredUserService.UpdateRegisteredUser(this.registeredUser)
     .subscribe(res => this.registeredUser = res)
+    alert("Successfully update!");
     window.location.reload();
   }
 

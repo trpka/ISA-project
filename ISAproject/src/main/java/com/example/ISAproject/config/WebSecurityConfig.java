@@ -91,6 +91,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 									.antMatchers("/api/centerName").permitAll()
 									.antMatchers("/search/{centerName}").permitAll()
 									.antMatchers("/api/regUsers/edit").permitAll()
+									.antMatchers("/api/findAvaliableTerms/{userTerm}").permitAll()
+								//	.antMatchers("/api/avaliableTerms/sort-by-average-grade").permitAll()
 									
 
 									.antMatchers("/api/edit/center").permitAll()
