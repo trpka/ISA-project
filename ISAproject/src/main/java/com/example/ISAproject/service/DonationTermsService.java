@@ -56,7 +56,7 @@ public class DonationTermsService
     public List<DonationTerms> sortByDate(Long id){
 
         //List<DonationTerms> donationTermsList=this.donationTermsRepository.findAll();
-        List<DonationTerms> donationTermsList = this.donationTermsRepository.findByOrderByDate();
+        List<DonationTerms> donationTermsList = this.donationTermsRepository.findByOrderByReservationStart();
         List<DonationTerms> list = new ArrayList<>();
         for(DonationTerms donTerm : donationTermsList)
         {

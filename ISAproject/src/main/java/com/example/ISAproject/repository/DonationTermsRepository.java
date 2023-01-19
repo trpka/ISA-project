@@ -12,6 +12,7 @@ public interface DonationTermsRepository extends JpaRepository<DonationTerms, Lo
 {
     List<DonationTerms> findByisFree(boolean isFree);
     List<DonationTerms> findByOrderByDate();
+    List<DonationTerms> findByOrderByReservationStart();
 
 
 }
