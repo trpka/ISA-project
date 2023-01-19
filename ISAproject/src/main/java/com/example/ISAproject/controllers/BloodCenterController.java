@@ -162,7 +162,7 @@ public class BloodCenterController
     @RequestMapping(value="api/centers/scheduled-terms", method = RequestMethod.GET,
             params = {"bloodCenterId","registeredUserId"},
             produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-    //@PreAuthorize("hasRole('REGISTERED_USER')")
+    @PreAuthorize("hasRole('REGISTERED_USER')")
     public ResponseEntity<List<DonationTerms>> findAllScheduledTermsByCentre(@RequestParam Long bloodCenterId,@RequestParam Long registeredUserId){
         List<DonationTerms> terms=this.donationTermsService.findAllScheduledTermsByCentre(bloodCenterId, registeredUserId);
         return new ResponseEntity<>(terms,HttpStatus.OK);

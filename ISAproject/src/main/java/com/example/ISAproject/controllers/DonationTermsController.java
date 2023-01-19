@@ -122,7 +122,7 @@ public class DonationTermsController
 
     @RequestMapping(value="api/terms/sort-by-date", method = RequestMethod.GET, params = "id",
             produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-    //@PreAuthorize("hasRole('REGISTERED_USER')")
+    @PreAuthorize("hasRole('REGISTERED_USER')")
     public ResponseEntity<List<DonationTerms>> sortByDate(@RequestParam Long id){
         List<DonationTerms> donationTerms=this.donationTermsService.sortByDate(id);
         return new ResponseEntity<>(donationTerms,HttpStatus.OK);
@@ -130,6 +130,7 @@ public class DonationTermsController
 
     @RequestMapping(value="api/schedule-term",method = RequestMethod.PUT,
             consumes=MediaType.APPLICATION_JSON_VALUE)
+    @PreAuthorize("hasRole('REGISTERED_USER')")
     public ResponseEntity<DonationTerms>  scheduleTerm(@RequestBody ScheduleDonationTermDTO dto)throws Exception{
     	
         DonationTerms updatedDonationTerm=this.donationTermsService.scheduleTerm(dto);
@@ -139,7 +140,9 @@ public class DonationTermsController
                 "\nReservation end: " + updatedDonationTerm.getReservationEnd() +
                 "\nDuration: " + updatedDonationTerm.getDuration() +
                 "\nFirst name: " + updatedDonationTerm.getRegisteredUser().getFirstName() +
-                "\nLast name: " + updatedDonationTerm.getRegisteredUser().getLastName();
+                "\nLast name: " + updatedDonationTerm.getRegisteredUser().getLastName()+
+                "\nCenter name: " + updatedDonationTerm.getBloodCenter().getCenterName() +
+                "\nCenter address: " + updatedDonationTerm.getBloodCenter().getAddress();
         String QR_CODE_IMAGE_PATH = "./src/main/resources/QRCode.png";
         QRCodeGenerator.generateQRCodeImage(text, 350, 350, QR_CODE_IMAGE_PATH);
         String body = "This is qr code for your reservation";
@@ -163,6 +166,7 @@ public class DonationTermsController
 
     @RequestMapping(value="api/cancel-term",method = RequestMethod.PUT,
             consumes=MediaType.APPLICATION_JSON_VALUE)
+    @PreAuthorize("hasRole('REGISTERED_USER')")
     public ResponseEntity<DonationTerms>  cancelTerm(@RequestBody ScheduleDonationTermDTO dto){
         DonationTerms updatedDonationTerm=this.donationTermsService.cancelTerm(dto);
 
