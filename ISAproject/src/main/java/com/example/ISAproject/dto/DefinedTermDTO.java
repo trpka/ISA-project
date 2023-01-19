@@ -11,6 +11,7 @@ public class DefinedTermDTO
    private Long id;
    private String date;
    private int duration;
+   private boolean isFree;
    private String reservationStart;
    private String reservationEnd;
    private Calendar calendar;
@@ -23,12 +24,13 @@ public DefinedTermDTO()
 
    }
 
-    public DefinedTermDTO(Long id,int duration, String date,String reservationStart ,String reservationEnd,Calendar calendar,
+    public DefinedTermDTO(Long id,int duration, String date,boolean isFree,String reservationStart ,String reservationEnd,Calendar calendar,
     		BloodCenter center)
     {
         this.id = id;
         this.duration = duration;
         this.date=date;
+        this.isFree=isFree;
         this.reservationStart = reservationStart;
         this.reservationEnd = reservationEnd;
         this.calendar=calendar;
@@ -68,7 +70,25 @@ public DefinedTermDTO()
         this.reservationStart = reservationStart;
     }
 	
-	 public String getReservationEnd() { return reservationEnd; }
+    
+    
+	 public BloodCenter getCenter() {
+		return center;
+	}
+
+	public void setCenter(BloodCenter center) {
+		this.center = center;
+	}
+
+	public boolean isFree() {
+		return isFree;
+	}
+
+	public void setFree(boolean isFree) {
+		this.isFree = isFree;
+	}
+
+	public String getReservationEnd() { return reservationEnd; }
 	 
 	  public void setReservationEnd(String reservationEnd) { this.reservationEnd =
 	  reservationEnd; }

@@ -38,9 +38,9 @@
                 <th>Email</th>
                 <th>Mobile</th>
                 <th>Jmbg</th>
-                <th>Sex</th>
+             <!--   <th>Sex</th>
                 <th>Profession</th>
-                <th>Organization information</th>
+                <th>Organization information</th>  -->
                 <th>Adress</th>
                 <th>City</th>
             </tr>
@@ -52,11 +52,13 @@
                 <td>{{registeredUser.email}}</td>
                 <td>{{registeredUser.mobile}}</td>
                 <td>{{registeredUser.jmbg}}</td>
-                <td>{{registeredUser.sex}}</td>
-                <td>{{registeredUser.profession}}</td>
-                <td>{{registeredUser.organizationInformation}}</td>
+            <!--    <td>{{registeredUser.sex}}</td> -->
+             <!--   <td>{{registeredUser.profession}}</td> -->
+             <!--   <td>{{registeredUser.organizationInformation}}</td> -->
                 <td>{{registeredUser.adress}}</td>
                 <td>{{registeredUser.city}}</td>
+                <td><button  (click)="goToRegUser(registeredUser)">Update</button></td>
+
 >
             </tr>
         </tbody>

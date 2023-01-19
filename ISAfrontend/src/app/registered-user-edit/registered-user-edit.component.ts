@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators,FormControl } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute,Router } from '@angular/router';
 import { RegisteredUser } from '../model/registeredUser';
 import { RegisteredUserEditService } from '../service/registered-user-edit.service';
 
@@ -18,9 +18,12 @@ export class RegisteredUserEditComponent implements OnInit {
   id: number;
   registeredUser: RegisteredUser;
   placeholder = 'please enter info...';
+ 
 
 
-  constructor(private route: ActivatedRoute, private registeredUserService: RegisteredUserEditService) { }
+ editable: boolean=false;
+
+  constructor(private route: ActivatedRoute, private registeredUserService: RegisteredUserEditService,private router: Router) { }
 
   ngOnInit(): void {
     this.loadStuff();
@@ -46,5 +49,10 @@ export class RegisteredUserEditComponent implements OnInit {
     window.location.reload();
   }
 
+  
+  back()
+  {
+    this.router.navigate(['registered-users-search']);
+  }
   
 }

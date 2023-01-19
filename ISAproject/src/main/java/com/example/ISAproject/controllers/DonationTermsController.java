@@ -4,6 +4,7 @@ import com.example.ISAproject.dto.DefinedTermDTO;
 import com.example.ISAproject.dto.DonationTermsDTO;
 import com.example.ISAproject.dto.ScheduleDonationTermDTO;
 import com.example.ISAproject.model.BloodCenter;
+import com.example.ISAproject.model.Calendar;
 import com.example.ISAproject.model.DonationTerms;
 import com.example.ISAproject.model.QRCodeGenerator;
 import com.example.ISAproject.service.DonationTermsService;
@@ -119,7 +120,6 @@ public class DonationTermsController
     }
 
 
-
     @RequestMapping(value="api/terms/sort-by-date", method = RequestMethod.GET, params = "id",
             produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     //@PreAuthorize("hasRole('REGISTERED_USER')")
@@ -149,6 +149,17 @@ public class DonationTermsController
 
     }
 
+    
+    @RequestMapping(value="api/schedule-new-term",method = RequestMethod.PUT,
+            consumes=MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<DonationTerms>  scheduleNewTerm(@RequestBody ScheduleDonationTermDTO dto)throws Exception{
+    	
+        DonationTerms updatedDonationTerm=this.donationTermsService.scheduleTerm(dto);
+
+       
+        return new ResponseEntity<>(new DonationTerms(updatedDonationTerm),HttpStatus.OK);
+
+    }
 
     @RequestMapping(value="api/cancel-term",method = RequestMethod.PUT,
             consumes=MediaType.APPLICATION_JSON_VALUE)
@@ -160,29 +171,28 @@ public class DonationTermsController
     }
 
     
-    //Prikaz Svih Termina
-    @RequestMapping(value="api/findAvaliableTerms/{userTerm}",method = RequestMethod.GET,produces = {
-            MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-    public ResponseEntity<List<DonationTerms>> findAllAvaliableTerms(@PathVariable String userTerm)
-    {
-    	System.out.println(userTerm);
-    	  DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
-        
-           LocalDateTime localUserTerm = LocalDateTime.parse(userTerm,formatter);
-           
-    	
-        List<DonationTerms> terms= this.donationTermsService.findAllAvailableTerms(localUserTerm);
-        return new ResponseEntity<>(terms, HttpStatus.OK);
+    @RequestMapping(value="api/create-new-term",method = RequestMethod.POST,
+            consumes=MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<DonationTerms>  createNewTerm(@RequestParam String userDate,@RequestParam int userDuration,
+    		@RequestParam String userStart, @RequestParam String userEnd,@RequestParam Long idCenter, @RequestParam Long idCalendar)												
+    			{
+    	System.out.println(userDate);
+    	System.out.println(userDuration);
+    	System.out.println(userStart);
+    	System.out.println(userEnd);
+    	System.out.println(idCenter);
+    	System.out.println(idCalendar);
+    	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
+    	LocalDateTime localUserDate = LocalDateTime.parse(userDate,formatter);
+    	LocalDateTime localUserStart = LocalDateTime.parse(userStart,formatter);
+    	LocalDateTime localUserEnd = LocalDateTime.parse(userEnd,formatter);
+      DonationTerms updatedDonationTerms=this.donationTermsService.createTerm(localUserDate, userDuration, localUserStart, localUserEnd,idCenter,idCalendar);
+
+       
+        return new ResponseEntity<>(new DonationTerms(updatedDonationTerms),HttpStatus.OK);
+
     }
     
 
-	/*
-	 * @RequestMapping(value="api/avaliableTerms/sort-by-average-grade", method =
-	 * RequestMethod.GET, produces= {MediaType.APPLICATION_JSON_VALUE,
-	 * MediaType.APPLICATION_XML_VALUE}) public ResponseEntity<List<DonationTerms>>
-	 * sortByGrade(){ List<DonationTerms>
-	 * terms=this.donationTermsService.sortByGrade(); return new
-	 * ResponseEntity<>(terms,HttpStatus.OK); }
-	 */
 
 }
