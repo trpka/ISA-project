@@ -25,9 +25,12 @@ import { StuffSurveyComponent } from './stuff-survey/stuff-survey.component';
 import { ScheduledAppointmentsComponent } from './scheduled-appointments/scheduled-appointments.component';
 
 import { CalendarDefindedTermsComponent } from './calendar-definded-terms/calendar-definded-terms.component';
+import { ListOfTermsComponent } from './list-of-terms/list-of-terms.component';
 
+import { SearchAvaliableTermsComponent } from './search-avaliable-terms/search-avaliable-terms.component';
+import { SearchAvaliableCentersComponent } from './search-avaliable-centers/search-avaliable-centers.component';
 
-
+import { NewProfileCenterComponent } from './new-profile-center/new-profile-center.component';
 
 const routes: Routes = [
   {path: '', component:HomeComponent},
@@ -38,6 +41,8 @@ const routes: Routes = [
   {path: 'profile-center', component: ProfileCenterComponent},
   { path: 'search-center', component: SearchCenterComponent },
   {path: 'profile_center/:id', component: ProfileCenterComponent},
+  {path: 'new_profile_center', component:NewProfileCenterComponent },
+  {path: 'new_profile_center/:id', component:NewProfileCenterComponent },
   {path: 'donation_terms/:id', component: DonationTermsComponent},
   {path: 'donation_terms', component: DonationTermsComponent},
   {path: 'regUser_edit/:id', component: RegisteredUserEditComponent},
@@ -47,21 +52,22 @@ const routes: Routes = [
   {path: 'registration-blood-center', component:  RegistrationBloodCenterComponent},
 
   {path: 'confirm-registration/:id', component:  ConfirmRegistrationRegisteredUserComponent},
- 
-  
-
-
-
   {path: 'create-term', component:CreateDonationTermComponent},
   {path: 'all_registered_users',component: AllRegisteredUsersComponent},
   {path: 'stuff_user_profile/:id',component: StuffUserProfileComponent},
+
+  {path: 'defined_terms/:id', component:CalendarDefindedTermsComponent},  
+  {path:'viewAllTerms', component:ListOfTermsComponent},
+
 
   {path: 'stuff_survey/:id', component: StuffSurveyComponent},
 
 
   {path: 'scheduled-appointments/:id', component:  ScheduledAppointmentsComponent},
 
-  {path: 'defined_terms/:id', component:CalendarDefindedTermsComponent}
+  {path: 'defined_terms/:id', component:CalendarDefindedTermsComponent},
+  {path: 'avaliableTerms', component: SearchAvaliableTermsComponent},
+  {path: 'avaliableCenters', component: SearchAvaliableCentersComponent},
 
 
 

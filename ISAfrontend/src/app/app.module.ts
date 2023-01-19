@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
-
+import { DatePipe } from '@angular/common';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
@@ -38,6 +38,10 @@ import { StuffSurveyComponent } from './stuff-survey/stuff-survey.component';
 import { ScheduledAppointmentsComponent } from './scheduled-appointments/scheduled-appointments.component';
 
 import { CalendarDefindedTermsComponent } from './calendar-definded-terms/calendar-definded-terms.component';
+import { ListOfTermsComponent } from './list-of-terms/list-of-terms.component';
+import { SearchAvaliableTermsComponent } from './search-avaliable-terms/search-avaliable-terms.component';
+import { SearchAvaliableCentersComponent } from './search-avaliable-centers/search-avaliable-centers.component';
+import { NewProfileCenterComponent } from './new-profile-center/new-profile-center.component';
 
 
 
@@ -77,7 +81,11 @@ import { CalendarDefindedTermsComponent } from './calendar-definded-terms/calend
 
     StuffUserProfileComponent,
     CalendarDefindedTermsComponent,
-    StuffUserProfileComponent
+    StuffUserProfileComponent,
+    ListOfTermsComponent,
+    SearchAvaliableTermsComponent,
+    SearchAvaliableCentersComponent,
+    NewProfileCenterComponent
 
 
   ],
@@ -92,7 +100,9 @@ import { CalendarDefindedTermsComponent } from './calendar-definded-terms/calend
     MatButtonModule,
     MatRadioModule
   ],
-  providers: [{
+  providers: [
+    DatePipe,
+    {
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,
     multi: true

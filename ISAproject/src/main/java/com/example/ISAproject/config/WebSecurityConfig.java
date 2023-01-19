@@ -90,7 +90,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 									//Student 2
 									.antMatchers("/api/centerName").permitAll()
 									.antMatchers("/search/{centerName}").permitAll()
-									.antMatchers("/api/regUsers/edit").permitAll()
+									//.antMatchers("/api/regUsers/edit").permitAll()
+									.antMatchers("/api/findAvaliableTerms/{userTerm}").permitAll()								
+									.antMatchers("/api/findAvaliableCenters/{userTerm}").permitAll()
+									.antMatchers("/api/schedule-new-term").permitAll()
+									.antMatchers("api/findAvaliableCenters/sort-by-average-grade").permitAll()
 									
 
 									.antMatchers("/api/edit/center").permitAll()

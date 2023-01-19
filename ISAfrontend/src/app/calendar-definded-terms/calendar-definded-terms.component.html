@@ -1,11 +1,18 @@
-<p>profile-center works!</p>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<section class="text-center">
+    <h1 style="color:navy; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 1cm; font-weight:bold;">
+     See calendar's defined terms</h1>
+  
 
+<section>
+    <div class="row">
+        <div class="col-sm" style="text-align:left">
+          <button class="btn btn-success" (click)="back()">Back</button>
+        </div>
 
-<div class = "Calendar Profile">
+<div class = "container">
     <form >
-        <label for="id">Calendar Id :</label>
-         <p>{{calendar.id}}</p> 
+        <label for="id" style="font-size:large;font-weight: bolder;">Calendar Id :</label>
+         <h1>{{calendar.id}}</h1> 
  
     </form>
 
@@ -21,9 +28,10 @@
                 <th>id</th>
                 <th>Date</th>
                 <th>duration of term [minutes]</th>
-                <th>Is Term Free</th>
                 <th>reservationStart</th>
                 <th>reservationEnd</th>
+                <th>Is Term Free</th>
+                <th>Registered user is comming</th>
                 <th>bloodCenter</th>
             </tr>
         </thead>
@@ -32,9 +40,10 @@
                 <td>{{donationTerms.id}}</td>
                 <td>{{donationTerms.date}}</td>
                 <td>{{donationTerms.duration}}</td>
-                <td>{{donationTerms.free}}</td>
                 <td>{{donationTerms.reservationStart}}</td>
-                <td>{{donationTerms.reservationEnd}}</td>
+                <td>{{donationTerms.reservationEnd}}</td>            
+                <td>{{donationTerms.free}}</td>
+                <td>{{donationTerms.registeredUserCome}}</td>
                 <td>{{donationTerms.bloodCenter.id}}</td>
             </tr>
         </tbody>

@@ -17,6 +17,8 @@ export class BloodCenterService {
   url3="http://localhost:8081/api/centers/terms";
   url4="http://localhost:8081/api/centers/scheduled-terms";
   urlA = "http://localhost:8081/api/centers/stuffs";
+  url5= "http://localhost:8081/api/findAvaliableCenters/"
+  
 
   constructor(private http:HttpClient) { }
 
@@ -46,6 +48,14 @@ getAllTermsByCentre(id:number):Observable<DonationTerms[]>
 {
   return this.http.get<DonationTerms[]> (`${this.url3}/${id}`)
 }
+
+
+getAllTermsByCentreAndTerm(id:number,term:string):Observable<DonationTerms[]>
+{
+  //return this.http.post<DonationTerms[]> (`${this.url3}/${id}`)
+  return this.http.post<DonationTerms[]>(`${this.url3}/${id}`, term);
+}
+
 //OVO MENJAJ
 /*getAllScheduledTermsByCentre(bloodCenterRegisteredUser:BloodCenterRegisteredUser):Observable<DonationTerms[]>
 {
@@ -115,5 +125,13 @@ findByGradeAndAddress(address:string,averageGradeCenre:number):Observable<BloodC
     return this.http.get<BloodCenter[]>(this.url2,{params});
 }
 
+findAllAvailableCenters(userTerm:string):Observable<BloodCenter[]>{
+  return this.http.get<BloodCenter[]>(this.url5 + userTerm);
+
+}
+
+findAllBloodCentersSortedByAverageGrade():Observable<BloodCenter[]>{
+  return this.http.get<BloodCenter[]>(this.url5+"sort-by-average-grade");
+}
 
 }

@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute,Router } from '@angular/router';
 import { DonationTerms } from '../model/donationTerms';
 import { DonationTermsService } from '../service/donation-terms.service';
+import { DefinedDonationTerms } from '../model/definedDonationTerms';
+import { Calendar } from '../model/calendar';
 import { BloodCenter } from '../model/bloodCenter';
-import { BloodCenterService } from '../service/blood-center.service';
 
 
 
@@ -17,26 +18,59 @@ import { BloodCenterService } from '../service/blood-center.service';
 export class CreateDonationTermComponent implements OnInit {
 
   
-  donationTerm: DonationTerms;
+  //newTerm : DefinedDonationTerms;
 
+  pickCalendar: Calendar = new Calendar({
+    id: 0,
+    listOfDefinedTerms: []
+  });
 
+  pickBloodCenter: BloodCenter=new BloodCenter({
+    id:0,
+    centerName: '',
+    address: '',
+    city: '',
+    startWork: '',
+    endWork: '',
+    description:'',
+    averageGradeCentre:0,
+    bloodA:0,
+    bloodB: 0 ,
+    bloodAB:0,
+    bloodO:0,
+  listOfStuffs:[]
+  })
 
-  constructor(private route: ActivatedRoute,private DonationTermsService: DonationTermsService) { 
+  newTerm: DefinedDonationTerms = new DefinedDonationTerms({
+    date: '',
+    reservationStart: '',
+    reservationEnd:'',
+    free:true,
+    duration: 0,
+    calendar: this.pickCalendar,
+    bloodCenter : this.pickBloodCenter,    
+
+  })
+  constructor(private router: Router,private route: ActivatedRoute,private DonationTermsService: DonationTermsService) { 
     
-  }
+   }
+  
   ngOnInit(): void {
-
   }
 
-  // addDonationTerm(){
-  //   this.DonationTermsService.AddTerm(this.donationTerm)
-  //   .subscribe()
-  // }
+
 
   addDonationTerm()
-  {
-    this.DonationTermsService.AddTerm(this.donationTerm)
-    .subscribe(res => this.donationTerm = res)
-    window.location.reload();
+  { 
+    console.log('janko',this.newTerm);
+    this.newTerm.calendar = this.pickCalendar;
+    this.DonationTermsService.AddTerm(this.newTerm)
+    .subscribe(res =>this.newTerm = res);
+    alert("Successfully created a free term!");
+    location.pathname = ('defined_terms/' + this.pickCalendar.id);
+   // window.location.reload();
   }
+
+
+
 }

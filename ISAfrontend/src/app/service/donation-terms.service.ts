@@ -2,7 +2,10 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { DonationTerms } from '../model/donationTerms';
+
+import { DefinedDonationTerms } from '../model/definedDonationTerms';
 import { ScheduleDonationTerm } from '../model/ScheduleDonationTerm';
+
 
 @Injectable
 ({
@@ -18,7 +21,9 @@ export class DonationTermsService
 
   url1 = "http://localhost:8081/api/schedule-term";
   url2 = "http://localhost:8081/api/cancel-term";
-
+  url3= "http://localhost:8081/api/findAvaliableTerms/"
+  url4 = "http://localhost:8081/api/schedule-new-term";
+  url5="http://localhost:8081/api/create-new-term"
   
   constructor(private http:HttpClient) { }
 
@@ -26,12 +31,14 @@ export class DonationTermsService
   {
     return this.http.get<DonationTerms[]>(this.url);
   }
-
-  AddTerm(donationTerm: DonationTerms):Observable<DonationTerms>
+//admin
+  AddTerm(donationTerm: DefinedDonationTerms):Observable<DefinedDonationTerms>
   {
-
-    return this.http.put<DonationTerms>(this.url+"/addTerm", donationTerm);
+    console.log('marko',donationTerm);
+    return this.http.put<DefinedDonationTerms>(this.url+'/addTerm', donationTerm);
   }
+
+ 
 
 
   //Pretraga Termina po ID-ju
@@ -50,13 +57,25 @@ export class DonationTermsService
     return this.http.get<DonationTerms[]>(this.url+"/sort-by-date",{params});
   }
 
-  scheduleTerm(scheduleDonationTerm: ScheduleDonationTerm): Observable<DonationTerms> {
-    return this.http.put<DonationTerms>(this.url1 , scheduleDonationTerm)
+ scheduleTerm(scheduleDonationTerm: ScheduleDonationTerm): Observable<DonationTerms> {
+     return this.http.put<DonationTerms>(this.url1 , scheduleDonationTerm)
   }
+
+  scheduleNewTerm(scheduleDonationTerm: ScheduleDonationTerm): Observable<DonationTerms> {
+    return this.http.put<DonationTerms>(this.url4 , scheduleDonationTerm)
+ }
  
   cancelTerm(scheduleDonationTerm: ScheduleDonationTerm): Observable<DonationTerms> {
     return this.http.put<DonationTerms>(this.url2 , scheduleDonationTerm)
   }
   
+  findAllAvailableTerms(userTerm:string):Observable<DonationTerms[]>{
+    return this.http.get<DonationTerms[]>(this.url3 + userTerm);
+
+  }
+
+  
+
+
 
 }

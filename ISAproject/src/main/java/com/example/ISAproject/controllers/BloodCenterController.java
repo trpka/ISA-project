@@ -1,5 +1,6 @@
 package com.example.ISAproject.controllers;
 
+import com.example.ISAproject.dto.ScheduleDonationTermDTO;
 import com.example.ISAproject.model.BloodCenter;
 import com.example.ISAproject.model.DonationTerms;
 import com.example.ISAproject.model.Stuff;
@@ -13,6 +14,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @RestController
@@ -131,6 +134,22 @@ public class BloodCenterController
     }
 
 
+    @RequestMapping(value="api/centers/terms/{id}",method = RequestMethod.POST,produces = {
+            MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+
+    public ResponseEntity<List<DonationTerms>> findCenterByIdAndTerm(@PathVariable Long id,@RequestBody String term)
+    {
+    	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
+    	 LocalDateTime localUserTerm = LocalDateTime.parse(term,formatter);
+    	System.out.println(id);
+    	System.out.println(term);
+    	List< DonationTerms> updatedDonationTerm=this.donationTermsService.findAllAvailableTerms(localUserTerm,id);
+
+         return new ResponseEntity<>(updatedDonationTerm,HttpStatus.OK);
+    	
+    }
+    
+    
    /* @RequestMapping(value="api/centers/scheduled-terms",method = RequestMethod.GET,produces = {
             MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 
@@ -169,13 +188,14 @@ public class BloodCenterController
         return new ResponseEntity<>(bloodCenters,HttpStatus.OK);
     }
 
+
     @RequestMapping(value="api/centers/sort-by-average-grade", method = RequestMethod.GET,
             produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-    @PreAuthorize("hasRole('REGISTERED_USER')")
     public ResponseEntity<List<BloodCenter>> sortByGrade(){
         List<BloodCenter> bloodCenters=this.bloodCenterService.sortByGrade();
         return new ResponseEntity<>(bloodCenters,HttpStatus.OK);
     }
+    
     @RequestMapping(value="api/centers/sort-by-city", method = RequestMethod.GET,
             produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     @PreAuthorize("hasRole('REGISTERED_USER')")
@@ -183,7 +203,24 @@ public class BloodCenterController
         List<BloodCenter> bloodCenters=this.bloodCenterService.sortByCity();
         return new ResponseEntity<>(bloodCenters,HttpStatus.OK);
     }
-
-
     
+
+//NOVO
+    
+    //Prikaz Svih centara po datumu
+    @RequestMapping(value="api/findAvaliableCenters/{userTerm}",method = RequestMethod.GET,produces = {
+            MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+    public ResponseEntity<List<BloodCenter>> findAllAvaliableTerms(@PathVariable String userTerm)
+    {
+    	System.out.println(userTerm);
+    	  DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
+        
+           LocalDateTime localUserTerm = LocalDateTime.parse(userTerm,formatter);
+           
+    	
+        List<BloodCenter> centers= this.bloodCenterService.findFreeCenters(localUserTerm);
+        return new ResponseEntity<>(centers, HttpStatus.OK);
+    }
+
+
 }

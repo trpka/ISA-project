@@ -1,5 +1,6 @@
 package com.example.ISAproject.model;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -25,9 +26,9 @@ public class BloodCenter {
 	@Column
 	private String city;
 	@Column
-	private String startWork;
+	private LocalDateTime startWork;
 	@Column
-	private String endWork;  //не може стринг
+	private LocalDateTime endWork; 
 	@Column
 	private String description;
 	@Column
@@ -93,19 +94,19 @@ public class BloodCenter {
 		this.city = city;
 	}
 
-	public String getStartWork() {
+	public LocalDateTime getStartWork() {
 		return startWork;
 	}
 
-	public void setStartWork(String startWork) {
+	public void setStartWork(LocalDateTime startWork) {
 		this.startWork = startWork;
 	}
 
-	public String getEndWork() {
+	public LocalDateTime getEndWork() {
 		return endWork;
 	}
 
-	public void setEndWork(String endWork) {
+	public void setEndWork(LocalDateTime endWork) {
 		this.endWork = endWork;
 	}
 
@@ -181,7 +182,7 @@ public class BloodCenter {
 		this.registered_users_for_this_center = registered_users_for_this_center;
 	}
 
-	public BloodCenter(Long id, String centerName, String address, String city, String startWork, String endWork,
+	public BloodCenter(Long id, String centerName, String address, String city, LocalDateTime startWork, LocalDateTime endWork,
 					   String description, Long averageGradeCentre, double bloodA, double bloodB, double bloodAB,
 					   double bloodO, List<DonationTerms> freeAppointments, List<Stuff> listOfStuffs)
 	{

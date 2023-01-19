@@ -38,27 +38,27 @@ insert into complaint (id,  title, content) values (3,  'Loaded', 'Our Paradise 
 insert into complaint (id,  title, content) values (4,'Robe, The', 'Men in Black II (a.k.a. MIIB) (a.k.a. MIB 2)');
 
 
-insert into blood_center (id, center_name, address, city,  average_grade_centre, description, blooda,bloodb,bloodab,bloodo)
-values (1, 'Mellie', '3041 Dottie Junction', 'Wan’an', 8, 'unavailable',1222,2,14,433);
-insert into blood_center (id, center_name, address, city,  average_grade_centre, description,blooda,bloodb,bloodab,bloodo)
-values (2, 'Nert', '2 Westridge Pass', 'Novi Sad', 4, 'Cacatua tenuirostris',1222,2,14,433);
-insert into blood_center (id, center_name, address, city,  average_grade_centre, description,blooda,bloodb,bloodab,bloodo)
-values (3, 'Leanna', '57 Havey Center', 'Pará de Minas', 7, 'Alouatta seniculus',1876,245,14,3);
-insert into blood_center (id, center_name, address, city,  average_grade_centre, description, blooda,bloodb,bloodab,bloodo)
-values (4, 'Mother&Child Institut', 'Kramerova 122', 'Novi Sad', 10, 'unavailable',76,2,14,433);
-insert into blood_center (id, center_name, address, city,  average_grade_centre, description,blooda,bloodb,bloodab,bloodo)
-values (5, 'Leona', '5th Avenue', 'New York', 9, 'Cacatua tenuirostris',22,52,18,4);
-insert into blood_center (id, center_name, address, city,  average_grade_centre, description,blooda,bloodb,bloodab,bloodo)
-values (6, 'Novak', '23 Street', 'Monaco', 10, 'Alouatta seniculus',176,25,4,3);
+insert into blood_center (id, center_name, address, city,  average_grade_centre, description, blooda,bloodb,bloodab,bloodo,start_work,end_work)
+values (1, 'Mellie', '3041 Dottie Junction', 'Wan’an', 8, 'unavailable',1222,2,14,433,'2023-02-17 07:00:00','2023-02-17 12:00:00');
+insert into blood_center (id, center_name, address, city,  average_grade_centre, description,blooda,bloodb,bloodab,bloodo,start_work,end_work)
+values (2, 'Nert', '2 Westridge Pass', 'Novi Sad', 4, 'Cacatua tenuirostris',1222,2,14,433,'2023-02-17 08:00:00','2023-02-17 12:00:00');
+insert into blood_center (id, center_name, address, city,  average_grade_centre, description,blooda,bloodb,bloodab,bloodo,start_work,end_work)
+values (3, 'Leanna', '57 Havey Center', 'Pará de Minas', 7, 'Alouatta seniculus',1876,245,14,3,'2023-02-10 07:00:00','2023-02-10 11:15:00');
+insert into blood_center (id, center_name, address, city,  average_grade_centre, description, blooda,bloodb,bloodab,bloodo,start_work,end_work)
+values (4, 'Mother&Child Institut', 'Kramerova 122', 'Novi Sad', 10, 'unavailable',76,2,14,433,'2023-02-20 08:00:00','2023-02-20 17:00:00');
+insert into blood_center (id, center_name, address, city,  average_grade_centre, description,blooda,bloodb,bloodab,bloodo,start_work,end_work)
+values (5, 'Leona', '5th Avenue', 'New York', 9, 'Cacatua tenuirostris',22,52,18,4,'2023-02-20 07:00:00','2023-02-20 12:00:00');
+insert into blood_center (id, center_name, address, city,  average_grade_centre, description,blooda,bloodb,bloodab,bloodo,start_work,end_work)
+values (6, 'Novak', '23 Street', 'Monaco', 10, 'Alouatta seniculus',176,25,4,3,'2023-02-17 07:00:00','2023-02-17 11:30:00');
 
-insert into blood_center (id, center_name, address, city,  average_grade_centre, description,blooda,bloodb,bloodab,bloodo)
-values (7, 'Wake and Wonder', '6th Street', 'Chicago', 7, 'Alouatta seniculus',543,65,111,341);
-insert into blood_center (id, center_name, address, city,  average_grade_centre, description, blooda,bloodb,bloodab,bloodo)
-values (8, 'Rey Az Mir Health', '104 Elm St', 'Boston', 10, 'unavailable',7611,209,1451,98);
-insert into blood_center (id, center_name, address, city,  average_grade_centre, description,blooda,bloodb,bloodab,bloodo)
-values (9, '24hr Homecare', 'De Wittenkade', 'Amsterdam', 9, 'Cacatua tenuirostris',225,452,189,433);
-insert into blood_center (id, center_name, address, city,  average_grade_centre, description,blooda,bloodb,bloodab,bloodo)
-values (10, 'Mend Life Medical', '49276 Bernard Wall', 'Sofia', 10, 'Alouatta seniculus',753,235,444,323);
+insert into blood_center (id, center_name, address, city,  average_grade_centre, description,blooda,bloodb,bloodab,bloodo,start_work,end_work)
+values (7, 'Wake and Wonder', '6th Street', 'Chicago', 7, 'Alouatta seniculus',543,65,111,341,'2023-02-17 09:00:00','2023-02-17 11:45:00');
+insert into blood_center (id, center_name, address, city,  average_grade_centre, description, blooda,bloodb,bloodab,bloodo,start_work,end_work)
+values (8, 'Rey Az Mir Health', '104 Elm St', 'Boston', 10, 'unavailable',7611,209,1451,98,'2023-03-10 10:00:00','2023-03-10 12:00:00');
+insert into blood_center (id, center_name, address, city,  average_grade_centre, description,blooda,bloodb,bloodab,bloodo,start_work,end_work)
+values (9, '24hr Homecare', 'De Wittenkade', 'Amsterdam', 9, 'Cacatua tenuirostris',225,452,189,433,'2023-02-17 08:00:00','2023-02-17 10:30:00');
+insert into blood_center (id, center_name, address, city,  average_grade_centre, description,blooda,bloodb,bloodab,bloodo,start_work,end_work)
+values (10, 'Mend Life Medical', '49276 Bernard Wall', 'Sofia', 10, 'Alouatta seniculus',753,235,444,323,'2023-02-17 07:00:00','2023-02-17 12:00:00');
 
 
 insert into registered_user (id, points, category, benefits) values (1, 7,'Redovan', 'Redovan');
@@ -85,13 +85,16 @@ insert into donation_terms (id, date, duration, is_free, is_registered_user_come
 values (1, '2022-12-1 8:30:00', 60, true, false ,'2023-02-10 07:00:00','2023-02-10 08:00:00', 1,3);
 
 insert into donation_terms (id, date, duration, is_free, is_registered_user_come, reservation_start, reservation_end, profile_center_id,calendar_id)
-values (2, '2022-12-1 8:31:00', 45, true, false, '2023-02-17 07:00:00','2023-02-17 07:45:00', 2,1);
+values (2, '2018-02-20 07:00:00', 45, false, false, '2023-02-17 07:00:00','2023-02-17 07:45:00', 2,1);
 
 insert into donation_terms (id, date, duration, is_free, is_registered_user_come, reservation_start, reservation_end, profile_center_id,calendar_id)
-values (3, '2022-12-1 8:32:00', 15, true, false, '2023-02-15 07:00:00','2023-02-15 07:15:00', 2,3);
+values (3, '2016-02-21 09:00:00', 15, false, false, '2023-02-17 07:00:00','2023-02-17 07:15:00', 3,3);
+
+
 
 insert into donation_terms (id, date, duration, is_free, is_registered_user_come, reservation_start, reservation_end, profile_center_id,calendar_id)
 values (4, '2022-12-1 8:33:00', 25, true, false, '2023-02-03 07:00:00','2023-02-03 07:25:00', 1,1);
+
 
 insert into donation_terms (id, date, duration, is_free, is_registered_user_come, reservation_start, reservation_end, profile_center_id,calendar_id)
 values (5, '2022-12-1 8:34:00', 30, true, false, '2023-02-14 07:00:00','2023-02-14 07:30:00', 3,3);
@@ -125,3 +128,10 @@ values (7, '2022-12-1 8:36:00', 15, true, false, '2022-12-20 8:30:00','2022-12-2
 
 --insert into donation_terms (id, date, duration, is_free, is_registered_user_come, reservation_start, reservation_end, profile_center_id, registered_user_id,calendar_id)
 --values (10, '2017-02-21 10:00:00', 45, false, false, '2021-11-11 09:30:00','2021-11-11 10:15:00', 3, 8,2);
+
+insert into donation_terms (id, date, duration, is_free, is_registered_user_come, reservation_start, reservation_end, profile_center_id,calendar_id)
+values (32, '2018-03-20 07:00:00', 45, true, false, '2023-02-17 07:00:00','2023-02-17 07:35:00', 6,3);
+insert into donation_terms (id, date, duration, is_free, is_registered_user_come, reservation_start, reservation_end, profile_center_id,calendar_id)
+values (27, '2018-02-16 10:00:00', 45, true, false, '2023-02-17 07:00:00','2023-02-17 07:20:00', 10,1);
+insert into donation_terms (id, date, duration, is_free, is_registered_user_come, reservation_start, reservation_end, profile_center_id,calendar_id)
+values (40, '2018-02-14 09:30:00', 45, true, false, '2023-02-17 07:00:00','2023-02-17 07:20:00', 9,1);

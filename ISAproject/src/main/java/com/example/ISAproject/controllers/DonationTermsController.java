@@ -1,8 +1,10 @@
 package com.example.ISAproject.controllers;
 
+import com.example.ISAproject.dto.DefinedTermDTO;
 import com.example.ISAproject.dto.DonationTermsDTO;
 import com.example.ISAproject.dto.ScheduleDonationTermDTO;
 import com.example.ISAproject.model.BloodCenter;
+import com.example.ISAproject.model.Calendar;
 import com.example.ISAproject.model.DonationTerms;
 import com.example.ISAproject.model.QRCodeGenerator;
 import com.example.ISAproject.service.DonationTermsService;
@@ -16,6 +18,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.PessimisticLockException;
 import java.time.DateTimeException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @RestController
@@ -59,12 +63,13 @@ public class DonationTermsController
 
     @RequestMapping(value="api/terms/addTerm",method = RequestMethod.PUT,produces = {
             MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-    //@PreAuthorize("hasRole('STUFF')")
-    public ResponseEntity<DonationTerms>addDonationTerm(@RequestBody DonationTerms dt)
+   // @PreAuthorize("hasRole('STUFF')")
+    public ResponseEntity<DefinedTermDTO>addDonationTerm(@RequestBody DefinedTermDTO dto)
     {
-        DonationTerms donationTerms = new DonationTerms();
+    	DefinedTermDTO definedTermDTO = new DefinedTermDTO();
+    	DonationTerms donationTerms = new DonationTerms();
         try {
-            donationTerms = this.donationTermsService.addDonationTerm(dt);
+        	definedTermDTO = this.donationTermsService.addDonationTerm(dto);
         } catch (PessimisticLockException e)
         {
             return new ResponseEntity<>(HttpStatus.CONFLICT);
@@ -72,8 +77,10 @@ public class DonationTermsController
         {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        return new ResponseEntity<>(donationTerms,HttpStatus.OK);
+        return new ResponseEntity<>(definedTermDTO,HttpStatus.OK);
     }
+    
+    
 
     @RequestMapping(value="api/terms/create_reservation",method = RequestMethod.PUT,produces = {
             MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
@@ -113,7 +120,6 @@ public class DonationTermsController
     }
 
 
-
     @RequestMapping(value="api/terms/sort-by-date", method = RequestMethod.GET, params = "id",
             produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     @PreAuthorize("hasRole('REGISTERED_USER')")
@@ -126,8 +132,10 @@ public class DonationTermsController
             consumes=MediaType.APPLICATION_JSON_VALUE)
     @PreAuthorize("hasRole('REGISTERED_USER')")
     public ResponseEntity<DonationTerms>  scheduleTerm(@RequestBody ScheduleDonationTermDTO dto)throws Exception{
+    	
         DonationTerms updatedDonationTerm=this.donationTermsService.scheduleTerm(dto);
 
+      
         String text = "Reservation info: \n\nReservation start: " + updatedDonationTerm.getReservationStart() +
                 "\nReservation end: " + updatedDonationTerm.getReservationEnd() +
                 "\nDuration: " + updatedDonationTerm.getDuration() +
@@ -144,6 +152,17 @@ public class DonationTermsController
 
     }
 
+    
+    @RequestMapping(value="api/schedule-new-term",method = RequestMethod.PUT,
+            consumes=MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<DonationTerms>  scheduleNewTerm(@RequestBody ScheduleDonationTermDTO dto)throws Exception{
+    	
+        DonationTerms updatedDonationTerm=this.donationTermsService.scheduleTerm(dto);
+
+       
+        return new ResponseEntity<>(new DonationTerms(updatedDonationTerm),HttpStatus.OK);
+
+    }
 
     @RequestMapping(value="api/cancel-term",method = RequestMethod.PUT,
             consumes=MediaType.APPLICATION_JSON_VALUE)
@@ -154,6 +173,30 @@ public class DonationTermsController
         return new ResponseEntity<>(new DonationTerms(updatedDonationTerm),HttpStatus.OK);
 
     }
+
+    
+    @RequestMapping(value="api/create-new-term",method = RequestMethod.POST,
+            consumes=MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<DonationTerms>  createNewTerm(@RequestParam String userDate,@RequestParam int userDuration,
+    		@RequestParam String userStart, @RequestParam String userEnd,@RequestParam Long idCenter, @RequestParam Long idCalendar)												
+    			{
+    	System.out.println(userDate);
+    	System.out.println(userDuration);
+    	System.out.println(userStart);
+    	System.out.println(userEnd);
+    	System.out.println(idCenter);
+    	System.out.println(idCalendar);
+    	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
+    	LocalDateTime localUserDate = LocalDateTime.parse(userDate,formatter);
+    	LocalDateTime localUserStart = LocalDateTime.parse(userStart,formatter);
+    	LocalDateTime localUserEnd = LocalDateTime.parse(userEnd,formatter);
+      DonationTerms updatedDonationTerms=this.donationTermsService.createTerm(localUserDate, userDuration, localUserStart, localUserEnd,idCenter,idCalendar);
+
+       
+        return new ResponseEntity<>(new DonationTerms(updatedDonationTerms),HttpStatus.OK);
+
+    }
+    
 
 
 }

@@ -1,3 +1,5 @@
+
+
 <section class="text-center">
     <h1 style="color:navy; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 1cm; font-weight: lighter;">
      Start free term</h1>
@@ -19,32 +21,76 @@ backdrop-filter: blur(30px);
 
     <div class="form-outline mb-4">
     
-      <input id="date" name="date" type="datetime-local"  class="form-control" [(ngModel)]="donationTerm.date"  />
+      <input id="date" name="date" type="datetime-local"  class="form-control" [(ngModel)]="newTerm.date"  required date="date"
+      #date="ngModel">
+      <div [hidden]="date.valid || date.pristine"
+     class="alert alert-danger">
+     Date is must be filled
+</div>
       <label class="form-label" for="date">Date</label>   
      </div>
-            <div class="form-outline mb-4">
+
+      <div class="form-outline mb-4">
     
-             <input id="reservationStart" name="reservationStart" type="datetime-local"  class="form-control" [(ngModel)]="donationTerm.reservationStart"  />
+             <input id="reservationStart" name="reservationStart" type="datetime-local"  class="form-control" [(ngModel)]="newTerm.reservationStart" 
+             required reservationStart="reservationStart"
+             #reservationStart="ngModel" >
+           <div [hidden]="reservationStart.valid || reservationStart.pristine"
+            class="alert alert-danger">
+            ReservationStart is must be filled
+            </div>
              <label class="form-label" for="date">Reservation start</label>   
             </div>
 
-            
-            <div class="form-outline mb-4">
-              
-              <input id="reservationEnd" name="reservationEnd" type="datetime-local"  class="form-control" [(ngModel)]="donationTerm.reservationEnd" />
-              <label class="form-label" for="date">Reservation end</label>
-            </div>
-        
 
+      <div class="form-outline mb-4">
+    
+        <input id="reservationEnd" name="reservationEnd" type="datetime-local"  class="form-control" [(ngModel)]="newTerm.reservationEnd"  
+        required reservationEnd="reservationEnd"
+        #reservationEnd="ngModel">
+        <div [hidden]="reservationEnd.valid || reservationEnd.pristine"
+            class="alert alert-danger">
+            ReservationEnd is must be filled
+            </div>
+        <label class="form-label" for="date">Reservation end</label>   
+       </div>
+           
         
         <div class="form-outline mb-4">
           
-          <input id="duration" name="duration" type="number"  class="form-control" [(ngModel)]="donationTerm.duration"  />
+          <input id="duration" name="duration" type="text"  class="form-control" [(ngModel)]="newTerm.duration"  />
           <label class="form-label" for="num_of_dur">duration</label>
         </div>
 
-  
-        <button class = "btn btn-success" (click) = "addDonationTerm()" style="background-color:steelblue">Update</button>
+
+       <div class="form-outline mb-4">
+              
+          <input id="calendar" name="calendar" type="text"  class="form-control" [(ngModel)]="pickCalendar.id" 
+          required id="id"
+        #id="ngModel">
+        <div [hidden]="id.valid || id.pristine"
+            class="alert alert-danger">
+            Id is must be a filled
+            </div>
+          <label class="form-label" for="date">Calendar</label>
+        </div>
+       
+        <div class="form-outline mb-4">
+              
+          <input id="bloodCenter" name="bloodCenter" type="text"  class="form-control" [(ngModel)]="pickBloodCenter.id" />
+          <label class="form-label" for="date">Blood Center</label>
+        </div>
+
+        <!-- <div class="mb-3">
+          <label for="calendar" class="form-label">Boat:</label>
+          <br>
+          <select formControlName="calendar" (ngModelChange)="newTerm.calendar">
+            
+          </select>
+          
+        </div>
+      -->
+        <button class = "btn btn-success" (click) = "addDonationTerm()" style="background-color:steelblue">Define new term</button>
       </form>
   </div>
 </div>
