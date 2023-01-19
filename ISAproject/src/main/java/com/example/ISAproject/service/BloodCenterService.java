@@ -7,6 +7,7 @@ import com.example.ISAproject.repository.DonationTermsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -55,6 +56,9 @@ public class BloodCenterService
     public List<BloodCenter> sortByGrade(){
         return this.bloodCenterRepository.findByOrderByAverageGradeCentreDesc();
     }
+    
+
+    
     public List<BloodCenter> sortByCity(){
         return this.bloodCenterRepository.findByOrderByCity();
     }
@@ -105,6 +109,12 @@ public class BloodCenterService
     public List<BloodCenter> findByUsernameContaining(String namePart) {
         return bloodCenterRepository.findByCenterNameContaining(namePart);
     }
-
+    
+    
+    //NOVO
+    
+    public List<BloodCenter> findFreeCenters(LocalDateTime userTerm) {
+        return this.bloodCenterRepository.findAvailableCenter(userTerm);
+    }
 
 }

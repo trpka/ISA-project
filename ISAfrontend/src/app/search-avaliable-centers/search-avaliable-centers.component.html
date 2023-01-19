@@ -1,0 +1,47 @@
+
+<section class="text-center" style="background-color:ghostwhite">
+    <h2 style="color:whitesmoke; background-color: navy; font-weight: lighter;">You can look for Free Terms to Schedule it</h2>
+
+   
+    <div >
+        <img alt="My image name" src="./assets/img/logo-transfuzija.png"> 
+    </div>
+
+    
+<div class="card-body py-5 px-md-5">
+
+<div>
+
+  <form class="form-search" (ngSubmit)="getFreeCenters()">
+    <label for="avaliableTerm" style="font-weight:bold">Search for centers: </label>
+    <input name="avaliableTerm" id="avaliableTerm" type="datetime-local"  [(ngModel)]="userTerm" style="color:navy">
+    <input type="submit" value="filter" class="btn btn-primary" >
+</form>
+</div>
+
+<div>
+<table class="table table-bordered table-bordered" border="1">
+<thead>
+    <tr>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Grade</th>
+    </tr>
+</thead>
+<tbody>
+  <tr *ngFor="let bloodCenter of avaliableCenters">
+        <td>{{bloodCenter.centerName}}</td>
+        <td>{{bloodCenter.address}}</td>
+        <td>{{bloodCenter.averageGradeCentre}}</td>
+        <button  (click)="goToBloodCenter(bloodCenter)">Go to center</button>
+    </tr>
+</tbody>
+
+<div class="col-sm" style="text-align:center">
+    <label>Sort by average grade</label>
+    <button class="btn btn-success" (click)="sortByAverageGrade()">Sort</button>
+  </div>
+</table>
+
+
+

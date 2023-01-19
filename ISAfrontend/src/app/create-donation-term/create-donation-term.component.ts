@@ -45,6 +45,7 @@ export class CreateDonationTermComponent implements OnInit {
     date: '',
     reservationStart: '',
     reservationEnd:'',
+    free:true,
     duration: 0,
     calendar: this.pickCalendar,
     bloodCenter : this.pickBloodCenter,    

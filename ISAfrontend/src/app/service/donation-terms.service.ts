@@ -22,6 +22,8 @@ export class DonationTermsService
   url1 = "http://localhost:8081/api/schedule-term";
   url2 = "http://localhost:8081/api/cancel-term";
   url3= "http://localhost:8081/api/findAvaliableTerms/"
+  url4 = "http://localhost:8081/api/schedule-new-term";
+  url5="http://localhost:8081/api/create-new-term"
   
   constructor(private http:HttpClient) { }
 
@@ -29,12 +31,14 @@ export class DonationTermsService
   {
     return this.http.get<DonationTerms[]>(this.url);
   }
-
+//admin
   AddTerm(donationTerm: DefinedDonationTerms):Observable<DefinedDonationTerms>
   {
     console.log('marko',donationTerm);
     return this.http.put<DefinedDonationTerms>(this.url+'/addTerm', donationTerm);
   }
+
+ 
 
 
   //Pretraga Termina po ID-ju
@@ -56,6 +60,10 @@ export class DonationTermsService
  scheduleTerm(scheduleDonationTerm: ScheduleDonationTerm): Observable<DonationTerms> {
      return this.http.put<DonationTerms>(this.url1 , scheduleDonationTerm)
   }
+
+  scheduleNewTerm(scheduleDonationTerm: ScheduleDonationTerm): Observable<DonationTerms> {
+    return this.http.put<DonationTerms>(this.url4 , scheduleDonationTerm)
+ }
  
   cancelTerm(scheduleDonationTerm: ScheduleDonationTerm): Observable<DonationTerms> {
     return this.http.put<DonationTerms>(this.url2 , scheduleDonationTerm)
@@ -66,9 +74,7 @@ export class DonationTermsService
 
   }
 
-  sortAvaliableTerms() {
-    return this.http.get<DonationTerms[]>(this.url3+"sort-by-average-grade");
-  }
+  
 
 
 
