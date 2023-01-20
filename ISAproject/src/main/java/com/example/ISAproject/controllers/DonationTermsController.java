@@ -63,7 +63,7 @@ public class DonationTermsController
 
     @RequestMapping(value="api/terms/addTerm",method = RequestMethod.PUT,produces = {
             MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-   // @PreAuthorize("hasAnyRole('REGISTERED_USER','STUFF')")
+    @PreAuthorize("hasAnyRole('REGISTERED_USER','STUFF')")
     public ResponseEntity<DefinedTermDTO>addDonationTerm(@RequestBody DefinedTermDTO dto)
     {
     	DefinedTermDTO definedTermDTO = new DefinedTermDTO();

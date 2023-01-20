@@ -1,5 +1,6 @@
 insert into authority(id,name) values (1,'ROLE_ADMIN');
 insert into authority(id,name) values (2,'ROLE_REGISTERED_USER');
+insert into authority(id,name) values (3,'ROLE_STUFF');
 
 insert into user (id,role, username, password, first_name, last_name, email, mobile,enabled,last_password_reset_date) values (1,'Admin','truman@gmail.com', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra', 'Truman', 'Willis', 'truman@gmail.com', '305-555-0163',true,'1983-07-12 21:30:55.888');
 insert into user (id,role, username, password, first_name, last_name, email, mobile,enabled,last_password_reset_date) values (2,'RegisteredUser','isaisic587+1@gmail.com', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra', 'Raymond', 'Weaving', 'isaisic587+1@gmail.com', '305-555-0720',true,'1983-07-12 21:30:55.888');
@@ -31,6 +32,7 @@ values (11,'Stuff','pera@gmail.com', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfA
 insert into user_authority (user_id,authority_id) values (1,1);
 insert into user_authority (user_id,authority_id) values (2,2);
 insert into user_authority (user_id,authority_id) values (14,2);
+insert into user_authority (user_id,authority_id) values (5,3);
 
 insert into complaint (id,  title, content) values (1,  'Constantine''s Sword', 'Escuela de seducción');
 insert into complaint (id, title, content) values (2,  'Adventures of Milo and Otis, The (Koneko monogatari)', 'Brother of Sleep (Schlafes Bruder)');
