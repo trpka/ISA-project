@@ -51,7 +51,6 @@ public class CalendarController {
 	  //Prikazivanje termina prema kalendaru kojem pripada
 	    @RequestMapping(value="api/calendars/terms/{id}",method = RequestMethod.GET,produces = {
 	            MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	  //  @PreAuthorize("hasRole('STUFF')")
 	    public ResponseEntity<List<DonationTerms>> findAllTermsByCalendar(@PathVariable Long id)
 	    {
 	        List<DonationTerms> terms=this.donationTermsService.findAllTermsByCalendar(id);

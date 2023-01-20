@@ -210,6 +210,7 @@ public class BloodCenterController
     //Prikaz Svih centara po datumu
     @RequestMapping(value="api/findAvaliableCenters/{userTerm}",method = RequestMethod.GET,produces = {
             MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+    @PreAuthorize("hasRole('REGISTERED_USER')")
     public ResponseEntity<List<BloodCenter>> findAllAvaliableTerms(@PathVariable String userTerm)
     {
     	System.out.println(userTerm);

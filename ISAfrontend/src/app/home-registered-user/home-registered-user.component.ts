@@ -93,4 +93,10 @@ export class HomeRegisteredUserComponent implements OnInit {
   
     this.router.navigate(['profile_center', bloodCenter.id]);
   }
+
+  goToRegUser(registeredUser:RegisteredUser){
+  
+    this.router.navigate(['regUser_edit', registeredUser.id]);
+  }
+
 }

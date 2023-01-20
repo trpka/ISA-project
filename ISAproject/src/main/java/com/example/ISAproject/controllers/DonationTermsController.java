@@ -63,7 +63,7 @@ public class DonationTermsController
 
     @RequestMapping(value="api/terms/addTerm",method = RequestMethod.PUT,produces = {
             MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-   // @PreAuthorize("hasRole('STUFF')")
+   // @PreAuthorize("hasRole('REGISTERED_USER')")
     public ResponseEntity<DefinedTermDTO>addDonationTerm(@RequestBody DefinedTermDTO dto)
     {
     	DefinedTermDTO definedTermDTO = new DefinedTermDTO();
@@ -152,6 +152,7 @@ public class DonationTermsController
     
     @RequestMapping(value="api/schedule-new-term",method = RequestMethod.PUT,
             consumes=MediaType.APPLICATION_JSON_VALUE)
+    @PreAuthorize("hasRole('REGISTERED_USER')")
     public ResponseEntity<DonationTerms>  scheduleNewTerm(@RequestBody ScheduleDonationTermDTO dto)throws Exception{
     	
         DonationTerms updatedDonationTerm=this.donationTermsService.scheduleTerm(dto);
@@ -171,27 +172,7 @@ public class DonationTermsController
     }
 
     
-    @RequestMapping(value="api/create-new-term",method = RequestMethod.POST,
-            consumes=MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<DonationTerms>  createNewTerm(@RequestParam String userDate,@RequestParam int userDuration,
-    		@RequestParam String userStart, @RequestParam String userEnd,@RequestParam Long idCenter, @RequestParam Long idCalendar)												
-    			{
-    	System.out.println(userDate);
-    	System.out.println(userDuration);
-    	System.out.println(userStart);
-    	System.out.println(userEnd);
-    	System.out.println(idCenter);
-    	System.out.println(idCalendar);
-    	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
-    	LocalDateTime localUserDate = LocalDateTime.parse(userDate,formatter);
-    	LocalDateTime localUserStart = LocalDateTime.parse(userStart,formatter);
-    	LocalDateTime localUserEnd = LocalDateTime.parse(userEnd,formatter);
-      DonationTerms updatedDonationTerms=this.donationTermsService.createTerm(localUserDate, userDuration, localUserStart, localUserEnd,idCenter,idCalendar);
 
-       
-        return new ResponseEntity<>(new DonationTerms(updatedDonationTerms),HttpStatus.OK);
-
-    }
     
 
 
