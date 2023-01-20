@@ -1,9 +1,20 @@
 <div class="Profile">
   <div class="row">
+    <div>
+      <button class = "btn btn-success" (click)="goToRegUser(registeredUser)" style="background-color:steelblue; text-align: right;">
+        Update registered user
+      </button>
+    </div>
+
+  
     <div class="col-3">
       <p style="text-align:center"><img src="assets/img/reg-user.jpg" style="height: 350px; border-radius: 350px;"></p>
     </div>
+  
+   
+   
     <div class="col-6">
+  
       <p style="text-align:center"><label for="firstName">First name: {{registeredUser.firstName}}</label></p>
   
       <p style="text-align:center"><label for="lastName">Last name: {{registeredUser.firstName}}</label></p>
@@ -23,8 +34,11 @@
       <p style="text-align:center"><label for="jmbg">Profession: {{registeredUser.profession}}</label></p>
 
       <p style="text-align:center"><label for="jmbg">Points: {{registeredUser.points}}</label></p>
+      
+    
     </div>
   </div>
+
 </div>
 
 

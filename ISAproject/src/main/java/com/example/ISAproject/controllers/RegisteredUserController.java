@@ -88,10 +88,10 @@ public class RegisteredUserController {
 
 	@PutMapping("api/regUsers/edit") 
 	@PreAuthorize("hasRole('REGISTERED_USER')")
-	public ResponseEntity<RegisteredUser>
-		  UpdateRegUser(@RequestBody RegisteredUser reg) { RegisteredUser regUser =
-		  this.registeredUserService.UpdateRegUser(reg); return new
-		  ResponseEntity<>(regUser, HttpStatus.OK); }
+	public ResponseEntity<RegisteredUser>UpdateRegUser(@RequestBody RegisteredUser reg) { 
+		RegisteredUser regUser = this.registeredUserService.UpdateRegUser(reg); 
+		return new ResponseEntity<>(regUser, HttpStatus.OK);
+		}
 
 
 	//Pretraga Termina prema korisniku za kojeg je zakazano

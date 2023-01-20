@@ -49,10 +49,9 @@ export class RegisteredUserEditComponent implements OnInit {
     window.location.reload();
   }
 
-  
   back()
   {
-    this.router.navigate(['registered-users-search']);
+    this.router.navigate(['home/registered-user']);
   }
   
 }
