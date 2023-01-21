@@ -15,6 +15,7 @@ export class BloodCenterService {
   url1 = "http://localhost:8081/api/center";
   url2= "http://localhost:8081/api/centerName";
   url3="http://localhost:8081/api/centers/terms";
+  url6="http://localhost:8081/api/centers/free/terms"
   url4="http://localhost:8081/api/centers/scheduled-terms";
   urlA = "http://localhost:8081/api/centers/stuffs";
   url5= "http://localhost:8081/api/findAvaliableCenters/"
@@ -49,6 +50,10 @@ getAllTermsByCentre(id:number):Observable<DonationTerms[]>
   return this.http.get<DonationTerms[]> (`${this.url3}/${id}`)
 }
 
+getAllFreeTermsByCentre(id:number):Observable<DonationTerms[]>
+{
+  return this.http.get<DonationTerms[]> (`${this.url6}/${id}`)
+}
 
 getAllTermsByCentreAndTerm(id:number,term:string):Observable<DonationTerms[]>
 {

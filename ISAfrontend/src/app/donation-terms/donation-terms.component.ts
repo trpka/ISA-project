@@ -44,8 +44,6 @@ export class DonationTermsComponent implements OnInit
   {
      this.donationTermsService.getAllDonationTerms()
     .subscribe(res => this.donationTerms = res)
-    //this.bloodCenterService.getAllTermsByCentre(this.id)
-    //.subscribe(res => this.donationTerms)
   }
 
   viewTermsByCentre()
@@ -53,7 +51,7 @@ export class DonationTermsComponent implements OnInit
     this.id = this.route.snapshot.params['id'];
     
 
-    this.bloodCenterService.getAllTermsByCentre(this.id)
+    this.bloodCenterService.getAllFreeTermsByCentre(this.id)
     .subscribe(res => {this.donationTerms = res;})
 
     

@@ -31,6 +31,7 @@ import { SearchAvaliableTermsComponent } from './search-avaliable-terms/search-a
 import { SearchAvaliableCentersComponent } from './search-avaliable-centers/search-avaliable-centers.component';
 
 import { NewProfileCenterComponent } from './new-profile-center/new-profile-center.component';
+import { HistoryTermsComponent } from './history-terms/history-terms.component';
 
 const routes: Routes = [
   {path: '', component:HomeComponent},
@@ -68,7 +69,7 @@ const routes: Routes = [
   {path: 'defined_terms/:id', component:CalendarDefindedTermsComponent},
   {path: 'avaliableTerms', component: SearchAvaliableTermsComponent},
   {path: 'avaliableCenters', component: SearchAvaliableCentersComponent},
-
+  {path: 'history-terms', component: HistoryTermsComponent}
 
 
 

@@ -1,10 +1,8 @@
 package com.example.ISAproject.service;
 
 import com.example.ISAproject.dto.DefinedTermDTO;
-import org.springframework.data.repository.query.Param;
 import com.example.ISAproject.dto.DonationTermsDTO;
 import com.example.ISAproject.dto.ScheduleDonationTermDTO;
-import com.example.ISAproject.dto.SearchForReservationDTO;
 import com.example.ISAproject.dto.TimePeriodDTO;
 import com.example.ISAproject.model.*;
 import com.example.ISAproject.repository.BloodCenterRepository;
@@ -14,7 +12,6 @@ import com.example.ISAproject.repository.StuffRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.PessimisticLockingFailureException;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import org.springframework.transaction.annotation.Transactional;
@@ -66,7 +63,7 @@ public class DonationTermsService
         {
             if(donTerm.getBloodCenter().getId().equals(id))
             {
-                if(donTerm.isFree() == true)
+                if(donTerm.isFreeTerm() == true)
                 {
                     list.add(donTerm);
                 }
@@ -114,7 +111,7 @@ public class DonationTermsService
         {
             if(dt.getBloodCenter().getId() == id)
             {
-                if(dt.isFree() == true)
+                if(dt.isFreeTerm() == true)
                 {
                     findedTerms.add(dt);
                 }
@@ -125,27 +122,70 @@ public class DonationTermsService
         return findedTerms;
     }
 
-    public List<DonationTerms> findAllScheduledTermsByCentre(Long bloodCenterId,Long registeredUserId)
+    public List<DonationTerms> findAllFreeTermsByCentre(Long id)
     {
         List<DonationTerms> allTerms = donationTermsRepository.findAll();
-        List<DonationTerms> findedTerms = new ArrayList<>();
+        List<DonationTerms> foundFreeTerms = new ArrayList<>();
 
         for(DonationTerms dt: allTerms)
         {
-            if(dt.getBloodCenter().getId() == bloodCenterId)
+            if(dt.getBloodCenter().getId() == id)
             {
-                if(dt.isFree() == false)
+                if(dt.isFreeTerm() == true && dt.isRegisteredUserCome() == false)
                 {
-                    if(dt.getRegisteredUser().getId() == registeredUserId)
-                    {
-                        findedTerms.add(dt);
-                    }
+                    foundFreeTerms.add(dt);
                 }
 
             }
         }
 
-        return findedTerms;
+        return foundFreeTerms;
+    }
+
+    public List<DonationTerms> historyTermsForRegisteredUser(Long id)
+    {
+        List<DonationTerms> allTerms = this.donationTermsRepository.findAll();
+        List<DonationTerms> historyTerms = new ArrayList<>();
+
+        for(DonationTerms dt: allTerms)
+        {
+            if(dt.getRegisteredUser() != null)
+            {
+                if(dt.getRegisteredUser().getId() == id)
+                {
+                    if((dt.isFreeTerm() == true && dt.isRegisteredUserCome() == true) || (dt.isFreeTerm() == false && dt.isRegisteredUserCome() == true))
+                    {
+                        historyTerms.add(dt);
+                    }
+                }
+            }
+        }
+
+        return historyTerms;
+    }
+
+    public List<DonationTerms> findAllScheduledTermsByCentre(Long bloodCenterId,Long registeredUserId)
+    {
+        List<DonationTerms> allTerms = donationTermsRepository.findAll();
+        List<DonationTerms> foundTerms = new ArrayList<>();
+
+        for(DonationTerms dt: allTerms)
+        {
+
+                if(dt.getBloodCenter().getId() == bloodCenterId)
+                {
+                    if(dt.isFreeTerm() == false && dt.isRegisteredUserCome()==false)
+                    {
+                        //if(dt.getRegisteredUser().getId()!= null){
+                        if(dt.getRegisteredUser().getId().equals(registeredUserId))
+                        {
+                            foundTerms.add(dt);
+                        }
+                    }
+                }
+            }
+
+        return foundTerms;
     }
     
     //Pretraga Termina Po Kalendaru kojem pripadaju
@@ -195,7 +235,7 @@ public class DonationTermsService
 
         for(DonationTerms dt: all_terms)
         {
-            if(dt.isFree() == true)
+            if(dt.isFreeTerm() == true)
             {
                 free_terms.add(dt);
             }
@@ -261,7 +301,7 @@ public class DonationTermsService
    	  donationTermsRepository.save(newTerm);
    	  
    	DefinedTermDTO definedTermsDTO = new DefinedTermDTO(newTerm.getId(), newTerm.getDuration(),
-   			newTerm.getDate().format(formatter), newTerm.isFree(),
+   			newTerm.getDate().format(formatter), newTerm.isFreeTerm(),
    			newTerm.getReservationStart().format(formatter),newTerm.getReservationEnd().format(formatter),calendar,bloodCenter);
 
   
@@ -295,7 +335,7 @@ public class DonationTermsService
         donationTermsRepository.save(new_term);
 
 
-        DonationTermsDTO donationTermsDTO = new DonationTermsDTO(new_term.getId(), new_term.getDuration(), new_term.isFree(),
+        DonationTermsDTO donationTermsDTO = new DonationTermsDTO(new_term.getId(), new_term.getDuration(), new_term.isFreeTerm(),
                 new_term.getReservationStart().format(formatter),
                 new_term.getReservationEnd().format(formatter),  new_term.getRegisteredUser(),bloodCenter);
 
@@ -355,7 +395,7 @@ public class DonationTermsService
                 survey.setDate(endTimeString);
 
                 donationTerms1.setRegisteredUser(registeredUser);
-                donationTerms1.setFree(false);
+                donationTerms1.setFreeTerm(false);
             
             }
 
@@ -391,7 +431,7 @@ public class DonationTermsService
             if(donationTerms1.getRegisteredUser().getId().equals(registeredUser.getId()))
             {
                 donationTerms1.setRegisteredUser(null);
-                donationTerms1.setFree(true);
+                donationTerms1.setFreeTerm(true);
             }
         }
 
