@@ -141,3 +141,5 @@ insert into donation_terms (id, date, duration, is_free, is_registered_user_come
 values (41, '2018-02-20 07:00:00', 30, true, false, '2023-02-17 07:00:00','2023-02-17 08:30:00', 10,3);
 insert into donation_terms (id, date, duration, is_free, is_registered_user_come, reservation_start, reservation_end, profile_center_id,calendar_id)
 values (42, '2018-02-20 07:00:00', 50, true, false, '2023-02-17 07:00:00','2023-02-17 07:45:00', 10,3);
+insert into donation_terms (id, date, duration, is_free, is_registered_user_come, reservation_start, reservation_end, profile_center_id,calendar_id)
+values (43, '2018-02-20 07:00:00', 50, true, false, '2023-02-17 07:00:00','2023-02-17 07:45:00', 7,3);
