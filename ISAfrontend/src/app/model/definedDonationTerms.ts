@@ -1,5 +1,6 @@
 import { BloodCenter } from "./bloodCenter";
 import { Calendar } from "./calendar";
+import { RegisteredUser } from "./registeredUser";
 
 
 interface DefinedDonationTermsInterface{
@@ -8,6 +9,7 @@ interface DefinedDonationTermsInterface{
     reservationEnd:string;
     free: boolean;
     duration: number;
+    regUser:RegisteredUser;
     calendar: Calendar;
     bloodCenter: BloodCenter;
 }
@@ -18,6 +20,7 @@ export class DefinedDonationTerms implements DefinedDonationTermsInterface{
     reservationEnd:string;
     free:boolean;
     duration: number;
+    regUser:RegisteredUser;
     calendar:Calendar;
     bloodCenter: BloodCenter;
 
@@ -27,6 +30,7 @@ export class DefinedDonationTerms implements DefinedDonationTermsInterface{
         this.reservationEnd=obj.reservationEnd;
         this.free=obj.free;
         this.duration=obj.duration;
+        this.regUser=obj.regUser;
         this.calendar=obj.calendar;
         this.bloodCenter=obj.bloodCenter;
     } 

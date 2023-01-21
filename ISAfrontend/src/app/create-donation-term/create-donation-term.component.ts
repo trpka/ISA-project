@@ -4,6 +4,7 @@ import { DonationTerms } from '../model/donationTerms';
 import { DonationTermsService } from '../service/donation-terms.service';
 import { DefinedDonationTerms } from '../model/definedDonationTerms';
 import { Calendar } from '../model/calendar';
+import { RegisteredUser } from '../model/registeredUser';
 import { BloodCenter } from '../model/bloodCenter';
 
 
@@ -41,12 +42,34 @@ export class CreateDonationTermComponent implements OnInit {
   listOfStuffs:[]
   })
 
+  pickUser: RegisteredUser= new RegisteredUser({
+    id:0,
+    username: '' ,
+    password: '' ,
+    firstName: '',
+    lastName: '',
+    email: '',
+    mobile: '',
+    adress: '',
+    city: '',
+    state: '',
+    jmbg: '',
+    sex: '',
+    profession: '',
+    organizationInformation:'',
+    enabled:false,
+    points: 0,
+    category:'',
+    benefits:''
+  })
+
   newTerm: DefinedDonationTerms = new DefinedDonationTerms({
     date: '',
     reservationStart: '',
     reservationEnd:'',
     free:true,
     duration: 0,
+    regUser:this.pickUser,
     calendar: this.pickCalendar,
     bloodCenter : this.pickBloodCenter,    
 

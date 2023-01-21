@@ -3,6 +3,7 @@ package com.example.ISAproject.dto;
 import com.example.ISAproject.model.BloodCenter;
 import com.example.ISAproject.model.Calendar;
 import com.example.ISAproject.model.DonationTerms;
+import com.example.ISAproject.model.RegisteredUser;
 
 import java.time.LocalDateTime;
 
@@ -14,6 +15,7 @@ public class DefinedTermDTO
    private boolean isFree;
    private String reservationStart;
    private String reservationEnd;
+   private RegisteredUser registeredUser;
    private Calendar calendar;
    private BloodCenter center;
 
@@ -24,7 +26,8 @@ public DefinedTermDTO()
 
    }
 
-    public DefinedTermDTO(Long id,int duration, String date,boolean isFree,String reservationStart ,String reservationEnd,Calendar calendar,
+    public DefinedTermDTO(Long id,int duration, String date,boolean isFree,String reservationStart ,
+    		String reservationEnd,RegisteredUser registeredUser,Calendar calendar,
     		BloodCenter center)
     {
         this.id = id;
@@ -33,6 +36,7 @@ public DefinedTermDTO()
         this.isFree=isFree;
         this.reservationStart = reservationStart;
         this.reservationEnd = reservationEnd;
+        this.registeredUser = registeredUser;
         this.calendar=calendar;
         this.center=center;
     }
@@ -86,6 +90,16 @@ public DefinedTermDTO()
 
 	public void setFree(boolean isFree) {
 		this.isFree = isFree;
+	}
+	
+	
+
+	public RegisteredUser getRegisteredUser() {
+		return registeredUser;
+	}
+
+	public void setRegisteredUser(RegisteredUser registeredUser) {
+		this.registeredUser = registeredUser;
 	}
 
 	public String getReservationEnd() { return reservationEnd; }

@@ -7,6 +7,7 @@ import { BloodCenterService } from '../service/blood-center.service';
 import { DonationTermsService } from '../service/donation-terms.service';
 import { Calendar } from '../model/calendar';
 import { ScheduleDonationTerm } from '../model/ScheduleDonationTerm';
+import { RegisteredUser } from '../model/registeredUser';
 import { DatePipe } from '@angular/common';
 
 @Component({
@@ -24,6 +25,7 @@ export class NewProfileCenterComponent implements OnInit {
   newCenter:BloodCenter;
   newCalendar:Calendar;
   newTerm: DefinedDonationTerms;
+  newUser:RegisteredUser;
   date:string;
 
  
@@ -114,6 +116,27 @@ export class NewProfileCenterComponent implements OnInit {
       bloodAB:0,
       bloodO:0,
     listOfStuffs:[]
+    });
+
+    this.newUser= new RegisteredUser({
+      id:this.id,
+      username: '' ,
+      password: '' ,
+      firstName: '',
+      lastName: '',
+      email: '',
+      mobile: '',
+      adress: '',
+      city: '',
+      state: '',
+      jmbg: '',
+      sex: '',
+      profession: '',
+      organizationInformation:'',
+      enabled:false,
+      points: 0,
+      category:'',
+      benefits:''
     })
   
     this.newTerm= new DefinedDonationTerms({
@@ -122,13 +145,15 @@ export class NewProfileCenterComponent implements OnInit {
       reservationEnd:this.date,
       free:false,
       duration: 30,
+      regUser: this.newUser,
       calendar: this.newCalendar,
       bloodCenter : this.newCenter,    
   
     })
 
     this.donationTermsService.AddTerm(this.newTerm)
-    .subscribe(res =>this.newTerm = res);
+    .subscribe(res =>this.newTerm = res)
+    alert("Successfully added to calendar!");
     
   }
 

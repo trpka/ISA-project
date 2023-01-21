@@ -64,7 +64,7 @@ public class DonationTerms {
 
 	//Nikolina
 	public DonationTerms(Long id,LocalDateTime date,boolean isFree, LocalDateTime reservationStart,LocalDateTime reservationEnd,
-			int duration, Calendar calendar, BloodCenter bloodCenter )
+			int duration, RegisteredUser registeredUser,Calendar calendar, BloodCenter bloodCenter )
 	{
 	super();
 	this.Id = id;
@@ -73,13 +73,14 @@ public class DonationTerms {
 	this.reservationStart = reservationStart;
 	this.reservationEnd = reservationEnd;
 	this.duration = duration;
+	this.registeredUser = registeredUser;
 	this.calendar=calendar;
 	this.bloodCenter=bloodCenter;
 	}
 	
 	//Nikolina
 	public DonationTerms(LocalDateTime date,int duraion,boolean isFree, LocalDateTime reservationStart,LocalDateTime reservationEnd,
-			 Calendar calendar, BloodCenter bloodCenter )
+			RegisteredUser registeredUser,Calendar calendar, BloodCenter bloodCenter )
 	{
 	super();
 	this.date = date;
@@ -87,6 +88,7 @@ public class DonationTerms {
 	this.isFree = isFree;
 	this.reservationStart = reservationStart;
 	this.reservationEnd = reservationEnd;
+	this.registeredUser = registeredUser;
 	this.calendar=calendar;
 	this.bloodCenter=bloodCenter;
 	}

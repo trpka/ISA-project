@@ -256,13 +256,13 @@ public class DonationTermsService
       time.setStart(dt.getReservationStart());
       time.setEnd(dt.getReservationEnd());
 
-   	  DonationTerms newTerm = new DonationTerms(dt.getId(),date,dt.isFree(),start,end, dt.getDuration(),calendar,bloodCenter);
+   	  DonationTerms newTerm = new DonationTerms(dt.getId(),date,dt.isFree(),start,end, dt.getDuration(),dt.getRegisteredUser(),calendar,bloodCenter);
    	  
    	  donationTermsRepository.save(newTerm);
    	  
    	DefinedTermDTO definedTermsDTO = new DefinedTermDTO(newTerm.getId(), newTerm.getDuration(),
    			newTerm.getDate().format(formatter), newTerm.isFree(),
-   			newTerm.getReservationStart().format(formatter),newTerm.getReservationEnd().format(formatter),calendar,bloodCenter);
+   			newTerm.getReservationStart().format(formatter),newTerm.getReservationEnd().format(formatter),newTerm.getRegisteredUser(),calendar,bloodCenter);
 
   
      return definedTermsDTO;
