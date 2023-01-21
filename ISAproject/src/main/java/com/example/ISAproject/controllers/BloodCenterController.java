@@ -133,6 +133,14 @@ public class BloodCenterController
         return new ResponseEntity<>(terms,HttpStatus.OK);
     }
 
+    @RequestMapping(value="api/centers/free/terms/{id}",method = RequestMethod.GET,produces = {
+            MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+    public ResponseEntity<List<DonationTerms>> findAllFreeTermsByCentre(@PathVariable Long id)
+    {
+        List<DonationTerms> terms=this.donationTermsService.findAllFreeTermsByCentre(id);
+        return new ResponseEntity<>(terms,HttpStatus.OK);
+    }
+
 
     @RequestMapping(value="api/centers/terms/{id}",method = RequestMethod.POST,produces = {
             MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })

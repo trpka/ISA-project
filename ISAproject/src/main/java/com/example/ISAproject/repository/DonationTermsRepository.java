@@ -15,11 +15,11 @@ import java.util.List;
 @Repository
 public interface DonationTermsRepository extends JpaRepository<DonationTerms, Long>
 {
-    List<DonationTerms> findByisFree(boolean isFree);
+    List<DonationTerms> findByFreeTerm(boolean isFree);
     List<DonationTerms> findByOrderByDate();
     List<DonationTerms> findByOrderByReservationStart();
 
-    @Query("SELECT dt FROM DonationTerms dt WHERE dt.reservationStart < :term and dt.reservationEnd > :term and dt.isFree=1 and  bloodCenter.id= :id")
+    @Query("SELECT dt FROM DonationTerms dt WHERE dt.reservationStart < :term and dt.reservationEnd > :term and dt.freeTerm=1 and  bloodCenter.id= :id")
     List<DonationTerms> getAvailableTerms(@Param("term") LocalDateTime userDate,@Param("id") Long id);
     
     

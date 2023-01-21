@@ -175,6 +175,14 @@ public class DonationTermsController
 
     }
 
+    @RequestMapping(value="api/terms/history/{id}",method = RequestMethod.GET,produces = {
+            MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+    public ResponseEntity<List<DonationTerms>> historyTermsForRegisteredUser(@PathVariable Long id)
+    {
+        List<DonationTerms> terms=this.donationTermsService.historyTermsForRegisteredUser(id);
+        return new ResponseEntity<>(terms,HttpStatus.OK);
+    }
+
     
 
     

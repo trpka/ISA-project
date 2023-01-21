@@ -25,6 +25,7 @@ export class DonationTermsService
   url4 = "http://localhost:8081/api/schedule-new-term";
   url5="http://localhost:8081/api/create-new-term"
   
+  
   constructor(private http:HttpClient) { }
 
   getAllDonationTerms():Observable<DonationTerms[]>
@@ -74,8 +75,10 @@ export class DonationTermsService
 
   }
 
-  
-
+  historyTermsForRegisteredUser(id:number):Observable<DonationTerms[]>
+  {
+  return this.http.get<DonationTerms[]> (this.url + "/history/"+id)
+  }
 
 
 }

@@ -7,7 +7,7 @@ interface DonationTermsInterface{
     id:number;
     date: Date;
     duration: number;
-    free: boolean;
+    freeTerm: boolean;
     reservationStart: Date;
     reservationEnd: Date;
     bloodCenter: BloodCenter;
@@ -23,7 +23,7 @@ export class DonationTerms implements DonationTermsInterface{
     id:number;
     date: Date;
     duration: number;
-    free: boolean;
+    freeTerm: boolean;
     reservationStart: Date;
     reservationEnd: Date;
     bloodCenter: BloodCenter;
@@ -37,7 +37,7 @@ export class DonationTerms implements DonationTermsInterface{
         this.id=obj.id;
         this.date=obj.date;
         this.duration=obj.duration;
-        this.free = obj.free;
+        this.freeTerm = obj.freeTerm;
         this.reservationStart=obj.reservationStart;
         this.reservationEnd=obj.reservationEnd;
         this.bloodCenter = obj.bloodCenter;

@@ -99,4 +99,8 @@ export class HomeRegisteredUserComponent implements OnInit {
     this.router.navigate(['regUser_edit', registeredUser.id]);
   }
 
+  viewHistoryTerms(){
+    this.router.navigate(['history-terms']);    
+  }
+
 }

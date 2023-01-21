@@ -20,8 +20,8 @@ public class DonationTerms {
 	private LocalDateTime date;
 	@Column
 	private int duration;
-	@Column(name = "isFree", nullable = false)
-	private boolean isFree =true ;
+	@Column(name = "freeTerm", nullable = false)
+	private boolean freeTerm =true ;
 
 	@Column(name = "reservationStart", nullable = false)
 	private LocalDateTime reservationStart;
@@ -63,13 +63,13 @@ public class DonationTerms {
 
 
 	//Nikolina
-	public DonationTerms(Long id,LocalDateTime date,boolean isFree, LocalDateTime reservationStart,LocalDateTime reservationEnd,
-			int duration, Calendar calendar, BloodCenter bloodCenter )
+	public DonationTerms(Long id, LocalDateTime date, boolean freeTerm, LocalDateTime reservationStart, LocalDateTime reservationEnd,
+						 int duration, Calendar calendar, BloodCenter bloodCenter )
 	{
 	super();
 	this.Id = id;
 	this.date = date;
-	this.isFree=isFree;
+	this.freeTerm = freeTerm;
 	this.reservationStart = reservationStart;
 	this.reservationEnd = reservationEnd;
 	this.duration = duration;
@@ -78,13 +78,13 @@ public class DonationTerms {
 	}
 	
 	//Nikolina
-	public DonationTerms(LocalDateTime date,int duraion,boolean isFree, LocalDateTime reservationStart,LocalDateTime reservationEnd,
-			 Calendar calendar, BloodCenter bloodCenter )
+	public DonationTerms(LocalDateTime date, int duraion, boolean freeTerm, LocalDateTime reservationStart, LocalDateTime reservationEnd,
+						 Calendar calendar, BloodCenter bloodCenter )
 	{
 	super();
 	this.date = date;
 	this.duration = duration;
-	this.isFree = isFree;
+	this.freeTerm = freeTerm;
 	this.reservationStart = reservationStart;
 	this.reservationEnd = reservationEnd;
 	this.calendar=calendar;
@@ -92,20 +92,20 @@ public class DonationTerms {
 	}
 
 	public DonationTerms(Long id, LocalDateTime reservationStart, LocalDateTime reservationEnd, int duration,
-						 boolean isFree, RegisteredUser registeredUser, BloodCenter bloodCenter)
+						 boolean freeTerm, RegisteredUser registeredUser, BloodCenter bloodCenter)
 	{
 		super();
 		this.Id = id;
 		this.reservationStart = reservationStart;
 		this.reservationEnd = reservationEnd;
 		this.duration = duration;
-		this.isFree = isFree;
+		this.freeTerm = freeTerm;
 		this.registeredUser = registeredUser;
 		this.bloodCenter = bloodCenter;
 	}
 
 	public DonationTerms(Long id, LocalDateTime date, LocalDateTime reservationStart, LocalDateTime reservationEnd, int duration,
-						 boolean isFree, RegisteredUser registeredUser, BloodCenter bloodCenter)
+						 boolean freeTerm, RegisteredUser registeredUser, BloodCenter bloodCenter)
 	{
 		super();
 		this.Id = id;
@@ -113,26 +113,26 @@ public class DonationTerms {
 		this.reservationStart = reservationStart;
 		this.reservationEnd = reservationEnd;
 		this.duration = duration;
-		this.isFree = isFree;
+		this.freeTerm = freeTerm;
 		this.registeredUser = registeredUser;
 		this.bloodCenter = bloodCenter;
 	}
 
-	public DonationTerms(Long id, int duration, boolean isFree, RegisteredUser registeredUser, BloodCenter bloodCenter)
+	public DonationTerms(Long id, int duration, boolean freeTerm, RegisteredUser registeredUser, BloodCenter bloodCenter)
 	{
 		super();
 		this.Id = id;
 		this.duration = duration;
-		this.isFree = isFree;
+		this.freeTerm = freeTerm;
 		this.registeredUser = registeredUser;
 		this.bloodCenter = bloodCenter;
 	}
 
-	public DonationTerms(Long id, LocalDateTime date, int duration, boolean isFree, LocalDateTime reservationStart, LocalDateTime reservationEnd, boolean isRegisteredUserCome, RegisteredUser registeredUser, BloodCenter bloodCenter, Calendar calendar) {
+	public DonationTerms(Long id, LocalDateTime date, int duration, boolean freeTerm, LocalDateTime reservationStart, LocalDateTime reservationEnd, boolean isRegisteredUserCome, RegisteredUser registeredUser, BloodCenter bloodCenter, Calendar calendar) {
 		Id = id;
 		this.date = date;
 		this.duration = duration;
-		this.isFree = isFree;
+		this.freeTerm = freeTerm;
 		this.reservationStart = reservationStart;
 		this.reservationEnd = reservationEnd;
 		this.isRegisteredUserCome = isRegisteredUserCome;
@@ -142,13 +142,13 @@ public class DonationTerms {
 	}
 
 	//Aleksin Konstruktor-- Za kreiranje Termina koji se brzo rezervisu
-	public DonationTerms(Long id, LocalDateTime date, int duration, boolean isFree, LocalDateTime reservationStart,
+	public DonationTerms(Long id, LocalDateTime date, int duration, boolean freeTerm, LocalDateTime reservationStart,
 						 LocalDateTime reservationEnd, boolean isRegisteredUserCome, RegisteredUser registeredUser,
 						 BloodCenter bloodCenter, Calendar calendar, Stuff stuff) {
 		Id = id;
 		this.date = date;
 		this.duration = duration;
-		this.isFree = isFree;
+		this.freeTerm = freeTerm;
 		this.reservationStart = reservationStart;
 		this.reservationEnd = reservationEnd;
 		this.isRegisteredUserCome = isRegisteredUserCome;
@@ -161,7 +161,7 @@ public class DonationTerms {
 	public DonationTerms(DonationTerms donationTerms) {
 		this.date = donationTerms.getDate();
 		this.duration = donationTerms.getDuration();
-		this.isFree = donationTerms.isFree();
+		this.freeTerm = donationTerms.isFreeTerm();
 		this.reservationStart = donationTerms.getReservationStart();
 		this.reservationEnd = donationTerms.getReservationEnd();
 		this.isRegisteredUserCome = donationTerms.isRegisteredUserCome();
@@ -207,11 +207,11 @@ public class DonationTerms {
 	}
 
 
-	public boolean isFree() {
-		return isFree;
+	public boolean isFreeTerm() {
+		return freeTerm;
 	}
-	public void setFree(boolean isFree) {
-		this.isFree = isFree;
+	public void setFreeTerm(boolean isFree) {
+		this.freeTerm = isFree;
 	}
 	public Long getId() {
 		return Id;

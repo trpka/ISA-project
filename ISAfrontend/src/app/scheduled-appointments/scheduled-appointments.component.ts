@@ -26,10 +26,10 @@ export class ScheduledAppointmentsComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.viewTermsByCentre();
+    this.viewAllScheduledTermsByCentre();
   }
 
-  viewTermsByCentre()
+  viewAllScheduledTermsByCentre()
   {
     this.id = Number(this.route.snapshot.params['id']);
     this.id2 = Number(sessionStorage.getItem('id')); 
@@ -54,7 +54,7 @@ export class ScheduledAppointmentsComponent implements OnInit {
     this.scheduleDonationTerm.registeredUserId =  Number(sessionStorage.getItem('id')); 
     this.scheduleDonationTerm.donationTermId = Number(donationTermId);
     this.donationTermsService.cancelTerm(this.scheduleDonationTerm)
-    .subscribe(_=>this. viewTermsByCentre())
+    .subscribe(_=>this. viewAllScheduledTermsByCentre())
 
     //this.router.navigate(['scheduled-appointments', this.id]);
     
