@@ -1,8 +1,9 @@
 import { DonationTerms } from "./donationTerms";
 import { RegisteredUser } from "./registeredUser";
+import { Survey } from "./survey";
 
 interface SurveyStuffInterface {
-    id: number;
+    /*id: number;
     numberOfDonator: string;
     date: string;
     firstName: string;
@@ -12,6 +13,13 @@ interface SurveyStuffInterface {
     address: string;
     city: string;
     mobile: string;
+    
+    //donationTerm: DonationTerms;
+    bloodA: number;
+    bloodB: number;
+    bloodAB: number;
+    bloodO: number;*/
+    Survey: Survey;
     p1: string;
     p2: string;
     p3: string;
@@ -20,17 +28,12 @@ interface SurveyStuffInterface {
     p6: string;
     p7: string;
     p8: string;
-    //donationTerm: DonationTerms;
-    bloodA: number;
-    bloodB: number;
-    bloodAB: number;
-    bloodO: number;
 
 }
 
 export class StuffSurvey implements SurveyStuffInterface
 {
-    id: number;
+    /*id: number;
     numberOfDonator: string;
     date: string;
     firstName: string;
@@ -40,6 +43,13 @@ export class StuffSurvey implements SurveyStuffInterface
     address: string;
     city: string;
     mobile: string;
+   
+    bloodA: number;
+    bloodB: number;
+    bloodAB: number;
+    bloodO: number;*/
+    Survey: Survey;
+    donationTerm: DonationTerms;
     p1: string;
     p2: string;
     p3: string;
@@ -48,15 +58,10 @@ export class StuffSurvey implements SurveyStuffInterface
     p6: string;
     p7: string;
     p8: string;
-   donationTerm: DonationTerms;
-    bloodA: number;
-    bloodB: number;
-    bloodAB: number;
-    bloodO: number;
 
     constructor(obj:SurveyStuffInterface)
     {
-    this.id=obj.id;
+    /*this.id=obj.id;
     this.numberOfDonator=obj.numberOfDonator;
     this.date=obj.date;
     this.firstName=obj.firstName;
@@ -66,6 +71,13 @@ export class StuffSurvey implements SurveyStuffInterface
     this.address=obj.address;
     this.city=obj.city;
     this.mobile= obj.mobile;
+    
+    //this.donationTerm= obj.donationTerm;
+    this.bloodA = obj.bloodA;
+    this.bloodB = obj.bloodB;
+    this.bloodAB = obj.bloodAB;
+    this.bloodO = obj.bloodO;*/
+    this.Survey = obj.Survey;
     this.p1= obj.p1;
     this.p2= obj.p2;
     this.p3= obj.p3;
@@ -74,11 +86,6 @@ export class StuffSurvey implements SurveyStuffInterface
     this.p6= obj.p6;
     this.p7= obj.p7;
     this.p8= obj.p8;
-    //this.donationTerm= obj.donationTerm;
-    this.bloodA = obj.bloodA;
-    this.bloodB = obj.bloodB;
-    this.bloodAB = obj.bloodAB;
-    this.bloodO = obj.bloodO;
 
     }
     

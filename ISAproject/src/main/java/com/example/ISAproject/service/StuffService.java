@@ -132,6 +132,10 @@ public class StuffService
         {
             donationTerms.setRegisteredUserCome(false);
         }
+        else if(donationTerms.isRegisteredUserCome() == false)
+        {
+            donationTerms.setRegisteredUserCome(true);
+        }
 
         donationTermsRepository.save(donationTerms);
 

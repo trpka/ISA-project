@@ -125,6 +125,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 					                .antMatchers("/api/addPenal").permitAll()
 					                .antMatchers("/api/exam/edit").permitAll()
 					                .antMatchers("/api/stuff-survey").permitAll()
+					               .antMatchers("/api/survey/{id}").permitAll()
+
+
 
 					                .antMatchers("/auth/stuffSignup").permitAll()
 
