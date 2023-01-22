@@ -128,8 +128,8 @@ export class NewProfileCenterComponent implements OnInit {
     })
 
     this.donationTermsService.AddTerm(this.newTerm)
-    .subscribe(res =>this.newTerm = res);
-    
+    .subscribe(res =>this.newTerm = res)
+    alert("Successfully creater term!");
   }
 
 }
