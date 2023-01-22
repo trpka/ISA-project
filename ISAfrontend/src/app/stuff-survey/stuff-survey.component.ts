@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { BloodCenter } from '../model/bloodCenter';
 import { DonationTerms } from '../model/donationTerms';
 import { RegisteredUser } from '../model/registeredUser';
+import { Survey } from '../model/survey';
 import { StuffSurvey } from '../model/surveyStuff';
 import { DonationTermsService } from '../service/donation-terms.service';
 import { RegisteredUserEditService } from '../service/registered-user-edit.service';
@@ -26,6 +27,7 @@ export class StuffSurveyComponent implements OnInit {
   mustFill = false;
   checkGender1 = false;
   id: number;
+
   
   
 
@@ -87,16 +89,47 @@ export class StuffSurveyComponent implements OnInit {
 
         this.stuffSurvey = new StuffSurvey
         ({
+          Survey: new Survey
+          ({
             id: 0,
             numberOfDonator: "",
             date: "",
             firstName: "",
             lastName: "",
+            jmbg: "",
             dateOfBirth: "",
             sex: "",
-            address: "",
+            adress: "",
+            township : "",
             city: "",
             mobile: "",
+            company: "",
+            profession: "",
+            numberOfBoodDonations: "",
+            registeredUser: new RegisteredUser 
+            ({
+              id: 0,
+              username: "",
+              password: "",
+              firstName: "",
+              lastName: "",
+              email: "",
+              mobile: "",
+              adress: "",
+              city:  "",
+              state: "",
+              jmbg: "",
+              sex: "",
+              profession: "",
+              organizationInformation: "",
+              enabled: true,
+              points: 0,
+              category: "",
+              benefits: ""
+              
+
+            }),
+
             p1: "",
             p2: "",
             p3: "",
@@ -104,13 +137,17 @@ export class StuffSurveyComponent implements OnInit {
             p5: "",
             p6: "",
             p7: "",
-            p8: "",
-      
-            bloodA: 0,
-            bloodB: 0,
-            bloodAB: 0,
-            bloodO: 0,
-            })
+            p8: ""
+          }),
+          p1: "",
+            p2: "",
+            p3: "",
+            p4: "",
+            p5: "",
+            p6: "",
+            p7: "",
+            p8: ""
+        });
         
   }
 
@@ -136,67 +173,44 @@ export class StuffSurveyComponent implements OnInit {
 
   save()
   {
-    if(this.stuffSurvey.p1 == '' || this.stuffSurvey.p1 == 'YES')
-    {
-      this.mustFill = true;
-     
-    }
-    else if(this.stuffSurvey.p2 == '' || this.stuffSurvey.p2 == 'YES')
-    {
-      this.mustFill = true;
-    }
-    else if(this.stuffSurvey.p3 == '' || this.stuffSurvey.p3 == 'YES')
-    {
-      this.mustFill = true;
-    }
-    else if(this.stuffSurvey.p4 == '' || this.stuffSurvey.p4 == 'YES')
-    {
-      this.mustFill = true;
-    }
-    else if(this.stuffSurvey.p5 == '' || this.stuffSurvey.p5 == 'YES')
-    {
-      this.mustFill = true;
-    }
-    else if(this.stuffSurvey.p6 == '' || this.stuffSurvey.p6 == 'YES')
-    {
-      this.mustFill = true;
-    }
-    else if(this.stuffSurvey.p7 == '' || this.stuffSurvey.p7 == 'YES')
-    {
-      this.mustFill = true;
-    }
-    else if(this.stuffSurvey.p8 == '' || this.stuffSurvey.p8 == 'YES')
-    {
-      this.mustFill = true;
-    }
+    
+    this.stuffSurvey.Survey.id = this.donationTerm.registeredUser.id;
+    this.stuffSurvey.Survey.firstName = this.donationTerm.registeredUser.firstName;
+    this.stuffSurvey.Survey.lastName = this.donationTerm.registeredUser.lastName;
+    this.stuffSurvey.Survey.city = this.donationTerm.registeredUser.city;
+    this.stuffSurvey.Survey.mobile = this.donationTerm.registeredUser.mobile;
+    this.stuffSurvey.Survey.adress = this.donationTerm.registeredUser.adress;
+    this.stuffSurvey.Survey.date = String(this.donationTerm.reservationStart);
 
-    else
-    {
-      this.stuffSurvey.id = this.donationTerm.registeredUser.id;
-      this.stuffSurvey.firstName = this.donationTerm.registeredUser.firstName;
-      this.stuffSurvey.lastName = this.donationTerm.registeredUser.lastName;
-      this.stuffSurvey.city = this.donationTerm.registeredUser.city;
-      this.stuffSurvey.mobile = this.donationTerm.registeredUser.mobile;
-      this.stuffSurvey.address = this.donationTerm.registeredUser.adress;
-      this.stuffSurvey.date = String(this.donationTerm.reservationStart);
-      this.donationTerm.bloodCenter.bloodA = this.stuffSurvey.bloodA + this.donationTerm.bloodCenter.bloodA;
-      this.donationTerm.bloodCenter.bloodB = this.stuffSurvey.bloodB + this.donationTerm.bloodCenter.bloodB;
-      this.donationTerm.bloodCenter.bloodAB = this.stuffSurvey.bloodAB + this.donationTerm.bloodCenter.bloodAB;
-      this.donationTerm.bloodCenter.bloodO = this.stuffSurvey.bloodO + this.donationTerm.bloodCenter.bloodO;
+    this.stuffSurvey.p1 = this.stuffSurvey.Survey.p1;
+    this.stuffSurvey.p2 = this.stuffSurvey.Survey.p2;
+    this.stuffSurvey.p3 = this.stuffSurvey.Survey.p3;
+    this.stuffSurvey.p4 = this.stuffSurvey.Survey.p4;
+    this.stuffSurvey.p5 = this.stuffSurvey.Survey.p5;
+    this.stuffSurvey.p6 = this.stuffSurvey.Survey.p6;
+    this.stuffSurvey.p7 = this.stuffSurvey.Survey.p7;
+    this.stuffSurvey.p8 = this.stuffSurvey.Survey.p8;
 
+    
+    
 
-
+   
+      //this.stuffSurvey.id = this.donationTerm.registeredUser.id;
       /*this.stuffSurvey.bloodA = this.donationTerm.bloodCenter.bloodA;
       this.stuffSurvey.bloodB = this.donationTerm.bloodCenter.bloodB;
       this.stuffSurvey.bloodAB = this.donationTerm.bloodCenter.bloodAB;
       this.stuffSurvey.bloodO = this.donationTerm.bloodCenter.bloodO;*/
+     
+
+
+
 
       this.surveyService.saveStuffSurvey(this.stuffSurvey)
       .subscribe()
       
       window.location.reload();
 
-    }
+    
 
   }
     

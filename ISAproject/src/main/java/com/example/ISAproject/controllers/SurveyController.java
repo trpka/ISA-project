@@ -2,6 +2,7 @@ package com.example.ISAproject.controllers;
 
 import com.example.ISAproject.dto.ScheduleDonationTermDTO;
 import com.example.ISAproject.dto.SurveyRegisteredUserDTO;
+import com.example.ISAproject.model.BloodCenter;
 import com.example.ISAproject.model.DonationTerms;
 import com.example.ISAproject.model.Survey;
 import com.example.ISAproject.service.SurveyService;
@@ -25,6 +26,16 @@ public class SurveyController {
     public ResponseEntity<Survey> save(@RequestBody Survey survey){
         Survey savedSurvey=this.surveyService.save(survey);
         return new ResponseEntity<>(savedSurvey, HttpStatus.CREATED);
+    }
+
+    @RequestMapping(value="api/survey/{id}",method = RequestMethod.GET,produces= {
+            MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    public ResponseEntity<Survey> getById(@PathVariable Long id)
+    {
+
+        Survey savedSurvey =this.surveyService.findById(id);
+
+        return new ResponseEntity<>(savedSurvey,HttpStatus.OK);
     }
 
 }

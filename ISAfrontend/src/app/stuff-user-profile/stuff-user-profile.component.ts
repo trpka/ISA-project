@@ -17,7 +17,7 @@ export class StuffUserProfileComponent implements OnInit {
 
 
   placeholder = 'terms_id';
-  placeholder1 = 'user_id';
+  placeholder1 = 'terms_id';
 
   id:number;
   terms_id: any;
