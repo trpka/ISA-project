@@ -15,7 +15,7 @@ public class DefinedTermDTO
    private boolean isFree;
    private String reservationStart;
    private String reservationEnd;
-   private RegisteredUser registeredUser;
+   private  RegisteredUser registeredUser;
    private Calendar calendar;
    private BloodCenter center;
 

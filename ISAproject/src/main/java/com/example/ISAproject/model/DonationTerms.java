@@ -64,7 +64,7 @@ public class DonationTerms {
 
 	//Nikolina
 	public DonationTerms(Long id,LocalDateTime date,boolean isFree, LocalDateTime reservationStart,LocalDateTime reservationEnd,
-			int duration, RegisteredUser registeredUser,Calendar calendar, BloodCenter bloodCenter )
+			int duration,RegisteredUser registeredUser,Calendar calendar, BloodCenter bloodCenter )
 	{
 	super();
 	this.Id = id;
@@ -79,7 +79,7 @@ public class DonationTerms {
 	}
 	
 	//Nikolina
-	public DonationTerms(LocalDateTime date,int duraion,boolean isFree, LocalDateTime reservationStart,LocalDateTime reservationEnd,
+	public DonationTerms(LocalDateTime date,int duration,boolean isFree, LocalDateTime reservationStart,LocalDateTime reservationEnd,
 			RegisteredUser registeredUser,Calendar calendar, BloodCenter bloodCenter )
 	{
 	super();

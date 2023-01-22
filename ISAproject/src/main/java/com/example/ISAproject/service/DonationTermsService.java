@@ -244,6 +244,8 @@ public class DonationTermsService
     	
     	Calendar calendar = calendarService.findById(dt.getCalendar().getId());
         BloodCenter bloodCenter = bloodCenterService.findById(dt.getBloodCenter().getId());
+        
+      
     			
    	  DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm"); 
    	  LocalDateTime date =LocalDateTime.parse(dt.getDate().toString(),formatter);
@@ -262,9 +264,9 @@ public class DonationTermsService
    	  
    	DefinedTermDTO definedTermsDTO = new DefinedTermDTO(newTerm.getId(), newTerm.getDuration(),
    			newTerm.getDate().format(formatter), newTerm.isFree(),
-   			newTerm.getReservationStart().format(formatter),newTerm.getReservationEnd().format(formatter),newTerm.getRegisteredUser(),calendar,bloodCenter);
+   			newTerm.getReservationStart().format(formatter),newTerm.getReservationEnd().format(formatter),dt.getRegisteredUser(),calendar,bloodCenter);
 
-  
+   	
      return definedTermsDTO;
 
    	  }
