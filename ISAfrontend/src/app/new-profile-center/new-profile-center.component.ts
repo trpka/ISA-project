@@ -7,6 +7,7 @@ import { BloodCenterService } from '../service/blood-center.service';
 import { DonationTermsService } from '../service/donation-terms.service';
 import { Calendar } from '../model/calendar';
 import { ScheduleDonationTerm } from '../model/ScheduleDonationTerm';
+import { RegisteredUser } from '../model/registeredUser';
 import { DatePipe } from '@angular/common';
 
 @Component({
@@ -18,6 +19,7 @@ export class NewProfileCenterComponent implements OnInit {
 
   id:number;
   bloodCenter: BloodCenter;
+  newUser: RegisteredUser;
   donationTerms: DonationTerms[];
   term: string;
   scheduleDonationTerm:ScheduleDonationTerm;
@@ -38,6 +40,7 @@ export class NewProfileCenterComponent implements OnInit {
   ngOnInit(): void 
   {
     this.loadCenter();
+    console.log(sessionStorage.getItem("currentUser"));
 
     this.term=history.state.term;
     
@@ -115,6 +118,30 @@ export class NewProfileCenterComponent implements OnInit {
       bloodO:0,
     listOfStuffs:[]
     })
+
+    const userId= <any>sessionStorage.getItem("id");
+    console.log(userId);
+
+    this.newUser= new RegisteredUser ({
+      id:<number>userId,
+      username: '' ,
+      password: '' ,
+      firstName: '',
+      lastName: '',
+      email: '',
+      mobile:'',
+      adress: '',
+      city: '',
+      state: '',
+      jmbg: '',
+      sex:'',
+      profession:'',
+      organizationInformation:'',
+      enabled:false,
+      points: 0,
+      category:'',
+      benefits:''
+    })
   
     this.newTerm= new DefinedDonationTerms({
       date: this.term,
@@ -122,6 +149,7 @@ export class NewProfileCenterComponent implements OnInit {
       reservationEnd:this.date,
       free:false,
       duration: 30,
+      registeredUser: this.newUser,
       calendar: this.newCalendar,
       bloodCenter : this.newCenter,    
   
