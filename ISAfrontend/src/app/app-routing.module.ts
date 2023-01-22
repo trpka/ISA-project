@@ -32,6 +32,7 @@ import { SearchAvaliableCentersComponent } from './search-avaliable-centers/sear
 
 import { NewProfileCenterComponent } from './new-profile-center/new-profile-center.component';
 import { HistoryTermsComponent } from './history-terms/history-terms.component';
+import { FutureTermsComponent } from './future-terms/future-terms.component';
 
 const routes: Routes = [
   {path: '', component:HomeComponent},
@@ -69,7 +70,8 @@ const routes: Routes = [
   {path: 'defined_terms/:id', component:CalendarDefindedTermsComponent},
   {path: 'avaliableTerms', component: SearchAvaliableTermsComponent},
   {path: 'avaliableCenters', component: SearchAvaliableCentersComponent},
-  {path: 'history-terms', component: HistoryTermsComponent}
+  {path: 'history-terms', component: HistoryTermsComponent},
+  {path: 'future-terms', component: FutureTermsComponent}
 
 
 

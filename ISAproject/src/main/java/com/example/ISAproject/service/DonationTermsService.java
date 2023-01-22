@@ -163,6 +163,28 @@ public class DonationTermsService
 
         return historyTerms;
     }
+    
+    public List<DonationTerms> futureTermsForRegisteredUser(Long id)
+    {
+        List<DonationTerms> allTerms = this.donationTermsRepository.findAll();
+        List<DonationTerms> futureTerms = new ArrayList<>();
+
+        for(DonationTerms dt: allTerms)
+        {
+            if(dt.getRegisteredUser() != null)
+            {
+                if(dt.getRegisteredUser().getId() == id)
+                {
+                    if((dt.isFreeTerm() == false && dt.isRegisteredUserCome() == false))
+                    {
+                    	futureTerms.add(dt);
+                    }
+                }
+            }
+        }
+
+        return futureTerms;
+    }
 
     public List<DonationTerms> findAllScheduledTermsByCentre(Long bloodCenterId,Long registeredUserId)
     {
@@ -280,7 +302,7 @@ public class DonationTermsService
 	 
     
     //Nikolina 3.8
-    @Transactional(readOnly=false) public DefinedTermDTO addDonationTerm(DefinedTermDTO dt) throws PessimisticLockingFailureException, DateTimeException { // BloodCenter bloodCenter =
+     public DefinedTermDTO addDonationTerm(DefinedTermDTO dt) throws PessimisticLockingFailureException, DateTimeException { // BloodCenter bloodCenter =
     	
     	Calendar calendar = calendarService.findById(dt.getCalendar().getId());
         BloodCenter bloodCenter = bloodCenterService.findById(dt.getBloodCenter().getId());

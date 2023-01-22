@@ -43,6 +43,7 @@ import { SearchAvaliableTermsComponent } from './search-avaliable-terms/search-a
 import { SearchAvaliableCentersComponent } from './search-avaliable-centers/search-avaliable-centers.component';
 import { NewProfileCenterComponent } from './new-profile-center/new-profile-center.component';
 import { HistoryTermsComponent } from './history-terms/history-terms.component';
+import { FutureTermsComponent } from './future-terms/future-terms.component';
 
 
 
@@ -87,7 +88,8 @@ import { HistoryTermsComponent } from './history-terms/history-terms.component';
     SearchAvaliableTermsComponent,
     SearchAvaliableCentersComponent,
     NewProfileCenterComponent,
-    HistoryTermsComponent
+    HistoryTermsComponent,
+    FutureTermsComponent
 
 
   ],
