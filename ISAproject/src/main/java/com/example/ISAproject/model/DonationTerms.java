@@ -64,7 +64,7 @@ public class DonationTerms {
 
 	//Nikolina
 	public DonationTerms(Long id, LocalDateTime date, boolean freeTerm, LocalDateTime reservationStart, LocalDateTime reservationEnd,
-						 int duration, Calendar calendar, BloodCenter bloodCenter )
+						 int duration, RegisteredUser registeredUser ,Calendar calendar, BloodCenter bloodCenter )
 	{
 	super();
 	this.Id = id;
@@ -73,6 +73,7 @@ public class DonationTerms {
 	this.reservationStart = reservationStart;
 	this.reservationEnd = reservationEnd;
 	this.duration = duration;
+	this.registeredUser=registeredUser;
 	this.calendar=calendar;
 	this.bloodCenter=bloodCenter;
 	}
