@@ -100,6 +100,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 									.antMatchers("/api/calendars").permitAll()
 									.antMatchers("/api/calendars/{id}").permitAll()							
 									//.antMatchers("/api/calendars/terms/{id}").permitAll()
+									//.antMatchers("/api/terms/future/{id}").permitAll()
 
                                       //Student 3
 					                .antMatchers("/api/centers/edit").permitAll()

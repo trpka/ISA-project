@@ -103,4 +103,8 @@ export class HomeRegisteredUserComponent implements OnInit {
     this.router.navigate(['history-terms']);    
   }
 
+  viewFutureTerms(){
+    this.router.navigate(['future-terms']);    
+  }
+
 }

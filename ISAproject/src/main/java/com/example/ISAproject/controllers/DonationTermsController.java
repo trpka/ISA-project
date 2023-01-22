@@ -185,7 +185,15 @@ public class DonationTermsController
 
     
 
-    
+    @RequestMapping(value="api/terms/future/{id}",method = RequestMethod.GET,produces = {
+            MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+    @PreAuthorize("hasRole('REGISTERED_USER')")
+    public ResponseEntity<List<DonationTerms>> futureTermsForRegisteredUser(@PathVariable Long id)
+    {
+        List<DonationTerms> terms=this.donationTermsService.futureTermsForRegisteredUser(id);
+        return new ResponseEntity<>(terms,HttpStatus.OK);
+    }
+
 
 
 }
