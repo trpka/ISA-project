@@ -31,6 +31,8 @@ values (11,'Stuff','pera@gmail.com', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfA
 
 insert into user_authority (user_id,authority_id) values (1,1);
 insert into user_authority (user_id,authority_id) values (2,2);
+insert into user_authority (user_id,authority_id) values (7,2);
+insert into user_authority (user_id,authority_id) values (8,2);
 insert into user_authority (user_id,authority_id) values (14,2);
 insert into user_authority (user_id,authority_id) values (5,3);
 
