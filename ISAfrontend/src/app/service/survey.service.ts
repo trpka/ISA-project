@@ -11,6 +11,7 @@ export class SurveyService {
 
   url="http://localhost:8081/api/survey";
   url1A = "http://localhost:8081/api/stuff-survey";
+  
 
   constructor(private http:HttpClient) { }
 
@@ -22,5 +23,11 @@ export class SurveyService {
   saveStuffSurvey(stuffSurvey: StuffSurvey):Observable<StuffSurvey>
   {
     return this.http.post<StuffSurvey>(this.url1A,stuffSurvey);
+  }
+
+  //Pronalazak Surveya po ID-ju
+  getSurveyByID(id:number):Observable<Survey>
+  {
+  return this.http.get<Survey> (`${this.url}/${id}`)
   }
 }

@@ -68,6 +68,18 @@
             <p style="text-align:center">{{donationTerm.bloodCenter.id}}</p>
             <p>---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
 
+
+            <p>---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+            <p style="text-align:center"><label for="Survey Id">SurveyId:</label></p>
+            <p style="text-align:center">{{stuffSurvey.Survey.id}}</p>
+            <p>---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+
+
+            <p>---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+            <p style="text-align:center"><label for="Survey Name">SurveyId:</label></p>
+            <p style="text-align:center">{{stuffSurvey.Survey.p1}}</p>
+            <p>---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+
           </div>
         </div>
          
@@ -82,14 +94,15 @@
   
   <div class="row">
     <div *ngIf="mustFill"><p style="text-align:center"><label><font size="5" style="color:brown;">You must answer all questions!!</font></label></p> </div>
+    
     <div class="col-sm">
         <p> Do you weigh less than 50 kg?</p>
     </div>
+
+
     <div class="col-sm">
-        <mat-radio-group aria-label="Select an option" style="margin-right: 450px;" [(ngModel)]="stuffSurvey.p1">
-            <mat-radio-button value="YES">YES</mat-radio-button>
-            <mat-radio-button value="NO">NO</mat-radio-button>
-          </mat-radio-group>
+      <label class="form-label" for="email">Email</label>
+      <input id="email"  name="email" type="text"  class="form-control"   [(ngModel)]="stuffSurvey.p1" />
     </div>
   </div>
   
