@@ -21,13 +21,6 @@ public class ScheduleDonationTermDTO {
     public void setRegisteredUserId(Long registeredUserId) {
         this.registeredUserId = registeredUserId;
     }
-    /* public RegisteredUser getRegisteredUserId() {
-        return registeredUserId;
-    }
-
-    public void setRegisteredUserId(Long registeredUserId) {
-        this.registeredUserId = registeredUserId;
-    }*/
 
     public ScheduleDonationTermDTO(Long donationTermId, Long registeredUserId) {
         this.donationTermId = donationTermId;

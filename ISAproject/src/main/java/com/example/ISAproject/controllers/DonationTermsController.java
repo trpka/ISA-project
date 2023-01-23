@@ -139,8 +139,8 @@ public class DonationTermsController
         String text = "Reservation info: \n\nReservation start: " + updatedDonationTerm.getReservationStart() +
                 "\nReservation end: " + updatedDonationTerm.getReservationEnd() +
                 "\nDuration: " + updatedDonationTerm.getDuration() +
-                "\nFirst name: " + updatedDonationTerm.getRegisteredUser().getFirstName() +
-                "\nLast name: " + updatedDonationTerm.getRegisteredUser().getLastName()+
+                //"\nFirst name: " + updatedDonationTerm.getRegisteredUser().getFirstName() +
+                //"\nLast name: " + updatedDonationTerm.getRegisteredUser().getLastName()+
                 "\nCenter name: " + updatedDonationTerm.getBloodCenter().getCenterName() +
                 "\nCenter address: " + updatedDonationTerm.getBloodCenter().getAddress();
         String QR_CODE_IMAGE_PATH = "./src/main/resources/QRCode.png";
