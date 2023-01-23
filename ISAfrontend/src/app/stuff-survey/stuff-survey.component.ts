@@ -27,6 +27,7 @@ export class StuffSurveyComponent implements OnInit {
   mustFill = false;
   checkGender1 = false;
   id: number;
+  p1: string;
 
   
   
@@ -139,7 +140,7 @@ export class StuffSurveyComponent implements OnInit {
             p7: "",
             p8: ""
           }),
-          p1: "",
+            p1: "",
             p2: "",
             p3: "",
             p4: "",
@@ -154,6 +155,7 @@ export class StuffSurveyComponent implements OnInit {
   ngOnInit(): void 
   {
     this.findDonationTerm()
+    this.findSurveyById();
   }
 
   findDonationTerm()
@@ -167,21 +169,32 @@ export class StuffSurveyComponent implements OnInit {
         this.checkGender1 = true;
       }
     })
+
+    this.stuffSurvey.Survey.id = 1;
     
-  
+  }
+
+  findSurveyById()
+  {
+    //this.id = Number(sessionStorage.getItem('id'));
+    this.surveyService.getSurveyByID(1)
+    .subscribe(res => {this.stuffSurvey.Survey = res;
+      if(this.stuffSurvey.Survey.registeredUser.sex == "Female")
+      {
+        this.checkGender1 = true;
+      }
+    })
+    
   }
 
   save()
   {
     
-    this.stuffSurvey.Survey.id = this.donationTerm.registeredUser.id;
-    this.stuffSurvey.Survey.firstName = this.donationTerm.registeredUser.firstName;
-    this.stuffSurvey.Survey.lastName = this.donationTerm.registeredUser.lastName;
-    this.stuffSurvey.Survey.city = this.donationTerm.registeredUser.city;
-    this.stuffSurvey.Survey.mobile = this.donationTerm.registeredUser.mobile;
-    this.stuffSurvey.Survey.adress = this.donationTerm.registeredUser.adress;
-    this.stuffSurvey.Survey.date = String(this.donationTerm.reservationStart);
-
+    
+    this.donationTerm.registeredUser.id = this.stuffSurvey.Survey.id;
+    this.donationTerm.registeredUser.firstName = this.stuffSurvey.Survey.firstName;
+    
+   
     this.stuffSurvey.p1 = this.stuffSurvey.Survey.p1;
     this.stuffSurvey.p2 = this.stuffSurvey.Survey.p2;
     this.stuffSurvey.p3 = this.stuffSurvey.Survey.p3;
