@@ -373,7 +373,7 @@ public class DonationTermsService
         return this.donationTermsRepository.save(newDonationTerm);
     }
 
-    public boolean RegisteredUserCanNotHaveTwoTerms(Long registeredUserId)
+   /* public boolean RegisteredUserCanNotHaveTwoTerms(Long registeredUserId)
     {
         List<DonationTerms> donationTerms = this.findAll();
 
@@ -427,7 +427,48 @@ public class DonationTermsService
 
      return this.save(donationTerms1);
    
+    }*/
+
+    public DonationTerms scheduleTerm(ScheduleDonationTermDTO dto) {
+        Optional<DonationTerms> donationTerm = this.findById(dto.getDonationTermId());
+        List<DonationTerms> donationTerms = this.findAll();
+        RegisteredUser registeredUser = this.registeredUserService.findById(dto.getRegisteredUserId());
+        if (!donationTerm.isPresent()) {
+            return null;
+        }
+
+        DonationTerms donationTerm1 = donationTerm.get();
+
+        LocalDateTime currentTime = LocalDateTime.now();
+        LocalDateTime currentDateMinus6Months = currentTime.minusMonths(6);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String currentDateMinus6MonthsString = currentDateMinus6Months.format(formatter);
+        DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDateTime currentDateMinus6Months1 = LocalDateTime.parse(currentDateMinus6MonthsString, formatter1);
+
+        for(DonationTerms d : donationTerms)
+        {
+            LocalDateTime lastBloodDonation = d.getReservationEnd();
+            String lastBloodDonationString = lastBloodDonation.format(formatter);
+            LocalDateTime lastBloodDonation1 = LocalDateTime.parse(lastBloodDonationString, formatter1);
+            if(d.isFreeTerm() == true && d.isRegisteredUserCome() == true && d.getRegisteredUser().getId() == dto.getRegisteredUserId() && lastBloodDonation1.isBefore(currentDateMinus6Months1))
+            {
+                donationTerm1.setFreeTerm(false);
+                donationTerm1.setRegisteredUserCome(false);
+                donationTerm1.setRegisteredUser(registeredUser);
+                return this.save(donationTerm1);
+            }
+        }
+        if(this.surveyService.registeredUserHasFilledOutQuestionnaire(dto.getRegisteredUserId()) == true){
+
+        }
+
+
+
+
+        return this.save(donationTerm1);
     }
+
 
 
 
