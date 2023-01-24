@@ -23,8 +23,31 @@ export class RegisteredUserEditComponent implements OnInit {
 
  editable: boolean=false;
 
-  constructor(private route: ActivatedRoute, private registeredUserService: RegisteredUserEditService,private router: Router) { }
+  constructor(private route: ActivatedRoute, private registeredUserService: RegisteredUserEditService,private router: Router) {
 
+    this.registeredUser = new RegisteredUser ({
+      id:0,
+      username: '' ,
+      password: '' ,
+      firstName: '',
+      lastName: '',
+      email: '',
+      mobile:'',
+      adress: '',
+      city: '',
+      state: '',
+      jmbg: '',
+      sex:'',
+      profession:'',
+      organizationInformation:'',
+      enabled:false,
+      points: 0,
+      category:'',
+      benefits:''
+    })
+   }
+
+  
   ngOnInit(): void {
     this.loadStuff();
 

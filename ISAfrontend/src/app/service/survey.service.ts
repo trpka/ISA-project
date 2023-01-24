@@ -12,8 +12,16 @@ export class SurveyService {
   url="http://localhost:8081/api/survey";
   url1A = "http://localhost:8081/api/stuff-survey";
   
-
+  date : Survey;
   constructor(private http:HttpClient) { }
+
+  setDate(newDate: any) {
+    this.date = newDate;
+  }
+
+  getDate() {
+    return this.date;
+  }
 
   save(survey:Survey):Observable<Survey>{
     return this.http.post<Survey>(this.url,survey);
