@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import {MatDialogModule} from '@angular/material/dialog';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
@@ -44,6 +45,8 @@ import { SearchAvaliableCentersComponent } from './search-avaliable-centers/sear
 import { NewProfileCenterComponent } from './new-profile-center/new-profile-center.component';
 import { HistoryTermsComponent } from './history-terms/history-terms.component';
 import { FutureTermsComponent } from './future-terms/future-terms.component';
+import { PopUpCannotReservateTermComponent } from './pop-up-cannot-reservate-term/pop-up-cannot-reservate-term.component';
+import { PopUpCanReservateTermComponent } from './pop-up-can-reservate-term/pop-up-can-reservate-term.component';
 
 
 
@@ -89,7 +92,9 @@ import { FutureTermsComponent } from './future-terms/future-terms.component';
     SearchAvaliableCentersComponent,
     NewProfileCenterComponent,
     HistoryTermsComponent,
-    FutureTermsComponent
+    FutureTermsComponent,
+    PopUpCannotReservateTermComponent,
+    PopUpCanReservateTermComponent
 
 
   ],
@@ -102,7 +107,8 @@ import { FutureTermsComponent } from './future-terms/future-terms.component';
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
-    MatRadioModule
+    MatRadioModule,
+    MatDialogModule
   ],
   providers: [
     DatePipe,

@@ -5,6 +5,7 @@ import com.example.ISAproject.model.RegisteredUser;
 public class ScheduleDonationTermDTO {
     private Long donationTermId;
     private Long registeredUserId;
+    private Long surveyId;
 
     public Long getDonationTermId() {
         return donationTermId;
@@ -21,17 +22,21 @@ public class ScheduleDonationTermDTO {
     public void setRegisteredUserId(Long registeredUserId) {
         this.registeredUserId = registeredUserId;
     }
-    /* public RegisteredUser getRegisteredUserId() {
-        return registeredUserId;
+
+    public Long getSurveyId() {
+        return surveyId;
     }
 
-    public void setRegisteredUserId(Long registeredUserId) {
-        this.registeredUserId = registeredUserId;
-    }*/
+    public void setSurveyId(Long surveyId) {
+        this.surveyId = surveyId;
+    }
 
-    public ScheduleDonationTermDTO(Long donationTermId, Long registeredUserId) {
+
+    public ScheduleDonationTermDTO(Long donationTermId, Long registeredUserId, Long surveyId) {
         this.donationTermId = donationTermId;
         this.registeredUserId = registeredUserId;
+        this.surveyId = surveyId;
     }
+
     public ScheduleDonationTermDTO() {}
 }

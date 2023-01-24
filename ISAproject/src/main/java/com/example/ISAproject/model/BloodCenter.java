@@ -62,6 +62,7 @@ public class BloodCenter {
 
 	}
 
+
 	public Long getId() {
 		return id;
 	}
@@ -182,6 +183,10 @@ public class BloodCenter {
 		this.registered_users_for_this_center = registered_users_for_this_center;
 	}
 
+	public void setRegistered_users_for_this_center(Set<RegisteredUser> registered_users_for_this_center) {
+		this.registered_users_for_this_center = registered_users_for_this_center;
+	}
+
 	public BloodCenter(Long id, String centerName, String address, String city, LocalDateTime startWork, LocalDateTime endWork,
 					   String description, Long averageGradeCentre, double bloodA, double bloodB, double bloodAB,
 					   double bloodO, List<DonationTerms> freeAppointments, List<Stuff> listOfStuffs)
@@ -234,5 +239,23 @@ public class BloodCenter {
 		this.bloodO = bloodO;
 		//this.freeAppointments = freeAppointments;
 		this.listOfStuffs = listOfStuffs;
+	}
+
+	public BloodCenter(Long id, String centerName, String address, String city, LocalDateTime startWork, LocalDateTime endWork, String description, Long averageGradeCentre, double bloodA, double bloodB, double bloodAB, double bloodO, List<DonationTerms> freeAppointments, List<Stuff> listOfStuffs, Set<RegisteredUser> registered_users_for_this_center) {
+		this.id = id;
+		this.centerName = centerName;
+		this.address = address;
+		this.city = city;
+		this.startWork = startWork;
+		this.endWork = endWork;
+		this.description = description;
+		this.averageGradeCentre = averageGradeCentre;
+		this.bloodA = bloodA;
+		this.bloodB = bloodB;
+		this.bloodAB = bloodAB;
+		this.bloodO = bloodO;
+		this.freeAppointments = freeAppointments;
+		this.listOfStuffs = listOfStuffs;
+		this.registered_users_for_this_center = registered_users_for_this_center;
 	}
 }

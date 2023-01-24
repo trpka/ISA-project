@@ -25,9 +25,17 @@ export class DonationTermsService
   url4 = "http://localhost:8081/api/schedule-new-term";
   url5="http://localhost:8081/api/create-new-term"
 
-  
+  data: any;
   
   constructor(private http:HttpClient) { }
+
+  setData(newData: any) {
+    this.data = newData;
+  }
+
+  getData() {
+    return this.data;
+  }
 
   getAllDonationTerms():Observable<DonationTerms[]>
   {
@@ -47,6 +55,10 @@ export class DonationTermsService
   getTermById(id:number):Observable<DonationTerms>
   {
     return this.http.get<DonationTerms>(`${this.url1A}/${id}`)
+  }
+  isUserGaveBloodInLast6Month(id:number):Observable<boolean>
+  {
+    return this.http.get<boolean>(this.url1A+"/can-make-reservation/"+id)
   }
 
 

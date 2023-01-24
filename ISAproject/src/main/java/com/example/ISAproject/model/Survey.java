@@ -1,6 +1,9 @@
 package com.example.ISAproject.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Survey {
@@ -56,6 +59,17 @@ public class Survey {
     @OneToOne
     private RegisteredUser registeredUser;
 
+    @OneToMany (cascade = CascadeType.ALL,orphanRemoval = true)
+    @JsonIgnore
+    private List<DonationTerms> donationTerms;
+
+    public List<DonationTerms> getDonationTerms() {
+        return donationTerms;
+    }
+
+    public void setDonationTerms(List<DonationTerms> donationTerms) {
+        this.donationTerms = donationTerms;
+    }
 
     public Long getId() {
         return id;
@@ -300,6 +314,34 @@ public class Survey {
         this.p7 = p7;
         this.p8 = p8;
         this.registeredUser = registeredUser;
+    }
+
+    public Survey(Long id, String numberOfDonator, String date, String firstName, String lastName, String jmbg, String dateOfBirth, String sex, String adress, String township, String city, String mobile, String company, String profession, String numberOfBoodDonations, String p1, String p2, String p3, String p4, String p5, String p6, String p7, String p8, RegisteredUser registeredUser, List<DonationTerms> donationTerms) {
+        this.id = id;
+        this.numberOfDonator = numberOfDonator;
+        this.date = date;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.jmbg = jmbg;
+        this.dateOfBirth = dateOfBirth;
+        this.sex = sex;
+        this.adress = adress;
+        this.township = township;
+        this.city = city;
+        this.mobile = mobile;
+        this.company = company;
+        this.profession = profession;
+        this.numberOfBoodDonations = numberOfBoodDonations;
+        this.p1 = p1;
+        this.p2 = p2;
+        this.p3 = p3;
+        this.p4 = p4;
+        this.p5 = p5;
+        this.p6 = p6;
+        this.p7 = p7;
+        this.p8 = p8;
+        this.registeredUser = registeredUser;
+        this.donationTerms = donationTerms;
     }
 
     public Survey() {}

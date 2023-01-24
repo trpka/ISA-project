@@ -21,7 +21,8 @@ export class ScheduledAppointmentsComponent implements OnInit {
     private donationTermsService: DonationTermsService) {
     this.scheduleDonationTerm = new ScheduleDonationTerm({
       donationTermId:0,
-      registeredUserId: 0
+      registeredUserId: 0,
+      surveyId : 0
     })
    }
 

@@ -3,10 +3,7 @@ package com.example.ISAproject.controllers;
 import com.example.ISAproject.dto.DefinedTermDTO;
 import com.example.ISAproject.dto.DonationTermsDTO;
 import com.example.ISAproject.dto.ScheduleDonationTermDTO;
-import com.example.ISAproject.model.BloodCenter;
-import com.example.ISAproject.model.Calendar;
-import com.example.ISAproject.model.DonationTerms;
-import com.example.ISAproject.model.QRCodeGenerator;
+import com.example.ISAproject.model.*;
 import com.example.ISAproject.service.DonationTermsService;
 import com.example.ISAproject.service.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +18,7 @@ import java.time.DateTimeException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @CrossOrigin
@@ -134,6 +132,9 @@ public class DonationTermsController
     public ResponseEntity<DonationTerms>  scheduleTerm(@RequestBody ScheduleDonationTermDTO dto)throws Exception{
     	
         DonationTerms updatedDonationTerm=this.donationTermsService.scheduleTerm(dto);
+        if(updatedDonationTerm==null){
+            return new ResponseEntity<>(null,HttpStatus.OK);
+        }
 
       
         String text = "Reservation info: \n\nReservation start: " + updatedDonationTerm.getReservationStart() +
@@ -143,13 +144,20 @@ public class DonationTermsController
                 "\nLast name: " + updatedDonationTerm.getRegisteredUser().getLastName()+
                 "\nCenter name: " + updatedDonationTerm.getBloodCenter().getCenterName() +
                 "\nCenter address: " + updatedDonationTerm.getBloodCenter().getAddress();
-        String QR_CODE_IMAGE_PATH = "./src/main/resources/QRCode.png";
-        QRCodeGenerator.generateQRCodeImage(text, 350, 350, QR_CODE_IMAGE_PATH);
-        String body = "This is qr code for your reservation";
-        String subject = "QR CODE";
-        this.emailService.sendMailWithAttachment(updatedDonationTerm.getRegisteredUser().getEmail(), body, subject, QR_CODE_IMAGE_PATH);
+        //String QR_CODE_IMAGE_PATH = "./src/main/resources/QRCode.png";
+        //QRCodeGenerator.generateQRCodeImage(text, 350, 350, QR_CODE_IMAGE_PATH);
+        //String body = "This is qr code for your reservation";
+        //String subject = "QR CODE";
+        //this.emailService.sendMailWithAttachment(updatedDonationTerm.getRegisteredUser().getEmail(), body, subject, QR_CODE_IMAGE_PATH);
         return new ResponseEntity<>(new DonationTerms(updatedDonationTerm),HttpStatus.OK);
 
+    }
+    @RequestMapping(value="api/term/can-make-reservation/{idUser}",method = RequestMethod.GET,produces= {
+            MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    @PreAuthorize("hasRole('REGISTERED_USER')")
+    public ResponseEntity<Boolean> isUserGaveBloodInLast6Month(@PathVariable Long idUser){
+        boolean can_make_res=this.donationTermsService.isUserGaveBloodInLast6Month(idUser);
+        return new ResponseEntity<>(can_make_res,HttpStatus.OK);
     }
 
     

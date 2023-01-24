@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { DonationTermsComponent } from '../donation-terms/donation-terms.component';
 import { RegisteredUser } from '../model/registeredUser';
+import { ScheduleDonationTerm } from '../model/ScheduleDonationTerm';
 import { Survey } from '../model/survey';
+import { DonationTermsService } from '../service/donation-terms.service';
 import { RegisteredUserEditService } from '../service/registered-user-edit.service';
 import { SurveyService } from '../service/survey.service';
 
@@ -20,11 +23,12 @@ export class QuestionnaireComponent implements OnInit {
   mustfill = false;
   checkGender1 = false;
   registeredUserId : number;
-  //answers: [];
-
+  donationTermId : any;
+  scheduleDonationTerm:ScheduleDonationTerm;
+  data: any;
   
   constructor(private surveyService:SurveyService, private registeredUserEditService:RegisteredUserEditService, 
-    private router: Router) { 
+    private router: Router, private donationTermsService: DonationTermsService) { 
     this.registeredUser = new RegisteredUser({
       id:0,
       username: "",
@@ -92,7 +96,13 @@ export class QuestionnaireComponent implements OnInit {
         p7:"",
         p8:""
         
-      })
+      }),
+      this.scheduleDonationTerm = new ScheduleDonationTerm({
+        donationTermId:0,
+        registeredUserId: 0,
+        surveyId : 0
+      }),
+      this.data = this.donationTermsService.getData();
 
   }
 
@@ -144,9 +154,17 @@ export class QuestionnaireComponent implements OnInit {
       this.survey.registeredUser = this.registeredUser;
       console.log(this.survey.registeredUser.email);
       this.surveyService.save(this.survey)
-        .subscribe()
-      //this.surveyService.save(this.survey)
-      //.subscribe()
+        .subscribe(res => {this.survey = res;
+         // this.donationTermId = this.donationTermsComponent.data.getData();
+          this.scheduleDonationTerm.registeredUserId =  Number(sessionStorage.getItem('id')); 
+          this.scheduleDonationTerm.donationTermId = this.data
+          this.scheduleDonationTerm.surveyId = this.survey.id;
+          console.log(this.data)
+          this.donationTermsService.scheduleTerm(this.scheduleDonationTerm)
+          .subscribe()
+        })
+        
+   
       this.router.navigate(['/home/registered-user']);
     }
   }

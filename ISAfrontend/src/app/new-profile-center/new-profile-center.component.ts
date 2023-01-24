@@ -33,7 +33,8 @@ export class NewProfileCenterComponent implements OnInit {
   constructor(private datePipe: DatePipe,private route: ActivatedRoute, private bloodCenterService: BloodCenterService,private donationTermsService: DonationTermsService ) { 
     this.scheduleDonationTerm = new ScheduleDonationTerm({
       donationTermId:0,
-      registeredUserId: 0
+      registeredUserId: 0,
+      surveyId: 0
     })
   }
 
