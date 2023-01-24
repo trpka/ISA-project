@@ -15,19 +15,19 @@
             </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let donationTerms of donationTerms">
-                <td>{{donationTerms.id}}</td>
-                <td>{{donationTerms.date}}</td>
-                <td>{{donationTerms.duration}}</td>
+          <tr *ngFor="let dt of donationTerms"  >
+                <td>{{dt.id}}</td>
+                <td>{{dt.date}}</td>
+                <td>{{dt.duration}}</td>
                 
                 <!--<td>
                     <input [(ngModel)]="donationTerms.isFree" id="isFree" name="isFree" type="text" class="from-control">
                 </td> -->
-                <td>{{donationTerms.freeTerm}}</td>
-                <td>{{donationTerms.reservationStart}}</td>
-                <td>{{donationTerms.reservationEnd}}</td>
-                <td>{{donationTerms.bloodCenter.id}}</td>
-                <td><button  (click)="scheduleTerm(donationTerms.id)">Schedule</button></td>
+                <td>{{dt.freeTerm}}</td>
+                <td>{{dt.reservationStart}}</td>
+                <td>{{dt.reservationEnd}}</td>
+                <td>{{dt.bloodCenter.id}}</td>
+                <td><button  (click)="isUserGaveBloodInLast6Month(dt.id)">Schedule</button></td>
     
        
         

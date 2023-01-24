@@ -53,6 +53,7 @@ public class DonationTermsService
         return this.donationTermsRepository.findById(id);
     }
 
+
 	
     public List<DonationTerms> sortByDate(Long id){
 
@@ -429,7 +430,7 @@ public class DonationTermsService
    
     }*/
 
-    public DonationTerms scheduleTerm(ScheduleDonationTermDTO dto) {
+    /*public DonationTerms scheduleTerm(ScheduleDonationTermDTO dto) {
         Optional<DonationTerms> donationTerm = this.findById(dto.getDonationTermId());
         List<DonationTerms> donationTerms = this.findAll();
         RegisteredUser registeredUser = this.registeredUserService.findById(dto.getRegisteredUserId());
@@ -446,27 +447,87 @@ public class DonationTermsService
         DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDateTime currentDateMinus6Months1 = LocalDateTime.parse(currentDateMinus6MonthsString, formatter1);
 
-        for(DonationTerms d : donationTerms)
-        {
-            LocalDateTime lastBloodDonation = d.getReservationEnd();
-            String lastBloodDonationString = lastBloodDonation.format(formatter);
-            LocalDateTime lastBloodDonation1 = LocalDateTime.parse(lastBloodDonationString, formatter1);
-            if(d.isFreeTerm() == true && d.isRegisteredUserCome() == true && d.getRegisteredUser().getId() == dto.getRegisteredUserId() && lastBloodDonation1.isBefore(currentDateMinus6Months1))
-            {
-                donationTerm1.setFreeTerm(false);
-                donationTerm1.setRegisteredUserCome(false);
-                donationTerm1.setRegisteredUser(registeredUser);
-                return this.save(donationTerm1);
-            }
-        }
         if(this.surveyService.registeredUserHasFilledOutQuestionnaire(dto.getRegisteredUserId()) == true){
 
+            for(DonationTerms d : donationTerms)
+            {
+                LocalDateTime lastBloodDonation = d.getReservationEnd();
+                String lastBloodDonationString = lastBloodDonation.format(formatter);
+                LocalDateTime lastBloodDonation1 = LocalDateTime.parse(lastBloodDonationString, formatter1);
+                if(d.isFreeTerm() == true && d.isRegisteredUserCome() == true && d.getRegisteredUser().getId() == dto.getRegisteredUserId() && lastBloodDonation1.isBefore(currentDateMinus6Months1))
+                {
+                    donationTerm1.setFreeTerm(false);
+                    donationTerm1.setRegisteredUserCome(false);
+                    donationTerm1.setRegisteredUser(registeredUser);
+                    return this.save(donationTerm1);
+                }
+                else if(this.isUserScheduleDonationTerm(dto.getRegisteredUserId())==false){
+                    donationTerm1.setFreeTerm(false);
+                    donationTerm1.setRegisteredUserCome(false);
+                    donationTerm1.setRegisteredUser(registeredUser);
+                    return this.save(donationTerm1);
+                }
+            }
         }
 
 
 
 
         return this.save(donationTerm1);
+    }*/
+    public boolean isUserScheduleDonationTerm(Long userId){
+        int number_of_schedule_donation=0;
+        RegisteredUser registeredUser=this.registeredUserService.findById(userId);
+        List<DonationTerms> donationTerms=this.donationTermsRepository.findAll();
+        for (DonationTerms dt:donationTerms) {
+            if(dt.getRegisteredUser()!=null && dt.getRegisteredUser()==registeredUser){
+                number_of_schedule_donation++;
+            }
+        }
+        if(number_of_schedule_donation!=0){
+            return true;
+        }
+        return false;
+    }
+    public boolean isUserGaveBloodInLast6Month(Long userId){
+        LocalDateTime currentTime = LocalDateTime.now();
+        RegisteredUser registeredUser=this.registeredUserService.findById(userId);
+        List<DonationTerms> donationTerms=this.donationTermsRepository.findAll();
+        int num_of_give_blood_in_last_6_month=0;
+        for (DonationTerms dt:donationTerms) {
+            if(dt.getRegisteredUser()!=null){
+                // 1.provera da li je to taj korisnik
+                // 2.provera da li je termin pre 6 meseci
+                // 3.provera da li je korisnik odsao na termin
+                if(dt.getRegisteredUser()==registeredUser && dt.getReservationStart().isAfter(currentTime.minusMonths(6)) &&dt.isRegisteredUserCome()==true && dt.isFreeTerm()==true){
+                    num_of_give_blood_in_last_6_month=num_of_give_blood_in_last_6_month+1;
+                }
+            }
+        }
+        if(num_of_give_blood_in_last_6_month!=0){
+            return true;
+        }
+        return false;
+    }
+    public DonationTerms findById1(Long id){
+        Optional<DonationTerms> donationTermOptional = this.donationTermsRepository.findById(id);
+        if (!donationTermOptional.isPresent()) {
+            return null;
+        }
+        return donationTermOptional.get();
+    }
+    public DonationTerms scheduleTerm(ScheduleDonationTermDTO dto){
+        RegisteredUser registeredUser = this.registeredUserService.findById(dto.getRegisteredUserId());
+        Survey survey = this.surveyService.findById(dto.getSurveyId());
+        DonationTerms donationTerm = this.findById1(dto.getDonationTermId());
+        if(this.isUserGaveBloodInLast6Month(dto.getRegisteredUserId())==false){
+            donationTerm.setFreeTerm(false);
+            donationTerm.setRegisteredUserCome(false);
+            donationTerm.setRegisteredUser(registeredUser);
+            donationTerm.setSurvey(survey);
+            return this.donationTermsRepository.save(donationTerm);
+        }
+        return null;
     }
 
 

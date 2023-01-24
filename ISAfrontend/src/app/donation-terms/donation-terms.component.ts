@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,  EventEmitter,Input,Output ,OnInit } from '@angular/core';
 import { DonationTerms } from '../model/donationTerms';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
@@ -8,6 +8,9 @@ import { BloodCenterService } from '../service/blood-center.service';
 import { DonationTermsService } from '../service/donation-terms.service';
 import { BloodCenter } from '../model/bloodCenter';
 import { ScheduleDonationTerm } from '../model/ScheduleDonationTerm';
+import { MatDialog } from '@angular/material/dialog';
+import { PopUpCannotReservateTermComponent } from '../pop-up-cannot-reservate-term/pop-up-cannot-reservate-term.component';
+import { PopUpCanReservateTermComponent } from '../pop-up-can-reservate-term/pop-up-can-reservate-term.component';
 
 @Component({
   selector: 'app-donation-terms',
@@ -16,19 +19,27 @@ import { ScheduleDonationTerm } from '../model/ScheduleDonationTerm';
 })
 export class DonationTermsComponent implements OnInit 
 {
+  //@Input()
+  //items:donationTerms[];
+  //@Input()
+  donationTerms: DonationTerms[];
+
+  //@Output()
+  //donationTerm:EventEmitter<number>=new EventEmitter();
+  data: any;
   id: any;
   broj: number;
-  donationTerms: DonationTerms[];
   bloodCenter: BloodCenter[];
   scheduleDonationTerm:ScheduleDonationTerm;
 
 
   constructor(private route: ActivatedRoute,private donationTermsService: DonationTermsService, 
-    private bloodCenterService: BloodCenterService, private router: Router) 
+    private bloodCenterService: BloodCenterService, private router: Router,private dialogRef: MatDialog) 
   {
     this.scheduleDonationTerm = new ScheduleDonationTerm({
       donationTermId:0,
-      registeredUserId: 0
+      registeredUserId: 0,
+      surveyId : 0
     })
   }
 
@@ -64,12 +75,33 @@ export class DonationTermsComponent implements OnInit
     .subscribe(res => {this.donationTerms = res;})
   }
 
-  scheduleTerm(donationTermId:any)
+  isUserGaveBloodInLast6Month(donationTermId:any)
   {
     this.scheduleDonationTerm.registeredUserId =  Number(sessionStorage.getItem('id')); 
+    this.donationTermsService.isUserGaveBloodInLast6Month(this.scheduleDonationTerm.registeredUserId)
+    .subscribe(res=>{
+      this.donationTermsService.setData(donationTermId);
+      if(res==true){
+        this.dialogRef.open(PopUpCannotReservateTermComponent)
+      }else{
+        const dialogRef= this.dialogRef.open(PopUpCanReservateTermComponent);
+        dialogRef.afterClosed().subscribe(res=>{
+          this.router.navigate(['questionnaire']);
+        })
+        
+      }
+    })
+    
+    /*this.scheduleDonationTerm.registeredUserId =  Number(sessionStorage.getItem('id')); 
     this.scheduleDonationTerm.donationTermId = Number(donationTermId);
     this.donationTermsService.scheduleTerm(this.scheduleDonationTerm)
-    .subscribe(_=>this. viewTermsByCentre())
+    .subscribe(res=>{
+      this. viewTermsByCentre();
+      if(res==null){
+        this.dialogRef.open(PopUpCannotReservateTermComponent)
+      }
+
+    })*/
   }
 
   goToScheduledAppointments()

@@ -51,7 +51,9 @@ public class DonationTerms {
 	@JoinColumn(name = "Stuff")
 	private Stuff stuff;
 
-
+	@ManyToOne
+	@JoinColumn(name = "survey_id")
+	private Survey survey;
 
 
 
@@ -172,6 +174,20 @@ public class DonationTerms {
 		this.stuff = donationTerms.getStuff();
 	}
 
+	public DonationTerms(LocalDateTime date, int duration, boolean freeTerm, LocalDateTime reservationStart, LocalDateTime reservationEnd, boolean isRegisteredUserCome, RegisteredUser registeredUser, BloodCenter bloodCenter, Calendar calendar, Stuff stuff, Survey survey) {
+		this.date = date;
+		this.duration = duration;
+		this.freeTerm = freeTerm;
+		this.reservationStart = reservationStart;
+		this.reservationEnd = reservationEnd;
+		this.isRegisteredUserCome = isRegisteredUserCome;
+		this.registeredUser = registeredUser;
+		this.bloodCenter = bloodCenter;
+		this.calendar = calendar;
+		this.stuff = stuff;
+		this.survey = survey;
+	}
+
 	public LocalDateTime getDate() {
 		return date;
 	}
@@ -251,5 +267,13 @@ public class DonationTerms {
 
 	public void setStuff(Stuff stuff) {
 		this.stuff = stuff;
+	}
+
+	public Survey getSurvey() {
+		return survey;
+	}
+
+	public void setSurvey(Survey survey) {
+		this.survey = survey;
 	}
 }

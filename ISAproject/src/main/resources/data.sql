@@ -109,6 +109,9 @@ values (6, '2022-12-1 8:35:00', 45, true, false, '2023-02-22 07:00:00','2023-02-
 insert into donation_terms (id, date, duration, free_term, is_registered_user_come, reservation_start, reservation_end, profile_center_id,calendar_id)
 values (7, '2022-12-1 8:36:00', 15, true, false, '2023-02-11 8:30:00','2023-02-11 8:45:00', 1,2);
 
+insert into donation_terms (id, date, duration, free_term, is_registered_user_come, reservation_start, reservation_end, profile_center_id,calendar_id)
+values (8, '2022-12-1 9:36:00', 15, true, false, '2023-01-10 11:30:00','2023-01-10 11:45:00', 1,2);
+
 --insert into survey (id, adress, city, company, date, date_of_birth, registered_user_id)
 --values (1, 'sadasdasd','sadasdasd','sadasdasd','2022-12-18 13:40:00', '2023-02-22 07:00:00', 2);
 

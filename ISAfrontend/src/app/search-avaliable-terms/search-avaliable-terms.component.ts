@@ -44,7 +44,8 @@ export class SearchAvaliableTermsComponent implements OnInit {
   constructor(private donationTermsService: DonationTermsService, private bloodCenterService: BloodCenterService, private router: Router) {
     this.scheduleDonationTerm = new ScheduleDonationTerm({
       donationTermId:0,
-      registeredUserId: 0
+      registeredUserId: 0,
+      surveyId : 0
     })
    }
 
