@@ -575,4 +575,14 @@ public class DonationTermsService
         return this.donationTermsRepository.createTerm(userDate, userDuration, userStart, userEnd,  bloodCenter_id, calendar_id);
     }
 
+    public DonationTerms UpdateDonationTerms(DonationTerms dt)
+    {
+        DonationTerms donationTerm = donationTermsRepository.getById(dt.getId());
+
+        donationTerm.setSurvey(dt.getSurvey());
+
+
+        return  this.donationTermsRepository.save(donationTerm);
+    }
+
 }

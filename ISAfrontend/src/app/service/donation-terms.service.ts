@@ -27,7 +27,11 @@ export class DonationTermsService
 
   data: any;
   
+  
   constructor(private http:HttpClient) { }
+
+  
+
 
   setData(newData: any) {
     this.data = newData;
@@ -56,6 +60,7 @@ export class DonationTermsService
   {
     return this.http.get<DonationTerms>(`${this.url1A}/${id}`)
   }
+  
   isUserGaveBloodInLast6Month(id:number):Observable<boolean>
   {
     return this.http.get<boolean>(this.url1A+"/can-make-reservation/"+id)
@@ -96,6 +101,12 @@ export class DonationTermsService
   futureTermsForRegisteredUser(id:number):Observable<DonationTerms[]>
   {
   return this.http.get<DonationTerms[]> (this.url + "/future/"+id)
+  }
+
+  UpdateDonationTerm(donationTerms: DonationTerms):Observable<DonationTerms>
+  {
+
+    return this.http.put<DonationTerms>(this.url+"/edit", donationTerms);
   }
 
 }

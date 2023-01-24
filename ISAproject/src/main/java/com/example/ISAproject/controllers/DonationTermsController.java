@@ -202,6 +202,13 @@ public class DonationTermsController
         return new ResponseEntity<>(terms,HttpStatus.OK);
     }
 
+    @PutMapping("api/terms/edit")
+    public ResponseEntity<DonationTerms> UpdateDonationTerms(@RequestBody DonationTerms bc)
+    {
+        DonationTerms donationTerms = this.donationTermsService.UpdateDonationTerms(bc);
+        return  new ResponseEntity<>(donationTerms,HttpStatus.OK);
+    }
+
 
 
 }

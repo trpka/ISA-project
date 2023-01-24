@@ -47,6 +47,7 @@ import { HistoryTermsComponent } from './history-terms/history-terms.component';
 import { FutureTermsComponent } from './future-terms/future-terms.component';
 import { PopUpCannotReservateTermComponent } from './pop-up-cannot-reservate-term/pop-up-cannot-reservate-term.component';
 import { PopUpCanReservateTermComponent } from './pop-up-can-reservate-term/pop-up-can-reservate-term.component';
+import { Questionnaire2Component } from './questionnaire2/questionnaire2.component';
 
 
 
@@ -94,7 +95,8 @@ import { PopUpCanReservateTermComponent } from './pop-up-can-reservate-term/pop-
     HistoryTermsComponent,
     FutureTermsComponent,
     PopUpCannotReservateTermComponent,
-    PopUpCanReservateTermComponent
+    PopUpCanReservateTermComponent,
+    Questionnaire2Component
 
 
   ],
