@@ -4,6 +4,7 @@ import com.example.ISAproject.model.BloodCenter;
 import com.example.ISAproject.model.Calendar;
 import com.example.ISAproject.model.DonationTerms;
 import com.example.ISAproject.model.RegisteredUser;
+import com.example.ISAproject.model.Survey;
 
 import java.time.LocalDateTime;
 
@@ -18,6 +19,7 @@ public class DefinedTermDTO
    private RegisteredUser registeredUser;
    private Calendar calendar;
    private BloodCenter center;
+   private Survey survey;
 
 
 
@@ -28,7 +30,7 @@ public DefinedTermDTO()
 
     public DefinedTermDTO(Long id,int duration, String date,boolean isFree,String reservationStart ,String reservationEnd,
     		RegisteredUser registeredUser,Calendar calendar,
-    		BloodCenter center)
+    		BloodCenter center,Survey survey)
     {
         this.id = id;
         this.duration = duration;
@@ -39,6 +41,7 @@ public DefinedTermDTO()
         this.registeredUser=registeredUser;
         this.calendar=calendar;
         this.center=center;
+        this.survey = survey;
     }
 
     public Long getId() {
@@ -113,4 +116,12 @@ public DefinedTermDTO()
 	  public BloodCenter getBloodCenter() { return center; }
 		 
 	  public void setBloodCenter(BloodCenter center) { this.center = center; }
+	  
+	  public Survey getSurvey() {
+			return survey;
+		}
+
+		public void setSurvey(Survey survey) {
+			this.survey = survey;
+		}
 }

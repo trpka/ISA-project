@@ -173,9 +173,9 @@ export class Questionnaire2Component implements OnInit {
       this.mustfill=true;
     }
     else{
-      //const now = formatDate(new Date());
+      const now = formatDate(new Date());
       this.registeredUserId = Number(sessionStorage.getItem('id')); 
-      //this.survey.date = String(now);
+      this.survey.date = String(now);
       this.survey.firstName = this.registeredUser.firstName;
       this.survey.lastName = this.registeredUser.lastName;
       this.survey.jmbg = this.registeredUser.jmbg;
@@ -210,4 +210,25 @@ export class Questionnaire2Component implements OnInit {
     })
   }
 
+}
+
+function padTo2Digits(num: number) {
+  return num.toString().padStart(2, '0');
+}
+
+
+function formatDate(date: Date) {
+  return (
+    [
+      date.getFullYear(),
+      padTo2Digits(date.getMonth() + 1),
+      padTo2Digits(date.getDate()),
+    ].join('-') +
+    ' ' +
+    [
+      padTo2Digits(date.getHours()),
+      padTo2Digits(date.getMinutes()),
+      padTo2Digits(date.getSeconds()),
+    ].join(':')
+  );
 }

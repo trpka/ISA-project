@@ -1,6 +1,7 @@
 import { BloodCenter } from "./bloodCenter";
 import { Calendar } from "./calendar";
 import { RegisteredUser } from "./registeredUser";
+import { Survey } from "./survey";
 
 
 interface DefinedDonationTermsInterface{
@@ -12,6 +13,7 @@ interface DefinedDonationTermsInterface{
     registeredUser: RegisteredUser;
     calendar: Calendar;
     bloodCenter: BloodCenter;
+    survey:Survey;
 }
 
 export class DefinedDonationTerms implements DefinedDonationTermsInterface{
@@ -23,6 +25,7 @@ export class DefinedDonationTerms implements DefinedDonationTermsInterface{
     registeredUser: RegisteredUser;
     calendar:Calendar;
     bloodCenter: BloodCenter;
+    survey:Survey;
 
     constructor(obj:DefinedDonationTermsInterface){
         this.date=obj.date;
@@ -33,5 +36,6 @@ export class DefinedDonationTerms implements DefinedDonationTermsInterface{
         this.registeredUser=obj.registeredUser;
         this.calendar=obj.calendar;
         this.bloodCenter=obj.bloodCenter;
+        this.survey=obj.survey;
     } 
 } 

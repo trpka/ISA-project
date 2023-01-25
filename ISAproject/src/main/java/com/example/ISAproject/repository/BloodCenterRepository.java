@@ -30,7 +30,7 @@ public interface BloodCenterRepository extends JpaRepository<BloodCenter, Long>
 
   
   
-  @Query("SELECT bc FROM BloodCenter bc where bc.id not in(SELECT bloodCenter.id FROM DonationTerms WHERE :userDate >reservationStart and :userDate< reservationEnd and freeTerm=0 )")
+  @Query("SELECT bc FROM BloodCenter bc where bc.id not in(SELECT bloodCenter.id FROM DonationTerms WHERE :userDate >reservationStart and :userDate< reservationEnd and freeTerm=0 and isRegisteredUserCome=0)")
   List<BloodCenter>findAvailableCenter(@Param("userDate") LocalDateTime userDate);
 
 }
