@@ -14,6 +14,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { PopUpCannotReservateTermComponent } from '../pop-up-cannot-reservate-term/pop-up-cannot-reservate-term.component';
 import { PopUpCanReservateTermComponent } from '../pop-up-can-reservate-term/pop-up-can-reservate-term.component';
 import { Survey } from '../model/survey';
+import { PopUpRegisteredUserHaveThreePenaltiesComponent } from '../pop-up-registered-user-have-three-penalties/pop-up-registered-user-have-three-penalties.component';
 
 @Component({
   selector: 'app-new-profile-center',
@@ -193,14 +194,18 @@ export class NewProfileCenterComponent implements OnInit {
     alert("Successfully scheduled term!");
   }
 
-  isUserGaveBloodInLast6Month(donationTermId:any){
+  isUserGaveBloodInLast6MonthOrHave3Penalties(donationTermId:any)
+  {
     this.scheduleDonationTerm.registeredUserId =  Number(sessionStorage.getItem('id')); 
     this.donationTermsService.isUserGaveBloodInLast6Month(this.scheduleDonationTerm.registeredUserId)
     .subscribe(res=>{
       this.donationTermsService.setData(donationTermId);
-      if(res==true){
+      if(res.banGaveBlood==true){
         this.dialogRef.open(PopUpCannotReservateTermComponent)
-      }else{
+      }else if(res.banPenalties == true){
+        this.dialogRef.open(PopUpRegisteredUserHaveThreePenaltiesComponent)
+      }
+      else{
         const dialogRef= this.dialogRef.open(PopUpCanReservateTermComponent);
         dialogRef.afterClosed().subscribe(res=>{
           this.router.navigate(['questionnaire']);

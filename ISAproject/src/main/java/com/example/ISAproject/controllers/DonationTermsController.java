@@ -2,6 +2,7 @@ package com.example.ISAproject.controllers;
 
 import com.example.ISAproject.dto.DefinedTermDTO;
 import com.example.ISAproject.dto.DonationTermsDTO;
+import com.example.ISAproject.dto.ReservationConditionsDTO;
 import com.example.ISAproject.dto.ScheduleDonationTermDTO;
 import com.example.ISAproject.model.*;
 import com.example.ISAproject.service.DonationTermsService;
@@ -15,10 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.PessimisticLockException;
 import java.time.DateTimeException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @CrossOrigin
@@ -152,13 +150,13 @@ public class DonationTermsController
         return new ResponseEntity<>(new DonationTerms(updatedDonationTerm),HttpStatus.OK);
 
     }
-    @RequestMapping(value="api/term/can-make-reservation/{idUser}",method = RequestMethod.GET,produces= {
+    /*@RequestMapping(value="api/term/can-make-reservation/{idUser}",method = RequestMethod.GET,produces= {
             MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     @PreAuthorize("hasRole('REGISTERED_USER')")
     public ResponseEntity<Boolean> isUserGaveBloodInLast6Month(@PathVariable Long idUser){
         boolean can_make_res=this.donationTermsService.isUserGaveBloodInLast6Month(idUser);
         return new ResponseEntity<>(can_make_res,HttpStatus.OK);
-    }
+    }*/
 
     
     @RequestMapping(value="api/schedule-new-term",method = RequestMethod.PUT,
@@ -178,9 +176,10 @@ public class DonationTermsController
     @PreAuthorize("hasRole('REGISTERED_USER')")
     public ResponseEntity<DonationTerms>  cancelTerm(@RequestBody ScheduleDonationTermDTO dto){
         DonationTerms updatedDonationTerm=this.donationTermsService.cancelTerm(dto);
-
+        if(updatedDonationTerm.getRegisteredUser()!=null){
+            return new ResponseEntity<>(null,HttpStatus.OK);
+        }
         return new ResponseEntity<>(new DonationTerms(updatedDonationTerm),HttpStatus.OK);
-
     }
 
     @RequestMapping(value="api/terms/history/{id}",method = RequestMethod.GET,produces = {
@@ -209,6 +208,15 @@ public class DonationTermsController
         return  new ResponseEntity<>(donationTerms,HttpStatus.OK);
     }
 
+    @RequestMapping(value="api/term/can-make-reservation/{idUser}",method = RequestMethod.GET,produces= {
+            MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    @PreAuthorize("hasRole('REGISTERED_USER')")
+    public ResponseEntity<ReservationConditionsDTO> isUserGaveBloodInLast6MonthOrHave3Penalties(@PathVariable Long idUser){
+        ReservationConditionsDTO reservationConditionsDTO = new ReservationConditionsDTO();
+        reservationConditionsDTO.setBanGaveBlood(this.donationTermsService.isUserGaveBloodInLast6Month(idUser));
+        reservationConditionsDTO.setBanPenalties(this.donationTermsService.whetherRegisteredUserHasThreePenalties(idUser));
+        return new ResponseEntity<>(reservationConditionsDTO,HttpStatus.OK);
+    }
 
 
 }

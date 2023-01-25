@@ -48,6 +48,8 @@ import { FutureTermsComponent } from './future-terms/future-terms.component';
 import { PopUpCannotReservateTermComponent } from './pop-up-cannot-reservate-term/pop-up-cannot-reservate-term.component';
 import { PopUpCanReservateTermComponent } from './pop-up-can-reservate-term/pop-up-can-reservate-term.component';
 import { Questionnaire2Component } from './questionnaire2/questionnaire2.component';
+import { PopUpRegisteredUserHaveThreePenaltiesComponent } from './pop-up-registered-user-have-three-penalties/pop-up-registered-user-have-three-penalties.component';
+import { PopUpDisableCancelReservationComponent } from './pop-up-disable-cancel-reservation/pop-up-disable-cancel-reservation.component';
 
 
 
@@ -96,7 +98,9 @@ import { Questionnaire2Component } from './questionnaire2/questionnaire2.compone
     FutureTermsComponent,
     PopUpCannotReservateTermComponent,
     PopUpCanReservateTermComponent,
-    Questionnaire2Component
+    Questionnaire2Component,
+    PopUpRegisteredUserHaveThreePenaltiesComponent,
+    PopUpDisableCancelReservationComponent
 
 
   ],

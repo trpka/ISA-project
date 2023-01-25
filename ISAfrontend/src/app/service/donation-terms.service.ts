@@ -5,6 +5,7 @@ import { DonationTerms } from '../model/donationTerms';
 
 import { DefinedDonationTerms } from '../model/definedDonationTerms';
 import { ScheduleDonationTerm } from '../model/ScheduleDonationTerm';
+import { ReservationConditions } from '../model/reservationConditions';
 
 
 @Injectable
@@ -61,9 +62,9 @@ export class DonationTermsService
     return this.http.get<DonationTerms>(`${this.url1A}/${id}`)
   }
   
-  isUserGaveBloodInLast6Month(id:number):Observable<boolean>
+  isUserGaveBloodInLast6Month(id:number):Observable<ReservationConditions>
   {
-    return this.http.get<boolean>(this.url1A+"/can-make-reservation/"+id)
+    return this.http.get<ReservationConditions>(this.url1A+"/can-make-reservation/"+id)
   }
 
 

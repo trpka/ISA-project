@@ -65,11 +65,11 @@ insert into blood_center (id, center_name, address, city,  average_grade_centre,
 values (10, 'Mend Life Medical', '49276 Bernard Wall', 'Sofia', 10, 'Alouatta seniculus',753,235,444,323,'2023-02-17 07:00:00','2023-02-17 12:00:00');
 
 
-insert into registered_user (id, points, category, benefits) values (1, 7,'Redovan', 'Redovan');
-insert into registered_user (id, points, category, benefits) values (2, 3,'Redovan', 'Redovan');
-insert into registered_user (id, points, category, benefits) values (7, 3,'Redovan', 'Redovan');
-insert into registered_user (id, points, category, benefits) values (8, 33,'Redovan', 'Redovan');
-insert into registered_user (id, points, category, benefits) values (14, 15,'Pretplacen', 'Gift programi');
+insert into registered_user (id, points, category, benefits) values (1, 0,'Redovan', 'Redovan');
+insert into registered_user (id, points, category, benefits) values (2, 1,'Redovan', 'Redovan');
+insert into registered_user (id, points, category, benefits) values (7, 0,'Redovan', 'Redovan');
+insert into registered_user (id, points, category, benefits) values (8, 2,'Redovan', 'Redovan');
+insert into registered_user (id, points, category, benefits) values (14, 3,'Pretplacen', 'Gift programi');
 
 
 
@@ -83,16 +83,22 @@ insert into calendar (id) values (1);
 insert into calendar (id) values (2);
 insert into calendar (id) values (3);
 
+insert into survey (id, p1, p2, p3, p4, p5, p6, p7 ,registered_user_id)
+values (1, 'DA','DA','DA','DA', 'DA','NE', 'NE',7);
+
+insert into survey (id, p1, p2, p3, p4, p5, p6, p7 ,registered_user_id)
+values (2, 'DA','DA','DA','DA', 'DA','NE', 'NE',8);
+
 
 
 insert into donation_terms (id, date, duration, free_term, is_registered_user_come, reservation_start, reservation_end, profile_center_id,calendar_id)
 values (1, '2022-12-1 8:30:00', 60, true, false ,'2023-02-10 07:00:00','2023-02-10 08:00:00', 1,3);
 
-insert into donation_terms (id, date, duration, free_term, is_registered_user_come, reservation_start, reservation_end, profile_center_id,calendar_id, registered_user_id)
-values (2, '2018-02-20 07:00:00', 45, true, true, '2023-01-18 07:00:00','2023-01-18 07:45:00', 2,1,7);
+insert into donation_terms (id, date, duration, free_term, is_registered_user_come, reservation_start, reservation_end, profile_center_id,calendar_id, registered_user_id, survey_id)
+values (2, '2018-02-20 07:00:00', 45, true, true, '2023-01-18 07:00:00','2023-01-18 07:45:00', 2,1,7,1);
 
-insert into donation_terms (id, date, duration, free_term, is_registered_user_come, reservation_start, reservation_end, profile_center_id,calendar_id,registered_user_id)
-values (3, '2016-02-21 09:00:00', 15, true, true, '2022-02-17 07:00:00','2022-02-17 07:15:00', 3,3,8);
+insert into donation_terms (id, date, duration, free_term, is_registered_user_come, reservation_start, reservation_end, profile_center_id,calendar_id,registered_user_id,survey_id)
+values (3, '2016-02-21 09:00:00', 15, true, true, '2022-02-17 07:00:00','2022-02-17 07:15:00', 3,3,8,2);
 
 
 
@@ -107,13 +113,14 @@ insert into donation_terms (id, date, duration, free_term, is_registered_user_co
 values (6, '2022-12-1 8:35:00', 45, true, false, '2023-02-22 07:00:00','2023-02-22 07:45:00', 1,3);
 
 insert into donation_terms (id, date, duration, free_term, is_registered_user_come, reservation_start, reservation_end, profile_center_id,calendar_id)
-values (7, '2022-12-1 8:36:00', 15, true, false, '2023-02-11 8:30:00','2023-02-11 8:45:00', 1,2);
+values (7, '2022-12-1 8:36:00', 15, true, false, '2023-01-11 8:30:00','2023-01-11 8:45:00', 1,2);
 
 insert into donation_terms (id, date, duration, free_term, is_registered_user_come, reservation_start, reservation_end, profile_center_id,calendar_id)
-values (8, '2022-12-1 9:36:00', 15, true, false, '2023-01-10 11:30:00','2023-01-10 11:45:00', 1,2);
+values (8, '2022-12-1 9:36:00', 15, true, false, '2023-02-10 11:30:00','2023-02-10 11:45:00', 1,2);
 
---insert into survey (id, adress, city, company, date, date_of_birth, registered_user_id)
---values (1, 'sadasdasd','sadasdasd','sadasdasd','2022-12-18 13:40:00', '2023-02-22 07:00:00', 2);
+insert into donation_terms (id, date, duration, free_term, is_registered_user_come, reservation_start, reservation_end, profile_center_id,calendar_id,registered_user_id)
+values (9, '2022-12-1 9:36:00', 15, false, false, '2023-01-25 11:30:00','2023-01-25 11:45:00', 1,2,2);
+
 
 --Termini vezani za registronvane korisnikee -- vezane za studenta 3
 --insert into donation_terms (id, date, duration, is_free, is_registered_user_come, reservation_start, reservation_end, profile_center_id, registered_user_id)
