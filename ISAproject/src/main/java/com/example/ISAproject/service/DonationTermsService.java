@@ -1,14 +1,8 @@
 package com.example.ISAproject.service;
 
-import com.example.ISAproject.dto.DefinedTermDTO;
-import com.example.ISAproject.dto.DonationTermsDTO;
-import com.example.ISAproject.dto.ScheduleDonationTermDTO;
-import com.example.ISAproject.dto.TimePeriodDTO;
+import com.example.ISAproject.dto.*;
 import com.example.ISAproject.model.*;
-import com.example.ISAproject.repository.BloodCenterRepository;
-import com.example.ISAproject.repository.DonationTermsRepository;
-import com.example.ISAproject.repository.RegisteredUserRepository;
-import com.example.ISAproject.repository.StuffRepository;
+import com.example.ISAproject.repository.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.PessimisticLockingFailureException;
@@ -42,6 +36,8 @@ public class DonationTermsService
     private RegisteredUserService registeredUserService;
     @Autowired
     private SurveyService surveyService;
+    @Autowired
+    private SurveyRepository surveyRepository;
 
 
 
@@ -60,11 +56,12 @@ public class DonationTermsService
         //List<DonationTerms> donationTermsList=this.donationTermsRepository.findAll();
         List<DonationTerms> donationTermsList = this.donationTermsRepository.findByOrderByReservationStart();
         List<DonationTerms> list = new ArrayList<>();
+        LocalDateTime currentTime = LocalDateTime.now();
         for(DonationTerms donTerm : donationTermsList)
         {
             if(donTerm.getBloodCenter().getId().equals(id))
             {
-                if(donTerm.isFreeTerm() == true)
+                if(donTerm.isFreeTerm() == true && donTerm.isRegisteredUserCome() == false && donTerm.getReservationStart().isAfter(currentTime))
                 {
                     list.add(donTerm);
                 }
@@ -165,6 +162,47 @@ public class DonationTermsService
 
         return historyTerms;
     }
+
+
+    public List<DonationTerms> sortHistoryTermsForRegisteredUser(Long idUser)
+    {
+        List<DonationTerms> allTerms =  this.donationTermsRepository.findByOrderByReservationStart();
+        List<DonationTerms> sortedHistoryTerms = new ArrayList<>();
+
+        for(DonationTerms donTerm : allTerms)
+        {
+            if(donTerm.getRegisteredUser() != null)
+            {
+                if(donTerm.getRegisteredUser().getId() == idUser) {
+                    if ((donTerm.isFreeTerm() == false && donTerm.isRegisteredUserCome() == true) ||(donTerm.isFreeTerm() == true && donTerm.isRegisteredUserCome() == true)) {
+                        sortedHistoryTerms.add(donTerm);
+                    }
+                }
+            }
+        }
+        return sortedHistoryTerms;
+    }
+
+    public List<DonationTerms> sortHistoryTermsForRegisteredUserByDuration(Long idUser)
+    {
+        List<DonationTerms> allTerms =  this.donationTermsRepository.findByOrderByDuration();
+        List<DonationTerms> sortedHistoryTerms = new ArrayList<>();
+
+        for(DonationTerms donTerm : allTerms)
+        {
+            if(donTerm.getRegisteredUser() != null)
+            {
+                if(donTerm.getRegisteredUser().getId() == idUser) {
+                    if ((donTerm.isFreeTerm() == false && donTerm.isRegisteredUserCome() == true) ||(donTerm.isFreeTerm() == true && donTerm.isRegisteredUserCome() == true)) {
+                        sortedHistoryTerms.add(donTerm);
+                    }
+                }
+            }
+        }
+        return sortedHistoryTerms;
+    }
+
+
     
     public List<DonationTerms> futureTermsForRegisteredUser(Long id)
     {
@@ -543,6 +581,19 @@ public class DonationTermsService
         }
         return null;
     }
+    public DonationTerms scheduleTerm1(ScheduleDonationTerm1DTO dto){
+        RegisteredUser registeredUser = this.registeredUserService.findById(dto.getRegisteredUserId());
+        Survey survey = this.surveyRepository.save(dto.getSurvey());
+        DonationTerms donationTerm = this.findById1(dto.getDonationTermId());
+        if(this.isUserGaveBloodInLast6Month(dto.getRegisteredUserId())==false){
+            donationTerm.setFreeTerm(false);
+            donationTerm.setRegisteredUserCome(false);
+            donationTerm.setRegisteredUser(registeredUser);
+            donationTerm.setSurvey(survey);
+            return this.donationTermsRepository.save(donationTerm);
+        }
+        return null;
+    }
 
 
 
@@ -570,7 +621,9 @@ public class DonationTermsService
             if(donationTerms1.getRegisteredUser().getId().equals(registeredUser.getId()))
             {
                 donationTerms1.setRegisteredUser(null);
+                donationTerms1.setSurvey(null);
                 donationTerms1.setFreeTerm(true);
+
             }
 
         }

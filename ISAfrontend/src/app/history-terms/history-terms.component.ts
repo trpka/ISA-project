@@ -45,4 +45,18 @@ export class HistoryTermsComponent implements OnInit {
     
   }
 
+  sortByDate()
+  {
+    this.idUser = Number(sessionStorage.getItem('id')); 
+    this.donationTermsService.sortHistoryTermsByDate(this.idUser)
+    .subscribe(res => {this.historyTerms = res;})
+  }
+
+  sortByDuration()
+  {
+    this.idUser = Number(sessionStorage.getItem('id')); 
+    this.donationTermsService.sortHistoryTermsByDuration(this.idUser)
+    .subscribe(res => {this.historyTerms = res;})
+  }
+
 }

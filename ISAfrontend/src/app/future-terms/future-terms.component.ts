@@ -3,7 +3,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DonationTerms } from '../model/donationTerms';
 import { ScheduleDonationTerm } from '../model/ScheduleDonationTerm';
+import { PopUpCancelReservationComponent } from '../pop-up-cancel-reservation/pop-up-cancel-reservation.component';
 import { PopUpDisableCancelReservationComponent } from '../pop-up-disable-cancel-reservation/pop-up-disable-cancel-reservation.component';
+import { PopUpSuccessfullyMakeAppointmentComponent } from '../pop-up-successfully-make-appointment/pop-up-successfully-make-appointment.component';
 import { BloodCenterService } from '../service/blood-center.service';
 import { DonationTermsService } from '../service/donation-terms.service';
 
@@ -56,17 +58,24 @@ export class FutureTermsComponent implements OnInit {
 
   cancelAppointment(donationTermId:any)
   {
-    this.scheduleDonationTerm.registeredUserId =  Number(sessionStorage.getItem('id')); 
-    this.scheduleDonationTerm.donationTermId = Number(donationTermId);
-    this.donationTermsService.cancelTerm(this.scheduleDonationTerm)
-    .subscribe(res=>{
-      console.log("dsada",res)
-      if(res==null){
-        this.dialogRef.open(PopUpDisableCancelReservationComponent);
-      }else{
-        this.resetFutureTerms();
+    this.openDialog(donationTermId);
+  }
+  openDialog(donationTermId:any) {
+    const dialogRef = this.dialogRef.open(PopUpCancelReservationComponent);
+    dialogRef.afterClosed().subscribe(result => {
+          if(result==true){
+            this.scheduleDonationTerm.registeredUserId =  Number(sessionStorage.getItem('id')); 
+            this.scheduleDonationTerm.donationTermId = Number(donationTermId);
+            this.donationTermsService.cancelTerm(this.scheduleDonationTerm)
+                  .subscribe(res=>{
+                  if(res==null){
+                    this.dialogRef.open(PopUpDisableCancelReservationComponent);
+                  }else{
+                    this.resetFutureTerms();
+                  }
+        })
       }
-    })
+    });
   }
 
 }

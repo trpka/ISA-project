@@ -7,6 +7,7 @@ import { DefinedDonationTerms } from '../model/definedDonationTerms';
 import { ScheduleDonationTerm } from '../model/ScheduleDonationTerm';
 import { ReservationConditions } from '../model/reservationConditions';
 import { Survey } from '../model/survey';
+import { ScheduleDonationTerm1 } from '../model/ScheduleDonationTerm1';
 
 
 @Injectable
@@ -78,7 +79,19 @@ export class DonationTermsService
     return this.http.get<DonationTerms[]>(this.url+"/sort-by-date",{params});
   }
 
- scheduleTerm(scheduleDonationTerm: ScheduleDonationTerm): Observable<DonationTerms> {
+  sortHistoryTermsByDate(id:number):Observable<DonationTerms[]>{
+    const params:HttpParams=new HttpParams().append('id',id);
+    return this.http.get<DonationTerms[]>(this.url+"/sort-history-terms-by-date",{params});
+  }
+
+  sortHistoryTermsByDuration(id:number):Observable<DonationTerms[]>{
+    const params:HttpParams=new HttpParams().append('id',id);
+    return this.http.get<DonationTerms[]>(this.url+"/sort-history-terms-by-duration",{params});
+  }
+
+  
+
+ scheduleTerm(scheduleDonationTerm: ScheduleDonationTerm1): Observable<DonationTerms> {
      return this.http.put<DonationTerms>(this.url1 , scheduleDonationTerm)
   }
 

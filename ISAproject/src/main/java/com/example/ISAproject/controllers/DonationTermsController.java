@@ -1,9 +1,6 @@
 package com.example.ISAproject.controllers;
 
-import com.example.ISAproject.dto.DefinedTermDTO;
-import com.example.ISAproject.dto.DonationTermsDTO;
-import com.example.ISAproject.dto.ReservationConditionsDTO;
-import com.example.ISAproject.dto.ScheduleDonationTermDTO;
+import com.example.ISAproject.dto.*;
 import com.example.ISAproject.model.*;
 import com.example.ISAproject.service.DonationTermsService;
 import com.example.ISAproject.service.EmailService;
@@ -127,9 +124,9 @@ public class DonationTermsController
     @RequestMapping(value="api/schedule-term",method = RequestMethod.PUT,
             consumes=MediaType.APPLICATION_JSON_VALUE)
     @PreAuthorize("hasRole('REGISTERED_USER')")
-    public ResponseEntity<DonationTerms>  scheduleTerm(@RequestBody ScheduleDonationTermDTO dto)throws Exception{
+    public ResponseEntity<DonationTerms>  scheduleTerm(@RequestBody ScheduleDonationTerm1DTO dto)throws Exception{
     	
-        DonationTerms updatedDonationTerm=this.donationTermsService.scheduleTerm(dto);
+        DonationTerms updatedDonationTerm=this.donationTermsService.scheduleTerm1(dto);
         if(updatedDonationTerm==null){
             return new ResponseEntity<>(null,HttpStatus.OK);
         }
@@ -188,6 +185,22 @@ public class DonationTermsController
     {
         List<DonationTerms> terms=this.donationTermsService.historyTermsForRegisteredUser(id);
         return new ResponseEntity<>(terms,HttpStatus.OK);
+    }
+
+    @RequestMapping(value="api/terms/sort-history-terms-by-date", method = RequestMethod.GET, params = "id",
+            produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    @PreAuthorize("hasRole('REGISTERED_USER')")
+    public ResponseEntity<List<DonationTerms>> sortHistoryTermsByDate(@RequestParam Long id){
+        List<DonationTerms> donationTerms=this.donationTermsService.sortHistoryTermsForRegisteredUser(id);
+        return new ResponseEntity<>(donationTerms,HttpStatus.OK);
+    }
+
+    @RequestMapping(value="api/terms/sort-history-terms-by-duration", method = RequestMethod.GET, params = "id",
+            produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    @PreAuthorize("hasRole('REGISTERED_USER')")
+    public ResponseEntity<List<DonationTerms>> sortHistoryTermsByDuration(@RequestParam Long id){
+        List<DonationTerms> donationTerms=this.donationTermsService.sortHistoryTermsForRegisteredUserByDuration(id);
+        return new ResponseEntity<>(donationTerms,HttpStatus.OK);
     }
 
     

@@ -18,6 +18,7 @@ public interface DonationTermsRepository extends JpaRepository<DonationTerms, Lo
     List<DonationTerms> findByFreeTerm(boolean isFree);
     List<DonationTerms> findByOrderByDate();
     List<DonationTerms> findByOrderByReservationStart();
+    List<DonationTerms> findByOrderByDuration();
 
     @Query("SELECT dt FROM DonationTerms dt WHERE dt.reservationStart < :term and dt.reservationEnd > :term and dt.freeTerm=1 and  bloodCenter.id= :id")
     List<DonationTerms> getAvailableTerms(@Param("term") LocalDateTime userDate,@Param("id") Long id);

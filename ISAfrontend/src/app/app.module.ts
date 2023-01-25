@@ -50,6 +50,8 @@ import { PopUpCanReservateTermComponent } from './pop-up-can-reservate-term/pop-
 import { Questionnaire2Component } from './questionnaire2/questionnaire2.component';
 import { PopUpRegisteredUserHaveThreePenaltiesComponent } from './pop-up-registered-user-have-three-penalties/pop-up-registered-user-have-three-penalties.component';
 import { PopUpDisableCancelReservationComponent } from './pop-up-disable-cancel-reservation/pop-up-disable-cancel-reservation.component';
+import { PopUpSuccessfullyMakeAppointmentComponent } from './pop-up-successfully-make-appointment/pop-up-successfully-make-appointment.component';
+import { PopUpCancelReservationComponent } from './pop-up-cancel-reservation/pop-up-cancel-reservation.component';
 
 
 
@@ -100,7 +102,9 @@ import { PopUpDisableCancelReservationComponent } from './pop-up-disable-cancel-
     PopUpCanReservateTermComponent,
     Questionnaire2Component,
     PopUpRegisteredUserHaveThreePenaltiesComponent,
-    PopUpDisableCancelReservationComponent
+    PopUpDisableCancelReservationComponent,
+    PopUpSuccessfullyMakeAppointmentComponent,
+    PopUpCancelReservationComponent
 
 
   ],

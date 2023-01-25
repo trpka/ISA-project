@@ -3,12 +3,17 @@ insert into authority(id,name) values (2,'ROLE_REGISTERED_USER');
 insert into authority(id,name) values (3,'ROLE_STUFF');
 
 insert into user (id,role, username, password, first_name, last_name, email, mobile,enabled,last_password_reset_date) values (1,'Admin','truman@gmail.com', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra', 'Truman', 'Willis', 'truman@gmail.com', '305-555-0163',true,'1983-07-12 21:30:55.888');
-insert into user (id,role, username, password, first_name, last_name, email, mobile,enabled,last_password_reset_date) values (2,'RegisteredUser','isaisic587+1@gmail.com', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra', 'Raymond', 'Weaving', 'isaisic587+1@gmail.com', '305-555-0720',true,'1983-07-12 21:30:55.888');
 
-insert into user (id,role, username, password, first_name, last_name, email, mobile,enabled,last_password_reset_date)
-values (7,'RegisteredUser','isaisic587+2@gmail.com', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra', 'Aleksa', 'Aleksic', 'isaisic587+2@gmail.com', '306-555-333',true,'1983-07-12 21:30:55.888');
-insert into user (id,role, username, password, first_name, last_name, email, mobile,enabled,last_password_reset_date)
-values (8,'RegisteredUser','isaisic587+3@gmail.com', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra', 'Nikola', 'Nikolic', 'isaisic587+3@gmail.com', '307-558-0250',true,'1983-07-12 21:30:55.888');
+insert into user (id,role, username, password, first_name, last_name, email, mobile,enabled,last_password_reset_date,adress, jmbg, sex,city,state, organization_information, profession) values (2,'RegisteredUser','isaisic587+1@gmail.com', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra', 'Raymond', 'Weaving', 'isaisic587+1@gmail.com', '305-555-0720',true,'1983-07-12 21:30:55.888', 'Ustanicka 6', '1528846975821', 'Male','Boston', ' Massachusetts', 'IMDB','Engineer');
+
+insert into user (id,role, username, password, first_name, last_name, email, mobile,enabled,last_password_reset_date, adress, jmbg, sex,city,state, organization_information, profession)
+values (9,'RegisteredUser','isaisic587+4@gmail.com', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra', 'Alen', 'Weaving', 'isaisic587+4@gmail.com', '305-555-0720',true,'1983-07-12 21:30:55.888', 'Futoska 3', '1528846975827', 'Male','Novi Sad', ' Srbija', 'Mocart','Engineer');
+
+insert into user (id,role, username, password, first_name, last_name, email, mobile,enabled,last_password_reset_date,adress, jmbg, sex,city,state, organization_information, profession)
+values (7,'RegisteredUser','isaisic587+2@gmail.com', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra', 'Aleksa', 'Aleksic', 'isaisic587+2@gmail.com', '306-555-333',true,'1983-07-12 21:30:55.888', 'Brace Popovic 6', '1528846975831', 'Male','Novi Sad', ' Srbija', 'FTN','Engineer');
+
+insert into user (id,role, username, password, first_name, last_name, email, mobile,enabled,last_password_reset_date, adress, jmbg, sex,city,state, organization_information, profession)
+values (8,'RegisteredUser','isaisic587+3@gmail.com', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra', 'Nikola', 'Nikolic', 'isaisic587+3@gmail.com', '307-558-0250',true,'1983-07-12 21:30:55.888', 'Drajzerova 8', '1528846975721', 'Male','Belgrade', ' Srbija', 'FON','Professor');
 
 insert into user (id,role, username, password, first_name, last_name, email, mobile,adress,city,state,jmbg,sex,enabled,last_password_reset_date)
 values (14,'RegisteredUser','arada@gmail.com', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra', 'Andjela', 'Radulovic', 'arada@gmail.com', '306-980-413','Bulevar Evrope 2','Vrsac','Serbia','0987895456221','Female',true,'1983-07-12 21:30:55.888');
@@ -33,8 +38,10 @@ insert into user_authority (user_id,authority_id) values (1,1);
 insert into user_authority (user_id,authority_id) values (2,2);
 insert into user_authority (user_id,authority_id) values (7,2);
 insert into user_authority (user_id,authority_id) values (8,2);
+insert into user_authority (user_id,authority_id) values (9,2);
 insert into user_authority (user_id,authority_id) values (14,2);
 insert into user_authority (user_id,authority_id) values (5,3);
+
 
 insert into complaint (id,  title, content) values (1,  'Constantine''s Sword', 'Escuela de seducción');
 insert into complaint (id, title, content) values (2,  'Adventures of Milo and Otis, The (Koneko monogatari)', 'Brother of Sleep (Schlafes Bruder)');
@@ -65,10 +72,11 @@ insert into blood_center (id, center_name, address, city,  average_grade_centre,
 values (10, 'Mend Life Medical', '49276 Bernard Wall', 'Sofia', 10, 'Alouatta seniculus',753,235,444,323,'2023-02-17 07:00:00','2023-02-17 12:00:00');
 
 
-insert into registered_user (id, points, category, benefits) values (1, 0,'Redovan', 'Redovan');
-insert into registered_user (id, points, category, benefits) values (2, 1,'Redovan', 'Redovan');
+
+insert into registered_user (id, points, category, benefits) values (2, 0,'Redovan', 'Redovan');
 insert into registered_user (id, points, category, benefits) values (7, 0,'Redovan', 'Redovan');
-insert into registered_user (id, points, category, benefits) values (8, 2,'Redovan', 'Redovan');
+insert into registered_user (id, points, category, benefits) values (8, 1,'Redovan', 'Redovan');
+insert into registered_user (id, points, category, benefits) values (9, 3,'Redovan', 'Redovan');
 insert into registered_user (id, points, category, benefits) values (14, 0,'Pretplacen', 'Gift programi');
 
 
@@ -89,6 +97,27 @@ values (1, 'DA','DA','DA','DA', 'DA','NE', 'NE',7);
 insert into survey (id, p1, p2, p3, p4, p5, p6, p7 ,registered_user_id)
 values (2, 'DA','DA','DA','DA', 'DA','NE', 'NE',8);
 
+insert into survey (id, p1, p2, p3, p4, p5, p6, p7 ,registered_user_id)
+values (3, 'DA','DA','DA','DA', 'DA','NE', 'NE',2);
+
+insert into survey (id, p1, p2, p3, p4, p5, p6, p7 ,registered_user_id)
+values (4, 'DA','DA','DA','DA', 'DA','NE', 'NE',2);
+
+insert into survey (id, p1, p2, p3, p4, p5, p6, p7 ,registered_user_id)
+values (5, 'DA','DA','DA','DA', 'DA','NE', 'NE',8);
+
+insert into survey (id, p1, p2, p3, p4, p5, p6, p7 ,registered_user_id)
+values (6, 'DA','DA','DA','DA', 'DA','NE', 'NE',8);
+
+insert into survey (id, p1, p2, p3, p4, p5, p6, p7 ,registered_user_id)
+values (7, 'DA','DA','DA','DA', 'DA','NE', 'NE',9);
+
+insert into survey (id, p1, p2, p3, p4, p5, p6, p7 ,registered_user_id)
+values (8, 'DA','DA','DA','DA', 'DA','NE', 'NE',9);
+
+insert into survey (id, p1, p2, p3, p4, p5, p6, p7 ,registered_user_id)
+values (9, 'DA','DA','DA','DA', 'DA','NE', 'NE',9);
+
 
 
 insert into donation_terms (id, date, duration, free_term, is_registered_user_come, reservation_start, reservation_end, profile_center_id,calendar_id)
@@ -100,10 +129,11 @@ values (2, '2018-02-20 07:00:00', 45, true, true, '2023-01-18 07:00:00','2023-01
 insert into donation_terms (id, date, duration, free_term, is_registered_user_come, reservation_start, reservation_end, profile_center_id,calendar_id,registered_user_id,survey_id)
 values (3, '2016-02-21 09:00:00', 15, true, true, '2022-02-17 07:00:00','2022-02-17 07:15:00', 3,3,8,2);
 
+insert into donation_terms (id, date, duration, free_term, is_registered_user_come, reservation_start, reservation_end, profile_center_id,calendar_id,registered_user_id,survey_id)
+values (99, '2020-02-01 09:00:00', 15, true, true, '2020-02-17 07:00:00','2020-02-17 07:15:00', 3,3,8,6);
 
-
-insert into donation_terms (id, date, duration, free_term, is_registered_user_come, reservation_start, reservation_end, profile_center_id,calendar_id,registered_user_id)
-values (4, '2022-12-1 8:33:00', 25, false, false, '2023-02-03 07:00:00','2023-02-03 07:25:00', 1,1,2);
+insert into donation_terms (id, date, duration, free_term, is_registered_user_come, reservation_start, reservation_end, profile_center_id,calendar_id,registered_user_id,survey_id)
+values (4, '2022-12-1 8:33:00', 25, false, false, '2023-02-03 07:00:00','2023-02-03 07:25:00', 1,1,2,3);
 
 
 insert into donation_terms (id, date, duration, free_term, is_registered_user_come, reservation_start, reservation_end, profile_center_id,calendar_id)
@@ -113,13 +143,22 @@ insert into donation_terms (id, date, duration, free_term, is_registered_user_co
 values (6, '2022-12-1 8:35:00', 45, true, false, '2023-02-22 07:00:00','2023-02-22 07:45:00', 1,3);
 
 insert into donation_terms (id, date, duration, free_term, is_registered_user_come, reservation_start, reservation_end, profile_center_id,calendar_id)
-values (7, '2022-12-1 8:36:00', 15, true, false, '2023-01-11 8:30:00','2023-01-11 8:45:00', 1,2);
+values (7, '2022-12-1 8:36:00', 15, true, false, '2023-02-11 8:30:00','2023-02-11 8:45:00', 1,2);
 
 insert into donation_terms (id, date, duration, free_term, is_registered_user_come, reservation_start, reservation_end, profile_center_id,calendar_id)
 values (8, '2022-12-1 9:36:00', 15, true, false, '2023-02-10 11:30:00','2023-02-10 11:45:00', 1,2);
 
-insert into donation_terms (id, date, duration, free_term, is_registered_user_come, reservation_start, reservation_end, profile_center_id,calendar_id,registered_user_id)
-values (9, '2022-12-1 9:36:00', 15, false, false, '2023-01-25 11:30:00','2023-01-25 11:45:00', 1,2,2);
+insert into donation_terms (id, date, duration, free_term, is_registered_user_come, reservation_start, reservation_end, profile_center_id,calendar_id,registered_user_id, survey_id)
+values (9, '2022-12-1 9:36:00', 15, false, false, '2023-01-25 19:30:00','2023-01-25 19:45:00', 1,2,2,4);
+
+insert into donation_terms (id, date, duration, free_term, is_registered_user_come, reservation_start, reservation_end, profile_center_id,calendar_id, registered_user_id, survey_id)
+values (10, '2023-01-01 09:00:00', 45, false, true, '2023-01-04 12:00:00','2023-01-04 12:45:00', 3,3,9,7);
+
+insert into donation_terms (id, date, duration, free_term, is_registered_user_come, reservation_start, reservation_end, profile_center_id,calendar_id, registered_user_id, survey_id)
+values (11, '2023-01-01 09:10:00', 20, false, true, '2023-01-05 12:00:00','2023-01-05 12:20:00', 3,3,9,8);
+
+insert into donation_terms (id, date, duration, free_term, is_registered_user_come, reservation_start, reservation_end, profile_center_id,calendar_id, registered_user_id, survey_id)
+values (12, '2023-01-01 09:11:00', 35, false, true, '2023-01-06 12:00:00','2023-01-06 12:35:00', 3,3,9,9);
 
 
 --Termini vezani za registronvane korisnikee -- vezane za studenta 3
@@ -143,8 +182,8 @@ values (9, '2022-12-1 9:36:00', 15, false, false, '2023-01-25 11:30:00','2023-01
 --insert into donation_terms (id, date, duration, is_free, is_registered_user_come, reservation_start, reservation_end, profile_center_id, registered_user_id,calendar_id)
 --values (10, '2017-02-21 10:00:00', 45, false, false, '2021-11-11 09:30:00','2021-11-11 10:15:00', 3, 8,2);
 
-insert into donation_terms (id, date, duration, free_term, is_registered_user_come, reservation_start, reservation_end, profile_center_id,calendar_id, registered_user_id)
-values (32, '2023-01-02 07:00:00', 45, false, true, '2023-01-17 07:00:00','2023-01-17 07:35:00', 3,3,8);
+insert into donation_terms (id, date, duration, free_term, is_registered_user_come, reservation_start, reservation_end, profile_center_id,calendar_id, registered_user_id, survey_id)
+values (32, '2023-01-02 07:00:00', 45, false, true, '2023-01-17 07:00:00','2023-01-17 07:35:00', 3,3,8,5);
 insert into donation_terms (id, date, duration, free_term, is_registered_user_come, reservation_start, reservation_end, profile_center_id,calendar_id)
 values (27, '2018-02-16 10:00:00', 45, true, false, '2023-02-17 07:00:00','2023-02-17 07:20:00', 10,1);
 insert into donation_terms (id, date, duration, free_term, is_registered_user_come, reservation_start, reservation_end, profile_center_id,calendar_id)
