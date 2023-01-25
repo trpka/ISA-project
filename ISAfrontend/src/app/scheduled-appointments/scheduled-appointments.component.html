@@ -8,7 +8,6 @@
                 <th>id</th>
                 <th>Date</th>
                 <th>duration of term [minutes]</th>
-                <th>Is Term Free</th>
                 <th>reservationStart</th>
                 <th>reservationEnd</th>
                 <th>bloodCenter</th>
@@ -19,11 +18,6 @@
                 <td>{{donationTerms.id}}</td>
                 <td>{{donationTerms.date}}</td>
                 <td>{{donationTerms.duration}}</td>
-                
-                <!--<td>
-                    <input [(ngModel)]="donationTerms.isFree" id="isFree" name="isFree" type="text" class="from-control">
-                </td> -->
-                <td>{{donationTerms.freeTerm}}</td>
                 <td>{{donationTerms.reservationStart}}</td>
                 <td>{{donationTerms.reservationEnd}}</td>
                 <td>{{donationTerms.bloodCenter.id}}</td>

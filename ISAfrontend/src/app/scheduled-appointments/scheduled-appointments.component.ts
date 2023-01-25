@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DonationTerms } from '../model/donationTerms';
 import { ScheduleDonationTerm } from '../model/ScheduleDonationTerm';
+import { PopUpDisableCancelReservationComponent } from '../pop-up-disable-cancel-reservation/pop-up-disable-cancel-reservation.component';
 import { BloodCenterService } from '../service/blood-center.service';
 import { DonationTermsService } from '../service/donation-terms.service';
 
@@ -17,8 +19,11 @@ export class ScheduledAppointmentsComponent implements OnInit {
   donationTerms: DonationTerms[];
   scheduleDonationTerm:ScheduleDonationTerm;
 
-  constructor(private route: ActivatedRoute, private bloodCenterService: BloodCenterService, private router: Router,
-    private donationTermsService: DonationTermsService) {
+  constructor(private route: ActivatedRoute, 
+              private bloodCenterService: BloodCenterService, 
+              private router: Router,
+              private dialogRef: MatDialog,
+              private donationTermsService: DonationTermsService) {
     this.scheduleDonationTerm = new ScheduleDonationTerm({
       donationTermId:0,
       registeredUserId: 0,
@@ -50,15 +55,19 @@ export class ScheduledAppointmentsComponent implements OnInit {
     this.router.navigate(['profile_center', this.id]);
   }
 
+
   cancelAppointment(donationTermId:any)
   {
     this.scheduleDonationTerm.registeredUserId =  Number(sessionStorage.getItem('id')); 
     this.scheduleDonationTerm.donationTermId = Number(donationTermId);
     this.donationTermsService.cancelTerm(this.scheduleDonationTerm)
-    .subscribe(_=>this. viewAllScheduledTermsByCentre())
-
-    //this.router.navigate(['scheduled-appointments', this.id]);
-    
+    .subscribe(res=>{
+      if(res==null){
+        this.dialogRef.open(PopUpDisableCancelReservationComponent);
+      }else{
+        this. viewAllScheduledTermsByCentre();
+      }
+    })
   }
 
 }

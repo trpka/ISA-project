@@ -127,10 +127,11 @@ public class DonationTermsService
     {
         List<DonationTerms> allTerms = donationTermsRepository.findAll();
         List<DonationTerms> foundFreeTerms = new ArrayList<>();
+        LocalDateTime currentTime = LocalDateTime.now();
 
         for(DonationTerms dt: allTerms)
         {
-            if(dt.getBloodCenter().getId() == id)
+            if(dt.getBloodCenter().getId() == id && dt.getReservationStart().isAfter(currentTime))
             {
                 if(dt.isFreeTerm() == true && dt.isRegisteredUserCome() == false)
                 {
@@ -509,6 +510,18 @@ public class DonationTermsService
         }
         return false;
     }
+
+    public boolean whetherRegisteredUserHasThreePenalties(Long userId){
+        RegisteredUser registeredUser=this.registeredUserService.findById(userId);
+        if(registeredUser.getPoints()>2)
+        {
+            return true;
+        }
+        return false;
+
+    }
+
+
     public DonationTerms findById1(Long id){
         Optional<DonationTerms> donationTermOptional = this.donationTermsRepository.findById(id);
         if (!donationTermOptional.isPresent()) {
@@ -558,6 +571,7 @@ public class DonationTermsService
                 donationTerms1.setRegisteredUser(null);
                 donationTerms1.setFreeTerm(true);
             }
+
         }
 
 
