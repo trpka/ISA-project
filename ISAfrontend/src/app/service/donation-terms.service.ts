@@ -6,6 +6,7 @@ import { DonationTerms } from '../model/donationTerms';
 import { DefinedDonationTerms } from '../model/definedDonationTerms';
 import { ScheduleDonationTerm } from '../model/ScheduleDonationTerm';
 import { ReservationConditions } from '../model/reservationConditions';
+import { Survey } from '../model/survey';
 
 
 @Injectable
@@ -26,7 +27,7 @@ export class DonationTermsService
   url4 = "http://localhost:8081/api/schedule-new-term";
   url5="http://localhost:8081/api/create-new-term"
 
-  data: any;
+  data: Survey;
   
   
   constructor(private http:HttpClient) { }
