@@ -7,7 +7,6 @@ import { ActivatedRoute } from '@angular/router';
 import { BloodCenterService } from '../service/blood-center.service';
 import { DonationTermsService } from '../service/donation-terms.service';
 import { BloodCenter } from '../model/bloodCenter';
-import { ScheduleDonationTerm } from '../model/ScheduleDonationTerm';
 import { MatDialog } from '@angular/material/dialog';
 import { PopUpCannotReservateTermComponent } from '../pop-up-cannot-reservate-term/pop-up-cannot-reservate-term.component';
 import { PopUpCanReservateTermComponent } from '../pop-up-can-reservate-term/pop-up-can-reservate-term.component';
@@ -31,18 +30,11 @@ export class DonationTermsComponent implements OnInit
   id: any;
   broj: number;
   bloodCenter: BloodCenter[];
-  scheduleDonationTerm:ScheduleDonationTerm;
 
 
   constructor(private route: ActivatedRoute,private donationTermsService: DonationTermsService, 
     private bloodCenterService: BloodCenterService, private router: Router,private dialogRef: MatDialog) 
-  {
-    this.scheduleDonationTerm = new ScheduleDonationTerm({
-      donationTermId:0,
-      registeredUserId: 0,
-      surveyId : 0
-    })
-  }
+  { }
 
   ngOnInit(): void 
   {
@@ -77,9 +69,8 @@ export class DonationTermsComponent implements OnInit
   }
 
   isUserGaveBloodInLast6MonthOrHave3Penalties(donationTermId:any)
-  {
-    this.scheduleDonationTerm.registeredUserId =  Number(sessionStorage.getItem('id')); 
-    this.donationTermsService.isUserGaveBloodInLast6Month(this.scheduleDonationTerm.registeredUserId)
+  { 
+    this.donationTermsService.isUserGaveBloodInLast6Month(Number(sessionStorage.getItem('id')))
     .subscribe(res=>{
       this.donationTermsService.setData(donationTermId);
       if(res.banGaveBlood==true){

@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { DonationTermsComponent } from '../donation-terms/donation-terms.component';
 import { RegisteredUser } from '../model/registeredUser';
 import { ScheduleDonationTerm } from '../model/ScheduleDonationTerm';
+import { ScheduleDonationTerm1 } from '../model/ScheduleDonationTerm1';
 import { Survey } from '../model/survey';
+import { PopUpSuccessfullyMakeAppointmentComponent } from '../pop-up-successfully-make-appointment/pop-up-successfully-make-appointment.component';
 import { DonationTermsService } from '../service/donation-terms.service';
 import { RegisteredUserEditService } from '../service/registered-user-edit.service';
 import { SurveyService } from '../service/survey.service';
@@ -24,11 +27,11 @@ export class QuestionnaireComponent implements OnInit {
   checkGender1 = false;
   registeredUserId : number;
   donationTermId : any;
-  scheduleDonationTerm:ScheduleDonationTerm;
+  scheduleDonationTerm1:ScheduleDonationTerm1;
   data: any;
   
   constructor(private surveyService:SurveyService, private registeredUserEditService:RegisteredUserEditService, 
-    private router: Router, private donationTermsService: DonationTermsService) { 
+    private router: Router, private donationTermsService: DonationTermsService, private dialogRef: MatDialog) { 
     this.registeredUser = new RegisteredUser({
       id:0,
       username: "",
@@ -97,10 +100,56 @@ export class QuestionnaireComponent implements OnInit {
         p8:""
         
       }),
-      this.scheduleDonationTerm = new ScheduleDonationTerm({
+      this.scheduleDonationTerm1 = new ScheduleDonationTerm1({
         donationTermId:0,
         registeredUserId: 0,
-        surveyId : 0
+        survey : new Survey(
+          {
+            id: 0,
+            numberOfDonator:"",
+            date:"",
+            firstName: this.registeredUser.firstName,
+            lastName: "",
+            jmbg: "",
+            dateOfBirth:"",
+            sex:"",
+            adress:"",
+            township: "",
+            city:"",
+            mobile:"",
+            company:"",
+            profession: "",
+            numberOfBoodDonations: "",
+            registeredUser : new RegisteredUser({
+              id:0,
+              username: "",
+              password: "",
+              firstName: "",
+              lastName: "",
+              email: "",
+              mobile:"",
+              adress: "",
+              city: "",
+              state: "",
+              jmbg: "",
+              sex: "",
+              profession: "",
+              organizationInformation: "",
+              enabled: true,
+              points: 0,
+              category: "",
+              benefits:""
+              }),
+            p1:"",
+            p2:"",
+            p3:"",
+            p4:"",
+            p5:"",
+            p6:"",
+            p7:"",
+            p8:""
+            
+          })
       }),
       this.data = this.donationTermsService.getData();
 
@@ -152,20 +201,17 @@ export class QuestionnaireComponent implements OnInit {
       this.survey.profession = this.registeredUser.profession;
       this.survey.numberOfBoodDonations = String(this.registeredUser.points);
       this.survey.registeredUser = this.registeredUser;
-      console.log(this.survey.registeredUser.email);
-      this.surveyService.save(this.survey)
-        .subscribe(res => {this.survey = res;
-         // this.donationTermId = this.donationTermsComponent.data.getData();
-          this.scheduleDonationTerm.registeredUserId =  Number(sessionStorage.getItem('id')); 
-          this.scheduleDonationTerm.donationTermId = this.data
-          this.scheduleDonationTerm.surveyId = this.survey.id;
-          console.log(this.data)
-          this.donationTermsService.scheduleTerm(this.scheduleDonationTerm)
-          .subscribe()
-        })
-        
-   
-      this.router.navigate(['/home/registered-user']);
+
+
+      this.scheduleDonationTerm1.registeredUserId =  Number(sessionStorage.getItem('id')); 
+      this.scheduleDonationTerm1.donationTermId = this.data
+      this.scheduleDonationTerm1.survey = this.survey;
+      this.donationTermsService.scheduleTerm(this.scheduleDonationTerm1)
+      .subscribe()
+      const dialogRef= this.dialogRef.open(PopUpSuccessfullyMakeAppointmentComponent);
+      dialogRef.afterClosed().subscribe(res=>{
+        this.router.navigate(['future-terms']);
+      })
     }
   }
 

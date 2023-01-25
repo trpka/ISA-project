@@ -5,7 +5,6 @@
     <table class="table table-striped table-bordered" border="1">
         <thead>
             <tr>
-                <th>id</th>
                 <th>Date</th>
                 <th>duration of term [minutes]</th>
                 <th>Is Term Free</th>
@@ -16,13 +15,8 @@
         </thead>
         <tbody>
           <tr *ngFor="let dt of donationTerms"  >
-                <td>{{dt.id}}</td>
                 <td>{{dt.date}}</td>
                 <td>{{dt.duration}}</td>
-                
-                <!--<td>
-                    <input [(ngModel)]="donationTerms.isFree" id="isFree" name="isFree" type="text" class="from-control">
-                </td> -->
                 <td>{{dt.freeTerm}}</td>
                 <td>{{dt.reservationStart}}</td>
                 <td>{{dt.reservationEnd}}</td>
