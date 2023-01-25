@@ -13,8 +13,8 @@
 <div>
 
   <form class="form-search" (ngSubmit)="getFreeCenters()">
-    <label for="avaliableTerm" style="font-weight:bold">Search for centers: </label>
-    <input name="avaliableTerm" id="avaliableTerm" type="datetime-local"  [(ngModel)]="userTerm" style="color:navy">
+    <label for="avaliableTerm"  style="font-weight:bold">Search for centers: </label>
+    <input name="avaliableTerm" id="avaliableTerm" type="datetime-local" title="Find free term"  [(ngModel)]="userTerm" style="color:navy">
     <input type="submit" value="filter" class="btn btn-primary" >
 </form>
 </div>
