@@ -6,6 +6,7 @@ import { DonationTermsService } from '../service/donation-terms.service';
 import { DefinedDonationTerms } from '../model/definedDonationTerms';
 import { Calendar } from '../model/calendar';
 import { BloodCenter } from '../model/bloodCenter';
+import { Survey } from '../model/survey';
 
 
 
@@ -63,6 +64,54 @@ export class CreateDonationTermComponent implements OnInit {
     benefits:''
   })
 
+  pickSurvey: Survey=new Survey(
+    {
+      id: 0,
+      numberOfDonator:"",
+      date:"",
+      firstName: "",
+      lastName: "",
+      jmbg: "",
+      dateOfBirth:"",
+      sex:"",
+      adress:"",
+      township: "",
+      city:"",
+      mobile:"",
+      company:"",
+      profession: "",
+      numberOfBoodDonations: "",
+      registeredUser : new RegisteredUser({
+        id:0,
+        username: "",
+        password: "",
+        firstName: "",
+        lastName: "",
+        email: "",
+        mobile:"",
+        adress: "",
+        city: "",
+        state: "",
+        jmbg: "",
+        sex: "",
+        profession: "",
+        organizationInformation: "",
+        enabled: true,
+        points: 0,
+        category: "",
+        benefits:""
+        }),
+      p1:"",
+      p2:"",
+      p3:"",
+      p4:"",
+      p5:"",
+      p6:"",
+      p7:"",
+      p8:""
+      
+    })
+
   newTerm: DefinedDonationTerms = new DefinedDonationTerms({
     date: '',
     reservationStart: '',
@@ -72,6 +121,7 @@ export class CreateDonationTermComponent implements OnInit {
     registeredUser:this.pickUser,
     calendar: this.pickCalendar,
     bloodCenter : this.pickBloodCenter,    
+    survey:this.pickSurvey
 
   })
   constructor(private router: Router,private route: ActivatedRoute,private DonationTermsService: DonationTermsService) { 

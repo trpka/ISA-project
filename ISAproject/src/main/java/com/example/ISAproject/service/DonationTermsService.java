@@ -309,6 +309,7 @@ public class DonationTermsService
     	Calendar calendar = calendarService.findById(dt.getCalendar().getId());
         BloodCenter bloodCenter = bloodCenterService.findById(dt.getBloodCenter().getId());
         RegisteredUser registeredUser = registeredUserService.findById(dt.getRegisteredUser().getId());
+        Survey survey = this.surveyService.findById(dt.getSurvey().getId());
     			
    	  DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm"); 
    	  LocalDateTime date =LocalDateTime.parse(dt.getDate().toString(),formatter);
@@ -321,13 +322,13 @@ public class DonationTermsService
       time.setStart(dt.getReservationStart());
       time.setEnd(dt.getReservationEnd());
 
-   	  DonationTerms newTerm = new DonationTerms(dt.getId(),date,dt.isFree(),start,end, dt.getDuration(),registeredUser,calendar,bloodCenter);
+   	  DonationTerms newTerm = new DonationTerms(dt.getId(),date,dt.isFree(),start,end, dt.getDuration(),registeredUser,calendar,bloodCenter,survey);
    	  
    	  donationTermsRepository.save(newTerm);
    	  
    	DefinedTermDTO definedTermsDTO = new DefinedTermDTO(newTerm.getId(), newTerm.getDuration(),
    			newTerm.getDate().format(formatter), newTerm.isFreeTerm(),
-   			newTerm.getReservationStart().format(formatter),newTerm.getReservationEnd().format(formatter),registeredUser,calendar,bloodCenter);
+   			newTerm.getReservationStart().format(formatter),newTerm.getReservationEnd().format(formatter),registeredUser,calendar,bloodCenter,survey);
 
   
      return definedTermsDTO;

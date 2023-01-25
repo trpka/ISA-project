@@ -34,6 +34,7 @@ export class NewProfileCenterComponent implements OnInit {
   newTerm: DefinedDonationTerms;
   date1:string;
   date : Survey;
+  newSurvey:Survey;
   donationTerm : DonationTerms;
  
 
@@ -269,6 +270,54 @@ export class NewProfileCenterComponent implements OnInit {
       category:'',
       benefits:''
     })
+
+    this.newSurvey=new Survey(
+      {
+        id: 5,
+        numberOfDonator:"",
+        date:"",
+        firstName: "",
+        lastName: "",
+        jmbg: "",
+        dateOfBirth:"",
+        sex:"",
+        adress:"",
+        township: "",
+        city:"",
+        mobile:"",
+        company:"",
+        profession: "",
+        numberOfBoodDonations: "",
+        registeredUser : new RegisteredUser({
+          id:0,
+          username: "",
+          password: "",
+          firstName: "",
+          lastName: "",
+          email: "",
+          mobile:"",
+          adress: "",
+          city: "",
+          state: "",
+          jmbg: "",
+          sex: "",
+          profession: "",
+          organizationInformation: "",
+          enabled: true,
+          points: 0,
+          category: "",
+          benefits:""
+          }),
+        p1:"",
+        p2:"",
+        p3:"",
+        p4:"",
+        p5:"",
+        p6:"",
+        p7:"",
+        p8:""
+        
+      })
   
     this.newTerm= new DefinedDonationTerms({
       date: this.term,
@@ -278,7 +327,8 @@ export class NewProfileCenterComponent implements OnInit {
       duration: 30,
       registeredUser: this.newUser,
       calendar: this.newCalendar,
-      bloodCenter : this.newCenter,    
+      bloodCenter : this.newCenter,   
+      survey: this.newSurvey 
   
     })
 
