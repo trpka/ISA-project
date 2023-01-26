@@ -208,6 +208,7 @@ public class DonationTermsService
     {
         List<DonationTerms> allTerms = this.donationTermsRepository.findAll();
         List<DonationTerms> futureTerms = new ArrayList<>();
+        LocalDateTime currentTime = LocalDateTime.now();
 
         for(DonationTerms dt: allTerms)
         {
@@ -215,7 +216,7 @@ public class DonationTermsService
             {
                 if(dt.getRegisteredUser().getId() == id)
                 {
-                    if((dt.isFreeTerm() == false && dt.isRegisteredUserCome() == false))
+                    if((dt.isFreeTerm() == false && dt.isRegisteredUserCome() == false && dt.getReservationStart().isAfter(currentTime)))
                     {
                     	futureTerms.add(dt);
                     }
@@ -230,13 +231,14 @@ public class DonationTermsService
     {
         List<DonationTerms> allTerms = donationTermsRepository.findAll();
         List<DonationTerms> foundTerms = new ArrayList<>();
+        LocalDateTime currentTime = LocalDateTime.now();
 
         for(DonationTerms dt: allTerms)
         {
 
                 if(dt.getBloodCenter().getId() == bloodCenterId)
                 {
-                    if(dt.isFreeTerm() == false && dt.isRegisteredUserCome()==false)
+                    if(dt.isFreeTerm() == false && dt.isRegisteredUserCome()==false && dt.getReservationStart().isAfter(currentTime))
                     {
                         //if(dt.getRegisteredUser().getId()!= null){
                         if(dt.getRegisteredUser().getId().equals(registeredUserId))
@@ -617,7 +619,7 @@ public class DonationTermsService
 
         LocalDateTime timeOfDonationTerm = donationTerms1.getReservationStart();
 
-        if (!timeOfDonationTerm.isBefore(currentDateMinus1Day1)) {
+        if (timeOfDonationTerm.isAfter(currentDateMinus1Day1)) {
             if(donationTerms1.getRegisteredUser().getId().equals(registeredUser.getId()))
             {
                 donationTerms1.setRegisteredUser(null);
