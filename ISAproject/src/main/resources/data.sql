@@ -118,6 +118,9 @@ values (8, 'DA','DA','DA','DA', 'DA','NE', 'NE',9);
 insert into survey (id, p1, p2, p3, p4, p5, p6, p7 ,registered_user_id)
 values (9, 'DA','DA','DA','DA', 'DA','NE', 'NE',9);
 
+insert into survey (id, p1, p2, p3, p4, p5, p6, p7 ,registered_user_id)
+values (18, 'DA','DA','DA','DA', 'DA','NE', 'NE',14);
+
 
 
 insert into donation_terms (id, date, duration, free_term, is_registered_user_come, reservation_start, reservation_end, profile_center_id,calendar_id)
