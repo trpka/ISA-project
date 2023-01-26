@@ -159,9 +159,9 @@ public class DonationTermsController
     @RequestMapping(value="api/schedule-new-term",method = RequestMethod.PUT,
             consumes=MediaType.APPLICATION_JSON_VALUE)
     @PreAuthorize("hasRole('REGISTERED_USER')")
-    public ResponseEntity<DonationTerms>  scheduleNewTerm(@RequestBody ScheduleDonationTermDTO dto)throws Exception{
+    public ResponseEntity<DonationTerms>  scheduleNewTerm(@RequestBody ScheduleDonationTerm1DTO dto)throws Exception{
     	
-        DonationTerms updatedDonationTerm=this.donationTermsService.scheduleTerm(dto);
+        DonationTerms updatedDonationTerm=this.donationTermsService.scheduleTerm1(dto);
 
        
         return new ResponseEntity<>(new DonationTerms(updatedDonationTerm),HttpStatus.OK);
