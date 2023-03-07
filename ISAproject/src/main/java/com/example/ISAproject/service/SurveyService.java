@@ -3,6 +3,7 @@ package com.example.ISAproject.service;
 import com.example.ISAproject.dto.ScheduleDonationTermDTO;
 import com.example.ISAproject.dto.SurveyRegisteredUserDTO;
 import com.example.ISAproject.model.*;
+import com.example.ISAproject.repository.DonationTermsRepository;
 import com.example.ISAproject.repository.SurveyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,11 @@ public class SurveyService {
 
     @Autowired
     private SurveyRepository surveyRepository;
+    @Autowired
+    private  SurveyService surveyService;
+
+
+
 
     public Survey findById(Long id)
     {
