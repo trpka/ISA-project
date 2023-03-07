@@ -1,5 +1,7 @@
 package com.example.ISAproject.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -8,110 +10,73 @@ public class StuffSurvey
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column
-    private String numberOfDonator;
-    @Column
-    private String date;
-    @Column
-    private String firstName;
-    @Column
-    private String lastName;
-    @Column
-    private String dateOfBirth;
-    @Column
-    private String address;
-    @Column
-    private String city;
-    @Column
-    private String mobile;
-
-    @Column
-    private String p1;
-    @Column
-    private String p2;
-    @Column
-    private String p3;
-    @Column
-    private String p4;
-    @Column
-    private String p5;
-    @Column
-    private String p6;
-    @Column
-    private String p7;
-    @Column
-    private String p8;
 
     private double A;
     private double B;
     private double AB;
     private double O;
+    @Column
+    private String blood_type;
+    @Column
+    private String accepted_exam;
+    @Column
+    private double blood_quantity;
+    @Column
+    private String extra_note;
+    @Column
+    private String reason_ejection;
+    @Column
+    private String arm;
+
 
 
     @OneToOne
     private DonationTerms donationTerms;
 
 
-    public StuffSurvey(Long id, String numberOfDonator, String date, String firstName, String lastName,
-                       String dateOfBirth, String address, String city, String mobile, String p1,
-                       String p2, String p3, String p4, String p5, String p6, String p7,
-                       String p8, DonationTerms donationTerms)
-    {
+    public StuffSurvey(Long id, double a, double b, double AB, double o, String blood_type, String accepted_exam,
+                       double blood_quantity, String extra_note, String reason_ejection, String arm, DonationTerms donationTerms) {
         this.id = id;
-        this.numberOfDonator = numberOfDonator;
-        this.date = date;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.dateOfBirth = dateOfBirth;
-        this.address = address;
-        this.city = city;
-        this.mobile = mobile;
-        this.p1 = p1;
-        this.p2 = p2;
-        this.p3 = p3;
-        this.p4 = p4;
-        this.p5 = p5;
-        this.p6 = p6;
-        this.p7 = p7;
-        this.p8 = p8;
+        this.A = a;
+        this.B = b;
+        this.AB = AB;
+        this.O = o;
+        this.blood_type = blood_type;
+        this.accepted_exam = accepted_exam;
+        this.blood_quantity = blood_quantity;
+        this.extra_note = extra_note;
+        this.reason_ejection = reason_ejection;
+        this.arm = arm;
         this.donationTerms = donationTerms;
     }
 
-    public StuffSurvey(Long id,   String firstName,
-                       String lastName, String dateOfBirth, String address, String city,
-                       String mobile, String p1, String p2, String p3, String p4, String p5,
-                       String p6, String p7, String p8)
+    public StuffSurvey(Long id, double a, double b, double AB, double o, String blood_type, String accepted_exam,
+                       double blood_quantity, String extra_note, String reason_ejection, String arm) {
+        this.id = id;
+        this.A = a;
+        this.B = b;
+        this.AB = AB;
+        this.O = o;
+        this.blood_type = blood_type;
+        this.accepted_exam = accepted_exam;
+        this.blood_quantity = blood_quantity;
+        this.extra_note = extra_note;
+        this.reason_ejection = reason_ejection;
+        this.arm = arm;
+    }
+
+
+    public StuffSurvey(Long id,  DonationTerms donationTerms)
     {
         this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.dateOfBirth = dateOfBirth;
-        this.address = address;
-        this.city = city;
-        this.mobile = mobile;
-        this.p1 = p1;
-        this.p2 = p2;
-        this.p3 = p3;
-        this.p4 = p4;
-        this.p5 = p5;
-        this.p6 = p6;
-        this.p7 = p7;
-        this.p8 = p8;
+        this.donationTerms = donationTerms;
     }
+
     //Konstruktor koji ce stvarno da treba
-    public StuffSurvey(Long id, String p1, String p2, String p3, String p4, String p5, String p6,
-                       String p7, String p8, double a, double b, double AB, double o,
+    public StuffSurvey(Long id,  double a, double b, double AB, double o,
                        DonationTerms donationTerms)
     {
         this.id = id;
-        this.p1 = p1;
-        this.p2 = p2;
-        this.p3 = p3;
-        this.p4 = p4;
-        this.p5 = p5;
-        this.p6 = p6;
-        this.p7 = p7;
-        this.p8 = p8;
         A = a;
         B = b;
         this.AB = AB;
@@ -131,133 +96,7 @@ public class StuffSurvey
         this.id = id;
     }
 
-    public String getNumberOfDonator() {
-        return numberOfDonator;
-    }
 
-    public void setNumberOfDonator(String numberOfDonator) {
-        this.numberOfDonator = numberOfDonator;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public void setDateOfBirth(String dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getMobile() {
-        return mobile;
-    }
-
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
-    }
-
-    public String getP1() {
-        return p1;
-    }
-
-    public void setP1(String p1) {
-        this.p1 = p1;
-    }
-
-    public String getP2() {
-        return p2;
-    }
-
-    public void setP2(String p2) {
-        this.p2 = p2;
-    }
-
-    public String getP3() {
-        return p3;
-    }
-
-    public void setP3(String p3) {
-        this.p3 = p3;
-    }
-
-    public String getP4() {
-        return p4;
-    }
-
-    public void setP4(String p4) {
-        this.p4 = p4;
-    }
-
-    public String getP5() {
-        return p5;
-    }
-
-    public void setP5(String p5) {
-        this.p5 = p5;
-    }
-
-    public String getP6() {
-        return p6;
-    }
-
-    public void setP6(String p6) {
-        this.p6 = p6;
-    }
-
-    public String getP7() {
-        return p7;
-    }
-
-    public void setP7(String p7) {
-        this.p7 = p7;
-    }
-
-    public String getP8() {
-        return p8;
-    }
-
-    public void setP8(String p8) {
-        this.p8 = p8;
-    }
 
     public DonationTerms getDonationTerms() {
         return donationTerms;
@@ -299,5 +138,53 @@ public class StuffSurvey
 
     public void setO(double o) {
         O = o;
+    }
+
+    public String getBlood_type() {
+        return blood_type;
+    }
+
+    public void setBlood_type(String blood_type) {
+        this.blood_type = blood_type;
+    }
+
+    public String getAccepted_exam() {
+        return accepted_exam;
+    }
+
+    public void setAccepted_exam(String accepted_exam) {
+        this.accepted_exam = accepted_exam;
+    }
+
+    public double getBlood_quantity() {
+        return blood_quantity;
+    }
+
+    public void setBlood_quantity(double blood_quantity) {
+        this.blood_quantity = blood_quantity;
+    }
+
+    public String getExtra_note() {
+        return extra_note;
+    }
+
+    public void setExtra_note(String extra_note) {
+        this.extra_note = extra_note;
+    }
+
+    public String getReason_ejection() {
+        return reason_ejection;
+    }
+
+    public void setReason_ejection(String reason_ejection) {
+        this.reason_ejection = reason_ejection;
+    }
+
+    public String getArm() {
+        return arm;
+    }
+
+    public void setArm(String arm) {
+        this.arm = arm;
     }
 }

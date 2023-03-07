@@ -11,6 +11,7 @@ export class SurveyService {
 
   url="http://localhost:8081/api/survey";
   url1A = "http://localhost:8081/api/stuff-survey";
+  url2A =  "http://localhost:8081/api/update-blood";
   
   date : Survey;
   constructor(private http:HttpClient) { }
@@ -27,10 +28,11 @@ export class SurveyService {
     return this.http.post<Survey>(this.url,survey);
   }
 
-  ///Student 3 koristi delove ovog servisa
+  //Student 3 koristi delove ovog servisa
   saveStuffSurvey(stuffSurvey: StuffSurvey):Observable<StuffSurvey>
   {
-    return this.http.post<StuffSurvey>(this.url1A,stuffSurvey);
+     return this.http.post<StuffSurvey>(this.url1A,stuffSurvey);
+     
   }
 
   //Pronalazak Surveya po ID-ju
@@ -38,4 +40,11 @@ export class SurveyService {
   {
   return this.http.get<Survey> (`${this.url}/${id}`)
   }
+
+  // Azuriranje Kolicine Krvi koja se nalazi u centru
+  updateBlood(stuffSurvey: StuffSurvey):Observable<StuffSurvey>
+  {
+    return this.http.post<StuffSurvey>(this.url2A,stuffSurvey);
+  }
+  
 }
