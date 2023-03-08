@@ -67,6 +67,8 @@ public class RegisteredUser extends User{
 		this.bloodCenters = bloodCenters;
 	}
 
+	public RegisteredUser() {}
+
 	public RegisteredUser(String username, String password, String email, String firstName, String lastName,
 			String mobile, String adress, String city, String state, String jmbg, String sex, String profession,
 			String organizationInformation, boolean enabled,String role, List<Authority> authorities) {
@@ -89,8 +91,33 @@ public class RegisteredUser extends User{
 		setAuthorities(authorities);
 			
 	}
-	
-	public RegisteredUser() {}
-	
-	
+
+	public RegisteredUser(List<DonationTerms> donationHistory, int points, String category, String benefits, List<Survey> surveys, Set<BloodCenter> bloodCenters) {
+		this.donationHistory = donationHistory;
+		this.points = points;
+		this.category = category;
+		this.benefits = benefits;
+		this.surveys = surveys;
+		this.bloodCenters = bloodCenters;
+	}
+
+	public RegisteredUser(Long id, String username, String password, String email, String firstName, String lastName, String mobile, String adress, String city, String state, String jmbg, String sex, String profession, String organizationInformation, boolean enabled, Timestamp lastPasswordResetDate, String role, List<Authority> authorities, List<DonationTerms> donationHistory, int points, String category, String benefits, List<Survey> surveys, Set<BloodCenter> bloodCenters) {
+		super(id, username, password, email, firstName, lastName, mobile, adress, city, state, jmbg, sex, profession, organizationInformation, enabled, lastPasswordResetDate, role, authorities);
+		this.donationHistory = donationHistory;
+		this.points = points;
+		this.category = category;
+		this.benefits = benefits;
+		this.surveys = surveys;
+		this.bloodCenters = bloodCenters;
+	}
+
+	public RegisteredUser(String username, String password, String email, String firstName, String lastName, String mobile, String adress, String city, String state, String jmbg, String sex, String profession, String organizationInformation, boolean enabled, Timestamp lastPasswordResetDate, String role, List<Authority> authorities, List<DonationTerms> donationHistory, int points, String category, String benefits, List<Survey> surveys, Set<BloodCenter> bloodCenters) {
+		super(username, password, email, firstName, lastName, mobile, adress, city, state, jmbg, sex, profession, organizationInformation, enabled, lastPasswordResetDate, role, authorities);
+		this.donationHistory = donationHistory;
+		this.points = points;
+		this.category = category;
+		this.benefits = benefits;
+		this.surveys = surveys;
+		this.bloodCenters = bloodCenters;
+	}
 }

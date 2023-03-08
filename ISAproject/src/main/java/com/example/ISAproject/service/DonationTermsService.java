@@ -412,111 +412,12 @@ public class DonationTermsService
     
 
 
-    public DonationTerms save(DonationTerms newDonationTerm) {
+    public DonationTerms save(DonationTerms newDonationTerm)
+    {
         return this.donationTermsRepository.save(newDonationTerm);
     }
 
-   /* public boolean RegisteredUserCanNotHaveTwoTerms(Long registeredUserId)
-    {
-        List<DonationTerms> donationTerms = this.findAll();
 
-
-        for(DonationTerms donationTerm:donationTerms)
-        {
-            if(donationTerm.getRegisteredUser() != null)
-            {
-               if(donationTerm.getRegisteredUser().getId() == registeredUserId && donationTerm.isRegisteredUserCome() == true)
-               {
-                   return true;
-               }
-               else if(donationTerm.getRegisteredUser().getId() == registeredUserId && donationTerm.isRegisteredUserCome() == false)
-               {
-                   return false;
-               }
-            }
-
-        }
-
-      return true;
-    }
-
-    public DonationTerms scheduleTerm(ScheduleDonationTermDTO dto) {
-    	
-        Optional<DonationTerms> donationTerms = this.findById(dto.getDonationTermId());
-        RegisteredUser registeredUser = this.registeredUserService.findById(dto.getRegisteredUserId());
-        Survey survey = this.surveyService.findByRegisteredUserId(dto.getRegisteredUserId());
-        if (!donationTerms.isPresent()) {
-            return null;
-        }
-
-        DonationTerms donationTerms1 = donationTerms.get();
-        if(this.surveyService.registeredUserHasFilledOutQuestionnaire(dto.getRegisteredUserId()) == true){
-        
-          if(RegisteredUserCanNotHaveTwoTerms(dto.getRegisteredUserId()) == true)
-            {
-        	
-                LocalDateTime endTime = donationTerms1.getReservationEnd();
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-                String endTimeString = endTime.format(formatter);
-                survey.setDate(endTimeString);
-
-                donationTerms1.setRegisteredUser(registeredUser);
-                donationTerms1.setFreeTerm(false);
-            
-            }
-
-        }
-
-
-     return this.save(donationTerms1);
-   
-    }*/
-
-    /*public DonationTerms scheduleTerm(ScheduleDonationTermDTO dto) {
-        Optional<DonationTerms> donationTerm = this.findById(dto.getDonationTermId());
-        List<DonationTerms> donationTerms = this.findAll();
-        RegisteredUser registeredUser = this.registeredUserService.findById(dto.getRegisteredUserId());
-        if (!donationTerm.isPresent()) {
-            return null;
-        }
-
-        DonationTerms donationTerm1 = donationTerm.get();
-
-        LocalDateTime currentTime = LocalDateTime.now();
-        LocalDateTime currentDateMinus6Months = currentTime.minusMonths(6);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        String currentDateMinus6MonthsString = currentDateMinus6Months.format(formatter);
-        DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        LocalDateTime currentDateMinus6Months1 = LocalDateTime.parse(currentDateMinus6MonthsString, formatter1);
-
-        if(this.surveyService.registeredUserHasFilledOutQuestionnaire(dto.getRegisteredUserId()) == true){
-
-            for(DonationTerms d : donationTerms)
-            {
-                LocalDateTime lastBloodDonation = d.getReservationEnd();
-                String lastBloodDonationString = lastBloodDonation.format(formatter);
-                LocalDateTime lastBloodDonation1 = LocalDateTime.parse(lastBloodDonationString, formatter1);
-                if(d.isFreeTerm() == true && d.isRegisteredUserCome() == true && d.getRegisteredUser().getId() == dto.getRegisteredUserId() && lastBloodDonation1.isBefore(currentDateMinus6Months1))
-                {
-                    donationTerm1.setFreeTerm(false);
-                    donationTerm1.setRegisteredUserCome(false);
-                    donationTerm1.setRegisteredUser(registeredUser);
-                    return this.save(donationTerm1);
-                }
-                else if(this.isUserScheduleDonationTerm(dto.getRegisteredUserId())==false){
-                    donationTerm1.setFreeTerm(false);
-                    donationTerm1.setRegisteredUserCome(false);
-                    donationTerm1.setRegisteredUser(registeredUser);
-                    return this.save(donationTerm1);
-                }
-            }
-        }
-
-
-
-
-        return this.save(donationTerm1);
-    }*/
     public boolean isUserScheduleDonationTerm(Long userId){
         int number_of_schedule_donation=0;
         RegisteredUser registeredUser=this.registeredUserService.findById(userId);

@@ -262,15 +262,15 @@ export class StuffSurveyComponent implements OnInit {
     {
        this.mustFill = true;
     } 
+
+    
     
     
      this.stuffSurvey.id = this.pickSurvey.id;
   
-     //this.UpdateOnFrontQuantity()
      
      this.surveyService.saveStuffSurvey(this.stuffSurvey)
      .subscribe(res => this.stuffSurvey = res)
-     //this.UpdateBloodQuantity()
     
 
     }
@@ -279,6 +279,8 @@ export class StuffSurveyComponent implements OnInit {
   {
     this.surveyService.updateBlood(stuffSurvey)
     .subscribe(res => this.stuffSurvey = res)
+    location.pathname = ('profile_center/' + this.stuffSurvey.donationTerms.bloodCenter.id);
+    
   }
 
  

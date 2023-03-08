@@ -52,7 +52,6 @@ export class StuffUserProfileComponent implements OnInit {
   
   addNegativePoint(donationTerm: DonationTerms)
   {
-    //this.donationTerm.id = Number(sessionStorage.getItem('id'))
     this.stuffService.addNegativePoint(donationTerm)
     .subscribe(res => this.donationTerm = res)
     window.location.reload();
