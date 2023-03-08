@@ -81,6 +81,13 @@ insert into registered_user (id, points, category, benefits) values (8, 1,'Redov
 insert into registered_user (id, points, category, benefits) values (9, 3,'Redovan', 'Redovan');
 insert into registered_user (id, points, category, benefits) values (14, 0,'Pretplacen', 'Gift programi');
 
+-- Dodeljivanje Centra Za Registrovanog Korisnika
+--insert into reg_user_blood_center(r_user_id, blood_center_id) values(2,2);
+--insert into reg_user_blood_center(r_user_id, blood_center_id) values(2,3);
+
+--insert  into reg_user_blood_center(r_user_id, blood_center_id) values(2, 1);
+
+
 
 
 --Administratori centra i medicinsko osoblje
@@ -98,31 +105,31 @@ insert into survey (id, p1, p2, p3, p4, p5, p6, p7, p8 ,registered_user_id)
 values (1, 'NO','NO','NO','NO', 'NO','NO', 'YES', 'NO',14);
 
 insert into survey (id, p1, p2, p3, p4, p5, p6, p7 ,registered_user_id)
-values (2, 'DA','DA','DA','DA', 'DA','NE', 'NE',8);
+values (2, 'YES','YES','YES','YES', 'YES','NO', 'NO',8);
 
 insert into survey (id, p1, p2, p3, p4, p5, p6, p7 ,registered_user_id)
-values (3, 'DA','DA','DA','DA', 'DA','NE', 'NE',2);
+values (3, 'YES','YES','YES','YES', 'YES','NO', 'NO',2);
 
 insert into survey (id, p1, p2, p3, p4, p5, p6, p7 ,registered_user_id)
-values (4, 'DA','DA','DA','DA', 'DA','NE', 'NE',2);
+values (4, 'YES','YES','YES','YES', 'YES','NO', 'NO',2);
 
 insert into survey (id, p1, p2, p3, p4, p5, p6, p7 ,registered_user_id)
-values (5, 'DA','DA','DA','DA', 'DA','NE', 'NE',8);
+values (5, 'YES','YES','YES','YES', 'YES','NO', 'NO',8);
 
 insert into survey (id, p1, p2, p3, p4, p5, p6, p7 ,registered_user_id)
-values (6, 'DA','DA','DA','DA', 'DA','NE', 'NE',8);
+values (6, 'YES','YES','YES','YES', 'YES','NO', 'NO',8);
 
 insert into survey (id, p1, p2, p3, p4, p5, p6, p7 ,registered_user_id)
-values (7, 'DA','DA','DA','DA', 'DA','NE', 'NE',9);
+values (7, 'YES','YES','YES','YES', 'YES','NO', 'NO',9);
 
 insert into survey (id, p1, p2, p3, p4, p5, p6, p7 ,registered_user_id)
-values (8, 'DA','DA','DA','DA', 'DA','NE', 'NE',9);
+values (8, 'YES','YES','YES','YES', 'YES','NO', 'NO',9);
 
 insert into survey (id, p1, p2, p3, p4, p5, p6, p7 ,registered_user_id)
-values (9, 'DA','DA','DA','DA', 'DA','NE', 'NE',9);
+values (9, 'YES','YES','YES','YES', 'YES','NO', 'NO',9);
 
 insert into survey (id, p1, p2, p3, p4, p5, p6, p7 ,registered_user_id)
-values (18, 'DA','DA','DA','DA', 'DA','NE', 'NE',14);
+values (18, 'YES','YES','YES','YES', 'YES','NO', 'NO',14);
 
 
 
@@ -164,29 +171,10 @@ insert into donation_terms (id, date, duration, free_term, is_registered_user_co
 values (11, '2023-01-01 09:10:00', 20, false, true, '2023-01-05 12:00:00','2023-01-05 12:20:00', 3,3,9,8);
 
 insert into donation_terms (id, date, duration, free_term, is_registered_user_come, reservation_start, reservation_end, profile_center_id,calendar_id, registered_user_id, survey_id)
-values (12, '2023-01-01 09:11:00', 35, false, true, '2023-01-06 12:00:00','2023-01-06 12:35:00', 3,3,9,9);
+values (12, '2023-01-01 09:11:00', 35, false , true, '2023-01-06 12:00:00','2023-01-06 12:35:00', 3,3,9,9);
 
 
---Termini vezani za registronvane korisnikee -- vezane za studenta 3
---insert into donation_terms (id, date, duration, is_free, is_registered_user_come, reservation_start, reservation_end, profile_center_id, registered_user_id)
---values (23, '2019-11-22 11:00:00', 60, true, true, '2022-12-12 10:30:00','2022-12-12 11:30:00', 3, 14);
 
---insert into donation_terms (id, date, duration, is_free, is_registered_user_come, reservation_start, reservation_end, profile_center_id, registered_user_id)
---values (22, '2017-02-21 10:00:00', 45, true, false, '2021-11-11 09:30:00','2021-11-11 10:15:00', 3, 8);
-
---insert into donation_terms (id, date, duration, is_free, is_registered_user_come, reservation_start, reservation_end, profile_center_id, registered_user_id)
---values (21, '2017-02-21 10:00:00', 45, true, false, '2021-11-11 09:30:00','2021-11-11 10:15:00', 3, 14);
-
-
---insert into donation_terms (id, date, duration, is_free, is_registered_user_come, reservation_start, reservation_end, profile_center_id, registered_user_id,calendar_id)
---values (8, '2019-11-22 11:00:00', 60, false, true, '2022-12-12 10:30:00','2022-12-12 11:30:00', 3, 14,3);
-
-
---insert into donation_terms (id, date, duration, is_free, is_registered_user_come, reservation_start, reservation_end, profile_center_id, registered_user_id,calendar_id)
---values (9, '2017-02-21 10:00:00', 45, false, false, '2021-11-11 09:30:00','2021-11-11 10:15:00', 3, 14,1);
-
---insert into donation_terms (id, date, duration, is_free, is_registered_user_come, reservation_start, reservation_end, profile_center_id, registered_user_id,calendar_id)
---values (10, '2017-02-21 10:00:00', 45, false, false, '2021-11-11 09:30:00','2021-11-11 10:15:00', 3, 8,2);
 
 insert into donation_terms (id, date, duration, free_term, is_registered_user_come, reservation_start, reservation_end, profile_center_id,calendar_id, registered_user_id, survey_id)
 values (32, '2023-01-02 07:00:00', 45, false, true, '2023-01-17 07:00:00','2023-01-17 07:35:00', 3,3,8,5);

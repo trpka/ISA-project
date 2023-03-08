@@ -131,10 +131,12 @@ public class StuffService
         if (donationTerms.isRegisteredUserCome() == true)
         {
             donationTerms.setRegisteredUserCome(false);
+            donationTerms.setFreeTerm(true);
         }
         else if(donationTerms.isRegisteredUserCome() == false)
         {
             donationTerms.setRegisteredUserCome(true);
+            donationTerms.setFreeTerm(true);
         }
 
         donationTermsRepository.save(donationTerms);
