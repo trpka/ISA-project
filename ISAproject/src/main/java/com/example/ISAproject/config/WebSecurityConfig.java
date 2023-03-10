@@ -109,7 +109,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 					                .antMatchers("/api/terms").permitAll()
 					                .antMatchers("/api/term/{id}").permitAll()
 					                .antMatchers("/api/term").permitAll()
-					                //.antMatchers("/api/terms/{isFree}").permitAll()
 					                .antMatchers("/api/stuffs").permitAll()
 					                .antMatchers("/api/stuffs/{id}").permitAll()
 					                .antMatchers("/api/edit/stuff").permitAll()
@@ -119,7 +118,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 					                .antMatchers("/api/centers/stuffs/{id}").permitAll()
 					                .antMatchers("/api/terms/create_reservation").permitAll()
 
-					                .antMatchers("/api/regUsers").permitAll()
+					                //.antMatchers("/api/regUsers").permitAll()
 					                .antMatchers("/api/users/terms/{id}").permitAll()
 					                .antMatchers("/api/users/term/{id}").permitAll()
 					                .antMatchers("/api/addPenal").permitAll()
@@ -130,6 +129,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                                     .antMatchers("/api/stuff-surveys").permitAll()
 					                .antMatchers("/api/survey/{id}").permitAll()
                                     .antMatchers("/api/update-blood").permitAll()
+					                .antMatchers("/api/users/centers/{id}").permitAll()
+
+					                .antMatchers("/api/users/sort-by-name/{id}").permitAll()
+					                .antMatchers("/api/users/sort-by-lastname/{id}").permitAll()
+					                .antMatchers("/api/users/sort-by-id/{id}").permitAll()
+
 
 
 

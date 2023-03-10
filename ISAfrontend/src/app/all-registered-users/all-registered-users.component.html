@@ -8,6 +8,9 @@
         <div >
             <img alt="My image name" src="./assets/img/logo-transfuzija.png"> 
         </div>
+
+        <p style="text-align:center"><label for="firstName">Stuff:</label></p>
+        <p style="text-align:center">{{stuff.firstName + " " + stuff.lastName}}</p>
     
         
  <div class="card-body py-5 px-md-5">
@@ -20,6 +23,26 @@
         </form>
 
     </div>
+    
+     
+    <div class="container">
+        <div class="row">
+          <div class="col-sm" style="text-align:center">
+            <label>Sort by First Name</label>
+            <button class="btn btn-primary" (click)="sortByFirstName()">Sort</button>
+          </div>
+          <div class="col-sm" style="text-align:center">
+            <label>Sort by Last Name</label>
+            <button class="btn btn-primary" (click)="sortByLastName()">Sort</button>
+          </div>
+          <div class="col-sm" style="text-align:center">
+            <label>Sort by ID</label>
+            <button class="btn btn-primary" (click)="sortById()">Sort</button>
+          </div>
+        </div>
+      </div>
+ 
+      
 
     
 
@@ -63,10 +86,7 @@
                 <td>{{registeredUsers.category}}</td>
                 <td>{{registeredUsers.benefits}}</td>
                <td><button class = "btn btn-success" (click)="FindProfileByButton(registeredUsers.id)"  style="background-color: steelblue">Profile</button></td>
-
-               
-              
-            </tr>
+          </tr>
         </tbody>
     </table>
 </div>

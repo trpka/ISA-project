@@ -52,17 +52,7 @@ public class StuffController
         return  new ResponseEntity<>(stuff, HttpStatus.OK);
     }
 
-   //Student 3 funkcionalnost dodavanje negativnih poena
-    /* @CrossOrigin(origins = "http://localhost:4200")
-    @RequestMapping(value="api/addPenal", method = RequestMethod.POST,
-            params = "id",
-            consumes= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-    public ResponseEntity<RegisteredUser> AddNegative(@RequestParam Long id)
-    {
-        RegisteredUser registeredUser = this.stuffService.addNegativePoint(id);
 
-        return new ResponseEntity<>(registeredUser,HttpStatus.OK);
-    }*/
 
     //Dodavanje penala ukoliko se korisnik ne pojavi na pregledu
     @RequestMapping(value="api/addPenal",method = RequestMethod.POST,

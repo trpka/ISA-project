@@ -58,6 +58,7 @@ public class RegisteredUserController {
 	    }
 
 
+	  @PreAuthorize("hasRole('STUFF')")
 	  @RequestMapping(value="api/regUsers",method = RequestMethod.GET,produces = {
 	            MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	    public ResponseEntity<List<RegisteredUser>> findAll()
@@ -65,6 +66,40 @@ public class RegisteredUserController {
 	        List<RegisteredUser> registeredUsers= this.registeredUserService.findAll();
 	        return new ResponseEntity<>(registeredUsers, HttpStatus.OK);
 	    }
+
+		//Pretraga Korisnika prema centru u kojem su dali krv
+	@RequestMapping(value="api/users/centers/{id}",method = RequestMethod.GET,produces = {
+			MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+	public ResponseEntity<List<RegisteredUser>> findUsersByCenter(@PathVariable Long id)
+	{
+		List<RegisteredUser> registeredUsers= this.registeredUserService.findUsersByCenter(id);
+		return new ResponseEntity<>(registeredUsers, HttpStatus.OK);
+	}
+
+	//SORTIRANJA ZA KORISNIKE PO ODREDJENIM PARAMETRIMA
+	@RequestMapping(value="api/users/sort-by-name/{id}", method = RequestMethod.GET,
+			produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+	public ResponseEntity<List<RegisteredUser>> sortByName(@PathVariable Long id)
+	{
+		List<RegisteredUser> registeredUsers=this.registeredUserService.sortByName(id);
+		return new ResponseEntity<>(registeredUsers,HttpStatus.OK);
+	}
+
+	@RequestMapping(value="api/users/sort-by-lastname/{id}", method = RequestMethod.GET,
+			produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+	public ResponseEntity<List<RegisteredUser>> sortByLastName(@PathVariable Long id)
+	{
+		List<RegisteredUser> registeredUsers=this.registeredUserService.sortByLastName(id);
+		return new ResponseEntity<>(registeredUsers,HttpStatus.OK);
+	}
+
+	@RequestMapping(value="api/users/sort-by-id/{id}", method = RequestMethod.GET,
+			produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+	public ResponseEntity<List<RegisteredUser>> sortById(@PathVariable Long id)
+	{
+		List<RegisteredUser> registeredUsers=this.registeredUserService.sortById(id);
+		return new ResponseEntity<>(registeredUsers,HttpStatus.OK);
+	}
 
 
 	@RequestMapping(value="api/registeredUsersFirstName", method = RequestMethod.GET,

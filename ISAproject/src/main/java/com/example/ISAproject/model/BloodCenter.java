@@ -28,7 +28,7 @@ public class BloodCenter {
 	@Column
 	private LocalDateTime startWork;
 	@Column
-	private LocalDateTime endWork; 
+	private LocalDateTime endWork;
 	@Column
 	private String description;
 	@Column
@@ -42,19 +42,23 @@ public class BloodCenter {
 	private double bloodAB;
 	@Column
 	private double bloodO;
-	
+
 	@OneToMany (cascade = CascadeType.ALL,orphanRemoval = true)
 	@JsonIgnore
 	private List<DonationTerms> freeAppointments;
-	
+
 	//Centar sa administratorima i osobljem
 	@OneToMany (cascade = CascadeType.ALL,orphanRemoval = true)
 	@JsonIgnore
 	private List<Stuff> listOfStuffs;
 
+	@OneToMany (cascade = CascadeType.ALL,orphanRemoval = true)
+	@JsonIgnore
+	private List<RegisteredUser> registeredUsers;
+
 	//veze korisnika sa blood centrom
 	@ManyToMany(mappedBy="bloodCenters")
-	private Set<RegisteredUser> registered_users_for_this_center=new HashSet<>();
+	private List<RegisteredUser> registered_users_for_this_center;
 
 
 	public BloodCenter()
@@ -62,6 +66,31 @@ public class BloodCenter {
 
 	}
 
+	public BloodCenter(Long id, String centerName, String address, String city, LocalDateTime startWork, LocalDateTime endWork, String description, Long averageGradeCentre, double bloodA, double bloodB, double bloodAB, double bloodO, List<DonationTerms> freeAppointments, List<Stuff> listOfStuffs, List<RegisteredUser> registeredUsers) {
+		this.id = id;
+		this.centerName = centerName;
+		this.address = address;
+		this.city = city;
+		this.startWork = startWork;
+		this.endWork = endWork;
+		this.description = description;
+		this.averageGradeCentre = averageGradeCentre;
+		this.bloodA = bloodA;
+		this.bloodB = bloodB;
+		this.bloodAB = bloodAB;
+		this.bloodO = bloodO;
+		this.freeAppointments = freeAppointments;
+		this.listOfStuffs = listOfStuffs;
+		this.registeredUsers = registeredUsers;
+	}
+
+	public List<RegisteredUser> getRegisteredUsers() {
+		return registeredUsers;
+	}
+
+	public void setRegisteredUsers(List<RegisteredUser> registeredUsers) {
+		this.registeredUsers = registeredUsers;
+	}
 
 	public Long getId() {
 		return id;
@@ -175,17 +204,9 @@ public class BloodCenter {
 		this.listOfStuffs = listOfStuffs;
 	}
 
-	public Set<RegisteredUser> getRegistered_users_for_this_center() {
-		return registered_users_for_this_center;
-	}
 
-	public void setRegistered_users_for_this_centerregistered_users_for_this_center(Set<RegisteredUser> registered_users_for_this_center) {
-		this.registered_users_for_this_center = registered_users_for_this_center;
-	}
 
-	public void setRegistered_users_for_this_center(Set<RegisteredUser> registered_users_for_this_center) {
-		this.registered_users_for_this_center = registered_users_for_this_center;
-	}
+
 
 	public BloodCenter(Long id, String centerName, String address, String city, LocalDateTime startWork, LocalDateTime endWork,
 					   String description, Long averageGradeCentre, double bloodA, double bloodB, double bloodAB,
@@ -241,21 +262,5 @@ public class BloodCenter {
 		this.listOfStuffs = listOfStuffs;
 	}
 
-	public BloodCenter(Long id, String centerName, String address, String city, LocalDateTime startWork, LocalDateTime endWork, String description, Long averageGradeCentre, double bloodA, double bloodB, double bloodAB, double bloodO, List<DonationTerms> freeAppointments, List<Stuff> listOfStuffs, Set<RegisteredUser> registered_users_for_this_center) {
-		this.id = id;
-		this.centerName = centerName;
-		this.address = address;
-		this.city = city;
-		this.startWork = startWork;
-		this.endWork = endWork;
-		this.description = description;
-		this.averageGradeCentre = averageGradeCentre;
-		this.bloodA = bloodA;
-		this.bloodB = bloodB;
-		this.bloodAB = bloodAB;
-		this.bloodO = bloodO;
-		this.freeAppointments = freeAppointments;
-		this.listOfStuffs = listOfStuffs;
-		this.registered_users_for_this_center = registered_users_for_this_center;
-	}
+
 }
