@@ -2,6 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Params } from '@angular/router';
 import { Observable } from 'rxjs';
+import { BloodCenter } from '../model/bloodCenter';
 import { DonationTerms } from '../model/donationTerms';
 import { RegisteredUser } from '../model/registeredUser';
 import { Stuff } from '../model/stuff';
@@ -17,6 +18,10 @@ export class StuffService
    url3A = "http://localhost:8081/api/addPenal";
    url4A = "http://localhost:8081/api/exam/edit";
    url5A = "http://localhost:8081/api/stuff/edit";
+   url6A = "http://localhost:8081/api/users/centers";
+   url7A = "http://localhost:8081/api/users/sort-by-name";
+   url8A = "http://localhost:8081/api/users/sort-by-lastname";
+   url9A = "http://localhost:8081/api/users/sort-by-id";
    
 
   constructor(private http:HttpClient) { }
@@ -63,8 +68,28 @@ export class StuffService
   {
     return this.http.put<DonationTerms>(this.url4A, donationTerm);
   }
+  //Uzimanje Samo onih korisnika koji su dali krv u odredjenom centru
+  getAllUsersWhoGaveBloodInThisCentre(id:number):Observable<RegisteredUser[]>
+  {
+    return this.http.get<RegisteredUser[]>(`${this.url6A}/${id}`);
+  }
 
+  //Sortiranje Registrovanih Korisnika u Okviru Centra
   
+  getAllUsersSortByFirstName(id:number):Observable<RegisteredUser[]>
+  {
+    return this.http.get<RegisteredUser[]>(`${this.url7A}/${id}`);
+  }
+
+  getAllUsersSortByLastName(id:number):Observable<RegisteredUser[]>
+  {
+    return this.http.get<RegisteredUser[]>(`${this.url8A}/${id}`);
+  }
+
+  getAllUsersSortById(id:number):Observable<RegisteredUser[]>
+  {
+    return this.http.get<RegisteredUser[]>(`${this.url9A}/${id}`);
+  }
 
 
   

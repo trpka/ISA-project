@@ -81,11 +81,8 @@ insert into registered_user (id, points, category, benefits) values (8, 1,'Redov
 insert into registered_user (id, points, category, benefits) values (9, 3,'Redovan', 'Redovan');
 insert into registered_user (id, points, category, benefits) values (14, 0,'Pretplacen', 'Gift programi');
 
--- Dodeljivanje Centra Za Registrovanog Korisnika
---insert into reg_user_blood_center(r_user_id, blood_center_id) values(2,2);
---insert into reg_user_blood_center(r_user_id, blood_center_id) values(2,3);
 
---insert  into reg_user_blood_center(r_user_id, blood_center_id) values(2, 1);
+
 
 
 
@@ -99,6 +96,28 @@ insert into stuff (id, blood_center_id, is_first_login) values (11, 2, false);
 insert into calendar (id) values (1);
 insert into calendar (id) values (2);
 insert into calendar (id) values (3);
+
+-- Dodeljivanje Centra Za Registrovanog Korisnika
+insert into registered_user_blood_center(registered_user_id, blood_center_id) values(2,3);
+insert into registered_user_blood_center(registered_user_id, blood_center_id) values(2,2);
+
+insert into registered_user_blood_center(registered_user_id, blood_center_id) values(7,1);
+insert into registered_user_blood_center(registered_user_id, blood_center_id) values(7,2);
+insert into registered_user_blood_center(registered_user_id, blood_center_id) values(7,3);
+insert into registered_user_blood_center(registered_user_id, blood_center_id) values(7,4);
+
+insert into registered_user_blood_center(registered_user_id, blood_center_id) values(9,1);
+insert into registered_user_blood_center(registered_user_id, blood_center_id) values(9,2);
+insert into registered_user_blood_center(registered_user_id, blood_center_id) values(9,3);
+insert into registered_user_blood_center(registered_user_id, blood_center_id) values(9,4);
+
+insert into registered_user_blood_center(registered_user_id, blood_center_id) values(14,1);
+insert into registered_user_blood_center(registered_user_id, blood_center_id) values(14,2);
+insert into registered_user_blood_center(registered_user_id, blood_center_id) values(14,3);
+insert into registered_user_blood_center(registered_user_id, blood_center_id) values(14,4);
+
+
+
 
 --Survey za Andjelu
 insert into survey (id, p1, p2, p3, p4, p5, p6, p7, p8 ,registered_user_id)
@@ -194,3 +213,9 @@ insert into donation_terms (id, date, duration, free_term, is_registered_user_co
 values (45, '2018-02-14 09:30:00', 20, true, false, '2023-02-17 07:00:00','2023-02-17 07:20:00', 10,3);
 insert into donation_terms (id, date, duration, free_term, is_registered_user_come, reservation_start, reservation_end, profile_center_id,calendar_id)
 values (46, '2018-02-14 09:30:00', 30, true, false, '2023-02-17 07:00:00','2023-02-17 07:30:00', 10,1);
+
+
+
+
+insert into registered_user_surveys(registered_user_id, surveys_id)
+values(14, 2)

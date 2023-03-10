@@ -14,6 +14,11 @@ public interface RegisteredUserRepository extends JpaRepository<RegisteredUser, 
 {
     List<RegisteredUser> findByFirstName(String name);
     List<RegisteredUser> findByLastName(String lastName);
+
+    List<RegisteredUser> findByOrderByFirstName();
+    List<RegisteredUser> findByOrderByLastName();
+    List<RegisteredUser> findByOrderById();
+
 }
 
 

@@ -61,16 +61,7 @@ getAllTermsByCentreAndTerm(id:number,term:string):Observable<DonationTerms[]>
   return this.http.post<DonationTerms[]>(`${this.url3}/${id}`, term);
 }
 
-//OVO MENJAJ
-/*getAllScheduledTermsByCentre(bloodCenterRegisteredUser:BloodCenterRegisteredUser):Observable<DonationTerms[]>
-{
-  return this.http.get<DonationTerms[]> (`${this.url4}/${bloodCenterRegisteredUser}`)
-}*/
 
-/*getAllScheduledTermsByCentre(bloodCenterRegisteredUser:any):Observable<DonationTerms[]>{
-  const params:HttpParams=new HttpParams().append('bloodCenterRegisteredUser',bloodCenterRegisteredUser);
-  return this.http.get<DonationTerms[]>(this.url4, {params});
-}*/
 
 getAllScheduledTermsByCentre(bloodCenterId:number,registeredUserId:number):Observable<DonationTerms[]>{
 
