@@ -5,7 +5,7 @@ import { Stuff } from "./stuff";
 import { Survey } from "./survey";
 
 
-interface DefinedDonationTermsInterface{
+interface AddFastDonationTermsInterface{
     date:string;
     reservationStart:string;
     reservationEnd:string;
@@ -15,10 +15,11 @@ interface DefinedDonationTermsInterface{
     calendar: Calendar;
     bloodCenter: BloodCenter;
     survey:Survey;
+    stuff: Stuff;
     
 }
 
-export class DefinedDonationTerms implements DefinedDonationTermsInterface{
+export class AddFastDonationTerms implements AddFastDonationTermsInterface{
     date:string;
     reservationStart:string;
     reservationEnd:string;
@@ -28,9 +29,10 @@ export class DefinedDonationTerms implements DefinedDonationTermsInterface{
     calendar:Calendar;
     bloodCenter: BloodCenter;
     survey:Survey;
+    stuff: Stuff;
     
 
-    constructor(obj:DefinedDonationTermsInterface){
+    constructor(obj:AddFastDonationTermsInterface){
         this.date=obj.date;
         this.reservationStart=obj.reservationStart;
         this.reservationEnd=obj.reservationEnd;
@@ -40,6 +42,7 @@ export class DefinedDonationTerms implements DefinedDonationTermsInterface{
         this.calendar=obj.calendar;
         this.bloodCenter=obj.bloodCenter;
         this.survey=obj.survey;
+        this.stuff = obj.stuff;
         
     } 
 } 

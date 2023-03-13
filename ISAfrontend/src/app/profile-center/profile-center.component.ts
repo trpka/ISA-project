@@ -58,6 +58,11 @@ export class ProfileCenterComponent implements OnInit
     .subscribe(res => this.stuff = res)
   }
 
+  createFastReservation()
+  {
+      location.pathname = ('add_fast_reservation');
+  }
+
  
 
 }

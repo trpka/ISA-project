@@ -31,10 +31,8 @@ public class StuffService
 
     public List<Stuff> findAll() {return  this.stuffRepository.findAll();}
 
-    /*public Optional<Stuff> findById(Long id)
-    {
-        return  this.stuffRepository.findById(id);
-    }*/
+
+
 
 
     public Stuff findById(Long id)
