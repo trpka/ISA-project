@@ -11,6 +11,7 @@ import { StuffService } from '../service/stuff.service';
 import { SurveyService } from '../service/survey.service';
 import { DefinedDonationTerms } from '../model/definedDonationTerms';
 import { Calendar } from '../model/calendar';
+import { Stuff } from '../model/stuff';
 
 @Component({
   selector: 'app-stuff-survey',
@@ -21,14 +22,16 @@ export class StuffSurveyComponent implements OnInit {
 
   stuffSurvey: StuffSurvey;
   registeredUser: RegisteredUser;
+  stuff: Stuff;
   bloodCenter: BloodCenter;
   donationTerms: DonationTerms;
   userId: number;
   terms_id: number;
+  stuff_id: number;
   mustFill = false;
   checkGender1 = false;
   id: number;
-  p1: string;
+ 
 
 
   pickCalendar: Calendar = new Calendar({
@@ -142,6 +145,46 @@ export class StuffSurveyComponent implements OnInit {
               private stuffService: StuffService, private donationTermService:DonationTermsService,
                private router: Router, private route: ActivatedRoute) 
   {
+
+    this.stuff = new Stuff
+      (
+        {
+          id: 0,
+          firstName:"",
+          lastName: "",
+          email: "",
+          username:"",
+          password:"",
+          mobile:"",
+          adress:"",
+          city:"",
+          state:"",
+          //jmbg:"",
+          //sex:"",
+          profession:"",
+          organizationInformation:"",
+          enabled:false,
+          role:"Stuff",
+          //authorities : [],
+          firstLogin: true,
+          bloodCenter : new BloodCenter({
+            id:1,
+            centerName: "",
+            address:  "",
+            city:  "",
+            startWork:  "",
+            endWork:  "",
+            description: "",
+            averageGradeCentre: 0,
+            bloodA: 0,
+            bloodB:  0,
+            bloodAB: 0,
+            bloodO: 0,
+            //freeAppointments:DonationTerms[];
+            listOfStuffs: []
+            })
+        }
+      );
     
 
         this.stuffSurvey = new StuffSurvey
@@ -219,15 +262,29 @@ export class StuffSurveyComponent implements OnInit {
 
             extra_note: "",
             reason_ejection: "",
-            arm: "" 
+            arm: "" ,
+            donation_type: "",
+            dedication_type: "",
+            heart_and_lungs: "",
+            hemoglobin: ""
         });
         
   }
 
   ngOnInit(): void 
   {
+    this.findStuffByID()
     this.findDonationTerm()
   }
+
+  findStuffByID()
+  {
+    this.stuff_id = Number(sessionStorage.getItem('id'));
+    this.stuffService.getStuffById(this.stuff_id)
+    .subscribe(res => this.stuff = res);
+  }
+
+  
 
   findDonationTerm()
   {

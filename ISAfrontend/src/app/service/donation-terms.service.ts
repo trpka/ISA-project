@@ -8,6 +8,7 @@ import { ScheduleDonationTerm } from '../model/ScheduleDonationTerm';
 import { ReservationConditions } from '../model/reservationConditions';
 import { Survey } from '../model/survey';
 import { ScheduleDonationTerm1 } from '../model/ScheduleDonationTerm1';
+import { AddFastDonationTerms } from '../model/fastTerms';
 
 
 @Injectable
@@ -26,7 +27,8 @@ export class DonationTermsService
   url2 = "http://localhost:8081/api/cancel-term";
   url3= "http://localhost:8081/api/findAvaliableTerms/"
   url4 = "http://localhost:8081/api/schedule-new-term";
-  url5="http://localhost:8081/api/create-new-term"
+  url5="http://localhost:8081/api/create-new-term";
+  url6A = "http://localhost:8081/api/addFastTerm";
 
   data: Survey;
   
@@ -54,6 +56,18 @@ export class DonationTermsService
     console.log('marko',donationTerm);
     return this.http.put<DefinedDonationTerms>(this.url+'/addTerm', donationTerm);
   }
+
+  AddFastTerm(donationTerm: AddFastDonationTerms):Observable<AddFastDonationTerms>
+  {
+    console.log('marko',donationTerm);
+    return this.http.put<AddFastDonationTerms>(this.url+'/addFastTerm', donationTerm);
+  }
+
+ /* AddFastTerm(donationTerm: DefinedDonationTerms):Observable<DefinedDonationTerms>
+  {
+    console.log('marko',donationTerm);
+    return this.http.put<DefinedDonationTerms>(this.url+'/addFastTerm', donationTerm);
+  }*/
 
  
 
@@ -123,5 +137,7 @@ export class DonationTermsService
 
     return this.http.put<DonationTerms>(this.url+"/edit", donationTerms);
   }
+
+
 
 }

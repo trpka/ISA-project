@@ -52,6 +52,7 @@ import { PopUpRegisteredUserHaveThreePenaltiesComponent } from './pop-up-registe
 import { PopUpDisableCancelReservationComponent } from './pop-up-disable-cancel-reservation/pop-up-disable-cancel-reservation.component';
 import { PopUpSuccessfullyMakeAppointmentComponent } from './pop-up-successfully-make-appointment/pop-up-successfully-make-appointment.component';
 import { PopUpCancelReservationComponent } from './pop-up-cancel-reservation/pop-up-cancel-reservation.component';
+import { AddFastReservationComponent } from './add-fast-reservation/add-fast-reservation.component';
 
 
 
@@ -104,7 +105,8 @@ import { PopUpCancelReservationComponent } from './pop-up-cancel-reservation/pop
     PopUpRegisteredUserHaveThreePenaltiesComponent,
     PopUpDisableCancelReservationComponent,
     PopUpSuccessfullyMakeAppointmentComponent,
-    PopUpCancelReservationComponent
+    PopUpCancelReservationComponent,
+    AddFastReservationComponent
 
 
   ],

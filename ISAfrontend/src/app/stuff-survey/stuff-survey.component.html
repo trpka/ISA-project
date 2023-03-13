@@ -173,6 +173,9 @@
 
   <div>
     <p style="text-align:center"><font size="4"   style="color:black;">FILLED IN BY MEDICAL STUFF</font></p>
+    <p style="text-align:center"><font size="4"   style="color:black;">Filled By: {{stuff.firstName + " " + stuff.lastName }}</font></p>
+
+
 </div>
 
 <div class="row">
@@ -202,6 +205,66 @@
 </div>
 </div>
 
+<div class="row">
+
+  <div *ngIf="mustFill"><p style="text-align:center"><label><font size="5" style="color:brown;">You must answer all questions!!</font></label></p> </div>
+  <div class="col-sm">
+      <p> Is your donation purposed? </p>
+  </div>
+  <div class="col-sm">
+      <mat-radio-group aria-label="Select an option" style="margin-right: 450px;" [(ngModel)]="stuffSurvey.dedication_type">
+          <mat-radio-button value="YES">YES </mat-radio-button>
+          <mat-radio-button value="NO">NO </mat-radio-button>
+         
+        </mat-radio-group>
+  </div>
+
+  <div class="col-sm">
+    <p> What is type of donation?</p>
+</div>
+<div class="col-sm" >
+    <mat-radio-group aria-label="Select an option" style="margin-right: 450px;" [(ngModel)]="stuffSurvey.donation_type">
+        <mat-radio-button value="Standard">Standard</mat-radio-button>
+        <mat-radio-button value="Aphoresis">Aphoresis</mat-radio-button>
+        
+      </mat-radio-group>
+</div>
+</div>
+
+
+<div class="row">
+  <div *ngIf="mustFill"><p style="text-align:center"><label><font size="5" style="color:brown;">You have to fill all fields!!</font></label></p> </div>
+  <div class="col-sm">
+      <p> Checked Hearts and Lungs: </p>
+  
+  
+      <mat-radio-group aria-label="Select an option" style="margin-right: 450px;" [(ngModel)]="stuffSurvey.heart_and_lungs">
+          <mat-radio-button value="YES">YES </mat-radio-button>
+          <mat-radio-button value="NO">NO </mat-radio-button>
+       
+        </mat-radio-group>
+      </div>
+
+      <div class="col-sm">
+        <p>Level of Copper-Sulfat[BaSO4]</p>
+    
+    
+        <mat-radio-group aria-label="Select an option" style="margin-right: 450px;" [(ngModel)]="stuffSurvey.hemoglobin">
+            <mat-radio-button value="Normal">NORMAL </mat-radio-button>
+            <mat-radio-button value="Short">SHORT </mat-radio-button>
+            <mat-radio-button value="High">HIGH </mat-radio-button>
+         
+          </mat-radio-group>
+        </div>
+
+      
+
+    </div>
+
+
+
+
+
 <div class="form-outline mb-4">
   <label class="form-label" for="reason_ejection">Reason For Ejection</label>
   <input id="reason_ejection"  name="reason_ejection" type="text"  class="form-control"   [(ngModel)]="stuffSurvey.reason_ejection" />
@@ -213,9 +276,9 @@
 </div>
 
 <div class="row">
-  <div *ngIf="mustFill"><p style="text-align:center"><label><font size="5" style="color:brown;">You must answer all questions!!</font></label></p> </div>
+  <div *ngIf="mustFill"><p style="text-align:center"><label><font size="5" style="color:brown;">You have to fill all fields!!</font></label></p> </div>
   <div class="col-sm">
-      <p> Right Or Left Arm</p>
+      <p> Right Or Left Arm: </p>
   
   
       <mat-radio-group aria-label="Select an option" style="margin-right: 450px;" [(ngModel)]="stuffSurvey.arm">

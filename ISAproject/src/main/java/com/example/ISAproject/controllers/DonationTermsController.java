@@ -33,16 +33,7 @@ public class DonationTermsController
         return new ResponseEntity<>(terms, HttpStatus.OK);
     }
 
-    //Prikazivanje Slobodnih  i Zauzetih termina
-   /* @RequestMapping(value="api/term", method = RequestMethod.GET,
-            params = "isFree",
-            produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
 
-    public ResponseEntity<List<DonationTerms>> findFreeTerms(@RequestParam Boolean isFree)
-    {
-        List<DonationTerms> donationTerms = this.donationTermsService.findFreeTerms(isFree);
-        return new ResponseEntity<>(donationTerms,HttpStatus.OK);
-    }*/
 
     @RequestMapping(value="api/terms/{isFree}",method = RequestMethod.GET,produces= {
             MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
@@ -56,13 +47,33 @@ public class DonationTermsController
 
     @RequestMapping(value="api/terms/addTerm",method = RequestMethod.PUT,produces = {
             MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-    @PreAuthorize("hasAnyRole('REGISTERED_USER','STUFF')")
+   // @PreAuthorize("hasAnyRole('REGISTERED_USER','STUFF')")
     public ResponseEntity<DefinedTermDTO>addDonationTerm(@RequestBody DefinedTermDTO dto)
     {
     	DefinedTermDTO definedTermDTO = new DefinedTermDTO();
     	DonationTerms donationTerms = new DonationTerms();
         try {
         	definedTermDTO = this.donationTermsService.addDonationTerm(dto);
+        } catch (PessimisticLockException e)
+        {
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        } catch (DateTimeException e)
+        {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return new ResponseEntity<>(definedTermDTO,HttpStatus.OK);
+    }
+
+    //Aleksa kreiranje brzih rezervacija
+    @RequestMapping(value="api/terms/addFastTerm",method = RequestMethod.PUT,produces = {
+            MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+
+    public ResponseEntity<DefinedTermDTO>addFastReservation(@RequestBody DefinedTermDTO dto)
+    {
+        DefinedTermDTO definedTermDTO = new DefinedTermDTO();
+        DonationTerms donationTerms = new DonationTerms();
+        try {
+            definedTermDTO = this.donationTermsService.createFastReservation(dto);
         } catch (PessimisticLockException e)
         {
             return new ResponseEntity<>(HttpStatus.CONFLICT);
@@ -101,15 +112,7 @@ public class DonationTermsController
     public ResponseEntity<DonationTerms> getById(@PathVariable Long id)
     {
         DonationTerms donationTerms =this.donationTermsService.findByTermsId(id);
-        if(donationTerms.isRegisteredUserCome() == false)
-        {
-            return  null;
-        }
-        else
-        {
-            return new ResponseEntity<>(donationTerms,HttpStatus.OK);
-
-        }
+        return new ResponseEntity<>(donationTerms,HttpStatus.OK);
     }
 
 

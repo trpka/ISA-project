@@ -34,6 +34,7 @@ import { NewProfileCenterComponent } from './new-profile-center/new-profile-cent
 import { HistoryTermsComponent } from './history-terms/history-terms.component';
 import { FutureTermsComponent } from './future-terms/future-terms.component';
 import { Questionnaire2Component } from './questionnaire2/questionnaire2.component';
+import { AddFastReservationComponent } from './add-fast-reservation/add-fast-reservation.component';
 
 const routes: Routes = [
   {path: '', component:HomeComponent},
@@ -64,6 +65,7 @@ const routes: Routes = [
 
 
   {path: 'stuff_survey/:id', component: StuffSurveyComponent},
+  {path: 'add_fast_reservation', component: AddFastReservationComponent},
 
 
   {path: 'scheduled-appointments/:id', component:  ScheduledAppointmentsComponent},

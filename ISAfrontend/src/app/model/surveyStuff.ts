@@ -18,6 +18,12 @@ interface SurveyStuffInterface {
     reason_ejection: string;
     arm: string;
 
+    donation_type: string;
+    dedication_type: string;
+
+    heart_and_lungs: string;
+    hemoglobin: string;
+
 }
 
 export class StuffSurvey implements SurveyStuffInterface
@@ -34,6 +40,12 @@ export class StuffSurvey implements SurveyStuffInterface
     reason_ejection: string;
     arm: string;
 
+    donation_type: string;
+    dedication_type: string;
+
+    heart_and_lungs: string;
+    hemoglobin: string;
+
     constructor(obj:SurveyStuffInterface)
     {
    
@@ -49,6 +61,12 @@ export class StuffSurvey implements SurveyStuffInterface
     this.extra_note = obj.extra_note;
     this.reason_ejection = obj.reason_ejection;
     this.arm = obj.arm;
+
+    this.donation_type = obj.donation_type;
+    this.dedication_type = obj.dedication_type;
+
+    this.heart_and_lungs = obj.heart_and_lungs;
+    this.hemoglobin = obj.hemoglobin;
     
 
     }

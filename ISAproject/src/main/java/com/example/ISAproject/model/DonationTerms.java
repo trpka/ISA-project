@@ -146,20 +146,23 @@ public class DonationTerms {
 	}
 
 	//Aleksin Konstruktor-- Za kreiranje Termina koji se brzo rezervisu
+
+
 	public DonationTerms(Long id, LocalDateTime date, int duration, boolean freeTerm, LocalDateTime reservationStart,
-						 LocalDateTime reservationEnd, boolean isRegisteredUserCome, RegisteredUser registeredUser,
-						 BloodCenter bloodCenter, Calendar calendar, Stuff stuff) {
+						 LocalDateTime reservationEnd, RegisteredUser registeredUser, BloodCenter bloodCenter, Calendar calendar,
+						 Stuff stuff, Survey survey)
+	{
 		Id = id;
 		this.date = date;
 		this.duration = duration;
 		this.freeTerm = freeTerm;
 		this.reservationStart = reservationStart;
 		this.reservationEnd = reservationEnd;
-		this.isRegisteredUserCome = isRegisteredUserCome;
 		this.registeredUser = registeredUser;
 		this.bloodCenter = bloodCenter;
 		this.calendar = calendar;
 		this.stuff = stuff;
+		this.survey = survey;
 	}
 
 	public DonationTerms(DonationTerms donationTerms) {
