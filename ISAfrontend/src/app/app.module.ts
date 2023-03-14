@@ -53,6 +53,7 @@ import { PopUpDisableCancelReservationComponent } from './pop-up-disable-cancel-
 import { PopUpSuccessfullyMakeAppointmentComponent } from './pop-up-successfully-make-appointment/pop-up-successfully-make-appointment.component';
 import { PopUpCancelReservationComponent } from './pop-up-cancel-reservation/pop-up-cancel-reservation.component';
 import { AddFastReservationComponent } from './add-fast-reservation/add-fast-reservation.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 
 
@@ -106,7 +107,8 @@ import { AddFastReservationComponent } from './add-fast-reservation/add-fast-res
     PopUpDisableCancelReservationComponent,
     PopUpSuccessfullyMakeAppointmentComponent,
     PopUpCancelReservationComponent,
-    AddFastReservationComponent
+    AddFastReservationComponent,
+    ChangePasswordComponent
 
 
   ],
@@ -120,7 +122,8 @@ import { AddFastReservationComponent } from './add-fast-reservation/add-fast-res
     MatIconModule,
     MatButtonModule,
     MatRadioModule,
-    MatDialogModule
+    MatDialogModule,
+    ReactiveFormsModule
   ],
   providers: [
     DatePipe,

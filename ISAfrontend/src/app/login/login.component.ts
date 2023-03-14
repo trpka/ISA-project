@@ -1,7 +1,9 @@
 import { Component,EventEmitter, OnInit ,  Output} from '@angular/core';
 import { Router } from '@angular/router';
+import { Stuff } from '../model/stuff';
 import { User } from '../model/user';
 import { AuthenticationService } from '../service/authentication.service';
+import { StuffService } from '../service/stuff.service';
 
 @Component({
   selector: 'app-login',
@@ -17,10 +19,11 @@ export class LoginComponent implements OnInit {
   error:string='';
   idLoginUser:any;
   loggedUser: Boolean;
+  stuff: Stuff;
   @Output()
   LogIn: EventEmitter<void> = new EventEmitter();
   constructor(private router: Router,
-    private loginservice: AuthenticationService) { 
+    private loginservice: AuthenticationService, private stuffService: StuffService) { 
 
   }
 
@@ -37,7 +40,29 @@ export class LoginComponent implements OnInit {
           console.log(data)
           this.LogIn.next();
           this.idLoginUser = sessionStorage.getItem('id');
-          this.router.navigate(['']);
+       //   this.router.navigate(['']);
+          this.findUserById();
+
+         /* if(this.idLoginUser != 5)
+          {
+            this.router.navigate(['']);
+          }
+          else
+          {
+            this.router.navigate(['change_password']);
+          }*/
+
+          if(this.newUser.role == 'RegisteredUser')
+          {
+            this.router.navigate(['']);
+          }
+          else if(this.newUser.role == 'Stuff')
+          {
+            this.router.navigate(['change_password']);
+          }
+
+          
+          
           this.invalidLogin = false
         },
         (error: { message: string | null; }) => {
@@ -46,6 +71,26 @@ export class LoginComponent implements OnInit {
 
         })
     }
+  }
+
+
+  findStuffById()
+  {
+    this.idLoginUser = Number(sessionStorage.getItem('id'));
+    
+    this.stuffService.getStuffById(this.idLoginUser)
+    .subscribe(res => this.stuff = res);
+  }
+
+  findUserById()
+  {
+    this.idLoginUser = Number(sessionStorage.getItem('id'));
+    this.stuffService.getAllUserById(this.idLoginUser)
+    .subscribe(res => this.newUser = res);
+
+    
+   
+   
   }
 
 }

@@ -6,6 +6,7 @@ import { BloodCenter } from '../model/bloodCenter';
 import { DonationTerms } from '../model/donationTerms';
 import { RegisteredUser } from '../model/registeredUser';
 import { Stuff } from '../model/stuff';
+import { User } from '../model/user';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,9 @@ export class StuffService
    url7A = "http://localhost:8081/api/users/sort-by-name";
    url8A = "http://localhost:8081/api/users/sort-by-lastname";
    url9A = "http://localhost:8081/api/users/sort-by-id";
+   url10A = "http://localhost:8081/api/user";
+
+   
    
 
   constructor(private http:HttpClient) { }
@@ -89,6 +93,18 @@ export class StuffService
   getAllUsersSortById(id:number):Observable<RegisteredUser[]>
   {
     return this.http.get<RegisteredUser[]>(`${this.url9A}/${id}`);
+  }
+
+  //Uzimanje Juzera po ID-ju
+  getAllUserById(id: number): Observable<User>
+  {
+    return this.http.get<User>(`${this.url10A}/${id}`);
+  }
+
+  //Izmena lozinke za admina kad se prvi put loguje
+  changePassword(id: number, newPassword: string): Observable<Stuff> 
+  {
+    return this.http.post<Stuff>(`${this.url}/` + `changePassword` + `/${id}`, { newPassword });
   }
 
 

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from "rxjs/operators";
+import { Stuff } from '../model/stuff';
 
 @Injectable({
   providedIn: 'root'
@@ -44,6 +45,13 @@ export class AuthenticationService {
 
     console.log(!(username === null));
     return !(username === null);
+  }
+
+  isRoleStuff()
+  {
+    let role = sessionStorage.getItem("role");
+    console.log(!(role === "Stuff"));
+    return !(role === "Stuff");
   }
 
    

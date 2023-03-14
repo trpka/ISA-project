@@ -1,5 +1,6 @@
 package com.example.ISAproject.service;
 
+import com.example.ISAproject.dto.PasswordChangeDTO;
 import com.example.ISAproject.model.BloodCenter;
 import com.example.ISAproject.model.DonationTerms;
 import com.example.ISAproject.model.RegisteredUser;
@@ -8,6 +9,7 @@ import com.example.ISAproject.repository.DonationTermsRepository;
 import com.example.ISAproject.repository.RegisteredUserRepository;
 import com.example.ISAproject.repository.StuffRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -28,6 +30,12 @@ public class StuffService
 
     @Autowired
     private  DonationTermsService donationTermsService;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private StuffService stuffService;
 
     public List<Stuff> findAll() {return  this.stuffRepository.findAll();}
 
@@ -70,7 +78,6 @@ public class StuffService
         stuff.setFirstName(s.getFirstName());
         stuff.setLastName(s.getLastName());
         stuff.setUsername(s.getUsername());
-        stuff.setPassword(s.getPassword());
         stuff.setEmail(s.getEmail());
         stuff.setState(s.getState());
         stuff.setCity(s.getCity());
@@ -79,10 +86,34 @@ public class StuffService
         stuff.setProfession(s.getProfession());
         stuff.setOrganizationInformation(s.getOrganizationInformation());
 
+        String newPasswordHash=passwordEncoder.encode(s.getPassword());
+        stuff.setPassword(newPasswordHash);
+
+
+
         return this.stuffRepository.save(stuff);
 
 
     }
+
+    //Izmena lozinke
+    public Stuff changePassword(Long id, PasswordChangeDTO dto)
+    {
+        //Stuff stuff = this.stuffRepository.getById(id);
+
+        Stuff stuff = this.stuffService.findById(id);
+
+        String newPasswordHash = passwordEncoder.encode(dto.getNewPassword());
+        stuff.setPassword(newPasswordHash);
+        stuff.setFirstLogin(false);
+        stuffRepository.save(stuff);
+        return stuff;
+    }
+
+
+
+
+
 
     public Stuff save(Stuff newStuff) {
         return this.stuffRepository.save(newStuff);
