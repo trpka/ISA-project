@@ -2,6 +2,7 @@ package com.example.ISAproject.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import com.example.ISAproject.dto.StuffDTO;
 import com.example.ISAproject.model.*;
@@ -39,6 +40,20 @@ public class UserService {
 
 	public User findById(Long id) throws AccessDeniedException {
 		return userRepository.findById(id).orElseGet(null);
+	}
+
+	//Metoda koja ce znaciti za logovanje juzera
+	public User findById1(Long id)
+	{
+		Optional<User> opt=this.userRepository.findById(id);
+		if(!opt.isPresent())
+		{
+			return null;
+		}
+
+		System.out.println("POZVAO SI f-FJU DA PRONADJES USERA");
+		return opt.get();
+
 	}
 
 	public List<UserDTO> findAll() throws AccessDeniedException {
@@ -133,7 +148,10 @@ public class UserService {
 		if (u.getRole().equalsIgnoreCase("Stuff")) {
 			authorities = authorityService.findByName("ROLE_STUFF");
 			u.setAuthorities(authorities);
-			Stuff stuff=new Stuff(u.getUsername(),u.getPassword(),u.getEmail(),u.getFirstName(),u.getLastName(),u.getMobile(),u.getAdress(),u.getCity(),u.getState(),u.getJmbg(),u.getSex(),u.getProfession(),u.getOrganizationInformation(),u.isEnabled(),u.getRole(),authorities, userRequest.isFirstLogin(), userRequest.getBloodCenter());
+			Stuff stuff=new Stuff(u.getUsername(),u.getPassword(),u.getEmail(),u.getFirstName(),u.getLastName(),
+                    u.getMobile(),u.getAdress(),u.getCity(),u.getState(),u.getJmbg(),u.getSex(),u.getProfession(),
+                    u.getOrganizationInformation(),u.isEnabled(),u.getRole(),authorities, userRequest.isFirstLogin(),
+                    userRequest.getBloodCenter());
 			newStuff=this.stuffService.save(stuff);
 			u.setId(newStuff.getId());
 		}
@@ -142,5 +160,7 @@ public class UserService {
 		System.out.println("id iz userService"+ u.getId());
 		return u;
 	}
+
+
 
 }

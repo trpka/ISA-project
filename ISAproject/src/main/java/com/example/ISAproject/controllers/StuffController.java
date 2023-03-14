@@ -1,11 +1,10 @@
 package com.example.ISAproject.controllers;
 
 
-import com.example.ISAproject.model.BloodCenter;
-import com.example.ISAproject.model.DonationTerms;
-import com.example.ISAproject.model.RegisteredUser;
-import com.example.ISAproject.model.Stuff;
+import com.example.ISAproject.dto.PasswordChangeDTO;
+import com.example.ISAproject.model.*;
 import com.example.ISAproject.service.StuffService;
+import com.example.ISAproject.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -22,6 +21,8 @@ public class StuffController
 {
     @Autowired
     private StuffService stuffService;
+    @Autowired
+    private UserService userService;
 
     @RequestMapping(value = "api/stuffs", method = RequestMethod.GET, produces =
             { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
@@ -69,6 +70,28 @@ public class StuffController
     {
         DonationTerms donationTerms = this.stuffService.UpdateExam(dt);
         return  new ResponseEntity<>(donationTerms, HttpStatus.OK);
+    }
+
+    //Izvlacenje Juzera na osnovu ID-a
+    @RequestMapping(value="api/user/{id}",method = RequestMethod.GET,produces= {
+            MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    public ResponseEntity<User> getUserById(@PathVariable Long id)
+    {
+        User user = this.userService.findById1(id);
+        return new ResponseEntity<>(user,HttpStatus.OK);
+    }
+
+    //Izmena Lozinke za Admina
+    @RequestMapping(value="api/stuff/changePassword/{id}",method = RequestMethod.POST,consumes=MediaType.APPLICATION_JSON_VALUE)
+
+    public ResponseEntity<Stuff> changePassword(@RequestBody PasswordChangeDTO dto, @PathVariable Long id){
+        Stuff stuff = stuffService.changePassword(id, dto);
+        if(stuff==null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+
+        return new ResponseEntity<>(stuff,HttpStatus.OK);
     }
 
 

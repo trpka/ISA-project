@@ -135,6 +135,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 					                .antMatchers("/api/users/sort-by-lastname/{id}").permitAll()
 					                .antMatchers("/api/users/sort-by-id/{id}").permitAll()
 					                .antMatchers("/api/terms/addFastTerm").permitAll()
+                                    .antMatchers("/api/user/{id}").permitAll()
+					                .antMatchers("/api/stuff/changePassword/{id}").permitAll()
+
+
+
 
 
 

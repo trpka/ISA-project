@@ -6,7 +6,7 @@ insert into user (id,role, username, password, first_name, last_name, email, mob
 values (1,'Admin','truman@gmail.com', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra', 'Truman', 'Willis', 'truman@gmail.com', '305-555-0163',true,'1983-07-12 21:30:55.888');
 
 insert into user (id,role, username, password, first_name, last_name, email, mobile,enabled,last_password_reset_date,adress, jmbg, sex,city,state, organization_information, profession)
-values (2,'RegisteredUser','isaisic587+1@gmail.com', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra', 'Raymond', 'Weaving', 'isaisic587+1@gmail.com', '305-555-0720',true,'1983-07-12 21:30:55.888', 'Ustanicka 6', '1528846975821', 'Male','Boston', ' Massachusetts', 'IMDB','Engineer');
+values (2,'RegisteredUser','isaisic587+1@gmail.com', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra', 'Raymond', 'Weaving', 'isaisic587+1@gmail.com', '305-555-0720',false,'1983-07-12 21:30:55.888', 'Ustanicka 6', '1528846975821', 'Male','Boston', ' Massachusetts', 'IMDB','Engineer');
 
 insert into user (id,role, username, password, first_name, last_name, email, mobile,enabled,last_password_reset_date, adress, jmbg, sex,city,state, organization_information, profession)
 values (9,'RegisteredUser','isaisic587+4@gmail.com', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra', 'Alen', 'Weaving', 'isaisic587+4@gmail.com', '305-555-0720',true,'1983-07-12 21:30:55.888', 'Futoska 3', '1528846975827', 'Male','Novi Sad', ' Srbija', 'Mocart','Engineer');
@@ -88,10 +88,10 @@ insert into registered_user (id, points, category, benefits) values (14, 0,'Pret
 
 
 --Administratori centra i medicinsko osoblje
-insert into stuff (id, blood_center_id, is_first_login) values (5, 1, false);
-insert into stuff (id, blood_center_id, is_first_login) values (6, 2, false);
-insert into stuff (id, blood_center_id, is_first_login) values (10, 1, false);
-insert into stuff (id, blood_center_id, is_first_login) values (11, 2, false);
+insert into stuff (id, blood_center_id, is_first_login) values (5, 1, true);
+insert into stuff (id, blood_center_id, is_first_login) values (6, 2, true);
+insert into stuff (id, blood_center_id, is_first_login) values (10, 1, true);
+insert into stuff (id, blood_center_id, is_first_login) values (11, 2, true);
 
 insert into calendar (id) values (1);
 insert into calendar (id) values (2);

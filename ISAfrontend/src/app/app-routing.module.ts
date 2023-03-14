@@ -35,6 +35,7 @@ import { HistoryTermsComponent } from './history-terms/history-terms.component';
 import { FutureTermsComponent } from './future-terms/future-terms.component';
 import { Questionnaire2Component } from './questionnaire2/questionnaire2.component';
 import { AddFastReservationComponent } from './add-fast-reservation/add-fast-reservation.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 const routes: Routes = [
   {path: '', component:HomeComponent},
@@ -76,7 +77,8 @@ const routes: Routes = [
   {path: 'history-terms', component: HistoryTermsComponent},
   {path: 'future-terms', component: FutureTermsComponent},
 
-  {path: 'questionnaire2', component: Questionnaire2Component}
+  {path: 'questionnaire2', component: Questionnaire2Component},
+  {path: 'change_password', component: ChangePasswordComponent}
 
 ];
 
