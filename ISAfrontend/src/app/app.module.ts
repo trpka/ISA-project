@@ -54,6 +54,7 @@ import { PopUpSuccessfullyMakeAppointmentComponent } from './pop-up-successfully
 import { PopUpCancelReservationComponent } from './pop-up-cancel-reservation/pop-up-cancel-reservation.component';
 import { AddFastReservationComponent } from './add-fast-reservation/add-fast-reservation.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { BloodCalendarComponent } from './blood-calendar/blood-calendar.component';
 
 
 
@@ -108,7 +109,8 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
     PopUpSuccessfullyMakeAppointmentComponent,
     PopUpCancelReservationComponent,
     AddFastReservationComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    BloodCalendarComponent
 
 
   ],

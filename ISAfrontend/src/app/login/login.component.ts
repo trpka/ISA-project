@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
           console.log(data)
           this.LogIn.next();
           this.idLoginUser = sessionStorage.getItem('id');
-       //   this.router.navigate(['']);
+          //this.router.navigate(['']);
           this.findUserById();
 
          /* if(this.idLoginUser != 5)
@@ -58,7 +58,16 @@ export class LoginComponent implements OnInit {
           }
           else if(this.newUser.role == 'Stuff')
           {
-            this.router.navigate(['change_password']);
+            this.findStuffById();
+
+            if(this.stuff.firstLogin == true)
+            {
+              this.router.navigate(['change_password']);
+            }
+            else
+            {
+              this.router.navigate(['/stuff_edit/' + this.stuff.id]);
+            }
           }
 
           
@@ -87,10 +96,6 @@ export class LoginComponent implements OnInit {
     this.idLoginUser = Number(sessionStorage.getItem('id'));
     this.stuffService.getAllUserById(this.idLoginUser)
     .subscribe(res => this.newUser = res);
-
-    
-   
-   
   }
 
 }

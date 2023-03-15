@@ -106,26 +106,8 @@ loginService: any;
    
   }
 
-  findUserById()
-  {
-    this.id = Number(sessionStorage.getItem('id'));
-    this.stuffService.getAllUserById(this.id)
-    .subscribe(res => this.user = res);
-   
-    this.checkUser();
-  }
+  
 
-  checkUser()
-  {
-    if(this.user.role == "RegisteredUser")
-    {
-      this.router.navigate(['search-center']);
-    }
-    else
-    {
-      this.router.navigate(['stuff_edit/' + this.id]);
-    }
-  }
 
   checkPassword()
   {
