@@ -36,6 +36,7 @@ import { FutureTermsComponent } from './future-terms/future-terms.component';
 import { Questionnaire2Component } from './questionnaire2/questionnaire2.component';
 import { AddFastReservationComponent } from './add-fast-reservation/add-fast-reservation.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { BloodCalendarComponent } from './blood-calendar/blood-calendar.component';
 
 const routes: Routes = [
   {path: '', component:HomeComponent},
@@ -78,7 +79,8 @@ const routes: Routes = [
   {path: 'future-terms', component: FutureTermsComponent},
 
   {path: 'questionnaire2', component: Questionnaire2Component},
-  {path: 'change_password', component: ChangePasswordComponent}
+  {path: 'change_password', component: ChangePasswordComponent},
+  {path: 'blood_calendar/:id', component: BloodCalendarComponent}
 
 ];
 

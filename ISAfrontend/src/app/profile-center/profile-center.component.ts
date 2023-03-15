@@ -63,6 +63,11 @@ export class ProfileCenterComponent implements OnInit
       location.pathname = ('add_fast_reservation');
   }
 
+  seeCalendar()
+  {
+    location.pathname = ('blood_calendar/' + this.id);
+  }
+
  
 
 }

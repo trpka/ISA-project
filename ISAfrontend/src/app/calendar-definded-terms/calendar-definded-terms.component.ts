@@ -42,6 +42,9 @@ export class CalendarDefindedTermsComponent implements OnInit {
 
   back()
   {
-    this.router.navigate(['create-term']);
+    //this.router.navigate(['create-term']);
+    this.router.navigate(['stuff_edit/' +this.id]);
   }
+
+
 }

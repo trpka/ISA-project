@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BloodCenter } from '../model/bloodCenter';
 import { Stuff } from '../model/stuff';
+import { Router } from '@angular/router';
 import { StuffService } from '../service/stuff.service';
 
 @Component({
@@ -21,7 +22,8 @@ export class StuffEditComponent implements OnInit
 
 
 
-  constructor(private route: ActivatedRoute, private stuffService: StuffService) { }
+  constructor(private route: ActivatedRoute, private router: Router,
+     private stuffService: StuffService) { }
 
   ngOnInit(): void 
   {
@@ -48,6 +50,24 @@ export class StuffEditComponent implements OnInit
     
     location.pathname = ('profile_center/' + this.stuff.bloodCenter.id);
 
+  }
+
+  //Svi registrovani korisnici
+  AllRegisteredUsers()
+  {
+    location.pathname = ('all_registered_users/');
+  }
+
+  //Brza Rezervacija
+  CreateFastReservation()
+  {
+    this.router.navigate(['add_fast_reservation']);
+  }
+
+  //Prikaz Kalendara
+  ShowCalendar()
+  {
+    this.router.navigate(['blood_calendar/' + this.stuff.bloodCenter.id]);
   }
 
 }
