@@ -177,8 +177,8 @@ values (6, '2022-12-1 8:35:00', 45, true, false, '2023-02-22 07:00:00','2023-02-
 insert into donation_terms (id, date, duration, free_term, is_registered_user_come, reservation_start, reservation_end, profile_center_id,calendar_id)
 values (7, '2022-12-1 8:36:00', 15, true, false, '2023-02-11 8:30:00','2023-02-11 8:45:00', 1,2);
 
-insert into donation_terms (id, date, duration, free_term, is_registered_user_come, reservation_start, reservation_end, profile_center_id,calendar_id)
-values (8, '2022-12-1 9:36:00', 15, true, false, '2023-02-10 11:30:00','2023-02-10 11:45:00', 1,2);
+insert into donation_terms (id, date, duration, free_term, is_registered_user_come, reservation_start, reservation_end, profile_center_id,calendar_id, registered_user_id, survey_id)
+values (8, '2022-12-1 9:36:00', 15, true, false, '2023-02-10 11:30:00','2023-02-10 11:45:00', 1,2, 7, 2);
 
 insert into donation_terms (id, date, duration, free_term, is_registered_user_come, reservation_start, reservation_end, profile_center_id,calendar_id,registered_user_id, survey_id)
 values (9, '2022-12-1 9:36:00', 15, false, false, '2023-01-29 07:00:00','2023-01-29 07:15:00', 1,2,2,4);
