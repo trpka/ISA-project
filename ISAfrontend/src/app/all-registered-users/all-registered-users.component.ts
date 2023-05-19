@@ -120,7 +120,7 @@ export class AllRegisteredUsersComponent implements OnInit
   sortById()
   {
     this.stuffService.getAllUsersSortById(this.stuff.bloodCenter.id)
-    .subscribe()
+    .subscribe(res => this.registeredUsers = res)
   }
 
 
