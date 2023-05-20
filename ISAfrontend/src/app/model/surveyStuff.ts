@@ -18,11 +18,12 @@ interface SurveyStuffInterface {
     reason_ejection: string;
     arm: string;
 
+    purposed_donation: string;
     donation_type: string;
-    dedication_type: string;
+    
 
-    heart_and_lungs: string;
-    hemoglobin: string;
+    baso4_level: string;
+    checked_heart_lunges: string;
 
 }
 
@@ -40,11 +41,12 @@ export class StuffSurvey implements SurveyStuffInterface
     reason_ejection: string;
     arm: string;
 
+    purposed_donation: string;
     donation_type: string;
-    dedication_type: string;
+    
 
-    heart_and_lungs: string;
-    hemoglobin: string;
+    baso4_level: string;
+    checked_heart_lunges: string;
 
     constructor(obj:SurveyStuffInterface)
     {
@@ -62,11 +64,11 @@ export class StuffSurvey implements SurveyStuffInterface
     this.reason_ejection = obj.reason_ejection;
     this.arm = obj.arm;
 
+    this.purposed_donation = obj.purposed_donation;
     this.donation_type = obj.donation_type;
-    this.dedication_type = obj.dedication_type;
-
-    this.heart_and_lungs = obj.heart_and_lungs;
-    this.hemoglobin = obj.hemoglobin;
+    
+    this.checked_heart_lunges = obj.checked_heart_lunges;
+    this.baso4_level = obj.baso4_level;
     
 
     }

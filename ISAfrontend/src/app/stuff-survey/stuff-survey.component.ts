@@ -263,10 +263,11 @@ export class StuffSurveyComponent implements OnInit {
             extra_note: "",
             reason_ejection: "",
             arm: "" ,
+            purposed_donation: "",
             donation_type: "",
-            dedication_type: "",
-            heart_and_lungs: "",
-            hemoglobin: ""
+            
+            checked_heart_lunges: "",
+            baso4_level: ""
         });
         
   }
@@ -275,6 +276,13 @@ export class StuffSurveyComponent implements OnInit {
   {
     this.findStuffByID()
     this.findDonationTerm()
+  }
+
+  //Da se upitnik ne prikaze ako korisnik nece doci na termin
+  checkUserComming()
+  {
+    this.findDonationTerm()
+
   }
 
   findStuffByID()
@@ -288,6 +296,7 @@ export class StuffSurveyComponent implements OnInit {
 
   findDonationTerm()
   {
+    
     //this.id = Number(sessionStorage.getItem('id'));
     this.id = this.route.snapshot.params['id'];
     this.donationTermService.getTermById(this.id)
@@ -297,7 +306,16 @@ export class StuffSurveyComponent implements OnInit {
         this.checkGender1 = true;
       }
       this.stuffSurvey.donationTerms = this.donationTerms;
+
+      if(this.donationTerms.registeredUserCome == false)
+    {
+      location.pathname = ('stuff_user_profile/'+ this.donationTerms.registeredUser.id);
+
+
+    }
     })
+
+    
 
 
   }

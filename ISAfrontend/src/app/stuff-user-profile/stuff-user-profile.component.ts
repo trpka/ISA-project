@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DonationTerms } from '../model/donationTerms';
 import { RegisteredUser } from '../model/registeredUser';
 import { Stuff } from '../model/stuff';
@@ -27,7 +27,7 @@ export class StuffUserProfileComponent implements OnInit {
   stuff: Stuff;
   user_id: number;
 
-  constructor(private route: ActivatedRoute, 
+  constructor(private route: ActivatedRoute, private router: Router,
     private stuffService: StuffService) { }
 
   ngOnInit(): void 
@@ -68,7 +68,10 @@ export class StuffUserProfileComponent implements OnInit {
   //Prelazak na Zakazivanje Termina Za korisnika
   CreateAppointmentByUserId()
   {
-    location.pathname = ('stuff_survey/'+ this.terms_id)
+
+      location.pathname = ('stuff_survey/'+ this.terms_id);
+      // this.router.navigate(['stuff_survey/' + this.terms_id]);
+      //alert("You can not create report! Patient not comming!");
   }
 
 

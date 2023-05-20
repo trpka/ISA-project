@@ -92,10 +92,14 @@ public class StuffSurveyService
             donationTermsRepository.save(donationTerms);
         }
 
-        else if(donationTerms.getSurvey().getP8().equals("YES"))
+
+        else if(donationTerms.getRegisteredUser().getSex().equals("Female"))
         {
-            donationTerms.setFreeTerm(false);
-            donationTermsRepository.save(donationTerms);
+            if(donationTerms.getSurvey().getP8().equals("YES"))
+            {
+                donationTerms.setFreeTerm(false);
+                donationTermsRepository.save(donationTerms);
+            }
         }
 
         if(stuffSurvey.getAccepted_exam().equals("NO"))
