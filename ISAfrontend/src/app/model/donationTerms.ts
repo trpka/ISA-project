@@ -16,6 +16,7 @@ interface DonationTermsInterface{
     registeredUserCome: boolean;
     calendar: Calendar;
     survey: Survey;
+    user_gave_blood: boolean;
     //description:string;
     
     // treba jos polja fali
@@ -33,6 +34,8 @@ export class DonationTerms implements DonationTermsInterface{
     registeredUserCome: boolean;
     calendar: Calendar;
     survey: Survey;
+    user_gave_blood: boolean;
+
     //description:string;
     //bloodCenter:BloodCenter;
 
@@ -48,6 +51,7 @@ export class DonationTerms implements DonationTermsInterface{
         this.registeredUserCome = obj.registeredUserCome;
         this.calendar=obj.calendar;
         this.survey=obj.survey;
+        this.user_gave_blood = obj.user_gave_blood;
         //this.description=obj.description;
         //this.bloodCenter = obj.bloodCenter;
     } 

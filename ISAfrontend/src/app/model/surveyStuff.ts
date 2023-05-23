@@ -24,6 +24,7 @@ interface SurveyStuffInterface {
 
     baso4_level: string;
     checked_heart_lunges: string;
+    user_gave_blood: boolean;
 
 }
 
@@ -47,6 +48,7 @@ export class StuffSurvey implements SurveyStuffInterface
 
     baso4_level: string;
     checked_heart_lunges: string;
+    user_gave_blood: boolean;
 
     constructor(obj:SurveyStuffInterface)
     {
@@ -69,6 +71,7 @@ export class StuffSurvey implements SurveyStuffInterface
     
     this.checked_heart_lunges = obj.checked_heart_lunges;
     this.baso4_level = obj.baso4_level;
+    this.user_gave_blood = obj.user_gave_blood;
     
 
     }

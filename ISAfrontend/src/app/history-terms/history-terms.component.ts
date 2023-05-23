@@ -28,7 +28,8 @@ export class HistoryTermsComponent implements OnInit {
       console.log(this.historyTerms)
       for(var val of res)
       { 
-        if((val.freeTerm == false && val.registeredUserCome == true))
+        //if((val.freeTerm == false && val.registeredUserCome == true))
+        if((val.user_gave_blood == false))
         {
           console.log(val)
           this.didNotGiveBlood= true;

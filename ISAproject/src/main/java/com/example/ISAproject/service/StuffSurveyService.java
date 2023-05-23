@@ -40,6 +40,7 @@ public class StuffSurveyService
             return null;
         }
         return opt.get();
+
     }
 
     public List<StuffSurvey> getAll()
@@ -52,6 +53,7 @@ public class StuffSurveyService
     public StuffSurvey save(StuffSurvey stuffSurvey)
     {
         DonationTerms donationTerms = donationTermsService.findById1(stuffSurvey.getDonationTerms().getId());
+
 
 
         if(donationTerms.getSurvey().getP1().equals("YES"))
@@ -110,6 +112,8 @@ public class StuffSurveyService
 
 
         System.out.println(stuffSurvey.getDonationTerms().isFreeTerm() + " " + "StuffSurvey" + stuffSurvey.getDonationTerms().getSurvey().getP3());
+
+        stuffSurvey.setUser_gave_blood(true);
         return  this.stuffSurveyRepository.save(stuffSurvey);
 
 
@@ -123,32 +127,37 @@ public class StuffSurveyService
         DonationTerms donationTerms = donationTermsService.findById1(ss.getDonationTerms().getId());
 
         //Provera da ukoliko je pregled odbijen da nije dozvoljeno azuriranje kolicine krvi
-        if(stuffSurvey.getAccepted_exam().equals("NO"))
-        {
+            if(stuffSurvey.getAccepted_exam().equals("NO"))
+            {
+                return stuffSurvey;
+            }
+
+            if(stuffSurvey.getBlood_type().equals("A"))
+            {
+                bloodCenter.setBloodA(bloodCenter.getBloodA() + (stuffSurvey.getBlood_quantity() * 0.001));
+            }
+            else if(stuffSurvey.getBlood_type().equals("B"))
+            {
+                bloodCenter.setBloodB(bloodCenter.getBloodB() + (stuffSurvey.getBlood_quantity() * 0.001));
+            }
+            else if(stuffSurvey.getBlood_type().equals("AB"))
+            {
+                bloodCenter.setBloodAB(bloodCenter.getBloodAB() + (stuffSurvey.getBlood_quantity() * 0.001));
+            }
+            else if(stuffSurvey.getBlood_type().equals("O"))
+            {
+                bloodCenter.setBloodO(bloodCenter.getBloodO() + (stuffSurvey.getBlood_quantity() * 0.001));
+            }
+
+            System.out.println(bloodCenter.getId() + " " + (bloodCenter.getBloodAB() + stuffSurvey.getBlood_quantity()));
+            System.out.println( " Polje USER_GAVE_BLOOD " + " " + stuffSurvey.isUser_gave_blood());
+
+            bloodCenterRepository.save(bloodCenter);
+
+            donationTerms.setUser_gave_blood(true);
+            donationTermsRepository.save(donationTerms);
+
             return stuffSurvey;
-        }
-
-        if(stuffSurvey.getBlood_type().equals("A"))
-        {
-            bloodCenter.setBloodA(bloodCenter.getBloodA() + (stuffSurvey.getBlood_quantity() * 0.001));
-        }
-        else if(stuffSurvey.getBlood_type().equals("B"))
-        {
-            bloodCenter.setBloodB(bloodCenter.getBloodB() + (stuffSurvey.getBlood_quantity() * 0.001));
-        }
-        else if(stuffSurvey.getBlood_type().equals("AB"))
-        {
-            bloodCenter.setBloodAB(bloodCenter.getBloodAB() + (stuffSurvey.getBlood_quantity() * 0.001));
-        }
-        else if(stuffSurvey.getBlood_type().equals("O"))
-        {
-            bloodCenter.setBloodO(bloodCenter.getBloodO() + (stuffSurvey.getBlood_quantity() * 0.001));
-        }
-
-        System.out.println(bloodCenter.getId() + " " + (bloodCenter.getBloodAB() + stuffSurvey.getBlood_quantity()));
-
-        bloodCenterRepository.save(bloodCenter);
-        return stuffSurvey;
     }
 
 

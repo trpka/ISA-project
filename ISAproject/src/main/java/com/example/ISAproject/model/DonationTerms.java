@@ -32,6 +32,9 @@ public class DonationTerms {
 	@Column
 	private boolean isRegisteredUserCome=false;
 
+	@Column
+	private  boolean user_gave_blood;
+
 
 
 	@ManyToOne
@@ -61,8 +64,25 @@ public class DonationTerms {
 	{
 
 	}
-	
 
+	//NOVI
+	public DonationTerms(Long id, LocalDateTime date, int duration, boolean freeTerm, LocalDateTime reservationStart,
+						 LocalDateTime reservationEnd, boolean isRegisteredUserCome, boolean user_gave_blood, RegisteredUser registeredUser,
+						 BloodCenter bloodCenter, Calendar calendar, Stuff stuff, Survey survey) {
+		Id = id;
+		this.date = date;
+		this.duration = duration;
+		this.freeTerm = freeTerm;
+		this.reservationStart = reservationStart;
+		this.reservationEnd = reservationEnd;
+		this.isRegisteredUserCome = isRegisteredUserCome;
+		this.user_gave_blood = user_gave_blood;
+		this.registeredUser = registeredUser;
+		this.bloodCenter = bloodCenter;
+		this.calendar = calendar;
+		this.stuff = stuff;
+		this.survey = survey;
+	}
 
 	//Nikolina
 	public DonationTerms(Long id, LocalDateTime date, boolean freeTerm, LocalDateTime reservationStart, LocalDateTime reservationEnd,
@@ -279,5 +299,13 @@ public class DonationTerms {
 
 	public void setSurvey(Survey survey) {
 		this.survey = survey;
+	}
+
+	public boolean isUser_gave_blood() {
+		return user_gave_blood;
+	}
+
+	public void setUser_gave_blood(boolean user_gave_blood) {
+		this.user_gave_blood = user_gave_blood;
 	}
 }
