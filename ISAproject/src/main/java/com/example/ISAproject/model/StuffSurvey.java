@@ -35,12 +35,36 @@ public class StuffSurvey
     private String baso4_level;
     @Column
     private String checked_heart_lunges;
-
+    @Column
+    private boolean user_gave_blood;
 
 
     @OneToOne
     private DonationTerms donationTerms;
 
+    public StuffSurvey(Long id, double a, double b, double AB, double o, String blood_type, String accepted_exam,
+                       double blood_quantity, String extra_note, String reason_ejection, String arm, String purposed_donation,
+                       String donation_type, String baso4_level, String checked_heart_lunges, boolean user_gave_blood,
+                       DonationTerms donationTerms)
+    {
+        this.id = id;
+        A = a;
+        B = b;
+        this.AB = AB;
+        O = o;
+        this.blood_type = blood_type;
+        this.accepted_exam = accepted_exam;
+        this.blood_quantity = blood_quantity;
+        this.extra_note = extra_note;
+        this.reason_ejection = reason_ejection;
+        this.arm = arm;
+        this.purposed_donation = purposed_donation;
+        this.donation_type = donation_type;
+        this.baso4_level = baso4_level;
+        this.checked_heart_lunges = checked_heart_lunges;
+        this.user_gave_blood = false;
+        this.donationTerms = donationTerms;
+    }
 
     public StuffSurvey(Long id, double a, double b, double AB, double o, String blood_type, String accepted_exam,
                        double blood_quantity, String extra_note, String reason_ejection, String arm, String purposed_donation,
@@ -251,5 +275,13 @@ public class StuffSurvey
 
     public void setChecked_heart_lunges(String checked_heart_lunges) {
         this.checked_heart_lunges = checked_heart_lunges;
+    }
+
+    public boolean isUser_gave_blood() {
+        return user_gave_blood;
+    }
+
+    public void setUser_gave_blood(boolean user_gave_blood) {
+        this.user_gave_blood = user_gave_blood;
     }
 }

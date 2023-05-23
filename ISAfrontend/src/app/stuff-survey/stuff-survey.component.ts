@@ -39,6 +39,7 @@ export class StuffSurveyComponent implements OnInit {
     listOfDefinedTerms: []
   });
 
+
   pickBloodCenter: BloodCenter=new BloodCenter({
     id:0,
     centerName: '',
@@ -137,7 +138,8 @@ export class StuffSurveyComponent implements OnInit {
        registeredUser: this.pickUser,
        calendar:  this.pickCalendar,
        survey: this.pickSurvey,
-       bloodCenter: this.pickBloodCenter
+       bloodCenter: this.pickBloodCenter,
+       user_gave_blood: false
   })
 
   
@@ -267,9 +269,11 @@ export class StuffSurveyComponent implements OnInit {
             donation_type: "",
             
             checked_heart_lunges: "",
-            baso4_level: ""
+            baso4_level: "",
+            user_gave_blood: false
         });
         
+       
   }
 
   ngOnInit(): void 
@@ -279,11 +283,8 @@ export class StuffSurveyComponent implements OnInit {
   }
 
   //Da se upitnik ne prikaze ako korisnik nece doci na termin
-  checkUserComming()
-  {
-    this.findDonationTerm()
 
-  }
+ 
 
   findStuffByID()
   {
@@ -308,11 +309,19 @@ export class StuffSurveyComponent implements OnInit {
       this.stuffSurvey.donationTerms = this.donationTerms;
 
       if(this.donationTerms.registeredUserCome == false)
-    {
-      location.pathname = ('stuff_user_profile/'+ this.donationTerms.registeredUser.id);
+      {
+         location.pathname = ('stuff_user_profile/'+ this.donationTerms.registeredUser.id);
+         alert("User NOT COMMING!");
+      }
+     if(this.donationTerms.user_gave_blood == true)
+      {
+        location.pathname = ('stuff_user_profile/'+ this.donationTerms.registeredUser.id);
+         alert("User ALREADY GAVE BLOOD!");
+      }
 
-
-    }
+      
+      
+      
     })
 
     
@@ -339,15 +348,13 @@ export class StuffSurveyComponent implements OnInit {
     } 
 
     
-    
-    
-     this.stuffSurvey.id = this.pickSurvey.id;
-  
-     
-     this.surveyService.saveStuffSurvey(this.stuffSurvey)
-     .subscribe(res => this.stuffSurvey = res)
-    
+    this.stuffSurvey.id = this.pickSurvey.id;
 
+    this.surveyService.saveStuffSurvey(this.stuffSurvey)
+    .subscribe(res => this.stuffSurvey = res)
+    
+    
+     
     }
 
   UpdateBloodQuantity(stuffSurvey: StuffSurvey)
@@ -355,7 +362,6 @@ export class StuffSurveyComponent implements OnInit {
     this.surveyService.updateBlood(stuffSurvey)
     .subscribe(res => this.stuffSurvey = res)
     location.pathname = ('profile_center/' + this.stuffSurvey.donationTerms.bloodCenter.id);
-    
   }
 
  

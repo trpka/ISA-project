@@ -138,7 +138,8 @@ export class NewProfileCenterComponent implements OnInit {
           p7:"",
           p8:""
           
-        })
+        }),
+        user_gave_blood: false
       })
     this.date = this.donationTermsService.getData();
   }
