@@ -123,6 +123,11 @@ export class AllRegisteredUsersComponent implements OnInit
     .subscribe(res => this.registeredUsers = res)
   }
 
+  back()
+  {
+    this.router.navigate(['stuff_edit/' +this.stuff.id]);
+  }
+
 
   
 

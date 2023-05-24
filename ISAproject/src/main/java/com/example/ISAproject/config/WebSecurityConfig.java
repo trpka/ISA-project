@@ -103,51 +103,40 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 									//.antMatchers("/api/terms/future/{id}").permitAll()
 
                                       //Student 3
-					                .antMatchers("/api/centers/edit").permitAll()
+					                //.antMatchers("/api/centers/edit").permitAll()
 					                .antMatchers("/api/centers").permitAll()
 					                .antMatchers("/api/center/{id}").permitAll()
 					                .antMatchers("/api/terms").permitAll()
-					                .antMatchers("/api/term/{id}").permitAll()
+					                //.antMatchers("/api/term/{id}").permitAll()
 					                .antMatchers("/api/term").permitAll()
 					                .antMatchers("/api/stuffs").permitAll()
 					                .antMatchers("/api/stuffs/{id}").permitAll()
-					                .antMatchers("/api/edit/stuff").permitAll()
 					                .antMatchers("/api/stuff/{id}").permitAll()
-					                .antMatchers("/api/stuff/edit").permitAll()
+					               // .antMatchers("/api/stuff/edit").permitAll()
 					                .antMatchers("/api/centers/terms/{id}").permitAll()
-					                .antMatchers("/api/centers/stuffs/{id}").permitAll()
-					                .antMatchers("/api/terms/create_reservation").permitAll()
+					               // .antMatchers("/api/centers/stuffs/{id}").permitAll()
+
+					               // .antMatchers("/api/terms/create_reservation").permitAll()
 
 					                //.antMatchers("/api/regUsers").permitAll()
-					                .antMatchers("/api/users/terms/{id}").permitAll()
+					                //.antMatchers("/api/users/terms/{id}").permitAll()
 					                .antMatchers("/api/users/term/{id}").permitAll()
-					                .antMatchers("/api/addPenal").permitAll()
-					                .antMatchers("/api/exam/edit").permitAll()
-					                .antMatchers("/api/stuff-survey").permitAll()
+					                //.antMatchers("/api/addPenal").permitAll()
+					                //.antMatchers("/api/exam/edit").permitAll()
+					                //.antMatchers("/api/stuff-survey").permitAll()
 
                                     .antMatchers("/api/stuff-survey/{id}").permitAll()
                                     .antMatchers("/api/stuff-surveys").permitAll()
 					                .antMatchers("/api/survey/{id}").permitAll()
-                                    .antMatchers("/api/update-blood").permitAll()
+                                    //.antMatchers("/api/update-blood").permitAll()
 					                .antMatchers("/api/users/centers/{id}").permitAll()
 
-					                .antMatchers("/api/users/sort-by-name/{id}").permitAll()
-					                .antMatchers("/api/users/sort-by-lastname/{id}").permitAll()
-					                .antMatchers("/api/users/sort-by-id/{id}").permitAll()
-					                .antMatchers("/api/terms/addFastTerm").permitAll()
+					               //.antMatchers("/api/users/sort-by-name/{id}").permitAll()
+					               //.antMatchers("/api/users/sort-by-lastname/{id}").permitAll()
+					               //.antMatchers("/api/users/sort-by-id/{id}").permitAll()
+					                //.antMatchers("/api/terms/addFastTerm").permitAll()
                                     .antMatchers("/api/user/{id}").permitAll()
 					                .antMatchers("/api/stuff/changePassword/{id}").permitAll()
-
-
-
-
-
-
-
-
-
-
-
 
 					                .antMatchers("/auth/stuffSignup").permitAll()
 

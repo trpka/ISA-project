@@ -111,7 +111,7 @@ public class DonationTermsService
         {
             if(dt.getBloodCenter().getId() == id)
             {
-                if(dt.isFreeTerm() == true)
+                if(dt.isFreeTerm() == true || dt.isFreeTerm() == false)
                 {
                     findedTerms.add(dt);
                 }

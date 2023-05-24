@@ -58,8 +58,11 @@ public class BloodCenterController
         //return new ResponseEntity("Succesfully created a new Blood Center!", HttpStatus.CREATED);
     }
 
+
     //Izmena centra
+
     @PutMapping("api/centers/edit")
+    @PreAuthorize("hasRole('STUFF')")
     public ResponseEntity<BloodCenter> UpdateCenter(@RequestBody BloodCenter bc)
     {
         BloodCenter bloodCenter = this.bloodCenterService.UpdateCenter(bc);
@@ -126,7 +129,7 @@ public class BloodCenterController
     //Prikazivanje termina prema centru kojem pripada
     @RequestMapping(value="api/centers/terms/{id}",method = RequestMethod.GET,produces = {
             MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-
+    @PreAuthorize("hasRole('STUFF')")
     public ResponseEntity<List<DonationTerms>> findAllTermsByCentre(@PathVariable Long id)
     {
         List<DonationTerms> terms=this.donationTermsService.findAllTermsByCentre(id);
@@ -180,7 +183,7 @@ public class BloodCenterController
     //Prikazivanje Radnika(Stuff-ova) prema centru kojem pripadaju
     @RequestMapping(value="api/centers/stuffs/{id}",method = RequestMethod.GET,produces = {
             MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-
+    @PreAuthorize("hasRole('STUFF')")
     public ResponseEntity<List<Stuff>> FindAllStuffsByCentre(@PathVariable Long id)
     {
         List<Stuff> stuffs = this.stuffService.FindStuffByCenter(id);

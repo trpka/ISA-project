@@ -7,6 +7,8 @@ import { DefinedDonationTerms } from '../model/definedDonationTerms';
 import { Calendar } from '../model/calendar';
 import { BloodCenter } from '../model/bloodCenter';
 import { Survey } from '../model/survey';
+import { StuffService } from '../service/stuff.service';
+import { Stuff } from '../model/stuff';
 
 
 
@@ -124,11 +126,59 @@ export class CreateDonationTermComponent implements OnInit {
     survey:this.pickSurvey
 
   })
-  constructor(private router: Router,private route: ActivatedRoute,private DonationTermsService: DonationTermsService) { 
+
+  stuff_id: number;
+  stuff: Stuff;
+  
+  constructor(private router:  Router,private route: ActivatedRoute,
+    private DonationTermsService: DonationTermsService, private stuffService: StuffService) 
+    { 
+      this.stuff = new Stuff
+      (
+        {
+          id: 0,
+          firstName:"",
+          lastName: "",
+          email: "",
+          username:"",
+          password:"",
+          mobile:"",
+          adress:"",
+          city:"",
+          state:"",
+          //jmbg:"",
+          //sex:"",
+          profession:"",
+          organizationInformation:"",
+          enabled:false,
+          role:"Stuff",
+          //authorities : [],
+          firstLogin: true,
+          bloodCenter : new BloodCenter({
+            id:1,
+            centerName: "",
+            address:  "",
+            city:  "",
+            startWork:  "",
+            endWork:  "",
+            description: "",
+            averageGradeCentre: 0,
+            bloodA: 0,
+            bloodB:  0,
+            bloodAB: 0,
+            bloodO: 0,
+            //freeAppointments:DonationTerms[];
+            listOfStuffs: []
+            })
+        }
+      );
+
     
    }
   
-  ngOnInit(): void {
+  ngOnInit(): void 
+  {
+    this.findStuffByID();
   }
 
 
@@ -142,6 +192,20 @@ export class CreateDonationTermComponent implements OnInit {
     alert("Successfully created a free term!");
     location.pathname = ('defined_terms/' + this.pickCalendar.id);
    // window.location.reload();
+  }
+
+  findStuffByID()
+  {
+    this.stuff_id = Number(sessionStorage.getItem('id'));
+    this.stuffService.getStuffById(this.stuff_id)
+    .subscribe(res => this.stuff = res);
+    
+  }
+
+  back()
+  {
+   
+    this.router.navigate(['stuff_edit/' +this.stuff.id]);
   }
 
 

@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,6 +25,7 @@ public class StuffSurveyController
     private BloodCenterService bloodCenterService;
 
     //Kreiranje novog upitnika od strane korisnika
+    @PreAuthorize("hasRole('STUFF')")
     @RequestMapping(value="api/stuff-survey",method = RequestMethod.POST,
             consumes= MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<StuffSurvey> save(@RequestBody StuffSurvey survey)
@@ -53,6 +55,7 @@ public class StuffSurveyController
     }
 
     //Azuriranje kolicine krvi u Centru nakon azuriranja
+    @PreAuthorize("hasRole('STUFF')")
     @RequestMapping(value="api/update-blood",method = RequestMethod.POST,
             consumes= MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<StuffSurvey> updateBlood(@RequestBody StuffSurvey ss)

@@ -45,6 +45,7 @@ public class DonationTermsController
         return new ResponseEntity<>(donationTerms,HttpStatus.OK);
     }
 
+    @PreAuthorize("hasRole('STUFF')")
     @RequestMapping(value="api/terms/addTerm",method = RequestMethod.PUT,produces = {
             MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
    // @PreAuthorize("hasAnyRole('REGISTERED_USER','STUFF')")
@@ -65,6 +66,7 @@ public class DonationTermsController
     }
 
     //Aleksa kreiranje brzih rezervacija
+    @PreAuthorize("hasRole('STUFF')")
     @RequestMapping(value="api/terms/addFastTerm",method = RequestMethod.PUT,produces = {
             MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -46,6 +47,7 @@ public class StuffController
 
 
     //Izmena podataka o administratoru centra
+    @PreAuthorize("hasRole('STUFF')")
     @PutMapping("api/stuff/edit")
     public ResponseEntity<Stuff> UpdateStuff(@RequestBody Stuff st)
     {
@@ -56,6 +58,7 @@ public class StuffController
 
 
     //Dodavanje penala ukoliko se korisnik ne pojavi na pregledu
+    @PreAuthorize("hasRole('STUFF')")
     @RequestMapping(value="api/addPenal",method = RequestMethod.POST,
             consumes= MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<DonationTerms> addPenal(@RequestBody DonationTerms dt)
@@ -65,6 +68,7 @@ public class StuffController
     }
 
     //Provera Da Li se Korisnik pojavio na pregledu
+    @PreAuthorize("hasRole('STUFF')")
     @PutMapping("api/exam/edit")
     public ResponseEntity<DonationTerms> UpdateExam(@RequestBody DonationTerms dt)
     {

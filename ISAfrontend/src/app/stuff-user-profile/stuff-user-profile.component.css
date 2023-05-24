@@ -1,28 +1,11 @@
-.Profile {
-    margin: auto;
-    width: 50%;
-    border: 3px solid navy;
-    padding: 30px;
-  }
+div.Profile {
+  border-style: solid;
+  border-color: navy;
+}
 
-  label {
-    float: left;
-    width: 9em;
-    margin-right: 1em;
-    text-align: right;
-    }
 
-.container {
-      margin: auto;
-      width: 60%;
-      border: 3px solid navy;
-      padding: 30px;
-    }
-  
-    button {
-      font-size: 1em;
-      margin: 5px;
-      position: right;
-    }
-
-   
+button {
+  font-size: 1em;
+  margin: 5px;
+  position: right;
+}   

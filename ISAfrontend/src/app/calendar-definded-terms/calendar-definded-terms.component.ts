@@ -5,6 +5,9 @@ import { Router } from '@angular/router';
 import { DonationTermsService } from '../service/donation-terms.service';
 import { Calendar } from '../model/calendar';
 import { CalendarService} from '../service/calendar.service';
+import { Stuff } from '../model/stuff';
+import { BloodCenter } from '../model/bloodCenter';
+import { StuffService } from '../service/stuff.service';
 
 
 @Component({
@@ -19,12 +22,67 @@ export class CalendarDefindedTermsComponent implements OnInit {
   
   id:number;
   donationTerms: DonationTerms[];
+  stuff: Stuff;
+  stuff_id: number;
  
 
-  constructor(private route: ActivatedRoute,private router: Router, private calendarService:CalendarService) { }
+  constructor(private route: ActivatedRoute,private router: Router, 
+    private calendarService:CalendarService, private stuffService: StuffService) 
+    { 
+      this.stuff = new Stuff
+      (
+        {
+          id: 0,
+          firstName:"",
+          lastName: "",
+          email: "",
+          username:"",
+          password:"",
+          mobile:"",
+          adress:"",
+          city:"",
+          state:"",
+          //jmbg:"",
+          //sex:"",
+          profession:"",
+          organizationInformation:"",
+          enabled:false,
+          role:"Stuff",
+          //authorities : [],
+          firstLogin: true,
+          bloodCenter : new BloodCenter({
+            id:1,
+            centerName: "",
+            address:  "",
+            city:  "",
+            startWork:  "",
+            endWork:  "",
+            description: "",
+            averageGradeCentre: 0,
+            bloodA: 0,
+            bloodB:  0,
+            bloodAB: 0,
+            bloodO: 0,
+            //freeAppointments:DonationTerms[];
+            listOfStuffs: []
+            })
+        }
+      );
 
-  ngOnInit(): void {
+    }
+
+  ngOnInit(): void 
+  {
     this.loadCenter();
+    this.findStuffByID();
+  }
+
+  findStuffByID()
+  {
+    this.stuff_id = Number(sessionStorage.getItem('id'));
+    this.stuffService.getStuffById(this.stuff_id)
+    .subscribe(res => this.stuff = res);
+    
   }
 
   loadCenter()
@@ -43,7 +101,7 @@ export class CalendarDefindedTermsComponent implements OnInit {
   back()
   {
     //this.router.navigate(['create-term']);
-    this.router.navigate(['stuff_edit/' +this.id]);
+    this.router.navigate(['stuff_edit/' +this.stuff.id]);
   }
 
 

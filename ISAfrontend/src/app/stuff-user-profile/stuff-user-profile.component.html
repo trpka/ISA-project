@@ -1,60 +1,54 @@
-<p>stuff-user-profile works!</p>
 
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 
 <p style="text-align:center"><font size="4"   style="color:black;"></font></p>
 <p style="text-align:center"><font size="4"   style="color:black;">Registered User Profile</font></p>
 
-<div class = "Registered User Profile">
-    <form >
-        <label for="id">Profile Id :</label>
-         <p>{{registeredUser.id}}</p> 
+<div class="Profile">
+    <div class="row">
+      <div>
+        <button class = "btn btn-success" (click)="back()" style="background-color:steelblue; text-align: right;">
+          Your Profile
+        </button>
+      </div>
+  
+    
+      <div class="col-3">
+        <p style="text-align:center"><img src="assets/img/reg-user.jpg" style="height: 350px; border-radius: 350px;"></p>
+      </div>
+    
+     
+     
+      <div class="col-6">
+    
+        <p style="text-align:center"><label for="firstName">First name: {{registeredUser.firstName}}</label></p>
+    
+        <p style="text-align:center"><label for="lastName">Last name: {{registeredUser.lastName}}</label></p>
+  
+        <p style="text-align:center"><label for="lastName">Email: {{registeredUser.email}}</label></p>
+      
+        <p style="text-align:center"><label for="jmbg">JMBG: {{registeredUser.jmbg}}</label></p>
+  
+        <p style="text-align:center"><label for="jmbg">Gender: {{registeredUser.sex}}</label></p>
+  
+        <p style="text-align:center"><label for="jmbg">Address: {{registeredUser.adress}}</label></p>
         
-
-        <label for="username">Username: </label>
-         <p>{{registeredUser.username}}</p>
-       <!-- <div class="form-group text-left">
-            <input [(ngModel)]="bloodCenter.centerName" id = "centerName" name = "centerName" type = "text" class = "from-control">
-        </div>-->
-
-        <label for="firstName">First Name: </label>
-          <p>{{registeredUser.firstName}}</p>
+        <p style="text-align:center"><label for="jmbg">City: {{registeredUser.city}}</label></p>
+  
+        <p style="text-align:center"><label for="jmbg">State: {{registeredUser.state}}</label></p>
+  
+        <p style="text-align:center"><label for="jmbg">Phone number: {{registeredUser.mobile}}</label></p>
         
-
-        <label for = "lastName"> Last Name: </label>
-         <p>{{registeredUser.lastName}}</p>
+        <p style="text-align:center"><label for="jmbg">Organization: {{registeredUser.organizationInformation}}</label></p>
+  
+        <p style="text-align:center"><label for="jmbg">Profession: {{registeredUser.profession}}</label></p>
+  
+        <p style="text-align:center"><label for="jmbg">Penalties: {{registeredUser.points}}</label></p>
         
-
-        <label for="Email">Email:</label>
-        <p>{{registeredUser.email}}</p>
-        
-
-        <label for="mobile">Mobile Phone:</label>
-        <p>{{registeredUser.mobile}}</p>
-        
-
-        <label for = "adress">Address: </label>
-         <p>{{registeredUser.adress}}</p>
-       
-
-        <label for = "city">City: </label>
-        <p>{{registeredUser.city}}</p>
-        
-
-        <label for = "state">State: </label>
-        <p>{{registeredUser.state}}</p>
-
-        <label for = "points">Points: </label>
-        <p>{{registeredUser.points}}</p>
-
-        <label for = "category">Category: </label>
-        <p>{{registeredUser.category}}</p>
-
-        <label for = "benefits">Benefits </label>
-        <p>{{registeredUser.benefits}}</p>
-
-    </form>
-</div>
+      
+      </div>
+    </div>
+  
+  </div>
 
 <p style="text-align:center"><font size="4"   style="color:black;"></font></p>
 <p style="text-align:center"><font size="4"   style="color:black;">Scheduled Appointments</font></p>
@@ -95,17 +89,7 @@
     </tbody>
 </table>
 
-<button id="btnTerms" class = "btn btn-success" style="background-color: steelblue"  (click) = "ViewTermsForThisUser()">View Terms For User</button>
 
-
-<div>
-    <form class="form-search" (ngSubmit)="CreateAppointmentByUserId()">
-        <label for="id" style="font-weight:bold">Donation Term ID: </label>
-        <input name="terms_id" id="terms_id" type="text" [placeholder]="placeholder1" [(ngModel)]="terms_id" style="color:navy">
-        <input type="submit" value="Schedule Appointment" class="btn btn-primary" >
-    </form>
-
-</div>
 
 
 <div>
@@ -113,9 +97,16 @@
     <!--<button id="btn" class = "btn btn-success" style="background-color: steelblue"  (click) = "addNegativePointButton(terms_id)">Add Penalty</button>-->
 </div>
 
+<button id="btnTerms" class = "btn btn-success" style="background-color: steelblue"  (click) = "ViewTermsForThisUser()">View Terms For User</button>
 
+</div>
 
-
+<div>
+    <form class="form-search" (ngSubmit)="CreateAppointmentByUserId()">
+        <label for="id" style="font-weight:bold">Donation Term ID: </label>
+        <input name="terms_id" id="terms_id" type="text" [placeholder]="placeholder1" [(ngModel)]="terms_id" style="color:navy">
+        <input type="submit" value="Schedule Appointment" class="btn btn-primary" >
+    </form>
 
 </div>
 
