@@ -129,6 +129,8 @@ public class StuffSurveyService
         //Provera da ukoliko je pregled odbijen da nije dozvoljeno azuriranje kolicine krvi
             if(stuffSurvey.getAccepted_exam().equals("NO"))
             {
+                donationTerms.setUser_gave_blood(true);
+                donationTermsRepository.save(donationTerms);
                 return stuffSurvey;
             }
 

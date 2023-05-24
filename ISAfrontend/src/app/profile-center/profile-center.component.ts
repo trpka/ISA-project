@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BloodCenter } from '../model/bloodCenter';
 import { DonationTerms } from '../model/donationTerms';
 import { Stuff } from '../model/stuff';
 import { BloodCenterService } from '../service/blood-center.service';
+import { StuffService } from '../service/stuff.service';
 
 @Component({
   selector: 'app-profile-center',
@@ -17,12 +18,66 @@ export class ProfileCenterComponent implements OnInit
   bloodCenter: BloodCenter;
   donationTerms: DonationTerms[];
   stuff: Stuff[];
+  stuff1: Stuff;
+  stuff_id: number;
 
-  constructor(private route: ActivatedRoute, private bloodCenterService: BloodCenterService ) { }
+  constructor(private route: ActivatedRoute, private bloodCenterService: BloodCenterService,
+    private stuffService: StuffService, private router: Router ) 
+    {
+      this.stuff1 = new Stuff
+      (
+        {
+          id: 0,
+          firstName:"",
+          lastName: "",
+          email: "",
+          username:"",
+          password:"",
+          mobile:"",
+          adress:"",
+          city:"",
+          state:"",
+          //jmbg:"",
+          //sex:"",
+          profession:"",
+          organizationInformation:"",
+          enabled:false,
+          role:"Stuff",
+          //authorities : [],
+          firstLogin: true,
+          bloodCenter : new BloodCenter({
+            id:1,
+            centerName: "",
+            address:  "",
+            city:  "",
+            startWork:  "",
+            endWork:  "",
+            description: "",
+            averageGradeCentre: 0,
+            bloodA: 0,
+            bloodB:  0,
+            bloodAB: 0,
+            bloodO: 0,
+            //freeAppointments:DonationTerms[];
+            listOfStuffs: []
+            })
+        }
+      );
+
+     }
 
   ngOnInit(): void 
   {
     this.loadCenter();
+    this.findStuffByID();
+  }
+
+  findStuffByID()
+  {
+    this.stuff_id = Number(sessionStorage.getItem('id'));
+    this.stuffService.getStuffById(this.stuff_id)
+    .subscribe(res => this.stuff1 = res);
+    
   }
 
   loadCenter()
@@ -36,6 +91,7 @@ export class ProfileCenterComponent implements OnInit
   {
     this.bloodCenterService.UpdateBloodCenter(this.bloodCenter)
     .subscribe(res => this.bloodCenter = res)
+    alert("Successfully created changes on Blood Center Profile!");
     window.location.reload();
   }
 
@@ -66,6 +122,12 @@ export class ProfileCenterComponent implements OnInit
   seeCalendar()
   {
     location.pathname = ('blood_calendar/' + this.id);
+  }
+
+  back()
+  {
+   
+    this.router.navigate(['stuff_edit/' +this.stuff1.id]);
   }
 
  

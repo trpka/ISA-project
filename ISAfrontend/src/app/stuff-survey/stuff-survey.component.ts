@@ -361,7 +361,20 @@ export class StuffSurveyComponent implements OnInit {
   {
     this.surveyService.updateBlood(stuffSurvey)
     .subscribe(res => this.stuffSurvey = res)
-    location.pathname = ('profile_center/' + this.stuffSurvey.donationTerms.bloodCenter.id);
+
+    if(stuffSurvey.accepted_exam == 'NO')
+    {
+      alert("EXAM IS NOT APPROVED! NOT REFRESHING BLOOD IN CENTER!");
+      location.pathname = ('profile_center/' + this.stuffSurvey.donationTerms.bloodCenter.id);
+    }
+    else
+    {
+      alert("Updated blood quantity!");
+      location.pathname = ('profile_center/' + this.stuffSurvey.donationTerms.bloodCenter.id);
+
+
+    }
+
   }
 
  

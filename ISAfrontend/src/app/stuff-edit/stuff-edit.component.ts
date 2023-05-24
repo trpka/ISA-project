@@ -41,6 +41,7 @@ export class StuffEditComponent implements OnInit
   {
     this.stuffService.UpdateStuff(this.stuff)
     .subscribe(res => this.stuff = res)
+    alert("Successfully created changes on Stuff  Profile!");
     //window.location.reload();
   }
 
@@ -62,6 +63,11 @@ export class StuffEditComponent implements OnInit
   CreateFastReservation()
   {
     this.router.navigate(['add_fast_reservation']);
+  }
+
+  CreateReservation()
+  {
+    this.router.navigate(['create-term']);
   }
 
   //Prikaz Kalendara

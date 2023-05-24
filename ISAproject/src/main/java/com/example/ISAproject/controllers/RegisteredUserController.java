@@ -77,6 +77,7 @@ public class RegisteredUserController {
 	}
 
 	//SORTIRANJA ZA KORISNIKE PO ODREDJENIM PARAMETRIMA
+	@PreAuthorize("hasRole('STUFF')")
 	@RequestMapping(value="api/users/sort-by-name/{id}", method = RequestMethod.GET,
 			produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
 	public ResponseEntity<List<RegisteredUser>> sortByName(@PathVariable Long id)
@@ -85,6 +86,7 @@ public class RegisteredUserController {
 		return new ResponseEntity<>(registeredUsers,HttpStatus.OK);
 	}
 
+	@PreAuthorize("hasRole('STUFF')")
 	@RequestMapping(value="api/users/sort-by-lastname/{id}", method = RequestMethod.GET,
 			produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
 	public ResponseEntity<List<RegisteredUser>> sortByLastName(@PathVariable Long id)
@@ -93,6 +95,7 @@ public class RegisteredUserController {
 		return new ResponseEntity<>(registeredUsers,HttpStatus.OK);
 	}
 
+	@PreAuthorize("hasRole('STUFF')")
 	@RequestMapping(value="api/users/sort-by-id/{id}", method = RequestMethod.GET,
 			produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
 	public ResponseEntity<List<RegisteredUser>> sortById(@PathVariable Long id)
@@ -130,6 +133,7 @@ public class RegisteredUserController {
 
 
 	//Pretraga Termina prema korisniku za kojeg je zakazano
+	@PreAuthorize("hasRole('STUFF')")
 	@RequestMapping(value="api/users/terms/{id}",method = RequestMethod.GET,produces = {
 			MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 
