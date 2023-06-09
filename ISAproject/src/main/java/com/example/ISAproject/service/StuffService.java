@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -38,6 +39,7 @@ public class StuffService
     private StuffService stuffService;
 
     public List<Stuff> findAll() {return  this.stuffRepository.findAll();}
+
 
 
 
@@ -77,7 +79,7 @@ public class StuffService
 
         stuff.setFirstName(s.getFirstName());
         stuff.setLastName(s.getLastName());
-        stuff.setUsername(s.getUsername());
+        //stuff.setUsername(s.getUsername());
         stuff.setEmail(s.getEmail());
         stuff.setState(s.getState());
         stuff.setCity(s.getCity());
@@ -86,10 +88,9 @@ public class StuffService
         stuff.setProfession(s.getProfession());
         stuff.setOrganizationInformation(s.getOrganizationInformation());
 
-        String newPasswordHash=passwordEncoder.encode(s.getPassword());
-        stuff.setPassword(newPasswordHash);
-
-
+        //stuff.setPassword(passwordEncoder.encode(s.getPassword()));
+        //String newPasswordHash=passwordEncoder.encode(s.getPassword());
+        //stuff.setPassword(newPasswordHash);
 
         return this.stuffRepository.save(stuff);
 
@@ -108,6 +109,16 @@ public class StuffService
         stuff.setFirstLogin(false);
         stuffRepository.save(stuff);
         return stuff;
+    }
+
+    public Stuff changeOnlyPassword(Stuff s)
+    {
+        Stuff stuff = stuffRepository.getById(s.getId());
+
+        String newPasswordHash = passwordEncoder.encode(s.getPassword());
+        stuff.setPassword(newPasswordHash);
+        stuffRepository.save(stuff);
+        return  stuff;
     }
 
 
@@ -142,10 +153,20 @@ public class StuffService
         DonationTerms donationTerms = donationTermsService.findByTermsId(dt.getId());
         RegisteredUser registeredUser = donationTerms.getRegisteredUser();
 
-        if(donationTerms.isRegisteredUserCome() == false)
+        /*if(donationTerms.isRegisteredUserCome() == false && !Objects.equals(registeredUser.getBenefits(), "Redovan+"))
         {
+            registeredUser.setBenefits("Redovan+");
             registeredUser.setPoints(registeredUser.getPoints() + 1);
+        }*/
+
+        if(donationTerms.isRegisteredUserCome() == false && donationTerms.isUser_got_penalty() == false)
+        {
+            donationTerms.setUser_got_penalty(true);
+            registeredUser.setPoints(registeredUser.getPoints() + 1);
+            System.out.println("Stavio sam penal NA TRUE");
         }
+
+
 
         registeredUserRepository.save(registeredUser);
 
@@ -156,6 +177,7 @@ public class StuffService
     public DonationTerms UpdateExam(DonationTerms dt)
     {
         DonationTerms donationTerms = donationTermsService.findByTermsId(dt.getId());
+        RegisteredUser registeredUser = donationTerms.getRegisteredUser();
 
         if (donationTerms.isRegisteredUserCome() == true)
         {
@@ -164,10 +186,29 @@ public class StuffService
         }
         else if(donationTerms.isRegisteredUserCome() == false)
         {
-            donationTerms.setRegisteredUserCome(true);
-            donationTerms.setFreeTerm(true);
-        }
+           /* if(Objects.equals(registeredUser.getBenefits(), "Redovan+"))
+            {
+                registeredUser.setPoints(registeredUser.getPoints() - 1);
+                registeredUser.setBenefits("Redovan");
+                donationTerms.setRegisteredUserCome(true);
+                donationTerms.setFreeTerm(true);
+            }*/
+            if(donationTerms.isUser_got_penalty() == true)
+            {
+                registeredUser.setPoints(registeredUser.getPoints() - 1);
+                donationTerms.setUser_got_penalty(false);
+                donationTerms.setRegisteredUserCome(true);
+                donationTerms.setFreeTerm(true);
+            }
+            else
+            {
+                donationTerms.setRegisteredUserCome(true);
+                donationTerms.setFreeTerm(true);
+            }
 
+
+        }
+        registeredUserRepository.save(registeredUser);
         donationTermsRepository.save(donationTerms);
 
         return  donationTerms;

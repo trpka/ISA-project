@@ -34,6 +34,7 @@ public class StuffController
         return new ResponseEntity<>(stuffs,HttpStatus.OK);
     }
 
+    @PreAuthorize("hasRole('STUFF')")
     @RequestMapping(value="api/stuff/{id}",method = RequestMethod.GET,produces= {
             MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public ResponseEntity<Stuff> getById(@PathVariable Long id)
@@ -47,11 +48,21 @@ public class StuffController
 
 
     //Izmena podataka o administratoru centra
-    @PreAuthorize("hasRole('STUFF')")
+
     @PutMapping("api/stuff/edit")
+    @PreAuthorize("hasRole('STUFF')")
     public ResponseEntity<Stuff> UpdateStuff(@RequestBody Stuff st)
     {
         Stuff stuff = this.stuffService.UpdateStuff(st);
+        return  new ResponseEntity<>(stuff, HttpStatus.OK);
+    }
+
+    //Izmena samo lozinke za korisnika
+    @PutMapping("api/stuff/edit_pass")
+    @PreAuthorize("hasRole('STUFF')")
+    public ResponseEntity<Stuff> changeOnlyPassword(@RequestBody Stuff st)
+    {
+        Stuff stuff = this.stuffService.changeOnlyPassword(st);
         return  new ResponseEntity<>(stuff, HttpStatus.OK);
     }
 

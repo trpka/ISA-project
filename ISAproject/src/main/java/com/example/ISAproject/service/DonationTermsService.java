@@ -1,3 +1,4 @@
+
 package com.example.ISAproject.service;
 
 import com.example.ISAproject.dto.*;
@@ -372,6 +373,9 @@ public class DonationTermsService
         Survey survey = this.surveyService.findById(dt.getSurvey().getId());
         Stuff  stuff = this.stuffService.findById(dt.getStuff().getId());
 
+        LocalDateTime present_time = LocalDateTime.now();
+        boolean is_past_term = false;
+
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
         LocalDateTime date =LocalDateTime.parse(dt.getDate().toString(),formatter);
@@ -382,14 +386,23 @@ public class DonationTermsService
         time.setStart(dt.getReservationStart());
         time.setEnd(dt.getReservationEnd());
 
-
         DonationTerms newTerm = new DonationTerms(dt.getId(), date, dt.getDuration(), dt.isFree(), start, end,
                                                       registeredUser, bloodCenter, calendar, stuff, survey);
 
+        if(newTerm.getDate().isAfter(present_time.minusDays(1)) &&
+                newTerm.getReservationStart().isAfter(present_time.minusDays(1)) &&
+                newTerm.getReservationEnd().isAfter(present_time.minusDays(1)))
+        {
+            is_past_term = false;
+            donationTermsRepository.save(newTerm);
+            System.out.println("Zoves Kako treba");
+        }
 
-        donationTermsRepository.save(newTerm);
 
-        System.out.println("POZVAO SI 3.4 F-JU");
+
+        //donationTermsRepository.save(newTerm);
+
+       // System.out.println("POZVAO SI 3.4 F-JU");
 
 
         DefinedTermDTO definedTermsDTO = new DefinedTermDTO(newTerm.getId(), newTerm.getDuration(),

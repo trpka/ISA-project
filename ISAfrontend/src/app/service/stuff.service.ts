@@ -40,7 +40,6 @@ export class StuffService
   UpdateStuff(stuff: Stuff):Observable<Stuff>
   {
       return this.http.put<Stuff>(this.url+"/edit",stuff);
-      //return this.http.put<Stuff>(this.url5A,stuff);
   }
 
   //Prikaz Svih Registrovanih korisnika
@@ -105,6 +104,11 @@ export class StuffService
   changePassword(id: number, newPassword: string): Observable<Stuff> 
   {
     return this.http.post<Stuff>(`${this.url}/` + `changePassword` + `/${id}`, { newPassword });
+  }
+
+  ChangeOnlyPassword(stuff: Stuff):Observable<Stuff>
+  {
+      return this.http.put<Stuff>(this.url+"/edit_pass",stuff);
   }
 
 

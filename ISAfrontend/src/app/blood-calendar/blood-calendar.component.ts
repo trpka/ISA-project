@@ -6,6 +6,7 @@ import { BloodCenter } from '../model/bloodCenter';
 import { DonationTerms } from '../model/donationTerms';
 import { Stuff } from '../model/stuff';
 import { StuffService } from '../service/stuff.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-blood-calendar',
@@ -17,12 +18,21 @@ export class BloodCalendarComponent implements OnInit {
   id:number;
   bloodCenter: BloodCenter;
   donationTerms: DonationTerms[];
+  donationTerm: DonationTerms;
   stuff: Stuff[];
   stuff1: Stuff;
   stuff_id: number;
+  pocetak : string;
+
+
+
+  
+  
   constructor(private route: ActivatedRoute, private router: Router, 
-    private bloodCenterService: BloodCenterService, private stuffService: StuffService) 
+    private bloodCenterService: BloodCenterService, private stuffService: StuffService, private datePipe: DatePipe) 
     {
+      
+
       this.stuff1 = new Stuff
       (
         {
@@ -68,6 +78,7 @@ export class BloodCalendarComponent implements OnInit {
   {
       this.loadCenter();
       this.findStuffByID()
+      console.log(this.donationTerms)
   }
 
   findStuffByID()
