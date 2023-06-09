@@ -38,6 +38,7 @@ public class BloodCenterController
         return new ResponseEntity<>(centers,HttpStatus.OK);
     }
     //Pretraga Centra Po ID-ju
+    @PreAuthorize("hasRole('STUFF')")
     @RequestMapping(value="api/center/{id}",method = RequestMethod.GET,produces= {
             MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public ResponseEntity<BloodCenter> getById(@PathVariable Long id)

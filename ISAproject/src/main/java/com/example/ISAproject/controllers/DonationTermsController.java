@@ -114,6 +114,7 @@ public class DonationTermsController
     public ResponseEntity<DonationTerms> getById(@PathVariable Long id)
     {
         DonationTerms donationTerms =this.donationTermsService.findByTermsId(id);
+
         return new ResponseEntity<>(donationTerms,HttpStatus.OK);
     }
 

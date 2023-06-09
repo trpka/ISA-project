@@ -1,6 +1,12 @@
 package com.example.ISAproject.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+import java.time.format.DateTimeFormatterBuilder;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,6 +23,9 @@ public class DonationTerms {
 	private Long Id;
 
 	@Column
+	//@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy hh:mm:ss")
+	//@DateTimeFormat(iso = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"))
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm")
 	private LocalDateTime date;
 	@Column
 	private int duration;
@@ -24,9 +33,13 @@ public class DonationTerms {
 	private boolean freeTerm =true ;
 
 	@Column(name = "reservationStart", nullable = false)
+	//@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy hh:mm:ss")
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm")
 	private LocalDateTime reservationStart;
 
 	@Column
+	//@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy hh:mm:ss")
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm")
 	private LocalDateTime reservationEnd;
 
 	@Column
@@ -34,7 +47,8 @@ public class DonationTerms {
 
 	@Column
 	private  boolean user_gave_blood;
-
+	@Column
+	private boolean user_got_penalty;
 
 
 	@ManyToOne
@@ -308,4 +322,15 @@ public class DonationTerms {
 	public void setUser_gave_blood(boolean user_gave_blood) {
 		this.user_gave_blood = user_gave_blood;
 	}
+
+	public boolean isUser_got_penalty() {
+		return user_got_penalty;
+	}
+
+	public void setUser_got_penalty(boolean user_got_penalty) {
+		this.user_got_penalty = user_got_penalty;
+	}
 }
+
+
+

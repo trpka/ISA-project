@@ -42,7 +42,8 @@ export class StuffEditComponent implements OnInit
     this.stuffService.UpdateStuff(this.stuff)
     .subscribe(res => this.stuff = res)
     alert("Successfully created changes on Stuff  Profile!");
-    //window.location.reload();
+    window.location.reload();
+    this.loadStuff();
   }
 
   ShowStuffCenter()
@@ -51,6 +52,15 @@ export class StuffEditComponent implements OnInit
     
     location.pathname = ('profile_center/' + this.stuff.bloodCenter.id);
 
+  }
+
+  changeOnlyPassword()
+  {
+    this.stuffService.ChangeOnlyPassword(this.stuff)
+    .subscribe(res => this.stuff = res)
+    alert("Successfully PASSWORD SWITCH!");
+    window.location.reload();
+    this.loadStuff();
   }
 
   //Svi registrovani korisnici

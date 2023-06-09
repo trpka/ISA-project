@@ -78,7 +78,7 @@ values (10, 'Mend Life Medical', '49276 Bernard Wall', 'Sofia', 10, 'Alouatta se
 insert into registered_user (id, points, category, benefits) values (2, 0,'Redovan', 'Redovan');
 insert into registered_user (id, points, category, benefits) values (7, 0,'Redovan', 'Redovan');
 insert into registered_user (id, points, category, benefits) values (8, 1,'Redovan', 'Redovan');
-insert into registered_user (id, points, category, benefits) values (9, 3,'Redovan', 'Redovan');
+insert into registered_user (id, points, category, benefits) values (9, 2,'Redovan', 'Redovan');
 insert into registered_user (id, points, category, benefits) values (14, 0,'Pretplacen', 'Gift programi');
 
 
@@ -152,70 +152,71 @@ values (18, 'YES','YES','YES','YES', 'YES','NO', 'NO',14);
 
 
 
---insert into donation_terms (id, date, duration, free_term, is_registered_user_come, reservation_start, reservation_end, profile_center_id,calendar_id)
---values (1, '2022-12-1 8:30:00', 60, true, false ,'2023-02-10 07:00:00','2023-02-10 08:00:00', 1,3);
-
-insert into donation_terms (id, date, duration, free_term, is_registered_user_come, user_gave_blood, reservation_start, reservation_end, profile_center_id,calendar_id, registered_user_id, survey_id)
-values (2, '2018-02-20 07:00:00', 45, true, true, false , '2022-01-18 07:00:00','2022-01-18 07:45:00', 1,1,14,1);
-
-insert into donation_terms (id, date, duration, free_term, is_registered_user_come,  user_gave_blood, reservation_start, reservation_end, profile_center_id,calendar_id,registered_user_id,survey_id)
-values (3, '2016-02-21 09:00:00', 15, true, true, false, '2022-02-17 07:00:00','2022-02-17 07:15:00', 3,3,8,2);
-
-insert into donation_terms (id, date, duration, free_term, is_registered_user_come,  user_gave_blood, reservation_start, reservation_end, profile_center_id,calendar_id,registered_user_id,survey_id)
-values (99, '2020-02-01 09:00:00', 15, true, true, false, '2020-02-17 07:00:00','2020-02-17 07:15:00', 3,3,8,6);
-
-insert into donation_terms (id, date, duration, free_term, is_registered_user_come,  user_gave_blood, reservation_start, reservation_end, profile_center_id,calendar_id,registered_user_id,survey_id)
-values (4, '2022-12-1 8:33:00', 25, false, false, false, '2023-02-03 07:00:00','2023-02-03 07:25:00', 1,1,2,3);
 
 
-insert into donation_terms (id, date, duration, free_term, is_registered_user_come,  user_gave_blood, reservation_start, reservation_end, profile_center_id,calendar_id)
-values (5, '2022-12-1 8:34:00', 30, true, false, false, '2023-02-14 07:00:00','2023-02-14 07:30:00', 3,3);
+insert into donation_terms (id, date, duration, free_term, is_registered_user_come, user_gave_blood, user_got_penalty, reservation_start, reservation_end, profile_center_id,calendar_id, registered_user_id, survey_id)
+values (2, '2018-02-20 07:00:00', 45, true, true, false, false, '2022-01-18 07:00:00','2022-01-18 07:45:00', 1,1,14,1);
 
-insert into donation_terms (id, date, duration, free_term, is_registered_user_come,  user_gave_blood, reservation_start, reservation_end, profile_center_id,calendar_id, registered_user_id, survey_id)
-values (6, '2022-12-1 8:35:00', 45, true, false, false ,'2023-02-22 07:00:00','2023-02-22 07:45:00', 1,3, 7,2 );
+insert into donation_terms (id, date, duration, free_term, is_registered_user_come,  user_gave_blood, user_got_penalty, reservation_start, reservation_end, profile_center_id,calendar_id,registered_user_id,survey_id)
+values (3, '2016-02-21 09:00:00', 15, true, true, false, false, '2022-02-17 07:00:00','2022-02-17 07:15:00', 3,3,8,2);
 
-insert into donation_terms (id, date, duration, free_term, is_registered_user_come,  user_gave_blood, reservation_start, reservation_end, profile_center_id,calendar_id)
-values (7, '2022-12-1 8:36:00', 15, true, false, false, '2023-02-11 8:30:00','2023-02-11 8:45:00', 1,2);
+insert into donation_terms (id, date, duration, free_term, is_registered_user_come,  user_gave_blood, user_got_penalty, reservation_start,  reservation_end, profile_center_id,calendar_id,registered_user_id,survey_id)
+values (99, '2020-02-01 09:00:00', 15, true, true, false, false ,'2020-02-17 07:00:00','2020-02-17 07:15:00', 3,3,8,6);
 
-insert into donation_terms (id, date, duration, free_term, is_registered_user_come,  user_gave_blood, reservation_start, reservation_end, profile_center_id,calendar_id, registered_user_id, survey_id)
-values (8, '2022-12-1 9:36:00', 15, true, false, false, '2023-02-10 11:30:00','2023-02-10 11:45:00', 1,2, 7, 2);
+insert into donation_terms (id, date, duration, free_term, is_registered_user_come,  user_gave_blood, user_got_penalty, reservation_start, reservation_end, profile_center_id,calendar_id,registered_user_id,survey_id)
+values (4, '2022-12-1 8:33:00', 25, false, false, false, false, '2023-02-03 07:00:00','2023-02-03 07:25:00', 1,1,2,3);
 
-insert into donation_terms (id, date, duration, free_term, is_registered_user_come,  user_gave_blood, reservation_start, reservation_end, profile_center_id,calendar_id,registered_user_id, survey_id)
-values (9, '2022-12-1 9:36:00', 15, false, false, false, '2023-01-29 07:00:00','2023-01-29 07:15:00', 1,2,2,4);
 
-insert into donation_terms (id, date, duration, free_term, is_registered_user_come,  user_gave_blood, reservation_start, reservation_end, profile_center_id,calendar_id, registered_user_id, survey_id)
-values (10, '2023-01-01 09:00:00', 45, false, true, false, '2023-01-04 12:00:00','2023-01-04 12:45:00', 3,3,9,7);
+insert into donation_terms (id, date, duration, free_term, is_registered_user_come,  user_gave_blood, user_got_penalty, reservation_start, reservation_end, profile_center_id,calendar_id)
+values (5, '2022,12,1 8,34,00', 30, true, false, false, false, '2023-02-14 07:00:00','2023-02-14 07:30:00', 3,3);
 
-insert into donation_terms (id, date, duration, free_term, is_registered_user_come,  user_gave_blood, reservation_start, reservation_end, profile_center_id,calendar_id, registered_user_id, survey_id)
-values (11, '2023-01-01 09:10:00', 20, false, true, false, '2023-01-05 12:00:00','2023-01-05 12:20:00', 3,3,9,8);
+insert into donation_terms (id, date, duration, free_term, is_registered_user_come,  user_gave_blood, user_got_penalty, reservation_start, reservation_end, profile_center_id,calendar_id, registered_user_id, survey_id)
+values (6, '2022-12-1 8:35:00', 45, true, false, false , false, '2023-02-22 07:00:00','2023-02-22 07:45:00', 1,3, 7,2 );
 
-insert into donation_terms (id, date, duration, free_term, is_registered_user_come,  user_gave_blood, reservation_start, reservation_end, profile_center_id,calendar_id, registered_user_id, survey_id)
-values (12, '2023-01-01 09:11:00', 35, false , true, false ,'2023-01-06 12:00:00','2023-01-06 12:35:00', 3,3,9,9);
+insert into donation_terms (id, date, duration, free_term, is_registered_user_come,  user_gave_blood, user_got_penalty, reservation_start, reservation_end, profile_center_id,calendar_id)
+values (7, '2022-12-1 8:36:00', 15, true, false, false, false, '2023-02-11 8:30:00','2023-02-11 8:45:00', 1,2);
 
+insert into donation_terms (id, date, duration, free_term, is_registered_user_come,  user_gave_blood, user_got_penalty, reservation_start, reservation_end, profile_center_id,calendar_id, registered_user_id, survey_id)
+values (8, '2022:12:01 9:37:00', 15, true, false, false, false, '2023-02-10 11:30:00','2023-02-10 11:45:00', 1,2, 7, 2);
+
+insert into donation_terms (id, date, duration, free_term, is_registered_user_come,  user_gave_blood, user_got_penalty, reservation_start, reservation_end, profile_center_id,calendar_id,registered_user_id, survey_id)
+values (9, '2022-12-1 9:36:00', 15, false, false, false, false, '2023-01-29 07:00:00','2023-01-29 07:15:00', 1,2,2,4);
+
+insert into donation_terms (id, date, duration, free_term, is_registered_user_come,  user_gave_blood,user_got_penalty, reservation_start, reservation_end, profile_center_id,calendar_id, registered_user_id, survey_id)
+values (10, '2023-01-01 09:00:00', 45, false, true, false, false, '2023-01-04 12:00:00','2023-01-04 12:45:00', 3,3,9,7);
+
+insert into donation_terms (id, date, duration, free_term, is_registered_user_come,  user_gave_blood, user_got_penalty, reservation_start, reservation_end, profile_center_id,calendar_id, registered_user_id, survey_id)
+values (11, '2023-01-01 09:10:00', 20, false, true, false, false, '2023-01-05 12:00:00','2023-01-05 12:20:00', 3,3,9,8);
+
+insert into donation_terms (id, date, duration, free_term, is_registered_user_come,  user_gave_blood, user_got_penalty, reservation_start, reservation_end, profile_center_id,calendar_id, registered_user_id, survey_id)
+values (12, '2023-01-01 09:11:00', 35, false , true, false , false,'2023-01-06 12:00:00','2023-01-06 12:35:00', 3,3,9,9);
 
 
 
-insert into donation_terms (id, date, duration, free_term, is_registered_user_come,  user_gave_blood, reservation_start, reservation_end, profile_center_id,calendar_id, registered_user_id, survey_id)
-values (32, '2023-01-02 07:00:00', 45, false, true, false, '2023-01-17 07:00:00','2023-01-17 07:35:00', 3,3,8,5);
-insert into donation_terms (id, date, duration, free_term, is_registered_user_come,  user_gave_blood, reservation_start, reservation_end, profile_center_id,calendar_id)
-values (27, '2018-02-16 10:00:00', 45, true, false, false, '2023-02-17 07:00:00','2023-02-17 07:20:00', 10,1);
-insert into donation_terms (id, date, duration, free_term, is_registered_user_come,  user_gave_blood, reservation_start, reservation_end, profile_center_id,calendar_id)
-values (40, '2018-02-14 09:30:00', 45, true, false, false, '2023-02-18 07:30:00','2023-02-18 08:00:00', 9,1);
-insert into donation_terms (id, date, duration, free_term, is_registered_user_come,  user_gave_blood, reservation_start, reservation_end, profile_center_id,calendar_id)
-values (41, '2018-02-14 09:30:00', 50, true, false, false, '2023-02-17 07:00:00','2023-02-17 08:00:00', 10,2);
-insert into donation_terms (id, date, duration, free_term, is_registered_user_come,  user_gave_blood, reservation_start, reservation_end, profile_center_id,calendar_id)
-values (42, '2018-02-14 09:30:00', 60, true, false, false, '2023-02-17 07:00:00','2023-02-17 09:40:00', 9,1);
-insert into donation_terms (id, date, duration, free_term, is_registered_user_come,  user_gave_blood, reservation_start, reservation_end, profile_center_id,calendar_id)
-values (43, '2018-02-14 09:30:00', 20, true, false, false, '2023-02-17 07:00:00','2023-02-17 07:20:00', 10,3);
-insert into donation_terms (id, date, duration, free_term, is_registered_user_come,  user_gave_blood, reservation_start, reservation_end, profile_center_id,calendar_id)
-values (44, '2018-02-14 09:30:00', 90, true, false, false, '2023-02-17 07:00:00','2023-02-17 08:30:00', 10,1);
-insert into donation_terms (id, date, duration, free_term, is_registered_user_come,  user_gave_blood, reservation_start, reservation_end, profile_center_id,calendar_id)
-values (45, '2018-02-14 09:30:00', 20, true, false, false, '2023-02-17 07:00:00','2023-02-17 07:20:00', 10,3);
-insert into donation_terms (id, date, duration, free_term, is_registered_user_come, user_gave_blood, reservation_start, reservation_end, profile_center_id,calendar_id)
-values (46, '2018-02-14 09:30:00', 30, true, false, false, '2023-02-17 07:00:00','2023-02-17 07:30:00', 10,1);
+
+insert into donation_terms (id, date, duration, free_term, is_registered_user_come,  user_gave_blood, user_got_penalty, reservation_start, reservation_end, profile_center_id,calendar_id, registered_user_id, survey_id)
+values (32, '2023-01-02 07:00:00', 45, false, true, false, false, '2023-01-17 07:00:00','2023-01-17 07:35:00', 3,3,8,5);
+insert into donation_terms (id, date, duration, free_term, is_registered_user_come,  user_gave_blood, user_got_penalty, reservation_start, reservation_end, profile_center_id,calendar_id)
+values (27, '2018-02-16 10:00:00', 45, true, false, false, false, '2023-02-17 07:00:00','2023-02-17 07:20:00', 10,1);
+insert into donation_terms (id, date, duration, free_term, is_registered_user_come,  user_gave_blood,user_got_penalty, reservation_start, reservation_end, profile_center_id,calendar_id)
+values (40, '2018-02-14 09:30:00', 45, true, false, false, false, '2023-02-18 07:30:00','2023-02-18 08:00:00', 9,1);
+insert into donation_terms (id, date, duration, free_term, is_registered_user_come,  user_gave_blood, user_got_penalty, reservation_start, reservation_end, profile_center_id,calendar_id)
+values (41, '2018-02-14 09:30:00', 50, true, false, false, false, '2023-02-17 07:00:00','2023-02-17 08:00:00', 10,2);
+insert into donation_terms (id, date, duration, free_term,  is_registered_user_come,  user_gave_blood, user_got_penalty, reservation_start, reservation_end, profile_center_id,calendar_id)
+values (42, '2018-02-14 09:30:00', 60, true, false, false, false, '2023-02-17 07:00:00','2023-02-17 09:40:00', 9,1);
+insert into donation_terms (id, date, duration, free_term, is_registered_user_come,  user_gave_blood,user_got_penalty, reservation_start, reservation_end, profile_center_id,calendar_id)
+values (43, '2018-02-14 09:30:00', 20, true, false, false, false, '2023-02-17 07:00:00','2023-02-17 07:20:00', 10,3);
+insert into donation_terms (id, date, duration, free_term, is_registered_user_come,  user_gave_blood, user_got_penalty, reservation_start, reservation_end, profile_center_id,calendar_id)
+values (44, '2018-02-14 09:30:00', 90, true, false, false, false, '2023-02-17 07:00:00','2023-02-17 08:30:00', 10,1);
+insert into donation_terms (id, date, duration, free_term, is_registered_user_come,  user_gave_blood, user_got_penalty, reservation_start, reservation_end, profile_center_id,calendar_id)
+values (45, '2018-02-14 09:30:00', 20, true, false, false, false, '2023-02-17 07:00:00','2023-02-17 07:20:00', 10,3);
+insert into donation_terms (id, date, duration, free_term, is_registered_user_come, user_gave_blood, user_got_penalty, reservation_start, reservation_end, profile_center_id,calendar_id)
+values (46, '2018-02-14 09:30:00', 30, true, false, false, false, '2023-02-17 07:00:00','2023-02-17 07:30:00', 10,1);
 
 
 
 
 insert into registered_user_surveys(registered_user_id, surveys_id)
-values(14, 2)
+values(14, 2);
+
+

@@ -63,7 +63,7 @@
             <th>reservationStart</th>
             <th>reservationEnd</th>
             <th>bloodCenter</th>
-            <th>freeTerm</th>
+            <th>Completed Exam</th>
             <th>Give Penalty</th>
             <th>Change Status</th>
         </tr>
@@ -82,7 +82,7 @@
             <td>{{donationTerm.reservationStart}}</td>
             <td>{{donationTerm.reservationEnd}}</td>
             <td>{{donationTerm.bloodCenter.id}}</td>
-            <td>{{donationTerm.freeTerm}}</td>
+            <td>{{donationTerm.user_gave_blood}}</td>
             <td><button class = "btn btn-success" (click)="addNegativePoint(donationTerm)"  style="background-color: steelblue">Add Penalty</button></td>
             <td><button class = "btn btn-success" (click)="UpdateExam(donationTerm)"  style="background-color: steelblue">Change Status</button></td>
         </tr>
